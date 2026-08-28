@@ -32,8 +32,6 @@ When the user asks to learn a concept:
 
 Keep explanations practical and concise.
 
-Use Egyptian Arabic when helpful, while keeping Java/Spring terminology in English.
-
 ### 2. Exercise
 
 After teaching, give the user a practical exercise based on the project.
