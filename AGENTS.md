@@ -65,26 +65,17 @@ When implementing from a Stitch, Figma, screenshot, or other design reference:
 - When a named reference is provided, use it directly — do not enumerate unrelated Stitch projects/screens, fetch large project listings, or research unrelated component APIs unless necessary. If locating a named screen requires listing projects/screens first, filter or grep the result for the given title instead of reading the full listing.
 - If exact colors/spacing aren't available as tokens, use your best-guess values once rather than iterating on them by inspection.
 
-### Google Stitch
-
-- Project: `Workstation Library Manager`
-- Project ID: `6496321036061345431`
-- Use this project for all Athenaeum UI/design tasks.
-- When a Stitch screen is referenced, access it directly from this project.
-- Do not enumerate or search unrelated Stitch projects.
 ## Stitch Instructions
 
 Get the images and code for the following Stitch project's screens:
 
 ## Project
-Title: Workstation Library Manager
-ID: 6496321036061345431
+Title: Pixel-Perfect Dashboard System
+ID: 5495737664315300323
 
 ## Screens:
-1. Books - Athenaeum Modern (Final Polish)
-   ID: 6b350e2529e14c2781bc93fb4198a922
-2. Dashboard - Athenaeum Modern
-      ID: 96341750b8ea4155b8db5771d667b16f
+1. Athenaeum Dashboard
+   ID: d0a06cbd03f14ea4a6e7ebe7944adc0d
 
 Use a utility like `curl -L` to download the hosted URLs.
 
