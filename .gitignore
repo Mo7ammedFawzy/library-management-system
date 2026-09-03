@@ -32,3 +32,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# graphify — commit the queryable graph + report, ignore regenerable/local outputs
+graphify-out/*
+!graphify-out/graph.json
+!graphify-out/GRAPH_REPORT.md
+!graphify-out/manifest.json

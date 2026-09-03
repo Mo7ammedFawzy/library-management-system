@@ -1,0 +1,16 @@
+# graphify ignore — noise excluded from the knowledge graph.
+# Gitignore-style patterns. graphify prioritizes this over .gitignore.
+graphify-out/
+.git/
+.opencode/node_modules/
+frontend/node_modules/
+backend/target/
+frontend/dist/
+frontend/public/screenshots/
+*.png
+*.jpg
+pnpm-lock.yaml
+package-lock.json
+*.tsbuildinfo
+.idea/
+.vscode/
