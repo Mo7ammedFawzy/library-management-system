@@ -38,6 +38,10 @@ Athenaeum lets librarians register users, manage books, authors and categories, 
 ### Dashboard
 ![Dashboard page](frontend/public/screenshots/dashboard.png)
 
+## 🚀 Demo
+
+Check out the live demo: [library-mngment-system.vercel.app](https://library-mngment-system.vercel.app)
+
 ## 🧱 Tech Stack
 
 ### Backend — `backend/`
