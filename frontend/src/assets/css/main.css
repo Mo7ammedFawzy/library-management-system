@@ -19,6 +19,18 @@
   --color-brand-800: #5c1f00;
   --color-brand-900: #3f1400;
   --color-brand-950: #330f00;
+
+  --color-teal-50: #e6f5f8;
+  --color-teal-100: #b5ecf7;
+  --color-teal-200: #99cfdb;
+  --color-teal-300: #6bb4c4;
+  --color-teal-400: #4a97a8;
+  --color-teal-500: #2f6670;
+  --color-teal-600: #265862;
+  --color-teal-700: #1c4a53;
+  --color-teal-800: #133c44;
+  --color-teal-900: #0a2e35;
+  --color-teal-950: #051d22;
 }
 
 :root {
@@ -40,6 +52,14 @@
   --ui-text-inverted: #ffffff;
 
   --ui-header-height: 3.5rem;
+
+  --ui-surface-dim: #dbdad9;
+  --ui-surface-container: #efedec;
+  --ui-surface-container-high: #eae8e7;
+
+  --ui-color-success: #2E7D32;
+  --ui-color-warning: #B7791F;
+  --ui-color-error: #C0392B;
 }
 
 .dark {
@@ -59,4 +79,12 @@
   --ui-text-muted: #a8a29e;
   --ui-text-highlighted: #faf9f7;
   --ui-text-inverted: #1c1917;
+
+  --ui-surface-dim: #1a1614;
+  --ui-surface-container: #292524;
+  --ui-surface-container-high: #3a3532;
+
+  --ui-color-success: #4CAF50;
+  --ui-color-warning: #FFB74D;
+  --ui-color-error: #EF5350;
 }

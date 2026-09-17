@@ -70,12 +70,12 @@ When implementing from a Stitch, Figma, screenshot, or other design reference:
 Get the images and code for the following Stitch project's screens:
 
 ## Project
-Title: Pixel-Perfect Dashboard System
-ID: 5495737664315300323
+Title: Workstation Library Manager
+ID: 6496321036061345431
 
 ## Screens:
-1. Athenaeum Dashboard
-   ID: d0a06cbd03f14ea4a6e7ebe7944adc0d
+1. Dashboard - Athenaeum Library Management
+   ID: 66f030d84eec42cab49baf4d5a49c95b
 
 Use a utility like `curl -L` to download the hosted URLs.
 
