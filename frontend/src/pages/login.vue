@@ -65,8 +65,8 @@ function handleGoogleSignIn() {}
     </header>
 
     <!-- Center Content / Auth Card -->
-    <main class="relative z-10 flex w-full flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 my-auto">
-      <div class="w-full max-w-[420px] rounded-2xl bg-(--ui-bg-card) p-6 sm:p-8 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
+    <main class="relative z-10 flex w-full max-w-full min-w-0 flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 my-auto">
+      <div class="w-full max-w-full min-w-0 rounded-2xl bg-(--ui-bg-card) p-5 sm:max-w-[420px] sm:p-8 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
         <!-- Title & Subtitle -->
         <div class="mb-5">
           <h2 class="text-[22px] sm:text-2xl font-bold tracking-tight text-default leading-tight">
@@ -86,12 +86,12 @@ function handleGoogleSignIn() {}
             name="i-lucide-alert-circle"
             class="size-4 shrink-0"
           />
-          <span>{{ error }}</span>
+          <span class="min-w-0 break-words">{{ error }}</span>
         </div>
 
         <!-- Form -->
         <form
-          class="space-y-3.5"
+          class="min-w-0 space-y-3.5"
           @submit.prevent="handleSubmit"
         >
           <!-- Email Field -->
@@ -189,11 +189,11 @@ function handleGoogleSignIn() {}
             <button
               type="button"
               :disabled="isLoading"
-              class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 px-4 text-xs sm:text-sm font-medium text-default transition-colors duration-150 hover:bg-(--ui-bg-accented) hover:border-(--ui-border-accented) active:bg-(--ui-bg-accented) flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+              class="w-full max-w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 px-4 text-xs sm:text-sm font-medium text-default transition-colors duration-150 hover:bg-(--ui-bg-accented) hover:border-(--ui-border-accented) active:bg-(--ui-bg-accented) flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
               @click="handleTestLogin"
             >
-              <UIcon name="i-lucide-flask-conical" class="size-4" />
-              <span>Test Login (auto-fill)</span>
+              <UIcon name="i-lucide-flask-conical" class="size-4 shrink-0" />
+              <span class="min-w-0 truncate">Test Login (auto-fill)</span>
             </button>
           </div>
 
@@ -201,7 +201,7 @@ function handleGoogleSignIn() {}
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full rounded-lg bg-primary py-2.5 px-4 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-primary-600 active:bg-primary-700 dark:hover:bg-primary-300 dark:active:bg-primary-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer mt-1"
+            class="w-full max-w-full min-w-0 rounded-lg bg-primary py-2.5 px-4 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-primary-600 active:bg-primary-700 dark:hover:bg-primary-300 dark:active:bg-primary-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer mt-1"
           >
             <UIcon
               v-if="isLoading"
@@ -224,7 +224,7 @@ function handleGoogleSignIn() {}
         <button
           type="button"
           :disabled="isLoading"
-          class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 px-4 text-xs sm:text-sm font-medium text-default transition-colors duration-150 hover:bg-(--ui-bg-accented) hover:border-(--ui-border-accented) active:bg-(--ui-bg-accented) flex items-center justify-center gap-2.5 cursor-pointer"
+          class="w-full max-w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 px-4 text-xs sm:text-sm font-medium text-default transition-colors duration-150 hover:bg-(--ui-bg-accented) hover:border-(--ui-border-accented) active:bg-(--ui-bg-accented) flex items-center justify-center gap-2.5 cursor-pointer"
           @click="handleGoogleSignIn"
         >
           <svg
@@ -248,11 +248,11 @@ function handleGoogleSignIn() {}
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
             />
           </svg>
-          <span>Sign in with Google</span>
+          <span class="min-w-0 truncate">Sign in with Google</span>
         </button>
 
         <!-- Card Footer Link -->
-        <p class="mt-4 text-center text-xs text-dimmed">
+        <p class="mt-4 min-w-0 text-center text-xs text-dimmed break-words">
           Don't have an account?
           <RouterLink
             to="/register"

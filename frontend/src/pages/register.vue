@@ -48,7 +48,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="relative min-h-svh lg:h-screen w-full bg-(--ui-bg) flex flex-col justify-between p-3 sm:p-4 lg:px-12 lg:py-4 overflow-y-auto lg:overflow-hidden selection:bg-primary-200 selection:text-primary-800">
+  <div class="relative min-h-svh lg:h-screen w-full bg-(--ui-bg) flex flex-col justify-between p-3 sm:p-4 lg:px-12 lg:py-4 overflow-y-auto overflow-x-hidden lg:overflow-hidden selection:bg-primary-200 selection:text-primary-800">
     <!-- Realistic Watercolor Background Illustration -->
     <div
       class="pointer-events-none absolute inset-0 select-none overflow-hidden"
@@ -69,8 +69,8 @@ async function handleSubmit() {
     </header>
 
     <!-- Center Content / Auth Card -->
-    <main class="relative z-10 flex w-full flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 py-2 my-auto">
-      <div class="w-full max-w-[400px] rounded-2xl bg-(--ui-bg-card) p-4 sm:p-5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
+    <main class="relative z-10 flex w-full min-w-0 flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 py-2 my-auto">
+      <div class="w-full min-w-0 max-w-[400px] rounded-2xl bg-(--ui-bg-card) p-4 sm:p-5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
         <!-- Title & Subtitle -->
         <div class="mb-2.5">
           <h2 class="text-xl sm:text-[21px] font-bold tracking-tight text-default leading-tight">
@@ -84,13 +84,14 @@ async function handleSubmit() {
         <!-- Error Banner -->
         <div
           v-if="error"
+          role="alert"
           class="mb-2 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[11px] text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
         >
           <UIcon
             name="i-lucide-alert-circle"
             class="size-3.5 shrink-0"
           />
-          <span>{{ error }}</span>
+          <span class="min-w-0 break-words">{{ error }}</span>
         </div>
 
         <!-- Form -->
@@ -277,11 +278,11 @@ async function handleSubmit() {
               v-model="agreeTerms"
               type="checkbox"
               required
-              class="mt-0.5 h-3.5 w-3.5 rounded border-(--ui-border-accented) text-primary accent-primary focus:ring-primary/20 cursor-pointer"
+              class="mt-0.5 h-3.5 w-3.5 shrink-0 rounded border-(--ui-border-accented) text-primary accent-primary focus:ring-primary/20 cursor-pointer"
             >
             <label
               for="terms"
-              class="text-[10.5px] leading-tight text-dimmed cursor-pointer select-none"
+              class="min-w-0 text-[10.5px] leading-tight text-dimmed cursor-pointer select-none"
             >
               I agree to the
               <a

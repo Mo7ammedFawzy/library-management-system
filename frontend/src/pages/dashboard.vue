@@ -269,15 +269,11 @@ function statusLabel(status: BorrowingStatus) {
         </p>
       </div>
 
-      <div class="flex items-center gap-2.5 self-start rounded-xl border border-[#e4ebf3] bg-white px-3.5 py-2.5 text-sm text-[#304968] shadow-[0_8px_24px_rgba(27,59,102,0.05)] lg:self-auto" role="status" aria-label="Today's date">
+      <div class="flex items-center gap-2.5 self-start rounded-xl border border-[#e4ebf3] bg-white px-3.5 py-2.5 text-sm text-[#304968] shadow-[0_8px_24px_rgba(27,59,102,0.05)] lg:self-auto">
         <span class="flex size-7 items-center justify-center rounded-lg bg-[#edf4ff] text-[#173b70]">
           <UIcon name="i-lucide-calendar-days" class="size-4" aria-hidden="true" />
         </span>
-        <span class="font-medium">{{ dateLabel }}</span>
-        <span class="flex items-center gap-1 rounded-full bg-[#eaf7f2] px-2 py-0.5 text-[10px] font-semibold text-[#16765f]">
-          <span class="size-1.5 rounded-full bg-[#20876e]" aria-hidden="true" />
-          Live
-        </span>
+        <span class="font-medium"><span class="sr-only">Today's date: </span><time :datetime="toDateKey(new Date())">{{ dateLabel }}</time></span>
       </div>
     </section>
 
@@ -285,7 +281,7 @@ function statusLabel(status: BorrowingStatus) {
       <article
         v-for="stat in dashboardStats"
         :key="stat.label"
-        class="group rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.045)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#cdd9ea] hover:shadow-[0_12px_32px_rgba(27,59,102,0.08)] motion-reduce:transform-none motion-reduce:transition-none focus-within:border-[#8ca9ce] focus-within:ring-4 focus-within:ring-[#edf4ff]"
+        class="group rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.045)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#cdd9e8] hover:shadow-[0_12px_32px_rgba(27,59,102,0.08)] motion-reduce:transform-none motion-reduce:transition-none focus-within:border-[#8ca9ce] focus-within:ring-4 focus-within:ring-[#edf4ff]"
       >
         <div class="flex items-start gap-4">
           <div class="flex size-12 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04] transition-transform duration-150 group-hover:scale-[1.04] motion-reduce:transform-none" :class="stat.iconClass">
@@ -319,8 +315,8 @@ function statusLabel(status: BorrowingStatus) {
           </div>
         </div>
 
-        <div class="min-w-0 px-5 pb-5 pt-4">
-          <ActivityChart :labels="activityChart.labels" :counts="activityChart.counts" />
+        <div class="min-w-0 px-5 pb-5 pt-4" role="img" :aria-label="`Loans per day over the last seven days, ${activityChart.total} loans in total`">
+          <ActivityChart :labels="activityChart.labels" :counts="activityChart.counts" aria-hidden="true" />
         </div>
       </article>
 
@@ -331,7 +327,7 @@ function statusLabel(status: BorrowingStatus) {
             <h2 id="category-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Books by category</h2>
             <p class="mt-0.5 text-xs text-[#7486a0]">How your collection is distributed</p>
           </div>
-          <RouterLink to="/categories" class="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
+          <RouterLink to="/categories" aria-label="View all categories" class="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
             View all
             <UIcon name="i-lucide-chevron-right" class="size-3.5" aria-hidden="true" />
           </RouterLink>
@@ -364,8 +360,8 @@ function statusLabel(status: BorrowingStatus) {
             <h2 id="recent-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Recent activity</h2>
             <p class="mt-0.5 text-xs text-[#7486a0]">Catalog and circulation updates</p>
           </div>
-          <RouterLink to="/borrowings" class="inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
-            View all
+          <RouterLink to="/borrowings" aria-label="View all borrowing activity" class="inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
+            View all activity
             <UIcon name="i-lucide-chevron-right" class="size-3.5" aria-hidden="true" />
           </RouterLink>
         </div>
@@ -383,10 +379,10 @@ function statusLabel(status: BorrowingStatus) {
               </p>
             </div>
             <div class="mt-2 flex items-center gap-2 sm:mt-0">
-              <div v-if="item.actorInitials" class="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#f1f5fb] text-[9px] font-bold text-[#36577f]">
+              <div v-if="item.actorInitials" aria-hidden="true" class="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#f1f5fb] text-[9px] font-bold text-[#36577f]">
                 {{ item.actorInitials }}
               </div>
-              <div v-else class="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#f1f5fb] text-[#36577f]">
+              <div v-else aria-hidden="true" class="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#f1f5fb] text-[#36577f]">
                 <UIcon name="i-lucide-library-big" class="size-3.5" />
               </div>
               <div class="min-w-0 text-xs leading-tight">
@@ -409,8 +405,8 @@ function statusLabel(status: BorrowingStatus) {
             <h2 id="attention-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Needs attention</h2>
             <p class="mt-0.5 text-xs text-[#7486a0]">Overdue loans that need a follow-up</p>
           </div>
-          <RouterLink to="/borrowings" class="inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
-            View all
+          <RouterLink to="/borrowings" aria-label="View all overdue loans" class="inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
+            View all overdue
             <UIcon name="i-lucide-chevron-right" class="size-3.5" aria-hidden="true" />
           </RouterLink>
         </div>
@@ -423,8 +419,8 @@ function statusLabel(status: BorrowingStatus) {
             <p class="font-semibold text-[#9d3529]">{{ overdueBooks }} {{ overdueBooks === 1 ? 'loan needs' : 'loans need' }} attention</p>
             <p class="mt-0.5 truncate text-xs text-[#b3665c]">A gentle reminder can help keep the collection moving.</p>
           </div>
-          <RouterLink to="/borrowings" class="hidden shrink-0 rounded-lg bg-[#9d3529] px-2.5 py-1.5 text-[11px] font-semibold text-white transition-colors hover:bg-[#7f2b21] sm:inline-flex">
-            Remind
+          <RouterLink to="/borrowings" aria-label="View overdue loans" class="hidden shrink-0 rounded-lg bg-[#9d3529] px-2.5 py-1.5 text-[11px] font-semibold text-white transition-colors hover:bg-[#7f2b21] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e8a09a] sm:inline-flex">
+            View loans
           </RouterLink>
         </div>
 

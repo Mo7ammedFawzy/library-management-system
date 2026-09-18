@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import type { ColDef } from 'ag-grid-community'
+import type { ColDef, GetRowIdParams, ValueGetterParams } from 'ag-grid-community'
 import ActionsCell from '../components/grid/ActionsCell.vue'
 import type { FormError, BreadcrumbItem } from '@nuxt/ui'
 import {
@@ -29,7 +29,7 @@ function validateName(state: { name: string }): FormError[] {
   return errors
 }
 
-function getRowId(params: any) {
+function getRowId(params: GetRowIdParams<Category>) {
   return String((params.data as Category).id)
 }
 
@@ -39,7 +39,7 @@ const columns: ColDef[] = [
     sortable: false,
     filter: false,
     width: 48,
-    valueGetter: (params: any) => (params.node?.rowIndex ?? 0) + 1,
+    valueGetter: (params: ValueGetterParams<Category>) => (params.node?.rowIndex ?? 0) + 1,
     cellStyle: { textAlign: 'center' },
     cellClass: 'text-dimmed'
   },
@@ -59,8 +59,8 @@ const columns: ColDef[] = [
     headerClass: 'ag-right-aligned-header',
     cellRenderer: ActionsCell,
     cellRendererParams: {
-      onEdit: (params: any) => openEdit(params.data as Category),
-      onDelete: (params: any) => openDelete(params.data as Category)
+      onEdit: (params: { data: Category }) => openEdit(params.data as Category),
+      onDelete: (params: { data: Category }) => openDelete(params.data as Category)
     }
   }
 ]
@@ -117,9 +117,13 @@ watch(name, (val: string) => {
 <template>
   <div class="flex min-h-0 flex-1 flex-col">
     <div class="mb-4">
-      <UBreadcrumb class="mb-2" :items="breadcrumbItems">
+      <UBreadcrumb
+        class="mb-2"
+        :items="breadcrumbItems"
+      >
         <template #item="{ item }">
           <span
+            :aria-current="!item.to ? 'page' : undefined"
             :class="[
               'flex items-center gap-1.5 text-sm transition-colors',
               item.to ? 'text-muted hover:text-highlighted cursor-pointer' : 'font-semibold text-highlighted'
@@ -128,22 +132,31 @@ watch(name, (val: string) => {
             <UIcon
               v-if="item.icon"
               :name="item.icon"
+              aria-hidden="true"
               class="size-4 text-muted"
             />
             {{ item.label }}
           </span>
         </template>
         <template #separator>
-          <UIcon name="i-lucide-chevron-right" class="size-3.5 text-muted" />
+          <UIcon
+            name="i-lucide-chevron-right"
+            aria-hidden="true"
+            class="size-3.5 text-muted"
+          />
         </template>
       </UBreadcrumb>
-      <p class="text-sm text-muted">
+      <h1 class="font-display text-2xl font-semibold tracking-tight text-highlighted">
+        Categories
+      </h1>
+      <p class="mt-1 text-sm text-muted">
         Organize the library collection by category.
       </p>
     </div>
 
     <div
       v-if="loadError"
+      role="alert"
       class="mb-4 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
     >
       <UIcon
@@ -157,26 +170,28 @@ watch(name, (val: string) => {
       <div class="relative w-full md:w-[400px]">
         <UIcon
           name="i-lucide-search"
+          aria-hidden="true"
           class="pointer-events-none absolute left-3 top-1/2 size-[18px] -translate-y-1/2 text-muted"
         />
         <input
           v-model="search"
-          type="text"
+          type="search"
           placeholder="Search categories by name..."
-          class="h-[38px] w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-4 text-sm text-highlighted shadow-sm outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary"
+          aria-label="Search categories by name"
+          class="h-10 w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-4 text-sm text-highlighted shadow-sm outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary"
         >
       </div>
 
       <UButton
         icon="i-lucide-plus"
-        class="!h-[38px] !rounded-lg !px-4 shadow-sm"
+        class="!h-10 w-full justify-center !rounded-lg !px-4 shadow-sm md:w-auto"
         @click="openAdd"
       >
         Add Category
       </UButton>
     </div>
 
-    <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl bg-(--ui-bg-card) shadow-sm ring-1 ring-(--ui-border)">
+    <div class="flex min-h-[320px] flex-1 flex-col overflow-hidden rounded-2xl bg-(--ui-bg-card) shadow-sm ring-1 ring-(--ui-border)">
       <AppDataGrid
         v-model:api="gridApi"
         :rows="rows"
@@ -226,6 +241,7 @@ watch(name, (val: string) => {
           <div class="grow px-4 py-4">
             <div
               v-if="formError"
+              role="alert"
               class="mb-4 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
             >
               <UIcon
@@ -320,13 +336,17 @@ watch(name, (val: string) => {
           </div>
 
           <div class="px-4 py-4">
-            <p class="text-sm leading-relaxed text-highlighted">
+            <p class="break-words text-sm leading-relaxed text-highlighted">
               Are you sure you want to delete
-              <span class="font-semibold">"{{ deleteTarget?.name }}"</span>?
+              <span
+                class="font-semibold"
+                :title="deleteTarget?.name"
+              >"{{ deleteTarget?.name }}"</span>?
             </p>
 
             <div
               v-if="deleteError"
+              role="alert"
               class="mt-3 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
             >
               <UIcon

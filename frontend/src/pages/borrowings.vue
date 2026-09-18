@@ -401,6 +401,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
             v-model="search"
             type="text"
             placeholder="Search by book title or member name..."
+            aria-label="Search by book title or member name"
             class="h-[38px] w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-4 text-sm text-highlighted shadow-sm outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary"
           >
         </div>
@@ -412,6 +413,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
             :items="statusOptions"
             value-key="value"
             :search-input="false"
+            aria-label="Filter by borrowing status"
             class="w-full lg:w-44"
             :ui="toolbarUi"
           />
@@ -690,7 +692,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
                 </div>
               </div>
 
-              <div class="grid grid-cols-3 gap-3">
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <div class="flex flex-col gap-1 rounded-lg border border-(--ui-border) bg-(--ui-bg-accented) p-3">
                   <p class="text-[10px] font-semibold uppercase tracking-wide text-muted">
                     Borrow Date
