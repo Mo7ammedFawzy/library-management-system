@@ -235,7 +235,7 @@ function statusLabel(status: BorrowingStatus) {
 </script>
 
 <template>
-  <div class="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto pb-8 lg:gap-7">
+  <div class="dashboard-scroll flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto pb-8 lg:gap-7">
     <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
       <div>
         <div class="mb-2 h-1 w-11 rounded-full bg-[#e5a214]" />

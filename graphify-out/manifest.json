@@ -516,9 +516,9 @@
     "semantic_hash": "2ba6178191b8752eac2e4cbf0cda6dfb"
   },
   "frontend/src/pages/dashboard.vue": {
-    "mtime": 1789742622.9262943,
-    "seen": 1789742701.6287951,
-    "ast_hash": "e42996aedbfe3906f2d66ad3f8ae1344",
+    "mtime": 1789742920.5439603,
+    "seen": 1789743014.3357036,
+    "ast_hash": "9c4b5622deddacba43860c5c27d9527a",
     "semantic_hash": ""
   },
   "frontend/src/pages/index.vue": {
