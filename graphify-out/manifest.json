@@ -372,9 +372,9 @@
     "semantic_hash": "29068f7726d2e67e302d227af1b81b94"
   },
   "frontend/package.json": {
-    "mtime": 1789744433.4910233,
-    "seen": 1789750872.3764026,
-    "ast_hash": "aa069a68e1b956c65e67bef9a44bbccc",
+    "mtime": 1789750959.1301734,
+    "seen": 1789751595.4827387,
+    "ast_hash": "cbdde6e2c91395b874946442914a6e0d",
     "semantic_hash": ""
   },
   "frontend/renovate.json": {
@@ -384,9 +384,9 @@
     "semantic_hash": "4edc132708119ceca9d4cb2df9a7cec0"
   },
   "frontend/src/App.vue": {
-    "mtime": 1789750740.607,
-    "seen": 1789750872.3764026,
-    "ast_hash": "0e423e74c5393458c8a5e892734761c0",
+    "mtime": 1789751044.492947,
+    "seen": 1789751595.4827387,
+    "ast_hash": "ccdbd49bd63e5b60096bbe7ccf505b09",
     "semantic_hash": ""
   },
   "frontend/src/components/AppDataGrid.vue": {
@@ -516,9 +516,9 @@
     "semantic_hash": "2ba6178191b8752eac2e4cbf0cda6dfb"
   },
   "frontend/src/pages/dashboard.vue": {
-    "mtime": 1789750690.4394233,
-    "seen": 1789750872.3764026,
-    "ast_hash": "d8db95eac00ef0f6ea9e3affd29a4402",
+    "mtime": 1789750949.187477,
+    "seen": 1789751595.4837382,
+    "ast_hash": "1102f47284bd080e1fc9180a5e864ee8",
     "semantic_hash": ""
   },
   "frontend/src/pages/index.vue": {
@@ -558,8 +558,8 @@
     "semantic_hash": "e7ba02ccec7c55599682993dd08a3959"
   },
   "frontend/src/route-map.d.ts": {
-    "mtime": 1789750697.9387126,
-    "seen": 1789750872.3764026,
+    "mtime": 1789751168.5779247,
+    "seen": 1789751595.4837382,
     "ast_hash": "15fbb2c561d35cb3caa4262225cedb44",
     "semantic_hash": "15fbb2c561d35cb3caa4262225cedb44"
   },
@@ -924,15 +924,15 @@
     "semantic_hash": ""
   },
   "frontend/src/components/dashboard/ActivityChart.vue": {
-    "mtime": 1789744458.411498,
-    "seen": 1789750872.3764026,
-    "ast_hash": "c5228c8e16de44e6d30e94a885933476",
+    "mtime": 1789751148.3899128,
+    "seen": 1789751595.4827387,
+    "ast_hash": "f69f92843cc0a844b18d691e8d3a2d06",
     "semantic_hash": ""
   },
   "frontend/src/components/dashboard/CategoryDonutChart.vue": {
-    "mtime": 1789744472.9778717,
-    "seen": 1789750872.3764026,
-    "ast_hash": "e97d699b338bcba5489f9acd989e0209",
+    "mtime": 1789750939.4454563,
+    "seen": 1789751595.4827387,
+    "ast_hash": "8c37aa9ad2c9ba095c45fac72c94d170",
     "semantic_hash": ""
   }
 }
