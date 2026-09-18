@@ -384,9 +384,9 @@
     "semantic_hash": "4edc132708119ceca9d4cb2df9a7cec0"
   },
   "frontend/src/App.vue": {
-    "mtime": 1789764483.8358798,
-    "seen": 1789764636.769259,
-    "ast_hash": "fd5f16eee2a6dbb2502905652d65f452",
+    "mtime": 1789764752.4039402,
+    "seen": 1789764894.96379,
+    "ast_hash": "2de19d9057f1e0f9875d34efb4817c9d",
     "semantic_hash": ""
   },
   "frontend/src/components/AppDataGrid.vue": {
@@ -516,9 +516,9 @@
     "semantic_hash": "2ba6178191b8752eac2e4cbf0cda6dfb"
   },
   "frontend/src/pages/dashboard.vue": {
-    "mtime": 1789764483.8398771,
-    "seen": 1789764636.769259,
-    "ast_hash": "1102f47284bd080e1fc9180a5e864ee8",
+    "mtime": 1789764793.33741,
+    "seen": 1789764894.96379,
+    "ast_hash": "2576fe0118d0e59cedb1a1182ba6cdc9",
     "semantic_hash": ""
   },
   "frontend/src/pages/index.vue": {

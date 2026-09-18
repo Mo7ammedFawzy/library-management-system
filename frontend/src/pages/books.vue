@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
-import type { ColDef, GetRowIdParams } from 'ag-grid-community'
+import type { ColDef, GetRowIdParams, ICellRendererParams } from 'ag-grid-community'
 import ActionsCell from '../components/grid/ActionsCell.vue'
 import type { FormError, BreadcrumbItem } from '@nuxt/ui'
 import {
@@ -48,26 +48,33 @@ const columns: ColDef<Book>[] = [
     field: 'title',
     headerName: 'Title',
     flex: 2,
-    cellStyle: { fontWeight: 500 },
+    minWidth: 180,
+    cellStyle: { fontWeight: 500, lineHeight: '20px' },
     cellClass: 'text-highlighted'
   },
   {
     headerName: 'Authors',
     flex: 2,
+    minWidth: 160,
     valueGetter: (params) => (params.data as Book).authors.map((author) => author.name).join(', ')
   },
   {
     headerName: 'Category',
     flex: 1,
+    minWidth: 130,
     valueGetter: (params) => (params.data as Book).category.name,
     filter: 'agTextColumnFilter'
   },
   {
     field: 'availableCopies',
     headerName: 'Copies',
-    width: 90,
+    width: 96,
+    minWidth: 84,
     sortable: true,
-    filter: false
+    filter: false,
+    headerClass: 'ag-center-aligned-header',
+    cellStyle: { textAlign: 'center', fontVariantNumeric: 'tabular-nums' },
+    cellClass: 'tabular-nums'
   },
   {
     headerName: 'Actions',
@@ -78,8 +85,8 @@ const columns: ColDef<Book>[] = [
     headerClass: 'ag-right-aligned-header',
     cellRenderer: ActionsCell,
     cellRendererParams: {
-      onEdit: (params: any) => openEdit(params.data as Book),
-      onDelete: (params: any) => openDelete(params.data as Book)
+      onEdit: (params: ICellRendererParams) => openEdit(params.data as Book),
+      onDelete: (params: ICellRendererParams) => openDelete(params.data as Book)
     }
   }
 ]
@@ -111,7 +118,7 @@ function validateBook(state: BookFormState): FormError[] {
   return errors
 }
 
-function toInput(state: BookFormState, editingItem: Book | null): BookInput {
+function toInput(state: BookFormState): BookInput {
   return {
     title: state.title.trim(),
     description: state.description.trim(),
@@ -254,25 +261,41 @@ const copiesUi = {
     <div class="mb-4">
       <UBreadcrumb class="mb-2" :items="breadcrumbItems">
         <template #item="{ item }">
-          <span
-            :class="[
-              'flex items-center gap-1.5 text-sm transition-colors',
-              item.to ? 'text-muted hover:text-highlighted cursor-pointer' : 'font-semibold text-highlighted'
-            ]"
+          <RouterLink
+            v-if="item.to"
+            :to="item.to"
+            class="flex items-center gap-1.5 rounded text-sm text-muted transition-colors motion-reduce:transition-none hover:text-highlighted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce] focus-visible:ring-offset-1"
           >
             <UIcon
               v-if="item.icon"
               :name="item.icon"
               class="size-4 text-muted"
+              aria-hidden="true"
+            />
+            {{ item.label }}
+          </RouterLink>
+          <span
+            v-else
+            class="flex items-center gap-1.5 text-sm font-semibold text-highlighted"
+            aria-current="page"
+          >
+            <UIcon
+              v-if="item.icon"
+              :name="item.icon"
+              class="size-4 text-muted"
+              aria-hidden="true"
             />
             {{ item.label }}
           </span>
         </template>
         <template #separator>
-          <UIcon name="i-lucide-chevron-right" class="size-3.5 text-muted" />
+          <UIcon name="i-lucide-chevron-right" class="size-3.5 text-muted" aria-hidden="true" />
         </template>
       </UBreadcrumb>
-      <p class="text-sm text-muted">
+      <h1 class="text-xl font-semibold tracking-tight text-highlighted">
+        Books
+      </h1>
+      <p class="mt-0.5 text-sm leading-5 text-muted">
         Manage and organize all library books.
       </p>
     </div>
@@ -290,15 +313,19 @@ const copiesUi = {
 
     <div class="mb-3 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div class="relative w-full md:w-[400px]">
+        <label for="books-search" class="sr-only">Search books by title, author or category</label>
         <UIcon
           name="i-lucide-search"
           class="pointer-events-none absolute left-3 top-1/2 size-[18px] -translate-y-1/2 text-muted"
+          aria-hidden="true"
         />
         <input
+          id="books-search"
           v-model="search"
-          type="text"
+          type="search"
           placeholder="Search books by title, author or category..."
-          class="h-[38px] w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-4 text-sm text-highlighted shadow-sm outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary"
+          aria-label="Search books by title, author or category"
+          class="h-[38px] w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-4 text-sm leading-5 text-highlighted shadow-sm outline-none transition-colors motion-reduce:transition-none placeholder:text-muted focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary"
         >
       </div>
 
@@ -308,9 +335,16 @@ const copiesUi = {
             color="neutral"
             variant="outline"
             icon="i-lucide-filter"
-            class="!h-[38px] !rounded-lg !bg-(--ui-bg-card) !px-4 shadow-sm"
+            :aria-label="categoryFilters.length ? `Filters, ${categoryFilters.length} category filter${categoryFilters.length > 1 ? 's' : ''} active` : 'Filters'"
+            class="!h-[38px] !rounded-lg !bg-(--ui-bg-card) !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]"
           >
             Filters
+            <span
+              v-if="categoryFilters.length"
+              class="ml-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#edf4ff] px-1.5 text-[11px] font-bold text-[#173b70]"
+            >
+              {{ categoryFilters.length }}
+            </span>
           </UButton>
 
           <template #content>
@@ -342,7 +376,8 @@ const copiesUi = {
 
         <UButton
           icon="i-lucide-plus"
-          class="!h-[38px] !rounded-lg !px-4 shadow-sm"
+          aria-label="Add book"
+          class="!h-[38px] !rounded-lg !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce] focus-visible:!ring-offset-1"
           @click="openAdd"
         >
           Add Book
@@ -350,7 +385,11 @@ const copiesUi = {
       </div>
     </div>
 
-    <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl bg-(--ui-bg-card) shadow-sm ring-1 ring-(--ui-border)">
+    <div
+      class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl bg-(--ui-bg-card) shadow-sm ring-1 ring-(--ui-border)"
+      role="region"
+      aria-label="Books data grid"
+    >
       <AppDataGrid
         v-model:api="gridApi"
         :rows="rows"
@@ -359,6 +398,32 @@ const copiesUi = {
         :get-row-id="getRowId"
         height="100%"
       />
+    </div>
+
+    <p role="status" aria-live="polite" class="sr-only">
+      {{ rows.length }} books in catalog
+    </p>
+
+    <div
+      v-if="!loadError && rows.length === 0"
+      class="mt-3 flex flex-col items-center gap-2 rounded-xl bg-(--ui-bg-card) px-6 py-10 text-center shadow-sm ring-1 ring-(--ui-border)"
+    >
+      <div class="flex size-11 items-center justify-center rounded-full bg-(--ui-bg-accented)">
+        <UIcon name="i-lucide-book-open" class="size-5 text-muted" aria-hidden="true" />
+      </div>
+      <h2 class="text-sm font-semibold text-highlighted">
+        No books yet
+      </h2>
+      <p class="max-w-sm text-sm leading-6 text-muted">
+        Add your first book to start building the catalog. Books you add will appear in this table.
+      </p>
+      <UButton
+        icon="i-lucide-plus"
+        class="!h-[38px] !rounded-lg !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]"
+        @click="openAdd"
+      >
+        Add Book
+      </UButton>
     </div>
 
     <UModal
@@ -487,7 +552,7 @@ const copiesUi = {
                       <div class="flex h-full flex-col border-l border-(--ui-border)">
                         <button
                           type="button"
-                          class="flex flex-1 items-center justify-center px-2 text-muted transition-colors hover:bg-(--ui-bg-accented)"
+                          class="flex flex-1 items-center justify-center px-2 text-muted transition-colors motion-reduce:transition-none hover:bg-(--ui-bg-accented) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#8ca9ce]"
                           aria-label="Increase copies"
                           @click="incrementCopies"
                         >
@@ -498,7 +563,7 @@ const copiesUi = {
                         </button>
                         <button
                           type="button"
-                          class="flex flex-1 items-center justify-center border-t border-(--ui-border) px-2 text-muted transition-colors hover:bg-(--ui-bg-accented)"
+                          class="flex flex-1 items-center justify-center border-t border-(--ui-border) px-2 text-muted transition-colors motion-reduce:transition-none hover:bg-(--ui-bg-accented) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#8ca9ce]"
                           aria-label="Decrease copies"
                           @click="decrementCopies"
                         >
