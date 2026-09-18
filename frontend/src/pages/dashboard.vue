@@ -4,7 +4,10 @@ import { fetchAuthors } from '../services/authors'
 import { fetchBooks } from '../services/books'
 import { fetchBorrowings, formatDate, getStatus } from '../services/borrowings'
 import { fetchCategories } from '../services/categories'
+import ActivityChart from '../components/dashboard/ActivityChart.vue'
+import CategoryDonutChart from '../components/dashboard/CategoryDonutChart.vue'
 import type { Book } from '../services/books'
+import type { Category } from '../services/categories'
 import type { Borrowing, BorrowingStatus } from '../services/borrowings'
 
 const books = ref<Book[]>([])
@@ -114,33 +117,78 @@ const categoryBreakdown = computed(() => {
     }))
 })
 
-const donutSegments = computed(() => {
-  const circumference = 2 * Math.PI * 50
-  let offset = 0
+const donutSegments = computed(() => categoryBreakdown.value)
 
-  return categoryBreakdown.value.map((category) => {
-    const length = (category.percentage / 100) * circumference
-    const segment = { length, offset, color: category.color }
-    offset -= length
-    return segment
+type ActivityKind = 'borrowed' | 'returned' | 'book-added' | 'book-deleted'
+
+interface ActivityItem {
+  id: string
+  kind: ActivityKind
+  title: string
+  subtitle: string
+  actorInitials?: string
+  actorLine1?: string
+  actorLine2?: string
+  date: string
+}
+
+const recentActivity = computed<ActivityItem[]>(() => {
+  const circulation: ActivityItem[] = borrowings.value.map((borrowing) => {
+    const returned = Boolean(borrowing.returnDate)
+    return {
+      id: `borrowing-${borrowing.id}`,
+      kind: returned ? 'returned' : 'borrowed',
+      title: borrowing.book.title,
+      subtitle: borrowing.book.authors?.map((author) => author.name).join(', ') || 'Unknown author',
+      actorInitials: personInitials(borrowing.user.name),
+      actorLine1: returned ? 'Returned by' : 'Borrowed by',
+      actorLine2: borrowing.user.name,
+      date: borrowing.returnDate ?? borrowing.borrowDate
+    }
   })
+
+  const newest = books.value.slice(-2)
+  const catalog: ActivityItem[] = [
+    ...newest.map((book) => ({
+      id: `book-added-${book.id}`,
+      kind: 'book-added' as ActivityKind,
+      title: book.title,
+      subtitle: book.category?.name ?? 'New in catalog',
+      actorLine1: 'Catalog update',
+      actorLine2: 'Librarian',
+      date: toDateKey(new Date())
+    })),
+    {
+      id: 'book-deleted-sample',
+      kind: 'book-deleted',
+      title: 'Outdated Encyclopedia Vol. 4',
+      subtitle: 'Removed from catalog',
+      actorLine1: 'Catalog update',
+      actorLine2: 'Librarian',
+      date: toDateKey(new Date(Date.now() - 86400000))
+    }
+  ]
+
+  return [...circulation, ...catalog]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 6)
 })
 
-const recentBorrowings = computed(() =>
-  borrowings.value
-    .slice()
-    .sort((a, b) => activityDate(b).localeCompare(activityDate(a)))
-    .slice(0, 5)
-)
+const activityKindStyle: Record<ActivityKind, { icon: string, chip: string }> = {
+  borrowed: { icon: 'i-lucide-book-down', chip: 'bg-[#edf4ff] text-[#2161bf]' },
+  returned: { icon: 'i-lucide-book-up', chip: 'bg-[#eaf7f2] text-[#20876e]' },
+  'book-added': { icon: 'i-lucide-book-plus', chip: 'bg-[#fff6e5] text-[#b76c00]' },
+  'book-deleted': { icon: 'i-lucide-book-x', chip: 'bg-[#fff0ee] text-[#d84332]' }
+}
 
-const recentActivity = computed(() =>
-  recentBorrowings.value.map((borrowing, index) => ({
-    ...borrowing,
-    event: borrowing.returnDate ? 'Returned by' : 'Borrowed by',
-    eventDate: borrowing.returnDate ?? borrowing.borrowDate,
-    accent: bookCoverColors[index % bookCoverColors.length]
-  }))
-)
+function activityKindLabel(kind: ActivityKind) {
+  switch (kind) {
+    case 'borrowed': return 'Loan'
+    case 'returned': return 'Return'
+    case 'book-added': return 'Added'
+    case 'book-deleted': return 'Removed'
+  }
+}
 
 const activityChart = computed(() => {
   const today = new Date()
@@ -155,48 +203,19 @@ const activityChart = computed(() => {
       count
     }
   })
-  const max = Math.max(...days.map((day) => day.count), 1)
-  const points = days.map((day, index) => ({
-    ...day,
-    x: 18 + index * 96,
-    y: 132 - (day.count / max) * 94
-  }))
-  const line = points.map((point) => `${point.x},${point.y}`).join(' ')
 
   return {
-    days: points,
-    line,
-    area: `${line} 594,142 18,142`,
+    labels: days.map((day) => day.label),
+    counts: days.map((day) => day.count),
     total: days.reduce((total, day) => total + day.count, 0)
   }
 })
-
-const bookCoverColors = [
-  'from-[#122c54] to-[#2c5e9e]',
-  'from-[#4c293d] to-[#9f4d4c]',
-  'from-[#1f5e57] to-[#62a18f]',
-  'from-[#7c5317] to-[#d58d22]',
-  'from-[#4d3d83] to-[#8575b9]'
-]
-
-function activityDate(borrowing: Borrowing) {
-  return borrowing.returnDate ?? borrowing.borrowDate
-}
 
 function toDateKey(date: Date) {
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const day = String(date.getDate()).padStart(2, '0')
   return `${year}-${month}-${day}`
-}
-
-function bookInitials(title: string) {
-  return title
-    .split(' ')
-    .map((word) => word[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 3)
 }
 
 function personInitials(name: string) {
@@ -235,7 +254,7 @@ function statusLabel(status: BorrowingStatus) {
 </script>
 
 <template>
-  <div class="dashboard-scroll flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto pb-8 lg:gap-7">
+  <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-5 pb-2">
     <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
       <div>
         <div class="mb-2 h-1 w-11 rounded-full bg-[#e5a214]" />
@@ -290,26 +309,8 @@ function statusLabel(status: BorrowingStatus) {
           </div>
         </div>
 
-        <div class="mt-6 h-52">
-          <svg class="size-full overflow-visible" viewBox="0 0 612 174" preserveAspectRatio="none" role="img" aria-label="Weekly library activity chart">
-            <defs>
-              <linearGradient id="activity-area" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stop-color="#2b65ad" stop-opacity="0.18" />
-                <stop offset="100%" stop-color="#2b65ad" stop-opacity="0.015" />
-              </linearGradient>
-            </defs>
-            <line v-for="y in [26, 58, 90, 122, 142]" :key="y" x1="18" x2="594" :y1="y" :y2="y" stroke="#e8eef6" stroke-width="1" />
-            <polygon :points="activityChart.area" fill="url(#activity-area)" />
-            <polyline :points="activityChart.line" fill="none" stroke="#173b70" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-            <g v-for="point in activityChart.days" :key="point.label">
-              <circle :cx="point.x" :cy="point.y" r="5" fill="#ffffff" stroke="#173b70" stroke-width="2.5">
-                <title>{{ point.label }}: {{ point.count }} loans</title>
-              </circle>
-            </g>
-          </svg>
-          <div class="mt-2 grid grid-cols-7 text-center text-[11px] font-medium text-[#7a8ba3]">
-            <span v-for="day in activityChart.days" :key="day.label">{{ day.label }}</span>
-          </div>
+        <div class="mt-4">
+          <ActivityChart :labels="activityChart.labels" :counts="activityChart.counts" />
         </div>
       </article>
 
@@ -326,28 +327,7 @@ function statusLabel(status: BorrowingStatus) {
         </div>
 
         <div class="mt-4 flex flex-col items-center gap-5 sm:flex-row sm:justify-around">
-          <div class="relative flex size-48 shrink-0 items-center justify-center">
-            <svg class="-rotate-90 size-full" viewBox="0 0 140 140" aria-label="Books by category chart" role="img">
-              <circle cx="70" cy="70" r="50" fill="none" stroke="#edf1f6" stroke-width="18" />
-              <circle
-                v-for="(segment, index) in donutSegments"
-                :key="index"
-                cx="70"
-                cy="70"
-                r="50"
-                fill="none"
-                :stroke="segment.color"
-                stroke-linecap="butt"
-                stroke-width="18"
-                :stroke-dasharray="`${segment.length} 314.16`"
-                :stroke-dashoffset="segment.offset"
-              />
-            </svg>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <span class="font-serif text-3xl font-bold leading-none tracking-[-0.04em] text-[#132f57]">{{ totalBooks }}</span>
-              <span class="mt-1 text-xs text-[#7486a0]">Total books</span>
-            </div>
-          </div>
+          <CategoryDonutChart :items="donutSegments" :total="totalBooks" />
 
           <div class="w-full max-w-[250px] divide-y divide-[#edf1f6]">
             <div v-for="category in categoryBreakdown" :key="category.name" class="flex items-center justify-between gap-4 py-2.5 first:pt-0 last:pb-0">
@@ -366,11 +346,11 @@ function statusLabel(status: BorrowingStatus) {
     </section>
 
     <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
+      <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
         <div class="flex items-center justify-between px-5 pb-3 pt-5">
           <div>
             <h2 class="font-serif text-lg font-bold text-[#132f57]">Recent activity</h2>
-            <p class="mt-0.5 text-xs text-[#7486a0]">The latest circulation updates</p>
+            <p class="mt-0.5 text-xs text-[#7486a0]">Catalog and circulation updates</p>
           </div>
           <RouterLink to="/borrowings" class="flex items-center gap-1 text-xs font-semibold text-[#173b70] transition-colors hover:text-[#2b65ad]">
             View all activity
@@ -378,33 +358,39 @@ function statusLabel(status: BorrowingStatus) {
           </RouterLink>
         </div>
 
-        <div class="divide-y divide-[#edf1f6] px-5">
-          <div v-for="item in recentActivity" :key="item.id" class="grid grid-cols-[2.15rem_minmax(0,1fr)] gap-x-3 py-3.5 sm:grid-cols-[2.15rem_minmax(0,1.4fr)_minmax(0,1fr)_auto] sm:items-center">
-            <div class="flex h-12 w-9 items-center justify-center rounded-md bg-gradient-to-br p-1 text-center text-[8px] font-bold leading-tight text-white shadow-sm" :class="item.accent">
-              {{ bookInitials(item.book.title) }}
+        <div class="flex-1 divide-y divide-[#edf1f6] px-5 pb-2">
+          <div v-for="item in recentActivity" :key="item.id" class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-3 py-3 sm:grid-cols-[2.5rem_minmax(0,1.4fr)_minmax(0,1fr)_auto] sm:items-center">
+            <div class="flex size-10 items-center justify-center rounded-xl" :class="activityKindStyle[item.kind].chip" :title="activityKindLabel(item.kind)">
+              <UIcon :name="activityKindStyle[item.kind].icon" class="size-5" />
             </div>
             <div class="min-w-0">
-              <p class="truncate text-sm font-semibold text-[#263f5f]">{{ item.book.title }}</p>
-              <p class="mt-0.5 truncate text-xs text-[#7486a0]">{{ item.book.authors?.map((author) => author.name).join(', ') || 'Unknown author' }}</p>
+              <p class="truncate text-sm font-semibold text-[#263f5f]">{{ item.title }}</p>
+              <p class="mt-0.5 flex items-center gap-1.5 truncate text-xs text-[#7486a0]">
+                <span class="inline-flex rounded-md bg-[#f1f5fb] px-1.5 py-0.5 text-[10px] font-semibold text-[#36577f]">{{ activityKindLabel(item.kind) }}</span>
+                <span class="truncate">{{ item.subtitle }}</span>
+              </p>
             </div>
             <div class="mt-2 flex items-center gap-2 sm:mt-0">
-              <div class="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#f1f5fb] text-[9px] font-bold text-[#36577f]">
-                {{ personInitials(item.user.name) }}
+              <div v-if="item.actorInitials" class="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#f1f5fb] text-[9px] font-bold text-[#36577f]">
+                {{ item.actorInitials }}
+              </div>
+              <div v-else class="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#f1f5fb] text-[#36577f]">
+                <UIcon name="i-lucide-library-big" class="size-3.5" />
               </div>
               <div class="min-w-0 text-xs leading-tight">
-                <p class="text-[#667896]">{{ item.event }}</p>
-                <p class="truncate font-medium text-[#304968]">{{ item.user.name }}</p>
+                <p class="text-[#667896]">{{ item.actorLine1 }}</p>
+                <p class="truncate font-medium text-[#304968]">{{ item.actorLine2 }}</p>
               </div>
             </div>
             <p class="col-start-2 mt-2 text-xs text-[#7a8ba3] sm:col-start-auto sm:mt-0 sm:text-right">
-              {{ formatDate(item.eventDate) }}
+              {{ formatDate(item.date) }}
             </p>
           </div>
           <div v-if="!recentActivity.length" class="py-12 text-center text-sm text-[#7a8ba3]">Activity will appear here as books circulate.</div>
         </div>
       </article>
 
-      <article class="rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
+      <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
         <div class="flex items-center justify-between px-5 pb-3 pt-5">
           <div>
             <h2 class="font-serif text-lg font-bold text-[#132f57]">Needs attention</h2>
@@ -426,10 +412,10 @@ function statusLabel(status: BorrowingStatus) {
           </div>
         </div>
 
-        <div v-if="overdueBorrowings.length" class="divide-y divide-[#edf1f6] px-5">
-          <div v-for="(borrowing, index) in overdueBorrowings.slice(0, 5)" :key="borrowing.id" class="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-center gap-3 py-3">
-            <div class="flex h-10 w-8 items-center justify-center rounded-md bg-gradient-to-br p-1 text-center text-[7px] font-bold leading-tight text-white shadow-sm" :class="bookCoverColors[index % bookCoverColors.length]">
-              {{ bookInitials(borrowing.book.title) }}
+        <div v-if="overdueBorrowings.length" class="flex-1 divide-y divide-[#edf1f6] px-5 pb-2">
+          <div v-for="borrowing in overdueBorrowings.slice(0, 5)" :key="borrowing.id" class="grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 py-3">
+            <div class="flex size-10 items-center justify-center rounded-xl bg-[#fff0ee] text-[#d84332]" title="Overdue">
+              <UIcon name="i-lucide-calendar-clock" class="size-5" />
             </div>
             <div class="min-w-0">
               <p class="truncate text-sm font-semibold text-[#263f5f]">{{ borrowing.book.title }}</p>

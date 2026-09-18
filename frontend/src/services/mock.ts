@@ -82,7 +82,17 @@ const borrowings: Borrowing[] = [
   { id: 1, user: users[1], book: book(2), borrowDate: dateStr(-20), dueDate: dateStr(-6), returnDate: null },
   { id: 2, user: users[2], book: book(5), borrowDate: dateStr(-14), dueDate: dateStr(0), returnDate: null },
   { id: 3, user: users[0], book: book(9), borrowDate: dateStr(-10), dueDate: dateStr(4), returnDate: null },
-  { id: 4, user: users[3], book: book(1), borrowDate: dateStr(-30), dueDate: dateStr(-2), returnDate: dateStr(-2) }
+  { id: 4, user: users[3], book: book(1), borrowDate: dateStr(-30), dueDate: dateStr(-2), returnDate: dateStr(-2) },
+  { id: 5, user: users[1], book: book(11), borrowDate: dateStr(-6), dueDate: dateStr(8), returnDate: null },
+  { id: 6, user: users[2], book: book(7), borrowDate: dateStr(-5), dueDate: dateStr(9), returnDate: null },
+  { id: 7, user: users[3], book: book(13), borrowDate: dateStr(-5), dueDate: dateStr(-4), returnDate: dateStr(-3) },
+  { id: 8, user: users[0], book: book(4), borrowDate: dateStr(-4), dueDate: dateStr(10), returnDate: null },
+  { id: 9, user: users[1], book: book(16), borrowDate: dateStr(-3), dueDate: dateStr(11), returnDate: null },
+  { id: 10, user: users[2], book: book(6), borrowDate: dateStr(-2), dueDate: dateStr(-1), returnDate: dateStr(-1) },
+  { id: 11, user: users[3], book: book(14), borrowDate: dateStr(-2), dueDate: dateStr(12), returnDate: null },
+  { id: 12, user: users[0], book: book(12), borrowDate: dateStr(-1), dueDate: dateStr(13), returnDate: null },
+  { id: 13, user: users[1], book: book(3), borrowDate: dateStr(0), dueDate: dateStr(14), returnDate: null },
+  { id: 14, user: users[2], book: book(17), borrowDate: dateStr(0), dueDate: dateStr(14), returnDate: null }
 ]
 
 function nextId(items: { id: number }[]): number {

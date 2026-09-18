@@ -71,26 +71,25 @@ body,
   background: var(--ui-bg);
 }
 
-.dashboard-scroll {
-  scrollbar-color: #a7b6c9 #edf1f6;
+.app-scroll {
+  scrollbar-color: #a7b6c9 transparent;
   scrollbar-width: thin;
+  scrollbar-gutter: stable;
 }
 
-.dashboard-scroll::-webkit-scrollbar {
-  width: 12px;
+.app-scroll::-webkit-scrollbar {
+  width: 8px;
 }
 
-.dashboard-scroll::-webkit-scrollbar-track {
-  background: #edf1f6;
-  border-left: 1px solid #e4ebf3;
+.app-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.dashboard-scroll::-webkit-scrollbar-thumb {
+.app-scroll::-webkit-scrollbar-thumb {
   background: #a7b6c9;
-  border: 3px solid #edf1f6;
   border-radius: 999px;
 }
 
-.dashboard-scroll::-webkit-scrollbar-thumb:hover {
+.app-scroll::-webkit-scrollbar-thumb:hover {
   background: #7e91a9;
 }

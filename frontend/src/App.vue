@@ -220,21 +220,6 @@ function handleLogout() {
                   </li>
                 </ul>
               </div>
-
-              <div v-if="state === 'expanded'" class="mt-auto border-t border-[#edf1f6] px-1 pt-5">
-                <p class="mb-2 px-2 text-[10px] font-bold uppercase tracking-[0.13em] text-[#98a6ba]">Quick actions</p>
-                <div class="space-y-1">
-                  <RouterLink
-                    v-for="action in quickActions"
-                    :key="action.label"
-                    :to="action.to"
-                    class="flex items-center gap-3 rounded-xl px-2 py-2 text-sm font-medium text-[#455d7c] transition-colors hover:bg-[#fff8e9] hover:text-[#9a6400]"
-                  >
-                    <UIcon :name="action.icon" class="size-4 text-[#bd810f]" />
-                    {{ action.label }}
-                  </RouterLink>
-                </div>
-              </div>
             </nav>
           </template>
 
@@ -268,14 +253,6 @@ function handleLogout() {
           <UHeader :ui="{ root: '!h-20 border-b border-[#e4ebf3] bg-white px-4 sm:px-6' }">
             <template #left>
               <div class="flex w-full items-center gap-3">
-                <UButton
-                  icon="i-lucide-menu"
-                  color="neutral"
-                  variant="ghost"
-                  aria-label="Toggle sidebar"
-                  class="text-[#304968]"
-                  @click="toggleSidebar"
-                />
                 <label class="relative hidden w-full max-w-xl md:block">
                   <UIcon name="i-lucide-search" class="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-[#71829a]" />
                   <input
@@ -312,7 +289,7 @@ function handleLogout() {
             </template>
           </UHeader>
 
-          <main class="flex min-h-0 w-full flex-1 flex-col px-4 py-5 lg:px-8 lg:py-7">
+          <main class="app-scroll flex min-h-0 w-full flex-1 flex-col overflow-y-scroll overflow-x-hidden px-4 py-5 lg:px-8 lg:py-7">
             <RouterView />
           </main>
         </div>
