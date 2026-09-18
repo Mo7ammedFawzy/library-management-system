@@ -199,19 +199,6 @@
       "source_location": "L11"
     },
     {
-      "id": "backend_src_main_java_org_library_entity_author_author",
-      "label": "Author",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "author",
-      "source_file": "backend/src/main/java/org/library/entity/Author.java",
-      "source_location": "L7"
-    },
-    {
       "id": "backend_src_main_java_org_library_entity_book_book",
       "label": "Book",
       "_callable": true,
@@ -223,45 +210,6 @@
       "norm_label": "book",
       "source_file": "backend/src/main/java/org/library/entity/Book.java",
       "source_location": "L10"
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_borrowrecord",
-      "label": "BorrowRecord",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "borrowrecord",
-      "source_file": "backend/src/main/java/org/library/entity/BorrowRecord.java",
-      "source_location": "L8"
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_authormapper_authormapper",
-      "label": "AuthorMapper",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "authormapper",
-      "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
-      "source_location": "L6"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_authorrepository_authorrepository",
-      "label": "AuthorRepository",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "authorrepository",
-      "source_file": "backend/src/main/java/org/library/repository/AuthorRepository.java",
-      "source_location": "L8"
     },
     {
       "id": "backend_src_main_java_org_library_repository_bookrepository_bookrepository",
@@ -277,17 +225,17 @@
       "source_location": "L9"
     },
     {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository",
-      "label": "BorrowRecordRepository",
+      "id": "frontend_src_components_grid_actionscell_actionscellparams",
+      "label": "ActionsCellParams",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
+      "community": 14,
+      "community_name": "categories.vue",
       "file_type": "code",
-      "norm_label": "borrowrecordrepository",
-      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
-      "source_location": "L9"
+      "norm_label": "actionscellparams",
+      "source_file": "frontend/src/components/grid/ActionsCell.vue",
+      "source_location": "L4"
     },
     {
       "id": "frontend_src_services_categories_categoryinput",
@@ -303,16 +251,16 @@
       "source_location": "L9"
     },
     {
-      "id": "frontend_src_components_grid_actionscell_actionscellparams",
-      "label": "ActionsCellParams",
+      "id": "frontend_src_services_authors_author",
+      "label": "Author",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
       "community_name": "authors.vue",
       "file_type": "code",
-      "norm_label": "actionscellparams",
-      "source_file": "frontend/src/components/grid/ActionsCell.vue",
+      "norm_label": "author",
+      "source_file": "frontend/src/services/authors.ts",
       "source_location": "L4"
     },
     {
@@ -368,17 +316,17 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_services_borrowings_borrowinguser",
-      "label": "BorrowingUser",
+      "id": "frontend_src_services_borrowings_borrowingstatus",
+      "label": "BorrowingStatus",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 26,
       "community_name": "borrowings.ts",
       "file_type": "code",
-      "norm_label": "borrowinguser",
+      "norm_label": "borrowingstatus",
       "source_file": "frontend/src/services/borrowings.ts",
-      "source_location": "L5"
+      "source_location": "L22"
     },
     {
       "id": "frontend_src_pages_dashboard_activityitem",
@@ -405,19 +353,6 @@
       "norm_label": "activitykind",
       "source_file": "frontend/src/pages/dashboard.vue",
       "source_location": "L122"
-    },
-    {
-      "id": "frontend_src_composables_usecrudpage_crudpageconfig",
-      "label": "CrudPageConfig",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "crudpageconfig",
-      "source_file": "frontend/src/composables/useCrudPage.ts",
-      "source_location": "L7"
     },
     {
       "id": "frontend_src_services_api_apienvelope",
@@ -472,17 +407,30 @@
       "source_location": "L54"
     },
     {
-      "id": "backend_src_main_java_org_library_security_securityconfig_securityconfig",
-      "label": "SecurityConfig",
+      "id": "backend_src_main_java_org_library_repository_userrepository_userrepository",
+      "label": "UserRepository",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 30,
-      "community_name": "SecurityConfig.java",
+      "community_name": "UserRepository",
       "file_type": "code",
-      "norm_label": "securityconfig",
-      "source_file": "backend/src/main/java/org/library/security/SecurityConfig.java",
-      "source_location": "L16"
+      "norm_label": "userrepository",
+      "source_file": "backend/src/main/java/org/library/repository/UserRepository.java",
+      "source_location": "L8"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_authserviceimpl",
+      "label": "AuthServiceImpl",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "UserRepository",
+      "file_type": "code",
+      "norm_label": "authserviceimpl",
+      "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
+      "source_location": "L15"
     },
     {
       "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller",
@@ -524,6 +472,19 @@
       "source_location": "L6"
     },
     {
+      "id": "frontend_src_services_books_book",
+      "label": "Book",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Borrowing",
+      "file_type": "code",
+      "norm_label": "book",
+      "source_file": "frontend/src/services/books.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "frontend_src_services_borrowings_borrowing",
       "label": "Borrowing",
       "_callable": true,
@@ -535,6 +496,32 @@
       "norm_label": "borrowing",
       "source_file": "frontend/src/services/borrowings.ts",
       "source_location": "L12"
+    },
+    {
+      "id": "frontend_src_services_borrowings_borrowresponsedto",
+      "label": "BorrowResponseDto",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Borrowing",
+      "file_type": "code",
+      "norm_label": "borrowresponsedto",
+      "source_file": "frontend/src/services/borrowings.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "frontend_src_services_categories_category",
+      "label": "Category",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "Borrowing",
+      "file_type": "code",
+      "norm_label": "category",
+      "source_file": "frontend/src/services/categories.ts",
+      "source_location": "L4"
     },
     {
       "id": "frontend_src_route_map_d_routefileinfomap",
@@ -602,56 +589,30 @@
       "source_location": "L14"
     },
     {
-      "id": "backend_src_main_java_org_library_repository_userrepository_userrepository",
-      "label": "UserRepository",
+      "id": "backend_src_main_java_org_library_security_securityconfig_securityconfig",
+      "label": "SecurityConfig",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 35,
       "community_name": "lombok.RequiredArgsConstructor",
       "file_type": "code",
-      "norm_label": "userrepository",
-      "source_file": "backend/src/main/java/org/library/repository/UserRepository.java",
-      "source_location": "L8"
+      "norm_label": "securityconfig",
+      "source_file": "backend/src/main/java/org/library/security/SecurityConfig.java",
+      "source_location": "L16"
     },
     {
-      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_authserviceimpl",
-      "label": "AuthServiceImpl",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "authserviceimpl",
-      "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
-      "source_location": "L15"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_userserviceimpl",
-      "label": "UserServiceImpl",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "userserviceimpl",
-      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
-      "source_location": "L12"
-    },
-    {
-      "id": "frontend_src_services_borrowings_borrowingstatus",
-      "label": "BorrowingStatus",
+      "id": "backend_src_main_java_org_library_exception_borrownotfoundexception_borrownotfoundexception",
+      "label": "BorrowNotFoundException",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "StatusCell.vue",
+      "community_name": "BorrowNotFoundException",
       "file_type": "code",
-      "norm_label": "borrowingstatus",
-      "source_file": "frontend/src/services/borrowings.ts",
-      "source_location": "L22"
+      "norm_label": "borrownotfoundexception",
+      "source_file": "backend/src/main/java/org/library/exception/BorrowNotFoundException.java",
+      "source_location": "L3"
     },
     {
       "id": "backend_src_main_java_org_library_dto_bookresponse_bookresponse",
@@ -665,19 +626,6 @@
       "norm_label": "bookresponse",
       "source_file": "backend/src/main/java/org/library/dto/BookResponse.java",
       "source_location": "L9"
-    },
-    {
-      "id": "backend_src_main_java_org_library_exception_borrownotfoundexception_borrownotfoundexception",
-      "label": "BorrowNotFoundException",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "BookResponse",
-      "file_type": "code",
-      "norm_label": "borrownotfoundexception",
-      "source_file": "backend/src/main/java/org/library/exception/BorrowNotFoundException.java",
-      "source_location": "L3"
     },
     {
       "id": "backend_src_main_java_org_library_exception_resourcenotfoundexception_resourcenotfoundexception",
@@ -823,32 +771,6 @@
       "source_location": "L87"
     },
     {
-      "id": "frontend_src_services_authors_author",
-      "label": "Author",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "books.vue",
-      "file_type": "code",
-      "norm_label": "author",
-      "source_file": "frontend/src/services/authors.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "frontend_src_services_books_book",
-      "label": "Book",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "books.vue",
-      "file_type": "code",
-      "norm_label": "book",
-      "source_file": "frontend/src/services/books.ts",
-      "source_location": "L6"
-    },
-    {
       "id": "frontend_src_services_books_bookinput",
       "label": "BookInput",
       "_callable": true,
@@ -860,32 +782,6 @@
       "norm_label": "bookinput",
       "source_file": "frontend/src/services/books.ts",
       "source_location": "L15"
-    },
-    {
-      "id": "frontend_src_services_borrowings_borrowresponsedto",
-      "label": "BorrowResponseDto",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "books.vue",
-      "file_type": "code",
-      "norm_label": "borrowresponsedto",
-      "source_file": "frontend/src/services/borrowings.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "frontend_src_services_categories_category",
-      "label": "Category",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "books.vue",
-      "file_type": "code",
-      "norm_label": "category",
-      "source_file": "frontend/src/services/categories.ts",
-      "source_location": "L4"
     },
     {
       "id": "backend_src_main_java_org_library_exception_bookalreadyreturnedexception_bookalreadyreturnedexception",
@@ -946,7 +842,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "authorcontroller",
       "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
@@ -959,7 +855,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "authorrequest",
       "source_file": "backend/src/main/java/org/library/dto/AuthorRequest.java",
@@ -972,11 +868,63 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "authorresponse",
       "source_file": "backend/src/main/java/org/library/dto/AuthorResponse.java",
       "source_location": "L3"
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_author_author",
+      "label": "Author",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "author",
+      "source_file": "backend/src/main/java/org/library/entity/Author.java",
+      "source_location": "L7"
+    },
+    {
+      "id": "backend_src_main_java_org_library_mapper_authormapper_authormapper",
+      "label": "AuthorMapper",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "authormapper",
+      "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
+      "source_location": "L6"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_authorrepository_authorrepository",
+      "label": "AuthorRepository",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "authorrepository",
+      "source_file": "backend/src/main/java/org/library/repository/AuthorRepository.java",
+      "source_location": "L8"
+    },
+    {
+      "id": "frontend_src_services_borrowings_borrowinguser",
+      "label": "BorrowingUser",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "mock.ts",
+      "file_type": "code",
+      "norm_label": "borrowinguser",
+      "source_file": "frontend/src/services/borrowings.ts",
+      "source_location": "L5"
     },
     {
       "id": "backend_src_main_java_org_library_controller_healthcontroller_healthcontroller",
@@ -1044,6 +992,19 @@
       "source_location": "L6"
     },
     {
+      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_userserviceimpl",
+      "label": "UserServiceImpl",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": "userserviceimpl",
+      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
+      "source_location": "L12"
+    },
+    {
       "id": "backend_src_main_java_org_library_service_userservice_userservice",
       "label": "UserService",
       "_callable": true,
@@ -1054,6 +1015,19 @@
       "file_type": "code",
       "norm_label": "userservice",
       "source_file": "backend/src/main/java/org/library/service/UserService.java",
+      "source_location": "L7"
+    },
+    {
+      "id": "frontend_src_composables_usecrudpage_crudpageconfig",
+      "label": "CrudPageConfig",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "useCrudPage",
+      "file_type": "code",
+      "norm_label": "crudpageconfig",
+      "source_file": "frontend/src/composables/useCrudPage.ts",
       "source_location": "L7"
     },
     {
@@ -1122,6 +1096,19 @@
       "source_location": "L5"
     },
     {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_borrowrecord",
+      "label": "BorrowRecord",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "borrowrecord",
+      "source_file": "backend/src/main/java/org/library/entity/BorrowRecord.java",
+      "source_location": "L8"
+    },
+    {
       "id": "backend_src_main_java_org_library_mapper_borrowmapper_borrowmapper",
       "label": "BorrowMapper",
       "_callable": true,
@@ -1133,6 +1120,19 @@
       "norm_label": "borrowmapper",
       "source_file": "backend/src/main/java/org/library/mapper/BorrowMapper.java",
       "source_location": "L6"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository",
+      "label": "BorrowRecordRepository",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "borrowrecordrepository",
+      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
+      "source_location": "L9"
     },
     {
       "id": "backend_src_main_java_org_library_service_borrowservice_borrowservice",
@@ -1171,18 +1171,6 @@
       "norm_label": ".createcategory()",
       "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
       "source_location": "L33"
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_categorycontroller_categorycontroller_deletecategory",
-      "label": ".deleteCategory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Category",
-      "file_type": "code",
-      "norm_label": ".deletecategory()",
-      "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
-      "source_location": "L42"
     },
     {
       "id": "backend_src_main_java_org_library_controller_categorycontroller_categorycontroller_getcategories",
@@ -1341,18 +1329,6 @@
       "source_location": "L57"
     },
     {
-      "id": "frontend_src_app_handlelogout",
-      "label": "handleLogout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "App.vue",
-      "file_type": "code",
-      "norm_label": "handlelogout()",
-      "source_file": "frontend/src/App.vue",
-      "source_location": "L125"
-    },
-    {
       "id": "frontend_src_app_navitem",
       "label": "navItem()",
       "_callable": true,
@@ -1375,30 +1351,6 @@
       "norm_label": "togglesidebar()",
       "source_file": "frontend/src/App.vue",
       "source_location": "L102"
-    },
-    {
-      "id": "frontend_src_services_auth_logout",
-      "label": "logout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "App.vue",
-      "file_type": "code",
-      "norm_label": "logout()",
-      "source_file": "frontend/src/services/auth.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "backend_src_main_java_org_library_config_applicationconfig_applicationconfig_userdetailsservice",
-      "label": ".userDetailsService()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TestDataConfig",
-      "file_type": "code",
-      "norm_label": ".userdetailsservice()",
-      "source_file": "backend/src/main/java/org/library/config/ApplicationConfig.java",
-      "source_location": "L26"
     },
     {
       "id": "backend_src_main_java_org_library_config_testdataconfig_testdataconfig_authorseeder",
@@ -1495,6 +1447,18 @@
       "norm_label": ".userseeder()",
       "source_file": "backend/src/main/java/org/library/config/TestDataConfig.java",
       "source_location": "L85"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_bookrepository_bookrepository_findbytitle",
+      "label": ".findByTitle()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "TestDataConfig",
+      "file_type": "code",
+      "norm_label": ".findbytitle()",
+      "source_file": "backend/src/main/java/org/library/repository/BookRepository.java",
+      "source_location": "L13"
     },
     {
       "id": "backend_src_main_java_org_library_repository_userrepository_userrepository_findbyemail",
@@ -1629,18 +1593,6 @@
       "source_location": "L46"
     },
     {
-      "id": "backend_src_main_java_org_library_repository_authorrepository_authorrepository_findbyname",
-      "label": ".findByName()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": ".findbyname()",
-      "source_file": "backend/src/main/java/org/library/repository/AuthorRepository.java",
-      "source_location": "L10"
-    },
-    {
       "id": "backend_src_main_java_org_library_repository_bookrepository_bookrepository_findbycategoryid",
       "label": ".findByCategoryId()",
       "_callable": true,
@@ -1651,66 +1603,6 @@
       "norm_label": ".findbycategoryid()",
       "source_file": "backend/src/main/java/org/library/repository/BookRepository.java",
       "source_location": "L11"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_bookrepository_bookrepository_findbytitle",
-      "label": ".findByTitle()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": ".findbytitle()",
-      "source_file": "backend/src/main/java/org/library/repository/BookRepository.java",
-      "source_location": "L13"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository_findbyuserandbookandborrowdate",
-      "label": ".findByUserAndBookAndBorrowDate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": ".findbyuserandbookandborrowdate()",
-      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
-      "source_location": "L13"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository_findonebyuserandbook",
-      "label": ".findOneByUserAndBook()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": ".findonebyuserandbook()",
-      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
-      "source_location": "L11"
-    },
-    {
-      "id": "frontend_src_pages_books_loadall",
-      "label": "loadAll()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "categories.vue",
-      "file_type": "code",
-      "norm_label": "loadall()",
-      "source_file": "frontend/src/pages/books.vue",
-      "source_location": "L235"
-    },
-    {
-      "id": "frontend_src_pages_books_loadoptions",
-      "label": "loadOptions()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "categories.vue",
-      "file_type": "code",
-      "norm_label": "loadoptions()",
-      "source_file": "frontend/src/pages/books.vue",
-      "source_location": "L27"
     },
     {
       "id": "frontend_src_pages_categories_getrowid",
@@ -1759,6 +1651,18 @@
       "norm_label": "validatename()",
       "source_file": "frontend/src/pages/authors.vue",
       "source_location": "L24"
+    },
+    {
+      "id": "frontend_src_pages_books_loadoptions",
+      "label": "loadOptions()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "authors.vue",
+      "file_type": "code",
+      "norm_label": "loadoptions()",
+      "source_file": "frontend/src/pages/books.vue",
+      "source_location": "L27"
     },
     {
       "id": "frontend_src_pages_register_handlesubmit",
@@ -1819,6 +1723,18 @@
       "norm_label": "handletestlogin()",
       "source_file": "frontend/src/pages/login.vue",
       "source_location": "L25"
+    },
+    {
+      "id": "frontend_src_services_api_settoken",
+      "label": "setToken()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "login.vue",
+      "file_type": "code",
+      "norm_label": "settoken()",
+      "source_file": "frontend/src/services/api.ts",
+      "source_location": "L9"
     },
     {
       "id": "backend_src_main_java_org_library_security_jwtauthfilter_jwtauthfilter_dofilterinternal",
@@ -1903,30 +1819,6 @@
       "norm_label": ".istokenvalid()",
       "source_file": "backend/src/main/java/org/library/security/JwtUtil.java",
       "source_location": "L48"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_authserviceimpl_login",
-      "label": ".login()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "JwtUtil",
-      "file_type": "code",
-      "norm_label": ".login()",
-      "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
-      "source_location": "L34"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_authserviceimpl_register",
-      "label": ".register()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "JwtUtil",
-      "file_type": "code",
-      "norm_label": ".register()",
-      "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
-      "source_location": "L24"
     },
     {
       "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller_createbook",
@@ -2325,16 +2217,52 @@
       "source_location": "L200"
     },
     {
-      "id": "backend_src_main_java_org_library_security_securityconfig_securityconfig_securityfilterchain",
-      "label": ".securityFilterChain()",
+      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_authserviceimpl_login",
+      "label": ".login()",
       "_callable": true,
       "_origin": "ast",
       "community": 30,
-      "community_name": "SecurityConfig.java",
+      "community_name": "UserRepository",
       "file_type": "code",
-      "norm_label": ".securityfilterchain()",
-      "source_file": "backend/src/main/java/org/library/security/SecurityConfig.java",
-      "source_location": "L23"
+      "norm_label": ".login()",
+      "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
+      "source_location": "L34"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_authserviceimpl_register",
+      "label": ".register()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "UserRepository",
+      "file_type": "code",
+      "norm_label": ".register()",
+      "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
+      "source_location": "L24"
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller_deletebook",
+      "label": ".deleteBook()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "BookController",
+      "file_type": "code",
+      "norm_label": ".deletebook()",
+      "source_file": "backend/src/main/java/org/library/controller/BookController.java",
+      "source_location": "L55"
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller_deletebooks",
+      "label": ".deleteBooks()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "BookController",
+      "file_type": "code",
+      "norm_label": ".deletebooks()",
+      "source_file": "backend/src/main/java/org/library/controller/BookController.java",
+      "source_location": "L62"
     },
     {
       "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller_getallbooks",
@@ -2359,6 +2287,30 @@
       "norm_label": ".getbookbyid()",
       "source_file": "backend/src/main/java/org/library/controller/BookController.java",
       "source_location": "L34"
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller_getbooksbycategoryid",
+      "label": ".getBooksByCategoryId()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "BookController",
+      "file_type": "code",
+      "norm_label": ".getbooksbycategoryid()",
+      "source_file": "backend/src/main/java/org/library/controller/BookController.java",
+      "source_location": "L41"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_bookservice_bookservice_deletebook",
+      "label": ".deleteBook()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "BookController",
+      "file_type": "code",
+      "norm_label": ".deletebook()",
+      "source_file": "backend/src/main/java/org/library/service/BookService.java",
+      "source_location": "L17"
     },
     {
       "id": "backend_src_main_java_org_library_service_bookservice_bookservice_deletebooks",
@@ -2397,6 +2349,18 @@
       "source_location": "L13"
     },
     {
+      "id": "backend_src_main_java_org_library_service_bookservice_bookservice_getbycategoryid",
+      "label": ".getByCategoryId()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "BookController",
+      "file_type": "code",
+      "norm_label": ".getbycategoryid()",
+      "source_file": "backend/src/main/java/org/library/service/BookService.java",
+      "source_location": "L21"
+    },
+    {
       "id": "backend_src_main_java_org_library_config_applicationconfig_applicationconfig_authenticationmanager",
       "label": ".authenticationManager()",
       "_callable": true,
@@ -2421,12 +2385,36 @@
       "source_location": "L20"
     },
     {
+      "id": "backend_src_main_java_org_library_config_applicationconfig_applicationconfig_userdetailsservice",
+      "label": ".userDetailsService()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": ".userdetailsservice()",
+      "source_file": "backend/src/main/java/org/library/config/ApplicationConfig.java",
+      "source_location": "L26"
+    },
+    {
+      "id": "backend_src_main_java_org_library_security_securityconfig_securityconfig_securityfilterchain",
+      "label": ".securityFilterChain()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": ".securityfilterchain()",
+      "source_file": "backend/src/main/java/org/library/security/SecurityConfig.java",
+      "source_location": "L23"
+    },
+    {
       "id": "backend_src_main_java_org_library_exception_borrownotfoundexception_borrownotfoundexception_borrownotfoundexception",
       "label": ".BorrowNotFoundException()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "BookResponse",
+      "community": 37,
+      "community_name": "BorrowNotFoundException",
       "file_type": "code",
       "norm_label": ".borrownotfoundexception()",
       "source_file": "backend/src/main/java/org/library/exception/BorrowNotFoundException.java",
@@ -2479,18 +2467,6 @@
       "norm_label": ".toresponse()",
       "source_file": "backend/src/main/java/org/library/mapper/BookMapper.java",
       "source_location": "L11"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_bookservice_bookservice_getbycategoryid",
-      "label": ".getByCategoryId()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "BookResponse",
-      "file_type": "code",
-      "norm_label": ".getbycategoryid()",
-      "source_file": "backend/src/main/java/org/library/service/BookService.java",
-      "source_location": "L21"
     },
     {
       "id": "backend_src_main_java_org_library_service_impl_bookserviceimpl_bookserviceimpl_createbook",
@@ -2882,7 +2858,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": ".createauthor()",
       "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
@@ -2894,7 +2870,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": ".updateauthor()",
       "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
@@ -2906,7 +2882,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": ".toentity()",
       "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
@@ -2918,11 +2894,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": ".toresponse()",
       "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
       "source_location": "L9"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_authorrepository_authorrepository_findbyname",
+      "label": ".findByName()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": ".findbyname()",
+      "source_file": "backend/src/main/java/org/library/repository/AuthorRepository.java",
+      "source_location": "L10"
     },
     {
       "id": "frontend_src_services_mock_author",
@@ -3201,42 +3189,6 @@
       "source_location": "L23"
     },
     {
-      "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller_deletebook",
-      "label": ".deleteBook()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 73,
-      "community_name": "ApiResponse",
-      "file_type": "code",
-      "norm_label": ".deletebook()",
-      "source_file": "backend/src/main/java/org/library/controller/BookController.java",
-      "source_location": "L55"
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller_deletebooks",
-      "label": ".deleteBooks()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 73,
-      "community_name": "ApiResponse",
-      "file_type": "code",
-      "norm_label": ".deletebooks()",
-      "source_file": "backend/src/main/java/org/library/controller/BookController.java",
-      "source_location": "L62"
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_bookcontroller_bookcontroller_getbooksbycategoryid",
-      "label": ".getBooksByCategoryId()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 73,
-      "community_name": "ApiResponse",
-      "file_type": "code",
-      "norm_label": ".getbooksbycategoryid()",
-      "source_file": "backend/src/main/java/org/library/controller/BookController.java",
-      "source_location": "L41"
-    },
-    {
       "id": "backend_src_main_java_org_library_controller_borrowcontroller_borrowcontroller_borrow",
       "label": ".borrow()",
       "_callable": true,
@@ -3249,6 +3201,18 @@
       "source_location": "L19"
     },
     {
+      "id": "backend_src_main_java_org_library_controller_borrowcontroller_borrowcontroller_getallborrows",
+      "label": ".getAllBorrows()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 73,
+      "community_name": "ApiResponse",
+      "file_type": "code",
+      "norm_label": ".getallborrows()",
+      "source_file": "backend/src/main/java/org/library/controller/BorrowController.java",
+      "source_location": "L26"
+    },
+    {
       "id": "backend_src_main_java_org_library_controller_borrowcontroller_borrowcontroller_returnbook",
       "label": ".returnBook()",
       "_callable": true,
@@ -3259,6 +3223,18 @@
       "norm_label": ".returnbook()",
       "source_file": "backend/src/main/java/org/library/controller/BorrowController.java",
       "source_location": "L33"
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_categorycontroller_categorycontroller_deletecategory",
+      "label": ".deleteCategory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 73,
+      "community_name": "ApiResponse",
+      "file_type": "code",
+      "norm_label": ".deletecategory()",
+      "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
+      "source_location": "L42"
     },
     {
       "id": "backend_src_main_java_org_library_controller_healthcontroller_healthcontroller_health",
@@ -3318,18 +3294,6 @@
       "file_type": "code",
       "norm_label": ".okresponse()",
       "source_file": "backend/src/main/java/org/library/payload/ApiResponse.java",
-      "source_location": "L17"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_bookservice_bookservice_deletebook",
-      "label": ".deleteBook()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 73,
-      "community_name": "ApiResponse",
-      "file_type": "code",
-      "norm_label": ".deletebook()",
-      "source_file": "backend/src/main/java/org/library/service/BookService.java",
       "source_location": "L17"
     },
     {
@@ -3465,6 +3429,30 @@
       "source_location": "L71"
     },
     {
+      "id": "frontend_src_pages_books_loadall",
+      "label": "loadAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "useCrudPage",
+      "file_type": "code",
+      "norm_label": "loadall()",
+      "source_file": "frontend/src/pages/books.vue",
+      "source_location": "L235"
+    },
+    {
+      "id": "frontend_src_app_handlelogout",
+      "label": "handleLogout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "handlelogout()",
+      "source_file": "frontend/src/App.vue",
+      "source_location": "L125"
+    },
+    {
       "id": "frontend_src_services_api_cleartoken",
       "label": "clearToken()",
       "_callable": true,
@@ -3489,18 +3477,6 @@
       "source_location": "L17"
     },
     {
-      "id": "frontend_src_services_api_settoken",
-      "label": "setToken()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "settoken()",
-      "source_file": "frontend/src/services/api.ts",
-      "source_location": "L9"
-    },
-    {
       "id": "frontend_src_services_auth_isloggedin",
       "label": "isLoggedIn()",
       "_callable": true,
@@ -3513,16 +3489,16 @@
       "source_location": "L42"
     },
     {
-      "id": "backend_src_main_java_org_library_controller_borrowcontroller_borrowcontroller_getallborrows",
-      "label": ".getAllBorrows()",
+      "id": "frontend_src_services_auth_logout",
+      "label": "logout()",
       "_callable": true,
       "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
+      "community": 80,
+      "community_name": "auth.ts",
       "file_type": "code",
-      "norm_label": ".getallborrows()",
-      "source_file": "backend/src/main/java/org/library/controller/BorrowController.java",
-      "source_location": "L26"
+      "norm_label": "logout()",
+      "source_file": "frontend/src/services/auth.ts",
+      "source_location": "L38"
     },
     {
       "id": "backend_src_main_java_org_library_mapper_borrowmapper_borrowmapper_toresponse",
@@ -3535,6 +3511,30 @@
       "norm_label": ".toresponse()",
       "source_file": "backend/src/main/java/org/library/mapper/BorrowMapper.java",
       "source_location": "L8"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository_findbyuserandbookandborrowdate",
+      "label": ".findByUserAndBookAndBorrowDate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": ".findbyuserandbookandborrowdate()",
+      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
+      "source_location": "L13"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository_findonebyuserandbook",
+      "label": ".findOneByUserAndBook()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": ".findonebyuserandbook()",
+      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
+      "source_location": "L11"
     },
     {
       "id": "backend_src_main_java_org_library_service_borrowservice_borrowservice_borrow",
@@ -3630,17 +3630,6 @@
       "norm_label": "categorycontroller.java",
       "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
       "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_categorycontroller_java_deletemapping",
-      "label": "DeleteMapping",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Category",
-      "file_type": "code",
-      "norm_label": "deletemapping",
-      "source_file": "",
-      "source_location": ""
     },
     {
       "id": "backend_src_main_java_org_library_controller_categorycontroller_java_getmapping",
@@ -4598,28 +4587,6 @@
       "source_location": "L452"
     },
     {
-      "id": "backend_src_main_java_org_library_config_applicationconfig_java_userdetailsservice",
-      "label": "UserDetailsService",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TestDataConfig",
-      "file_type": "code",
-      "norm_label": "userdetailsservice",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_config_testdataconfig",
-      "label": "TestDataConfig.java",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TestDataConfig",
-      "file_type": "code",
-      "norm_label": "testdataconfig.java",
-      "source_file": "backend/src/main/java/org/library/config/TestDataConfig.java",
-      "source_location": "L1"
-    },
-    {
       "id": "backend_src_main_java_org_library_config_testdataconfig_java_author",
       "label": "Author",
       "_origin": "ast",
@@ -4660,17 +4627,6 @@
       "community_name": "TestDataConfig",
       "file_type": "code",
       "norm_label": "org.springframework.boot.applicationrunner",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "org_springframework_context_annotation_bean",
-      "label": "org.springframework.context.annotation.Bean",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TestDataConfig",
-      "file_type": "code",
-      "norm_label": "org.springframework.context.annotation.bean",
       "source_file": "",
       "source_location": ""
     },
@@ -5301,81 +5257,28 @@
       "source_location": "L24"
     },
     {
-      "id": "backend_src_main_java_org_library_controller_authorcontroller",
-      "label": "AuthorController.java",
+      "id": "scratch_audit_2026_09_18_issues_01_backend_test_harness_ci",
+      "label": "01-backend-test-harness-ci.md",
       "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "authorcontroller.java",
-      "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
+      "community": 129,
+      "community_name": "01-backend-test-harness-ci.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "01-backend-test-harness-ci.md",
+      "source_file": ".scratch/audit-2026-09-18/issues/01-backend-test-harness-ci.md",
       "source_location": "L1"
     },
     {
-      "id": "backend_src_main_java_org_library_entity_author",
-      "label": "Author.java",
+      "id": "scratch_audit_2026_09_18_issues_01_backend_test_harness_ci_01_backend_test_harness_ci_for_backend",
+      "label": "01: Backend test harness + CI for backend",
       "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "author.java",
-      "source_file": "backend/src/main/java/org/library/entity/Author.java",
+      "community": 129,
+      "community_name": "01-backend-test-harness-ci.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "01: backend test harness + ci for backend",
+      "source_file": ".scratch/audit-2026-09-18/issues/01-backend-test-harness-ci.md",
       "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_author_java_allargsconstructor",
-      "label": "AllArgsConstructor",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "allargsconstructor",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_author_java_data",
-      "label": "Data",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "data",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_author_java_entity",
-      "label": "Entity",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "entity",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_author_java_noargsconstructor",
-      "label": "NoArgsConstructor",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "noargsconstructor",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_author_java_table",
-      "label": "Table",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "table",
-      "source_file": "",
-      "source_location": ""
     },
     {
       "id": "backend_src_main_java_org_library_entity_book",
@@ -5444,105 +5347,6 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord",
-      "label": "BorrowRecord.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "borrowrecord.java",
-      "source_file": "backend/src/main/java/org/library/entity/BorrowRecord.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_allargsconstructor",
-      "label": "AllArgsConstructor",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "allargsconstructor",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_builder",
-      "label": "Builder",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "builder",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_data",
-      "label": "Data",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "data",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_entity",
-      "label": "Entity",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "entity",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_noargsconstructor",
-      "label": "NoArgsConstructor",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "noargsconstructor",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_table",
-      "label": "Table",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "table",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_authormapper",
-      "label": "AuthorMapper.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "authormapper.java",
-      "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_authorrepository",
-      "label": "AuthorRepository.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "authorrepository.java",
-      "source_file": "backend/src/main/java/org/library/repository/AuthorRepository.java",
-      "source_location": "L1"
-    },
-    {
       "id": "backend_src_main_java_org_library_repository_bookrepository",
       "label": "BookRepository.java",
       "_origin": "ast",
@@ -5551,39 +5355,6 @@
       "file_type": "code",
       "norm_label": "bookrepository.java",
       "source_file": "backend/src/main/java/org/library/repository/BookRepository.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository",
-      "label": "BorrowRecordRepository.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "borrowrecordrepository.java",
-      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_java_book",
-      "label": "Book",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "book",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_userrepository",
-      "label": "UserRepository.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "userrepository.java",
-      "source_file": "backend/src/main/java/org/library/repository/UserRepository.java",
       "source_location": "L1"
     },
     {
@@ -5598,17 +5369,6 @@
       "source_location": ""
     },
     {
-      "id": "org_springframework_data_jpa_repository_jparepository",
-      "label": "org.springframework.data.jpa.repository.JpaRepository",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "org.springframework.data.jpa.repository.jparepository",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "setter",
       "label": "Setter",
       "_origin": "ast",
@@ -5618,6 +5378,196 @@
       "norm_label": "setter",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_02_role_based_authorization",
+      "label": "02-role-based-authorization.md",
+      "_origin": "ast",
+      "community": 130,
+      "community_name": "02-role-based-authorization.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "02-role-based-authorization.md",
+      "source_file": ".scratch/audit-2026-09-18/issues/02-role-based-authorization.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_02_role_based_authorization_02_enforce_role_based_authorization_admin_vs_user",
+      "label": "02: Enforce role-based authorization (ADMIN vs USER)",
+      "_origin": "ast",
+      "community": 130,
+      "community_name": "02-role-based-authorization.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "02: enforce role-based authorization (admin vs user)",
+      "source_file": ".scratch/audit-2026-09-18/issues/02-role-based-authorization.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_03_auth_validation_change_password",
+      "label": "03-auth-validation-change-password.md",
+      "_origin": "ast",
+      "community": 131,
+      "community_name": "03-auth-validation-change-password.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "03-auth-validation-change-password.md",
+      "source_file": ".scratch/audit-2026-09-18/issues/03-auth-validation-change-password.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_03_auth_validation_change_password_03_harden_auth_validation_duplicate_email_change_password_slice",
+      "label": "03: Harden auth validation + duplicate-email + change-password slice",
+      "_origin": "ast",
+      "community": 131,
+      "community_name": "03-auth-validation-change-password.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "03: harden auth validation + duplicate-email + change-password slice",
+      "source_file": ".scratch/audit-2026-09-18/issues/03-auth-validation-change-password.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_04_members_management_grid",
+      "label": "04-members-management-grid.md",
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "04-members-management-grid.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "04-members-management-grid.md",
+      "source_file": ".scratch/audit-2026-09-18/issues/04-members-management-grid.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_04_members_management_grid_04_members_user_management_grid_replaces_stub",
+      "label": "04: Members (User) management grid replaces stub",
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "04-members-management-grid.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "04: members (user) management grid replaces stub",
+      "source_file": ".scratch/audit-2026-09-18/issues/04-members-management-grid.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_05_catalog_search_pagination",
+      "label": "05-catalog-search-pagination.md",
+      "_origin": "ast",
+      "community": 133,
+      "community_name": "05-catalog-search-pagination.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "05-catalog-search-pagination.md",
+      "source_file": ".scratch/audit-2026-09-18/issues/05-catalog-search-pagination.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_05_catalog_search_pagination_05_catalog_search_pagination_and_safe_bulk_delete",
+      "label": "05: Catalog search, pagination, and safe bulk-delete",
+      "_origin": "ast",
+      "community": 133,
+      "community_name": "05-catalog-search-pagination.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "05: catalog search, pagination, and safe bulk-delete",
+      "source_file": ".scratch/audit-2026-09-18/issues/05-catalog-search-pagination.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_06_borrowing_scoping_history",
+      "label": "06-borrowing-scoping-history.md",
+      "_origin": "ast",
+      "community": 134,
+      "community_name": "06-borrowing-scoping-history.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "06-borrowing-scoping-history.md",
+      "source_file": ".scratch/audit-2026-09-18/issues/06-borrowing-scoping-history.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_06_borrowing_scoping_history_06_borrowing_scoping_my_history_no_user_spoofing_overdue_honesty",
+      "label": "06: Borrowing scoping \u2014 my history, no user spoofing, overdue honesty",
+      "_origin": "ast",
+      "community": 134,
+      "community_name": "06-borrowing-scoping-history.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "06: borrowing scoping \u2014 my history, no user spoofing, overdue honesty",
+      "source_file": ".scratch/audit-2026-09-18/issues/06-borrowing-scoping-history.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_07_real_profile_settings",
+      "label": "07-real-profile-settings.md",
+      "_origin": "ast",
+      "community": 135,
+      "community_name": "07-real-profile-settings.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "07-real-profile-settings.md",
+      "source_file": ".scratch/audit-2026-09-18/issues/07-real-profile-settings.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_07_real_profile_settings_07_real_profile_settings_remove_hardcodes_and_stubs",
+      "label": "07: Real Profile + Settings (remove hardcodes and stubs)",
+      "_origin": "ast",
+      "community": 135,
+      "community_name": "07-real-profile-settings.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "07: real profile + settings (remove hardcodes and stubs)",
+      "source_file": ".scratch/audit-2026-09-18/issues/07-real-profile-settings.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_08_secrets_config_honest_fallback",
+      "label": "08-secrets-config-honest-fallback.md",
+      "_origin": "ast",
+      "community": 136,
+      "community_name": "08-secrets-config-honest-fallback.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "08-secrets-config-honest-fallback.md",
+      "source_file": ".scratch/audit-2026-09-18/issues/08-secrets-config-honest-fallback.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "scratch_audit_2026_09_18_issues_08_secrets_config_honest_fallback_08_secrets_config_hygiene_honest_offline_fallback",
+      "label": "08: Secrets/config hygiene + honest offline fallback",
+      "_origin": "ast",
+      "community": 136,
+      "community_name": "08-secrets-config-honest-fallback.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "08: secrets/config hygiene + honest offline fallback",
+      "source_file": ".scratch/audit-2026-09-18/issues/08-secrets-config-honest-fallback.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_components_grid_actionscell",
+      "label": "ActionsCell.vue",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "categories.vue",
+      "file_type": "code",
+      "norm_label": "actionscell.vue",
+      "source_file": "frontend/src/components/grid/ActionsCell.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_components_grid_actionscell_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "categories.vue",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "frontend/src/components/grid/ActionsCell.vue",
+      "source_location": "L9"
     },
     {
       "id": "frontend_src_pages_categories",
@@ -5686,17 +5636,6 @@
       "source_location": "L68"
     },
     {
-      "id": "frontend_src_services_authors_fetchauthors",
-      "label": "fetchAuthors",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "categories.vue",
-      "file_type": "code",
-      "norm_label": "fetchauthors",
-      "source_file": "frontend/src/services/authors.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "frontend_src_services_categories",
       "label": "categories.ts",
       "_origin": "ast",
@@ -5730,17 +5669,6 @@
       "source_location": "L28"
     },
     {
-      "id": "frontend_src_services_categories_fetchcategories",
-      "label": "fetchCategories",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "categories.vue",
-      "file_type": "code",
-      "norm_label": "fetchcategories",
-      "source_file": "frontend/src/services/categories.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "frontend_src_services_categories_updatecategory",
       "label": "updateCategory",
       "_origin": "ast",
@@ -5750,28 +5678,6 @@
       "norm_label": "updatecategory",
       "source_file": "frontend/src/services/categories.ts",
       "source_location": "L23"
-    },
-    {
-      "id": "frontend_src_components_grid_actionscell",
-      "label": "ActionsCell.vue",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "authors.vue",
-      "file_type": "code",
-      "norm_label": "actionscell.vue",
-      "source_file": "frontend/src/components/grid/ActionsCell.vue",
-      "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_components_grid_actionscell_props",
-      "label": "props",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "authors.vue",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "frontend/src/components/grid/ActionsCell.vue",
-      "source_location": "L9"
     },
     {
       "id": "frontend_src_pages_authors",
@@ -5873,6 +5779,17 @@
       "source_location": "L28"
     },
     {
+      "id": "frontend_src_services_authors_fetchauthors",
+      "label": "fetchAuthors",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "authors.vue",
+      "file_type": "code",
+      "norm_label": "fetchauthors",
+      "source_file": "frontend/src/services/authors.ts",
+      "source_location": "L13"
+    },
+    {
       "id": "frontend_src_services_authors_updateauthor",
       "label": "updateAuthor",
       "_origin": "ast",
@@ -5882,6 +5799,17 @@
       "norm_label": "updateauthor",
       "source_file": "frontend/src/services/authors.ts",
       "source_location": "L23"
+    },
+    {
+      "id": "frontend_src_services_categories_fetchcategories",
+      "label": "fetchCategories",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "authors.vue",
+      "file_type": "code",
+      "norm_label": "fetchcategories",
+      "source_file": "frontend/src/services/categories.ts",
+      "source_location": "L13"
     },
     {
       "id": "frontend_src_pages_register",
@@ -6522,6 +6450,17 @@
       "source_location": "L13"
     },
     {
+      "id": "frontend_src_services_auth_login",
+      "label": "login",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "login.vue",
+      "file_type": "code",
+      "norm_label": "login",
+      "source_file": "frontend/src/services/auth.ts",
+      "source_location": "L18"
+    },
+    {
       "id": "frontend_tsconfig_node",
       "label": "tsconfig.node.json",
       "_origin": "ast",
@@ -6938,28 +6877,6 @@
       "norm_label": "jwtutil.java",
       "source_file": "backend/src/main/java/org/library/security/JwtUtil.java",
       "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_java_authresponse",
-      "label": "AuthResponse",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "JwtUtil",
-      "file_type": "code",
-      "norm_label": "authresponse",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_java_override",
-      "label": "Override",
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "JwtUtil",
-      "file_type": "code",
-      "norm_label": "override",
-      "source_file": "",
-      "source_location": ""
     },
     {
       "id": "claims",
@@ -7542,6 +7459,39 @@
       "source_location": "L11"
     },
     {
+      "id": "frontend_src_components_grid_statuscell",
+      "label": "StatusCell.vue",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "getStatus",
+      "file_type": "code",
+      "norm_label": "statuscell.vue",
+      "source_file": "frontend/src/components/grid/StatusCell.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_components_grid_statuscell_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "getStatus",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "frontend/src/components/grid/StatusCell.vue",
+      "source_location": "L7"
+    },
+    {
+      "id": "frontend_src_components_grid_statuscell_status",
+      "label": "status",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "getStatus",
+      "file_type": "code",
+      "norm_label": "status",
+      "source_file": "frontend/src/components/grid/StatusCell.vue",
+      "source_location": "L9"
+    },
+    {
       "id": "frontend_src_pages_borrowings_detailstatus",
       "label": "detailStatus",
       "_origin": "ast",
@@ -7683,6 +7633,28 @@
       "norm_label": "titles",
       "source_file": "frontend/src/data/books.ts",
       "source_location": "L20"
+    },
+    {
+      "id": "frontend_src_components_grid_statusbadge",
+      "label": "StatusBadge.vue",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "borrowings.ts",
+      "file_type": "code",
+      "norm_label": "statusbadge.vue",
+      "source_file": "frontend/src/components/grid/StatusBadge.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_components_grid_statusbadge_badgecolor",
+      "label": "badgeColor",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "borrowings.ts",
+      "file_type": "code",
+      "norm_label": "badgecolor",
+      "source_file": "frontend/src/components/grid/StatusBadge.vue",
+      "source_location": "L6"
     },
     {
       "id": "frontend_src_services_books_fetchbooks",
@@ -7960,17 +7932,6 @@
       "source_location": "L32"
     },
     {
-      "id": "frontend_src_composables_usecrudpage",
-      "label": "useCrudPage.ts",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "usecrudpage.ts",
-      "source_file": "frontend/src/composables/useCrudPage.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "frontend_src_services_api",
       "label": "api.ts",
       "_origin": "ast",
@@ -7980,28 +7941,6 @@
       "norm_label": "api.ts",
       "source_file": "frontend/src/services/api.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_services_api_api",
-      "label": "api",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "api",
-      "source_file": "frontend/src/services/api.ts",
-      "source_location": "L108"
-    },
-    {
-      "id": "frontend_src_services_api_mock_token",
-      "label": "MOCK_TOKEN",
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "mock_token",
-      "source_file": "frontend/src/services/api.ts",
-      "source_location": "L3"
     },
     {
       "id": "frontend_src_components_appdatagrid",
@@ -8455,57 +8394,90 @@
       "source_location": "L30"
     },
     {
-      "id": "backend_src_main_java_org_library_security_securityconfig",
-      "label": "SecurityConfig.java",
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository",
+      "label": "BorrowRecordRepository.java",
       "_origin": "ast",
       "community": 30,
-      "community_name": "SecurityConfig.java",
+      "community_name": "UserRepository",
       "file_type": "code",
-      "norm_label": "securityconfig.java",
-      "source_file": "backend/src/main/java/org/library/security/SecurityConfig.java",
+      "norm_label": "borrowrecordrepository.java",
+      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
       "source_location": "L1"
     },
     {
-      "id": "org_springframework_context_annotation_configuration",
-      "label": "org.springframework.context.annotation.Configuration",
+      "id": "backend_src_main_java_org_library_repository_userrepository",
+      "label": "UserRepository.java",
       "_origin": "ast",
       "community": 30,
-      "community_name": "SecurityConfig.java",
+      "community_name": "UserRepository",
       "file_type": "code",
-      "norm_label": "org.springframework.context.annotation.configuration",
+      "norm_label": "userrepository.java",
+      "source_file": "backend/src/main/java/org/library/repository/UserRepository.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl",
+      "label": "AuthServiceImpl.java",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "UserRepository",
+      "file_type": "code",
+      "norm_label": "authserviceimpl.java",
+      "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_java_authenticationmanager",
+      "label": "AuthenticationManager",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "UserRepository",
+      "file_type": "code",
+      "norm_label": "authenticationmanager",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "org_springframework_security_config_annotation_web_builders_httpsecurity",
-      "label": "org.springframework.security.config.annotation.web.builders.HttpSecurity",
+      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_java_authresponse",
+      "label": "AuthResponse",
       "_origin": "ast",
       "community": 30,
-      "community_name": "SecurityConfig.java",
+      "community_name": "UserRepository",
       "file_type": "code",
-      "norm_label": "org.springframework.security.config.annotation.web.builders.httpsecurity",
+      "norm_label": "authresponse",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "org_springframework_security_config_annotation_web_configuration_enablewebsecurity",
-      "label": "org.springframework.security.config.annotation.web.configuration.EnableWebSecurity",
+      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_java_override",
+      "label": "Override",
       "_origin": "ast",
       "community": 30,
-      "community_name": "SecurityConfig.java",
+      "community_name": "UserRepository",
       "file_type": "code",
-      "norm_label": "org.springframework.security.config.annotation.web.configuration.enablewebsecurity",
+      "norm_label": "override",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "org_springframework_security_web_securityfilterchain",
-      "label": "org.springframework.security.web.SecurityFilterChain",
+      "id": "org_springframework_data_jpa_repository_jparepository",
+      "label": "org.springframework.data.jpa.repository.JpaRepository",
       "_origin": "ast",
       "community": 30,
-      "community_name": "SecurityConfig.java",
+      "community_name": "UserRepository",
       "file_type": "code",
-      "norm_label": "org.springframework.security.web.securityfilterchain",
+      "norm_label": "org.springframework.data.jpa.repository.jparepository",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "org_springframework_stereotype_service",
+      "label": "org.springframework.stereotype.Service",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "UserRepository",
+      "file_type": "code",
+      "norm_label": "org.springframework.stereotype.service",
       "source_file": "",
       "source_location": ""
     },
@@ -8669,6 +8641,17 @@
       "norm_label": "bookcontroller.java",
       "source_file": "backend/src/main/java/org/library/controller/BookController.java",
       "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_bookcontroller_java_deletemapping",
+      "label": "DeleteMapping",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "BookController",
+      "file_type": "code",
+      "norm_label": "deletemapping",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "backend_src_main_java_org_library_controller_bookcontroller_java_getmapping",
@@ -8847,36 +8830,36 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl",
-      "label": "AuthServiceImpl.java",
+      "id": "backend_src_main_java_org_library_config_applicationconfig_java_userdetailsservice",
+      "label": "UserDetailsService",
       "_origin": "ast",
       "community": 35,
       "community_name": "lombok.RequiredArgsConstructor",
       "file_type": "code",
-      "norm_label": "authserviceimpl.java",
-      "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_java_authenticationmanager",
-      "label": "AuthenticationManager",
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "authenticationmanager",
+      "norm_label": "userdetailsservice",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl",
-      "label": "UserServiceImpl.java",
+      "id": "backend_src_main_java_org_library_config_testdataconfig",
+      "label": "TestDataConfig.java",
       "_origin": "ast",
       "community": 35,
       "community_name": "lombok.RequiredArgsConstructor",
       "file_type": "code",
-      "norm_label": "userserviceimpl.java",
-      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
+      "norm_label": "testdataconfig.java",
+      "source_file": "backend/src/main/java/org/library/config/TestDataConfig.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_security_securityconfig",
+      "label": "SecurityConfig.java",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": "securityconfig.java",
+      "source_file": "backend/src/main/java/org/library/security/SecurityConfig.java",
       "source_location": "L1"
     },
     {
@@ -8887,6 +8870,28 @@
       "community_name": "lombok.RequiredArgsConstructor",
       "file_type": "code",
       "norm_label": "lombok.requiredargsconstructor",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "org_springframework_context_annotation_bean",
+      "label": "org.springframework.context.annotation.Bean",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": "org.springframework.context.annotation.bean",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "org_springframework_context_annotation_configuration",
+      "label": "org.springframework.context.annotation.Configuration",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": "org.springframework.context.annotation.configuration",
       "source_file": "",
       "source_location": ""
     },
@@ -8902,6 +8907,28 @@
       "source_location": ""
     },
     {
+      "id": "org_springframework_security_config_annotation_web_builders_httpsecurity",
+      "label": "org.springframework.security.config.annotation.web.builders.HttpSecurity",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": "org.springframework.security.config.annotation.web.builders.httpsecurity",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "org_springframework_security_config_annotation_web_configuration_enablewebsecurity",
+      "label": "org.springframework.security.config.annotation.web.configuration.EnableWebSecurity",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": "org.springframework.security.config.annotation.web.configuration.enablewebsecurity",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "org_springframework_security_crypto_password_passwordencoder",
       "label": "org.springframework.security.crypto.password.PasswordEncoder",
       "_origin": "ast",
@@ -8913,13 +8940,13 @@
       "source_location": ""
     },
     {
-      "id": "org_springframework_stereotype_service",
-      "label": "org.springframework.stereotype.Service",
+      "id": "org_springframework_security_web_securityfilterchain",
+      "label": "org.springframework.security.web.SecurityFilterChain",
       "_origin": "ast",
       "community": 35,
       "community_name": "lombok.RequiredArgsConstructor",
       "file_type": "code",
-      "norm_label": "org.springframework.stereotype.service",
+      "norm_label": "org.springframework.security.web.securityfilterchain",
       "source_file": "",
       "source_location": ""
     },
@@ -9012,59 +9039,15 @@
       "source_location": "L12"
     },
     {
-      "id": "frontend_src_components_grid_statusbadge",
-      "label": "StatusBadge.vue",
+      "id": "backend_src_main_java_org_library_exception_borrownotfoundexception",
+      "label": "BorrowNotFoundException.java",
       "_origin": "ast",
       "community": 37,
-      "community_name": "StatusCell.vue",
+      "community_name": "BorrowNotFoundException",
       "file_type": "code",
-      "norm_label": "statusbadge.vue",
-      "source_file": "frontend/src/components/grid/StatusBadge.vue",
+      "norm_label": "borrownotfoundexception.java",
+      "source_file": "backend/src/main/java/org/library/exception/BorrowNotFoundException.java",
       "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_components_grid_statusbadge_badgecolor",
-      "label": "badgeColor",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "StatusCell.vue",
-      "file_type": "code",
-      "norm_label": "badgecolor",
-      "source_file": "frontend/src/components/grid/StatusBadge.vue",
-      "source_location": "L6"
-    },
-    {
-      "id": "frontend_src_components_grid_statuscell",
-      "label": "StatusCell.vue",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "StatusCell.vue",
-      "file_type": "code",
-      "norm_label": "statuscell.vue",
-      "source_file": "frontend/src/components/grid/StatusCell.vue",
-      "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_components_grid_statuscell_props",
-      "label": "props",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "StatusCell.vue",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "frontend/src/components/grid/StatusCell.vue",
-      "source_location": "L7"
-    },
-    {
-      "id": "frontend_src_components_grid_statuscell_status",
-      "label": "status",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "StatusCell.vue",
-      "file_type": "code",
-      "norm_label": "status",
-      "source_file": "frontend/src/components/grid/StatusCell.vue",
-      "source_location": "L9"
     },
     {
       "id": "frontend_package_dependencies",
@@ -9504,17 +9487,6 @@
       "file_type": "code",
       "norm_label": "bookresponse.java",
       "source_file": "backend/src/main/java/org/library/dto/BookResponse.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_exception_borrownotfoundexception",
-      "label": "BorrowNotFoundException.java",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "BookResponse",
-      "file_type": "code",
-      "norm_label": "borrownotfoundexception.java",
-      "source_file": "backend/src/main/java/org/library/exception/BorrowNotFoundException.java",
       "source_location": "L1"
     },
     {
@@ -11335,11 +11307,22 @@
       "source_location": "L183"
     },
     {
+      "id": "backend_src_main_java_org_library_controller_authorcontroller",
+      "label": "AuthorController.java",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "authorcontroller.java",
+      "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
+      "source_location": "L1"
+    },
+    {
       "id": "backend_src_main_java_org_library_controller_authorcontroller_java_postmapping",
       "label": "PostMapping",
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "postmapping",
       "source_file": "",
@@ -11350,7 +11333,7 @@
       "label": "PutMapping",
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "putmapping",
       "source_file": "",
@@ -11361,7 +11344,7 @@
       "label": "RequestMapping",
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "requestmapping",
       "source_file": "",
@@ -11372,7 +11355,7 @@
       "label": "RestController",
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "restcontroller",
       "source_file": "",
@@ -11383,7 +11366,7 @@
       "label": "AuthorRequest.java",
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "authorrequest.java",
       "source_file": "backend/src/main/java/org/library/dto/AuthorRequest.java",
@@ -11394,10 +11377,87 @@
       "label": "AuthorResponse.java",
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "authorresponse.java",
       "source_file": "backend/src/main/java/org/library/dto/AuthorResponse.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_author",
+      "label": "Author.java",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "author.java",
+      "source_file": "backend/src/main/java/org/library/entity/Author.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_author_java_allargsconstructor",
+      "label": "AllArgsConstructor",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "allargsconstructor",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_author_java_data",
+      "label": "Data",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "data",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_author_java_entity",
+      "label": "Entity",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "entity",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_author_java_noargsconstructor",
+      "label": "NoArgsConstructor",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "noargsconstructor",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_author_java_table",
+      "label": "Table",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "table",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_mapper_authormapper",
+      "label": "AuthorMapper.java",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "authormapper.java",
+      "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
       "source_location": "L1"
     },
     {
@@ -11405,11 +11465,22 @@
       "label": "Author",
       "_origin": "ast",
       "community": 61,
-      "community_name": "AuthorController",
+      "community_name": "Author",
       "file_type": "code",
       "norm_label": "author",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_authorrepository",
+      "label": "AuthorRepository.java",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "Author",
+      "file_type": "code",
+      "norm_label": "authorrepository.java",
+      "source_file": "backend/src/main/java/org/library/repository/AuthorRepository.java",
+      "source_location": "L1"
     },
     {
       "id": "context",
@@ -13192,13 +13263,13 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_controller_bookcontroller_java_deletemapping",
-      "label": "DeleteMapping",
+      "id": "backend_src_main_java_org_library_controller_borrowcontroller_java_getmapping",
+      "label": "GetMapping",
       "_origin": "ast",
       "community": 73,
       "community_name": "ApiResponse",
       "file_type": "code",
-      "norm_label": "deletemapping",
+      "norm_label": "getmapping",
       "source_file": "",
       "source_location": ""
     },
@@ -13210,6 +13281,17 @@
       "community_name": "ApiResponse",
       "file_type": "code",
       "norm_label": "postmapping",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_categorycontroller_java_deletemapping",
+      "label": "DeleteMapping",
+      "_origin": "ast",
+      "community": 73,
+      "community_name": "ApiResponse",
+      "file_type": "code",
+      "norm_label": "deletemapping",
       "source_file": "",
       "source_location": ""
     },
@@ -13965,6 +14047,17 @@
       "source_location": "L1"
     },
     {
+      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl",
+      "label": "UserServiceImpl.java",
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": "userserviceimpl.java",
+      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
+      "source_location": "L1"
+    },
+    {
       "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_java_override",
       "label": "Override",
       "_origin": "ast",
@@ -13987,6 +14080,39 @@
       "source_location": "L1"
     },
     {
+      "id": "frontend_src_composables_usecrudpage",
+      "label": "useCrudPage.ts",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "useCrudPage",
+      "file_type": "code",
+      "norm_label": "usecrudpage.ts",
+      "source_file": "frontend/src/composables/useCrudPage.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_services_api_api",
+      "label": "api",
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "api",
+      "source_file": "frontend/src/services/api.ts",
+      "source_location": "L108"
+    },
+    {
+      "id": "frontend_src_services_api_mock_token",
+      "label": "MOCK_TOKEN",
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "auth.ts",
+      "file_type": "code",
+      "norm_label": "mock_token",
+      "source_file": "frontend/src/services/api.ts",
+      "source_location": "L3"
+    },
+    {
       "id": "frontend_src_services_auth",
       "label": "auth.ts",
       "_origin": "ast",
@@ -13996,17 +14122,6 @@
       "norm_label": "auth.ts",
       "source_file": "frontend/src/services/auth.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "frontend_src_services_auth_login",
-      "label": "login",
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "login",
-      "source_file": "frontend/src/services/auth.ts",
-      "source_location": "L18"
     },
     {
       "id": "agents_skills_nuxt_ui_references_recipes_data_tables",
@@ -14750,17 +14865,6 @@
       "source_location": "L1"
     },
     {
-      "id": "backend_src_main_java_org_library_controller_borrowcontroller_java_getmapping",
-      "label": "GetMapping",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "getmapping",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "backend_src_main_java_org_library_controller_borrowcontroller_java_requestmapping",
       "label": "RequestMapping",
       "_origin": "ast",
@@ -14794,6 +14898,83 @@
       "source_location": "L1"
     },
     {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord",
+      "label": "BorrowRecord.java",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "borrowrecord.java",
+      "source_file": "backend/src/main/java/org/library/entity/BorrowRecord.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_allargsconstructor",
+      "label": "AllArgsConstructor",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "allargsconstructor",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_builder",
+      "label": "Builder",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "builder",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_data",
+      "label": "Data",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "data",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_entity",
+      "label": "Entity",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "entity",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_noargsconstructor",
+      "label": "NoArgsConstructor",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "noargsconstructor",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_table",
+      "label": "Table",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "table",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "backend_src_main_java_org_library_mapper_borrowmapper",
       "label": "BorrowMapper.java",
       "_origin": "ast",
@@ -14803,6 +14984,17 @@
       "norm_label": "borrowmapper.java",
       "source_file": "backend/src/main/java/org/library/mapper/BorrowMapper.java",
       "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_java_book",
+      "label": "Book",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "BorrowResponse",
+      "file_type": "code",
+      "norm_label": "book",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "backend_src_main_java_org_library_service_borrowservice",
@@ -35067,6 +35259,94 @@
       "weight": 1.0
     },
     {
+      "source": "scratch_audit_2026_09_18_issues_01_backend_test_harness_ci",
+      "target": "scratch_audit_2026_09_18_issues_01_backend_test_harness_ci_01_backend_test_harness_ci_for_backend",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".scratch/audit-2026-09-18/issues/01-backend-test-harness-ci.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scratch_audit_2026_09_18_issues_02_role_based_authorization",
+      "target": "scratch_audit_2026_09_18_issues_02_role_based_authorization_02_enforce_role_based_authorization_admin_vs_user",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".scratch/audit-2026-09-18/issues/02-role-based-authorization.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scratch_audit_2026_09_18_issues_03_auth_validation_change_password",
+      "target": "scratch_audit_2026_09_18_issues_03_auth_validation_change_password_03_harden_auth_validation_duplicate_email_change_password_slice",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".scratch/audit-2026-09-18/issues/03-auth-validation-change-password.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scratch_audit_2026_09_18_issues_04_members_management_grid",
+      "target": "scratch_audit_2026_09_18_issues_04_members_management_grid_04_members_user_management_grid_replaces_stub",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".scratch/audit-2026-09-18/issues/04-members-management-grid.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scratch_audit_2026_09_18_issues_05_catalog_search_pagination",
+      "target": "scratch_audit_2026_09_18_issues_05_catalog_search_pagination_05_catalog_search_pagination_and_safe_bulk_delete",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".scratch/audit-2026-09-18/issues/05-catalog-search-pagination.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scratch_audit_2026_09_18_issues_06_borrowing_scoping_history",
+      "target": "scratch_audit_2026_09_18_issues_06_borrowing_scoping_history_06_borrowing_scoping_my_history_no_user_spoofing_overdue_honesty",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".scratch/audit-2026-09-18/issues/06-borrowing-scoping-history.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scratch_audit_2026_09_18_issues_07_real_profile_settings",
+      "target": "scratch_audit_2026_09_18_issues_07_real_profile_settings_07_real_profile_settings_remove_hardcodes_and_stubs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".scratch/audit-2026-09-18/issues/07-real-profile-settings.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scratch_audit_2026_09_18_issues_08_secrets_config_honest_fallback",
+      "target": "scratch_audit_2026_09_18_issues_08_secrets_config_honest_fallback_08_secrets_config_hygiene_honest_offline_fallback",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".scratch/audit-2026-09-18/issues/08-secrets-config-honest-fallback.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "backend_mvnw",
       "target": "backend_mvnw_trim",
       "relation": "defines",
@@ -37469,5 +37749,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5c0dee7318fe82c46398ab6968b7fdb53536d738"
+  "built_at_commit": "d344e20d9b8ca59ebb2f219a366b2849ee294724"
 }

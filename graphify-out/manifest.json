@@ -934,5 +934,53 @@
     "seen": 1789751595.4827387,
     "ast_hash": "8c37aa9ad2c9ba095c45fac72c94d170",
     "semantic_hash": ""
+  },
+  ".scratch/audit-2026-09-18/issues/01-backend-test-harness-ci.md": {
+    "mtime": 1789763728.767385,
+    "seen": 1789764182.691137,
+    "ast_hash": "b497b87441b7aae58cf884532fc9f1b8",
+    "semantic_hash": ""
+  },
+  ".scratch/audit-2026-09-18/issues/02-role-based-authorization.md": {
+    "mtime": 1789763728.7913725,
+    "seen": 1789764182.691137,
+    "ast_hash": "b528df0347bafacd81e68ece5927bcf8",
+    "semantic_hash": ""
+  },
+  ".scratch/audit-2026-09-18/issues/03-auth-validation-change-password.md": {
+    "mtime": 1789763728.7933693,
+    "seen": 1789764182.691137,
+    "ast_hash": "364d7e36ebf1f7735ba2af91dde1ff4a",
+    "semantic_hash": ""
+  },
+  ".scratch/audit-2026-09-18/issues/04-members-management-grid.md": {
+    "mtime": 1789763728.7943695,
+    "seen": 1789764182.691137,
+    "ast_hash": "4e6e5d0b4a4b6fa75ddcdf23c54930ab",
+    "semantic_hash": ""
+  },
+  ".scratch/audit-2026-09-18/issues/05-catalog-search-pagination.md": {
+    "mtime": 1789763728.8023643,
+    "seen": 1789764182.691137,
+    "ast_hash": "5722136ffb2963735793cfd3124d17e5",
+    "semantic_hash": ""
+  },
+  ".scratch/audit-2026-09-18/issues/06-borrowing-scoping-history.md": {
+    "mtime": 1789763728.8023643,
+    "seen": 1789764182.691137,
+    "ast_hash": "60d4db8254a94f8bd02c4aa1d2857414",
+    "semantic_hash": ""
+  },
+  ".scratch/audit-2026-09-18/issues/07-real-profile-settings.md": {
+    "mtime": 1789763728.803365,
+    "seen": 1789764182.691137,
+    "ast_hash": "fd38f9348de061451eb4c3e767d7dd1a",
+    "semantic_hash": ""
+  },
+  ".scratch/audit-2026-09-18/issues/08-secrets-config-honest-fallback.md": {
+    "mtime": 1789763728.8043635,
+    "seen": 1789764182.691137,
+    "ast_hash": "b709cf3bd35d96315f196e1ebdcd6c84",
+    "semantic_hash": ""
   }
 }
