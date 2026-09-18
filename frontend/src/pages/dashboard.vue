@@ -255,40 +255,49 @@ function statusLabel(status: BorrowingStatus) {
 
 <template>
   <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-5 pb-2">
-    <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+    <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end" aria-labelledby="dashboard-greeting">
       <div>
-        <div class="mb-2 h-1 w-11 rounded-full bg-[#e5a214]" />
-        <h1 class="font-serif text-3xl font-bold tracking-[-0.035em] text-[#132f57] sm:text-[2rem]">
+        <p class="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a99ae]">
+          <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />
+          Library manager · Overview
+        </p>
+        <h1 id="dashboard-greeting" class="font-serif text-3xl font-bold tracking-[-0.035em] text-[#132f57] sm:text-[2rem]">
           {{ greeting }}, Mohammad
         </h1>
-        <p class="mt-1.5 text-sm text-[#667896]">
-          Here’s an overview of your library today.
+        <p class="mt-1.5 max-w-md text-sm leading-relaxed text-[#667896]">
+          Here’s an overview of your library today — circulation, collection health, and what needs a nudge.
         </p>
       </div>
 
-      <div class="flex items-center gap-3 self-start rounded-xl border border-[#e4ebf3] bg-white px-3.5 py-2.5 text-sm text-[#304968] shadow-[0_8px_24px_rgba(27,59,102,0.05)] lg:self-auto">
-        <UIcon name="i-lucide-calendar-days" class="size-4 text-[#173b70]" />
+      <div class="flex items-center gap-2.5 self-start rounded-xl border border-[#e4ebf3] bg-white px-3.5 py-2.5 text-sm text-[#304968] shadow-[0_8px_24px_rgba(27,59,102,0.05)] lg:self-auto" role="status" aria-label="Today's date">
+        <span class="flex size-7 items-center justify-center rounded-lg bg-[#edf4ff] text-[#173b70]">
+          <UIcon name="i-lucide-calendar-days" class="size-4" aria-hidden="true" />
+        </span>
         <span class="font-medium">{{ dateLabel }}</span>
+        <span class="flex items-center gap-1 rounded-full bg-[#eaf7f2] px-2 py-0.5 text-[10px] font-semibold text-[#16765f]">
+          <span class="size-1.5 rounded-full bg-[#20876e]" aria-hidden="true" />
+          Live
+        </span>
       </div>
     </section>
 
-    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Library statistics">
       <article
         v-for="stat in dashboardStats"
         :key="stat.label"
-        class="group rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.045)] transition-colors hover:border-[#cdd9ea]"
+        class="group rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.045)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#cdd9ea] hover:shadow-[0_12px_32px_rgba(27,59,102,0.08)] motion-reduce:transform-none motion-reduce:transition-none focus-within:border-[#8ca9ce] focus-within:ring-4 focus-within:ring-[#edf4ff]"
       >
-        <div class="flex items-center gap-4">
-          <div class="flex size-14 shrink-0 items-center justify-center rounded-2xl" :class="stat.iconClass">
-            <UIcon :name="stat.icon" class="size-6" />
+        <div class="flex items-start gap-4">
+          <div class="flex size-12 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04] transition-transform duration-150 group-hover:scale-[1.04] motion-reduce:transform-none" :class="stat.iconClass">
+            <UIcon :name="stat.icon" class="size-5" aria-hidden="true" />
           </div>
-          <div class="min-w-0">
-            <p class="font-serif text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#132f57]">
+          <div class="min-w-0 flex-1">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#7a8ba3]">{{ stat.label }}</p>
+            <p class="mt-1 font-serif text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#132f57]">
               {{ stat.value.toLocaleString() }}
             </p>
-            <p class="mt-1.5 text-sm font-semibold text-[#263f5f]">{{ stat.label }}</p>
-            <p class="mt-1.5 flex items-center gap-1.5 text-xs text-[#7a8ba3]">
-              <span class="size-1.5 rounded-full" :class="stat.dotClass" />
+            <p class="mt-2 flex items-center gap-1.5 text-xs text-[#7a8ba3]">
+              <span class="size-1.5 shrink-0 rounded-full" :class="stat.dotClass" aria-hidden="true" />
               {{ stat.detail }}
             </p>
           </div>
@@ -297,46 +306,48 @@ function statusLabel(status: BorrowingStatus) {
     </section>
 
     <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
-        <div class="flex items-start justify-between gap-3">
+      <article class="overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="activity-heading">
+        <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
           <div>
-            <h2 class="font-serif text-lg font-bold text-[#132f57]">Library activity</h2>
+            <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Circulation</p>
+            <h2 id="activity-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Library activity</h2>
             <p class="mt-0.5 text-xs text-[#7486a0]">Loans created over the last seven days</p>
           </div>
-          <div class="rounded-lg bg-[#f1f5fb] px-3 py-1.5 text-right">
+          <div class="shrink-0 rounded-xl border border-[#e4ebf3] bg-[#f6f8fc] px-3 py-2 text-right">
             <p class="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#72849d]">This week</p>
-            <p class="mt-0.5 text-sm font-bold text-[#173b70]">{{ activityChart.total }} loans</p>
+            <p class="mt-0.5 font-serif text-base font-bold leading-none text-[#173b70]">{{ activityChart.total }} loans</p>
           </div>
         </div>
 
-        <div class="mt-4 min-w-0">
+        <div class="min-w-0 px-5 pb-5 pt-4">
           <ActivityChart :labels="activityChart.labels" :counts="activityChart.counts" />
         </div>
       </article>
 
-      <article class="overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
-        <div class="flex items-start justify-between gap-3">
+      <article class="overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="category-heading">
+        <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
           <div>
-            <h2 class="font-serif text-lg font-bold text-[#132f57]">Books by category</h2>
+            <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Collection</p>
+            <h2 id="category-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Books by category</h2>
             <p class="mt-0.5 text-xs text-[#7486a0]">How your collection is distributed</p>
           </div>
-          <RouterLink to="/categories" class="flex items-center gap-1 text-xs font-semibold text-[#173b70] transition-colors hover:text-[#2b65ad]">
+          <RouterLink to="/categories" class="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
             View all
-            <UIcon name="i-lucide-chevron-right" class="size-3.5" />
+            <UIcon name="i-lucide-chevron-right" class="size-3.5" aria-hidden="true" />
           </RouterLink>
         </div>
 
-        <div class="mt-4 grid min-w-0 grid-cols-1 items-center justify-items-center gap-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:justify-items-stretch">
+        <div class="grid min-w-0 grid-cols-1 items-center justify-items-center gap-5 px-5 pb-5 pt-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:justify-items-stretch">
           <CategoryDonutChart :items="donutSegments" :total="totalBooks" />
 
           <div class="w-full min-w-0 max-w-[250px] divide-y divide-[#edf1f6] sm:max-w-none">
-            <div v-for="category in categoryBreakdown" :key="category.name" class="flex items-center justify-between gap-4 py-2.5 first:pt-0 last:pb-0">
+            <div v-for="category in categoryBreakdown" :key="category.name" class="flex items-center justify-between gap-4 py-2.5 transition-colors first:pt-0 last:pb-0 hover:bg-[#f8fbff]">
               <span class="flex min-w-0 items-center gap-2.5 text-sm font-medium text-[#304968]">
-                <span class="size-2.5 shrink-0 rounded-full" :style="{ backgroundColor: category.color }" />
+                <span class="size-2.5 shrink-0 rounded-full ring-1 ring-inset ring-black/10" :style="{ backgroundColor: category.color }" aria-hidden="true" />
                 <span class="truncate">{{ category.name }}</span>
               </span>
-              <span class="shrink-0 text-sm text-[#667896]">
-                {{ category.count }} <span class="text-xs text-[#93a0b2]">({{ category.percentage }}%)</span>
+              <span class="shrink-0 rounded-md bg-[#f6f8fc] px-2 py-0.5 text-xs font-semibold text-[#304968]">
+                {{ category.count }} <span class="font-normal text-[#7a8ba3]">{{ category.percentage }}%</span>
               </span>
             </div>
             <div v-if="!categoryBreakdown.length" class="py-8 text-center text-sm text-[#7a8ba3]">No categories yet</div>
@@ -346,22 +357,23 @@ function statusLabel(status: BorrowingStatus) {
     </section>
 
     <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
-        <div class="flex items-center justify-between px-5 pb-3 pt-5">
+      <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="recent-heading">
+        <div class="flex items-center justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
           <div>
-            <h2 class="font-serif text-lg font-bold text-[#132f57]">Recent activity</h2>
+            <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Timeline</p>
+            <h2 id="recent-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Recent activity</h2>
             <p class="mt-0.5 text-xs text-[#7486a0]">Catalog and circulation updates</p>
           </div>
-          <RouterLink to="/borrowings" class="flex items-center gap-1 text-xs font-semibold text-[#173b70] transition-colors hover:text-[#2b65ad]">
-            View all activity
-            <UIcon name="i-lucide-chevron-right" class="size-3.5" />
+          <RouterLink to="/borrowings" class="inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
+            View all
+            <UIcon name="i-lucide-chevron-right" class="size-3.5" aria-hidden="true" />
           </RouterLink>
         </div>
 
-        <div class="flex-1 divide-y divide-[#edf1f6] px-5 pb-2">
-          <div v-for="item in recentActivity" :key="item.id" class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-3 py-3 sm:grid-cols-[2.5rem_minmax(0,1.4fr)_minmax(0,1fr)_auto] sm:items-center">
-            <div class="flex size-10 items-center justify-center rounded-xl" :class="activityKindStyle[item.kind].chip" :title="activityKindLabel(item.kind)">
-              <UIcon :name="activityKindStyle[item.kind].icon" class="size-5" />
+        <div class="flex-1 divide-y divide-[#edf1f6] px-3 pb-2 pt-1 sm:px-4">
+          <div v-for="item in recentActivity" :key="item.id" class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-3 rounded-xl px-2 py-3 transition-colors hover:bg-[#f8fbff] sm:grid-cols-[2.5rem_minmax(0,1.4fr)_minmax(0,1fr)_auto] sm:items-center">
+            <div class="flex size-10 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04]" :class="activityKindStyle[item.kind].chip" :title="activityKindLabel(item.kind)">
+              <UIcon :name="activityKindStyle[item.kind].icon" class="size-5" aria-hidden="true" />
             </div>
             <div class="min-w-0">
               <p class="truncate text-sm font-semibold text-[#263f5f]">{{ item.title }}</p>
@@ -390,32 +402,36 @@ function statusLabel(status: BorrowingStatus) {
         </div>
       </article>
 
-      <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
-        <div class="flex items-center justify-between px-5 pb-3 pt-5">
+      <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="attention-heading">
+        <div class="flex items-center justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
           <div>
-            <h2 class="font-serif text-lg font-bold text-[#132f57]">Needs attention</h2>
+            <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Follow-up</p>
+            <h2 id="attention-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Needs attention</h2>
             <p class="mt-0.5 text-xs text-[#7486a0]">Overdue loans that need a follow-up</p>
           </div>
-          <RouterLink to="/borrowings" class="flex items-center gap-1 text-xs font-semibold text-[#173b70] transition-colors hover:text-[#2b65ad]">
-            View all overdue
-            <UIcon name="i-lucide-chevron-right" class="size-3.5" />
+          <RouterLink to="/borrowings" class="inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]">
+            View all
+            <UIcon name="i-lucide-chevron-right" class="size-3.5" aria-hidden="true" />
           </RouterLink>
         </div>
 
-        <div v-if="overdueBorrowings.length" class="mx-5 mb-2 flex items-center gap-3 rounded-xl bg-[#fff5f3] px-3.5 py-3 text-sm">
-          <div class="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#ffe2dd] text-[#df4634]">
-            <UIcon name="i-lucide-circle-alert" class="size-4" />
+        <div v-if="overdueBorrowings.length" class="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-[#f3d4cf] bg-[#fff5f3] px-3.5 py-3 text-sm sm:mx-5" role="alert">
+          <div class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#df4634] text-white shadow-[0_4px_12px_rgba(223,70,52,0.3)]">
+            <UIcon name="i-lucide-circle-alert" class="size-4" aria-hidden="true" />
           </div>
-          <div>
+          <div class="min-w-0 flex-1">
             <p class="font-semibold text-[#9d3529]">{{ overdueBooks }} {{ overdueBooks === 1 ? 'loan needs' : 'loans need' }} attention</p>
-            <p class="mt-0.5 text-xs text-[#b3665c]">A gentle reminder can help keep the collection moving.</p>
+            <p class="mt-0.5 truncate text-xs text-[#b3665c]">A gentle reminder can help keep the collection moving.</p>
           </div>
+          <RouterLink to="/borrowings" class="hidden shrink-0 rounded-lg bg-[#9d3529] px-2.5 py-1.5 text-[11px] font-semibold text-white transition-colors hover:bg-[#7f2b21] sm:inline-flex">
+            Remind
+          </RouterLink>
         </div>
 
-        <div v-if="overdueBorrowings.length" class="flex-1 divide-y divide-[#edf1f6] px-5 pb-2">
-          <div v-for="borrowing in overdueBorrowings.slice(0, 5)" :key="borrowing.id" class="grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 py-3">
-            <div class="flex size-10 items-center justify-center rounded-xl bg-[#fff0ee] text-[#d84332]" title="Overdue">
-              <UIcon name="i-lucide-calendar-clock" class="size-5" />
+        <div v-if="overdueBorrowings.length" class="flex-1 divide-y divide-[#edf1f6] px-3 pb-2 pt-1 sm:px-4">
+          <div v-for="borrowing in overdueBorrowings.slice(0, 5)" :key="borrowing.id" class="grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 rounded-xl px-2 py-3 transition-colors hover:bg-[#fff8f7]">
+            <div class="flex size-10 items-center justify-center rounded-xl bg-[#fff0ee] text-[#d84332] ring-1 ring-inset ring-[#f3d4cf]" title="Overdue">
+              <UIcon name="i-lucide-calendar-clock" class="size-5" aria-hidden="true" />
             </div>
             <div class="min-w-0">
               <p class="truncate text-sm font-semibold text-[#263f5f]">{{ borrowing.book.title }}</p>
@@ -430,18 +446,23 @@ function statusLabel(status: BorrowingStatus) {
           </div>
         </div>
 
-        <div v-else class="mx-5 flex min-h-56 flex-col items-center justify-center rounded-xl border border-dashed border-[#dfe7f1] bg-[#fbfcfe] px-5 text-center">
-          <div class="flex size-11 items-center justify-center rounded-full bg-[#eaf7f2] text-[#20876e]">
-            <UIcon name="i-lucide-circle-check-big" class="size-5" />
+        <div v-else class="mx-4 mb-4 mt-4 flex min-h-56 flex-col items-center justify-center rounded-xl border border-dashed border-[#dfe7f1] bg-[#fbfcfe] px-5 py-8 text-center sm:mx-5">
+          <div class="flex size-11 items-center justify-center rounded-full bg-[#eaf7f2] text-[#20876e] ring-1 ring-inset ring-[#bfe6d8]">
+            <UIcon name="i-lucide-circle-check-big" class="size-5" aria-hidden="true" />
           </div>
           <p class="mt-3 font-semibold text-[#2c5260]">Everything is on track</p>
-          <p class="mt-1 text-sm text-[#7486a0]">There are no overdue books to follow up today.</p>
+          <p class="mt-1 max-w-56 text-sm text-[#7486a0]">There are no overdue books to follow up today.</p>
         </div>
       </article>
     </section>
 
-    <footer class="pt-1 text-center text-xs text-[#8a99ae]">
-      {{ authorCount }} authors · {{ categories.length }} categories · Athenaeum Library Management
+    <footer class="flex flex-col items-center gap-1.5 border-t border-[#e9eef5] pt-4 text-center text-xs text-[#8a99ae] sm:flex-row sm:justify-center sm:gap-2">
+      <span class="inline-flex items-center gap-1.5">
+        <span class="size-1.5 rounded-full bg-[#20876e]" aria-hidden="true" />
+        {{ authorCount }} authors · {{ categories.length }} categories
+      </span>
+      <span class="hidden text-[#c7d1de] sm:inline" aria-hidden="true">·</span>
+      <span>Athenaeum Library Management</span>
     </footer>
   </div>
 </template>

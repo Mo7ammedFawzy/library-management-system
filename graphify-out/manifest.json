@@ -384,9 +384,9 @@
     "semantic_hash": "4edc132708119ceca9d4cb2df9a7cec0"
   },
   "frontend/src/App.vue": {
-    "mtime": 1789751044.492947,
-    "seen": 1789751595.4827387,
-    "ast_hash": "ccdbd49bd63e5b60096bbe7ccf505b09",
+    "mtime": 1789764483.8358798,
+    "seen": 1789764636.769259,
+    "ast_hash": "fd5f16eee2a6dbb2502905652d65f452",
     "semantic_hash": ""
   },
   "frontend/src/components/AppDataGrid.vue": {
@@ -516,8 +516,8 @@
     "semantic_hash": "2ba6178191b8752eac2e4cbf0cda6dfb"
   },
   "frontend/src/pages/dashboard.vue": {
-    "mtime": 1789750949.187477,
-    "seen": 1789751595.4837382,
+    "mtime": 1789764483.8398771,
+    "seen": 1789764636.769259,
     "ast_hash": "1102f47284bd080e1fc9180a5e864ee8",
     "semantic_hash": ""
   },
@@ -558,8 +558,8 @@
     "semantic_hash": "e7ba02ccec7c55599682993dd08a3959"
   },
   "frontend/src/route-map.d.ts": {
-    "mtime": 1789751168.5779247,
-    "seen": 1789751595.4837382,
+    "mtime": 1789764590.8326983,
+    "seen": 1789764636.769259,
     "ast_hash": "15fbb2c561d35cb3caa4262225cedb44",
     "semantic_hash": "15fbb2c561d35cb3caa4262225cedb44"
   },
@@ -846,9 +846,9 @@
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1788629060.0196767,
-    "seen": 1789673317.2303362,
-    "ast_hash": "97fa401de1faf3f4894294c13883d449",
+    "mtime": 1789764580.982804,
+    "seen": 1789764636.7702584,
+    "ast_hash": "9555eff55174ceb66d0697a46f20ee43",
     "semantic_hash": ""
   },
   "README.md": {
@@ -924,15 +924,15 @@
     "semantic_hash": ""
   },
   "frontend/src/components/dashboard/ActivityChart.vue": {
-    "mtime": 1789751148.3899128,
-    "seen": 1789751595.4827387,
-    "ast_hash": "f69f92843cc0a844b18d691e8d3a2d06",
+    "mtime": 1789764483.8378797,
+    "seen": 1789764636.769259,
+    "ast_hash": "ca407394c6ef3aaa520b64ad7d75a79d",
     "semantic_hash": ""
   },
   "frontend/src/components/dashboard/CategoryDonutChart.vue": {
-    "mtime": 1789750939.4454563,
-    "seen": 1789751595.4827387,
-    "ast_hash": "8c37aa9ad2c9ba095c45fac72c94d170",
+    "mtime": 1789764483.8388786,
+    "seen": 1789764636.769259,
+    "ast_hash": "6ddfcecb6d95ea2749371561aadca503",
     "semantic_hash": ""
   },
   ".scratch/audit-2026-09-18/issues/01-backend-test-harness-ci.md": {
