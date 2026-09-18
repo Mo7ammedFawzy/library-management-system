@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue'
-import { useColorMode } from '@vueuse/core'
+import { watch } from 'vue'
 import { AgGridVue } from 'ag-grid-vue3'
 import { themeQuartz, type ColDef, type GetRowIdParams, type GridApi, type GridReadyEvent } from 'ag-grid-community'
 import '../lib/agGrid'
@@ -37,18 +36,18 @@ const lightTheme = themeQuartz.withParams({
   headerFontFamily: "'Inter Variable', ui-sans-serif, system-ui, sans-serif",
   headerFontSize: 11,
   headerFontWeight: 600,
-  headerTextColor: '#6e6863',
+  headerTextColor: '#667896',
   headerBackgroundColor: '#ffffff',
   backgroundColor: '#ffffff',
-  textColor: '#1b1c1b',
-  subtleTextColor: '#8a847e',
-  borderColor: '#e5e1e0',
+  textColor: '#263f5f',
+  subtleTextColor: '#8a99ae',
+  borderColor: '#e4ebf3',
   borderWidth: 1,
   wrapperBorder: false,
-  headerRowBorder: { color: '#e5e1e0', width: 1, style: 'solid' },
-  rowBorder: { color: '#e5e1e0', width: 1, style: 'solid' },
+  headerRowBorder: { color: '#e4ebf3', width: 1, style: 'solid' },
+  rowBorder: { color: '#e4ebf3', width: 1, style: 'solid' },
   columnBorder: false,
-  rowHoverColor: '#f7f5f4',
+  rowHoverColor: '#f7f9fc',
   rowHeight: props.rowHeight,
   headerHeight: props.headerHeight,
   paginationPanelHeight: 48,
@@ -56,33 +55,7 @@ const lightTheme = themeQuartz.withParams({
   iconSize: 16
 })
 
-const darkTheme = themeQuartz.withParams({
-  fontFamily: "'Inter Variable', ui-sans-serif, system-ui, sans-serif",
-  fontSize: 14,
-  headerFontFamily: "'Inter Variable', ui-sans-serif, system-ui, sans-serif",
-  headerFontSize: 11,
-  headerFontWeight: 600,
-  headerTextColor: '#a8a29e',
-  headerBackgroundColor: '#292524',
-  backgroundColor: '#292524',
-  textColor: '#e7e5e4',
-  subtleTextColor: '#78716c',
-  borderColor: '#3a3532',
-  borderWidth: 1,
-  wrapperBorder: false,
-  headerRowBorder: { color: '#3a3532', width: 1, style: 'solid' },
-  rowBorder: { color: '#3a3532', width: 1, style: 'solid' },
-  columnBorder: false,
-  rowHoverColor: '#35302c',
-  rowHeight: props.rowHeight,
-  headerHeight: props.headerHeight,
-  paginationPanelHeight: 48,
-  spacing: 8,
-  iconSize: 16
-})
-
-const colorMode = useColorMode()
-const theme = computed(() => (colorMode.value === 'dark' ? darkTheme : lightTheme))
+const theme = lightTheme
 
 const defaultColDef: ColDef = {
   sortable: true,

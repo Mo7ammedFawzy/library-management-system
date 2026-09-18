@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useColorMode, useLocalStorage } from '@vueuse/core'
+import { useLocalStorage } from '@vueuse/core'
 import {
   Notivue,
   Notification,
   push,
   lightTheme,
-  darkTheme,
   type NotivueItem,
   type NotivueTheme
 } from 'notivue'
@@ -45,48 +44,26 @@ const router = useRouter()
 
 const isAuthPage = computed(() => ['/login', '/register'].includes(route.path))
 
-const colorMode = useColorMode()
-
-const notivueBaseTheme = computed<NotivueTheme>(() =>
-  colorMode.value === 'dark' ? darkTheme : lightTheme
-)
-
-const notivueCompactTheme = computed<NotivueTheme>(() => ({
-  ...notivueBaseTheme.value,
+const notivueCompactTheme: NotivueTheme = {
+  ...lightTheme,
   '--nv-width': '18rem',
   '--nv-spacing': '0.4375rem',
-  '--nv-radius': '0.5rem',
+  '--nv-radius': '0.75rem',
   '--nv-icon-size': '1rem',
   '--nv-title-size': '0.8125rem',
   '--nv-message-size': '0.75rem'
-}))
-
-function getNotivueTheme(item: NotivueItem) {
-  return item.props?.compact === true ? notivueCompactTheme.value : notivueBaseTheme.value
 }
 
-const colorModeOptions = [
-  { value: 'light', icon: 'i-lucide-sun', label: 'Light' },
-  { value: 'dark', icon: 'i-lucide-moon', label: 'Dark' },
-  { value: 'auto', icon: 'i-lucide-monitor', label: 'System' }
-] as const
-
-const colorModeIndex = computed(() =>
-  Math.max(0, colorModeOptions.findIndex((option) => option.value === colorMode.store.value))
-)
-
-const colorModeIcon = computed(() => colorModeOptions[colorModeIndex.value].icon)
-
-function cycleColorMode() {
-  colorMode.store.value = colorModeOptions[(colorModeIndex.value + 1) % colorModeOptions.length].value
+function getNotivueTheme(item: NotivueItem) {
+  return item.props?.compact === true ? notivueCompactTheme : lightTheme
 }
 
 const sidebarOpen = useLocalStorage('sidebar-open', true)
 
 const sidebarUi = {
-  root: '[--sidebar-width:15rem] [--sidebar-width-icon:4.5rem] border-r border-(--ui-border)',
-  header: 'flex items-center gap-1.5 overflow-hidden px-4 min-h-(--ui-header-height) group-data-[state=collapsed]/sidebar:px-0',
-  body: 'flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-4 group-data-[state=collapsed]/sidebar:overflow-hidden group-data-[state=collapsed]/sidebar:p-2'
+  root: '[--sidebar-width:16rem] [--sidebar-width-icon:4.5rem] border-r border-[#e4ebf3] bg-white',
+  header: 'flex min-h-20 items-center overflow-hidden px-5 group-data-[state=collapsed]/sidebar:px-0',
+  body: 'flex min-h-0 flex-1 flex-col overflow-y-auto px-3 pb-4 pt-2 group-data-[state=collapsed]/sidebar:px-2'
 }
 
 const navItem = (label: string, icon: string, to: string) => ({
@@ -98,28 +75,35 @@ const navItem = (label: string, icon: string, to: string) => ({
 
 const navSections = computed(() => [
   {
-    label: 'Main',
+    label: 'Workspace',
     items: [
-      navItem('Dashboard', 'i-lucide-home', '/dashboard'),
-      navItem('Books', 'i-lucide-book-open', '/books'),
-      navItem('Members', 'i-lucide-users', '/members'),
-      navItem('Borrowings', 'i-lucide-arrow-left-right', '/borrowings')
+      navItem('Dashboard', 'i-lucide-layout-dashboard', '/dashboard'),
+      navItem('Books', 'i-lucide-library-big', '/books'),
+      navItem('Members', 'i-lucide-users-round', '/members'),
+      navItem('Borrowings', 'i-lucide-repeat-2', '/borrowings')
     ]
   },
   {
-    label: 'Library',
+    label: 'Catalog',
     items: [
-      navItem('Authors', 'i-lucide-user', '/authors'),
-      navItem('Categories', 'i-lucide-tag', '/categories')
+      navItem('Authors', 'i-lucide-pen-line', '/authors'),
+      navItem('Categories', 'i-lucide-tags', '/categories')
     ]
   },
   {
-    label: 'System',
-    items: [
-      navItem('Settings', 'i-lucide-settings', '/settings')
-    ]
+    label: 'Preferences',
+    items: [navItem('Settings', 'i-lucide-settings-2', '/settings')]
   }
 ])
+
+const quickActions = [
+  { label: 'Add new book', icon: 'i-lucide-plus', to: '/books' },
+  { label: 'Add new member', icon: 'i-lucide-user-plus', to: '/members' },
+  { label: 'New borrowing', icon: 'i-lucide-book-plus', to: '/borrowings' }
+]
+
+const activeNavClass = "bg-[#edf4ff] text-[#173b70] before:absolute before:inset-y-2 before:left-0 before:w-1 before:rounded-r-full before:bg-[#e5a214] before:content-['']"
+const inactiveNavClass = 'text-[#60728e] hover:bg-[#f5f8fc] hover:text-[#173b70]'
 
 function toggleSidebar() {
   sidebarOpen.value = !sidebarOpen.value
@@ -133,12 +117,12 @@ const headerMenuItems: DropdownMenuItem[][] = [
   [
     {
       label: 'Profile',
-      icon: 'i-lucide-circle-user',
+      icon: 'i-lucide-circle-user-round',
       to: '/profile'
     },
     {
-      label: 'Change Password',
-      icon: 'i-lucide-lock',
+      label: 'Change password',
+      icon: 'i-lucide-key-round',
       to: '/change-password'
     }
   ]
@@ -153,181 +137,182 @@ function handleLogout() {
 <template>
   <Suspense>
     <UApp>
-      <div v-if="isAuthPage" class="min-h-svh w-full bg-(--ui-bg) text-default">
+      <div v-if="isAuthPage" class="min-h-svh w-full bg-[#f7f9fc] text-default">
         <RouterView />
       </div>
 
-      <div v-else class="flex h-svh overflow-hidden bg-(--ui-bg)">
+      <div v-else class="flex h-svh overflow-hidden bg-[#f7f9fc]">
         <USidebar
           v-model:open="sidebarOpen"
           collapsible="icon"
           :ui="sidebarUi"
         >
           <template #header="{ state }">
-            <div
-              v-if="state === 'collapsed'"
-              class="flex w-full items-center justify-center"
-            >
+            <div v-if="state === 'collapsed'" class="flex w-full items-center justify-center">
               <UButton
-                icon="i-lucide-chevrons-left"
+                icon="i-lucide-panel-left-open"
                 color="neutral"
                 variant="ghost"
                 size="sm"
-                aria-label="Toggle sidebar"
+                aria-label="Expand sidebar"
+                class="text-[#304968]"
                 @click="toggleSidebar"
               />
             </div>
 
-            <div v-else class="flex min-w-0 flex-1 items-center gap-3 px-1">
-              <UAvatar size="md" text="MF" color="primary" class="shrink-0" />
-
-              <div class="min-w-0">
-                <p class="truncate text-sm font-medium leading-tight text-highlighted">
-                  Mohammad Fawzy
-                </p>
-                <p class="truncate text-xs leading-tight text-muted">
-                  Administrator
-                </p>
-              </div>
-
-              <div class="flex shrink-0 items-center gap-1">
-                <UButton
-                  icon="i-lucide-chevrons-left"
-                  color="neutral"
-                  variant="ghost"
-                  size="sm"
-                  aria-label="Toggle sidebar"
-                  class="hidden lg:inline-flex"
-                  @click="toggleSidebar"
-                />
-                <UButton
-                  icon="i-lucide-x"
-                  color="neutral"
-                  variant="ghost"
-                  size="sm"
-                  aria-label="Close menu"
-                  class="lg:hidden"
-                  @click="closeSidebar"
-                />
-              </div>
+            <div v-else class="flex min-w-0 flex-1 items-center justify-between gap-3">
+              <RouterLink to="/dashboard" class="flex min-w-0 items-center gap-2.5" aria-label="Athenaeum dashboard">
+                <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#173b70] text-[#f5c54a] shadow-[0_8px_16px_rgba(23,59,112,0.18)]">
+                  <UIcon name="i-lucide-book-open" class="size-5" />
+                </span>
+                <span class="min-w-0">
+                  <span class="block truncate font-serif text-lg font-bold tracking-[0.04em] text-[#173b70]">ATHENAEUM</span>
+                  <span class="block truncate text-[9px] font-bold uppercase tracking-[0.12em] text-[#b47a0d]">Library manager</span>
+                </span>
+              </RouterLink>
+              <UButton
+                icon="i-lucide-panel-left-close"
+                color="neutral"
+                variant="ghost"
+                size="sm"
+                aria-label="Collapse sidebar"
+                class="hidden text-[#5e718d] lg:inline-flex"
+                @click="toggleSidebar"
+              />
+              <UButton
+                icon="i-lucide-x"
+                color="neutral"
+                variant="ghost"
+                size="sm"
+                aria-label="Close menu"
+                class="text-[#5e718d] lg:hidden"
+                @click="closeSidebar"
+              />
             </div>
           </template>
 
           <template #default="{ state }">
-            <nav
-              class="flex-1 space-y-6 overflow-y-auto"
-              :class="state === 'expanded' ? 'px-3' : 'px-0'"
-            >
-              <div v-for="section in navSections" :key="section.label">
+            <nav class="flex flex-1 flex-col" :class="state === 'expanded' ? 'px-1' : 'px-0'">
+              <div v-for="section in navSections" :key="section.label" class="mb-5 last:mb-0">
                 <p
                   v-if="state === 'expanded'"
-                  class="mb-2 px-2 text-[10px] font-semibold uppercase tracking-wider text-muted"
+                  class="mb-2 px-3 text-[10px] font-bold uppercase tracking-[0.13em] text-[#98a6ba]"
                 >
                   {{ section.label }}
                 </p>
 
-                <ul class="space-y-0.5">
-                  <li
-                    v-for="item in section.items"
-                    :key="item.to"
-                    :class="state === 'collapsed' ? 'flex justify-center' : ''"
-                  >
+                <ul class="space-y-1">
+                  <li v-for="item in section.items" :key="item.to" :class="state === 'collapsed' ? 'flex justify-center' : ''">
                     <RouterLink
                       :to="item.to"
-                      class="flex items-center gap-3 transition-colors"
+                      class="relative flex items-center gap-3 font-medium transition-colors"
                       :class="[
-                        state === 'expanded'
-                          ? 'rounded-lg px-3 py-2'
-                          : 'size-9 justify-center rounded-full',
+                        state === 'expanded' ? 'rounded-xl px-3 py-2.5 text-sm' : 'size-10 justify-center rounded-xl',
                         item.active
-                          ? 'bg-(--ui-nav-active) text-primary'
-                          : 'text-muted hover:bg-(--ui-bg-accented) hover:text-highlighted'
+                          ? activeNavClass
+                          : inactiveNavClass
                       ]"
                       :title="state === 'collapsed' ? item.label : undefined"
                     >
-                      <UIcon :name="item.icon" class="size-[16px] shrink-0" />
+                      <UIcon :name="item.icon" class="size-[18px] shrink-0" />
                       <span v-if="state === 'expanded'" class="truncate">{{ item.label }}</span>
                     </RouterLink>
                   </li>
                 </ul>
               </div>
+
+              <div v-if="state === 'expanded'" class="mt-auto border-t border-[#edf1f6] px-1 pt-5">
+                <p class="mb-2 px-2 text-[10px] font-bold uppercase tracking-[0.13em] text-[#98a6ba]">Quick actions</p>
+                <div class="space-y-1">
+                  <RouterLink
+                    v-for="action in quickActions"
+                    :key="action.label"
+                    :to="action.to"
+                    class="flex items-center gap-3 rounded-xl px-2 py-2 text-sm font-medium text-[#455d7c] transition-colors hover:bg-[#fff8e9] hover:text-[#9a6400]"
+                  >
+                    <UIcon :name="action.icon" class="size-4 text-[#bd810f]" />
+                    {{ action.label }}
+                  </RouterLink>
+                </div>
+              </div>
             </nav>
           </template>
 
           <template #footer="{ state }">
-            <div class="flex min-w-0 flex-1 items-center px-1">
+            <div class="flex min-w-0 flex-1 flex-col gap-3 border-t border-[#edf1f6] pt-3">
+              <div v-if="state === 'expanded'" class="flex items-center gap-2.5 rounded-xl bg-[#f6f8fc] px-3 py-2.5">
+                <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white text-[#173b70] ring-1 ring-[#e4ebf3]">
+                  <UIcon name="i-lucide-landmark" class="size-4" />
+                </span>
+                <span class="min-w-0">
+                  <span class="block truncate text-xs font-semibold text-[#304968]">Athenaeum Library</span>
+                  <span class="block truncate text-[10px] text-[#7f8fa5]">A thoughtful collection</span>
+                </span>
+              </div>
               <UButton
                 color="error"
                 variant="ghost"
                 icon="i-lucide-log-out"
                 aria-label="Logout"
-                class="!h-auto !w-full !gap-2.5 !rounded-lg !px-1.5 !py-2"
-                :class="state === 'collapsed' ? '!justify-center' : '!justify-start'"
+                class="!h-auto !w-full !rounded-xl !px-2 !py-2.5 !text-[#a2433c] hover:!bg-[#fff3f1]"
+                :class="state === 'collapsed' ? '!justify-center' : '!justify-start !gap-3'"
                 @click="handleLogout"
               >
-                <span v-if="state === 'expanded'" class="text-sm font-medium">
-                  Logout
-                </span>
+                <span v-if="state === 'expanded'" class="text-sm font-medium">Logout</span>
               </UButton>
             </div>
           </template>
         </USidebar>
 
-        <div class="flex min-w-0 flex-1 flex-col bg-(--ui-bg)">
-          <UHeader :ui="{ root: '!h-12 border-b border-(--ui-border) bg-(--ui-bg-card)' }">
+        <div class="flex min-w-0 flex-1 flex-col bg-[#f7f9fc]">
+          <UHeader :ui="{ root: '!h-20 border-b border-[#e4ebf3] bg-white px-4 sm:px-6' }">
             <template #left>
-              <div class="relative hidden w-full max-w-md md:block">
-                <UIcon
-                  name="i-lucide-search"
-                  class="pointer-events-none absolute left-2.5 top-1/2 size-[18px] -translate-y-1/2 text-muted"
+              <div class="flex w-full items-center gap-3">
+                <UButton
+                  icon="i-lucide-menu"
+                  color="neutral"
+                  variant="ghost"
+                  aria-label="Toggle sidebar"
+                  class="text-[#304968]"
+                  @click="toggleSidebar"
                 />
-                <input
-                  type="text"
-                  placeholder="Search anything..."
-                  class="h-8 w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-14 text-sm text-highlighted shadow-sm outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary"
-                >
-                <span class="absolute right-2 top-1/2 -translate-y-1/2 rounded border border-(--ui-border) bg-(--ui-bg-accented) px-1.5 py-0.5 text-[10px] font-medium text-muted">
-                  Ctrl K
-                </span>
+                <label class="relative hidden w-full max-w-xl md:block">
+                  <UIcon name="i-lucide-search" class="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-[#71829a]" />
+                  <input
+                    type="search"
+                    placeholder="Search books, members, loans..."
+                    class="h-10 w-full rounded-xl border border-[#e4ebf3] bg-[#f9fbfe] pl-10 pr-4 text-sm text-[#263f5f] outline-none transition-colors placeholder:text-[#92a0b2] focus:border-[#8ca9ce] focus:bg-white focus:ring-4 focus:ring-[#edf4ff]"
+                  >
+                </label>
               </div>
             </template>
 
             <template #right>
-              <div class="flex items-center gap-4">
-                <UButton
-                  icon="i-lucide-bell"
-                  color="neutral"
-                  variant="ghost"
-                  aria-label="Notifications"
-                />
-                <UButton
-                  :icon="colorModeIcon"
-                  color="neutral"
-                  variant="ghost"
-                  aria-label="Toggle color mode"
-                  @click="cycleColorMode"
-                />
+              <div class="flex items-center gap-2 sm:gap-4">
+                <div class="relative">
+                  <UButton icon="i-lucide-bell" color="neutral" variant="ghost" aria-label="Notifications" class="text-[#304968]" />
+                  <span class="absolute right-1 top-1 flex size-4 items-center justify-center rounded-full bg-[#e5a214] text-[8px] font-bold text-white ring-2 ring-white">3</span>
+                </div>
 
                 <UDropdownMenu
                   :items="headerMenuItems"
                   :content="{ align: 'end', side: 'bottom', sideOffset: 8 }"
                   :ui="{ content: 'w-48' }"
                 >
-                  <UButton
-                    color="neutral"
-                    variant="ghost"
-                    aria-label="Account options"
-                    class="!h-auto !gap-2 !px-1.5 !py-1"
-                  >
-                    <UAvatar size="sm" text="MF" color="primary" class="shrink-0" />
-                    <UIcon name="i-lucide-chevron-down" class="size-4 shrink-0 text-muted" />
+                  <UButton color="neutral" variant="ghost" aria-label="Account options" class="!h-auto !gap-2 !rounded-xl !px-1.5 !py-1">
+                    <UAvatar size="sm" text="MF" color="primary" class="shrink-0 ring-2 ring-[#edf4ff]" />
+                    <span class="hidden min-w-0 text-left sm:block">
+                      <span class="block truncate text-sm font-semibold text-[#263f5f]">Mohammad Fawzy</span>
+                      <span class="block truncate text-[11px] text-[#7a8ba3]">Administrator</span>
+                    </span>
+                    <UIcon name="i-lucide-chevron-down" class="hidden size-4 shrink-0 text-[#7486a0] sm:block" />
                   </UButton>
                 </UDropdownMenu>
               </div>
             </template>
           </UHeader>
 
-          <main class="mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col px-4 py-3 md:px-6 md:py-4">
+          <main class="flex min-h-0 w-full flex-1 flex-col px-4 py-5 lg:px-8 lg:py-7">
             <RouterView />
           </main>
         </div>
@@ -336,10 +321,7 @@ function handleLogout() {
   </Suspense>
 
   <Notivue v-slot="item">
-    <Notification
-      :item="item"
-      :theme="getNotivueTheme(item)"
-    />
+    <Notification :item="item" :theme="getNotivueTheme(item)" />
   </Notivue>
 </template>
 
