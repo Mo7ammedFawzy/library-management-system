@@ -41,9 +41,6 @@ importers:
       vue:
         specifier: ^3.5.40
         version: 3.5.40(typescript@6.0.3)
-      vue-echarts:
-        specifier: ^8.3.0
-        version: 8.3.0(echarts@6.1.0)(vue@3.5.40(typescript@6.0.3))
       vue-router:
         specifier: ^5.2.0
         version: 5.2.0(@vue/compiler-sfc@3.5.40)(esbuild@0.27.7)(rollup@4.60.4)(vite@7.3.6(jiti@2.7.0)(lightningcss@1.32.0)(yaml@2.9.0))(vue@3.5.40(typescript@6.0.3))
@@ -2293,12 +2290,6 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
-
-  vue-echarts@8.3.0:
-    resolution: {integrity: sha512-gqOZ5uuBF4x4KTXQpTmgH5BuAwUSO+y9U7L1pHCIESQvgnTitXtnyjrfePH+9YXMRhmTLjchEx3EnsPhoiIX/A==}
-    peerDependencies:
-      echarts: ^6.0.0
-      vue: ^3.3.0
 
   vue-eslint-parser@10.4.0:
     resolution: {integrity: sha512-Vxi9pJdbN3ZnVGLODVtZ7y4Y2kzAAE2Cm0CZ3ZDRvydVYxZ6VrnBhLikBsRS+dpwj4Jv4UCv21PTEwF5rQ9WXg==}
@@ -4606,11 +4597,6 @@ snapshots:
 
   vue-demi@0.14.10(vue@3.5.40(typescript@6.0.3)):
     dependencies:
-      vue: 3.5.40(typescript@6.0.3)
-
-  vue-echarts@8.3.0(echarts@6.1.0)(vue@3.5.40(typescript@6.0.3)):
-    dependencies:
-      echarts: 6.1.0
       vue: 3.5.40(typescript@6.0.3)
 
   vue-eslint-parser@10.4.0(eslint@10.8.0(jiti@2.7.0)):

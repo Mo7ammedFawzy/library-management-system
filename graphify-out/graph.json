@@ -10,7 +10,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "categorycontroller",
       "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
@@ -23,7 +23,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "categoryrequest",
       "source_file": "backend/src/main/java/org/library/dto/CategoryRequest.java",
@@ -36,11 +36,50 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "categoryresponse",
       "source_file": "backend/src/main/java/org/library/dto/CategoryResponse.java",
       "source_location": "L3"
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_category_category",
+      "label": "Category",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "category",
+      "source_file": "backend/src/main/java/org/library/entity/Category.java",
+      "source_location": "L7"
+    },
+    {
+      "id": "backend_src_main_java_org_library_mapper_categorymapper_categorymapper",
+      "label": "CategoryMapper",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "categorymapper",
+      "source_file": "backend/src/main/java/org/library/mapper/CategoryMapper.java",
+      "source_location": "L6"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_categoryrepository_categoryrepository",
+      "label": "CategoryRepository",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "categoryrepository",
+      "source_file": "backend/src/main/java/org/library/repository/CategoryRepository.java",
+      "source_location": "L8"
     },
     {
       "id": "backend_src_main_java_org_library_entity_user_user",
@@ -147,43 +186,43 @@
       "source_location": "L10"
     },
     {
-      "id": "backend_src_main_java_org_library_controller_authorcontroller_authorcontroller",
-      "label": "AuthorController",
+      "id": "frontend_src_components_dashboard_categorydonutchart_donutitem",
+      "label": "DonutItem",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
+      "community": 124,
+      "community_name": "CategoryDonutChart.vue",
       "file_type": "code",
-      "norm_label": "authorcontroller",
-      "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
-      "source_location": "L16"
+      "norm_label": "donutitem",
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L26"
     },
     {
-      "id": "backend_src_main_java_org_library_dto_authorrequest_authorrequest",
-      "label": "AuthorRequest",
+      "id": "frontend_src_components_dashboard_categorydonutchart_ecoption",
+      "label": "ECOption",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
+      "community": 124,
+      "community_name": "CategoryDonutChart.vue",
       "file_type": "code",
-      "norm_label": "authorrequest",
-      "source_file": "backend/src/main/java/org/library/dto/AuthorRequest.java",
-      "source_location": "L5"
+      "norm_label": "ecoption",
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L22"
     },
     {
-      "id": "backend_src_main_java_org_library_dto_authorresponse_authorresponse",
-      "label": "AuthorResponse",
+      "id": "frontend_src_components_dashboard_activitychart_ecoption",
+      "label": "ECOption",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
+      "community": 125,
+      "community_name": "ActivityChart.vue",
       "file_type": "code",
-      "norm_label": "authorresponse",
-      "source_file": "backend/src/main/java/org/library/dto/AuthorResponse.java",
-      "source_location": "L3"
+      "norm_label": "ecoption",
+      "source_file": "frontend/src/components/dashboard/ActivityChart.vue",
+      "source_location": "L20"
     },
     {
       "id": "backend_src_main_java_org_library_entity_author_author",
@@ -212,17 +251,17 @@
       "source_location": "L10"
     },
     {
-      "id": "backend_src_main_java_org_library_entity_category_category",
-      "label": "Category",
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_borrowrecord",
+      "label": "BorrowRecord",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 13,
       "community_name": "Book",
       "file_type": "code",
-      "norm_label": "category",
-      "source_file": "backend/src/main/java/org/library/entity/Category.java",
-      "source_location": "L7"
+      "norm_label": "borrowrecord",
+      "source_file": "backend/src/main/java/org/library/entity/BorrowRecord.java",
+      "source_location": "L8"
     },
     {
       "id": "backend_src_main_java_org_library_mapper_authormapper_authormapper",
@@ -235,19 +274,6 @@
       "file_type": "code",
       "norm_label": "authormapper",
       "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
-      "source_location": "L6"
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_categorymapper_categorymapper",
-      "label": "CategoryMapper",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "categorymapper",
-      "source_file": "backend/src/main/java/org/library/mapper/CategoryMapper.java",
       "source_location": "L6"
     },
     {
@@ -277,17 +303,17 @@
       "source_location": "L9"
     },
     {
-      "id": "backend_src_main_java_org_library_repository_categoryrepository_categoryrepository",
-      "label": "CategoryRepository",
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository",
+      "label": "BorrowRecordRepository",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 13,
       "community_name": "Book",
       "file_type": "code",
-      "norm_label": "categoryrepository",
-      "source_file": "backend/src/main/java/org/library/repository/CategoryRepository.java",
-      "source_location": "L8"
+      "norm_label": "borrowrecordrepository",
+      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
+      "source_location": "L9"
     },
     {
       "id": "frontend_src_components_grid_actionscell_actionscellparams",
@@ -303,19 +329,6 @@
       "source_location": "L4"
     },
     {
-      "id": "frontend_src_services_categories_category",
-      "label": "Category",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "categories.vue",
-      "file_type": "code",
-      "norm_label": "category",
-      "source_file": "frontend/src/services/categories.ts",
-      "source_location": "L4"
-    },
-    {
       "id": "frontend_src_services_categories_categoryinput",
       "label": "CategoryInput",
       "_callable": true,
@@ -327,19 +340,6 @@
       "norm_label": "categoryinput",
       "source_file": "frontend/src/services/categories.ts",
       "source_location": "L9"
-    },
-    {
-      "id": "frontend_src_services_authors_author",
-      "label": "Author",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "authors.vue",
-      "file_type": "code",
-      "norm_label": "author",
-      "source_file": "frontend/src/services/authors.ts",
-      "source_location": "L4"
     },
     {
       "id": "frontend_src_services_authors_authorinput",
@@ -394,19 +394,6 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_services_books_book",
-      "label": "Book",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "borrowings.ts",
-      "file_type": "code",
-      "norm_label": "book",
-      "source_file": "frontend/src/services/books.ts",
-      "source_location": "L6"
-    },
-    {
       "id": "frontend_src_services_borrowings_borrowingstatus",
       "label": "BorrowingStatus",
       "_callable": true,
@@ -444,6 +431,32 @@
       "norm_label": "borrowresponsedto",
       "source_file": "frontend/src/services/borrowings.ts",
       "source_location": "L24"
+    },
+    {
+      "id": "frontend_src_pages_dashboard_activityitem",
+      "label": "ActivityItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "dashboard.vue",
+      "file_type": "code",
+      "norm_label": "activityitem",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L124"
+    },
+    {
+      "id": "frontend_src_pages_dashboard_activitykind",
+      "label": "ActivityKind",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "dashboard.vue",
+      "file_type": "code",
+      "norm_label": "activitykind",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L122"
     },
     {
       "id": "frontend_src_composables_usecrudpage_crudpageconfig",
@@ -641,19 +654,6 @@
       "source_location": "L14"
     },
     {
-      "id": "backend_src_main_java_org_library_controller_authcontroller_authcontroller",
-      "label": "AuthController",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "authcontroller",
-      "source_file": "backend/src/main/java/org/library/controller/AuthController.java",
-      "source_location": "L10"
-    },
-    {
       "id": "backend_src_main_java_org_library_repository_userrepository_userrepository",
       "label": "UserRepository",
       "_callable": true,
@@ -667,19 +667,6 @@
       "source_location": "L8"
     },
     {
-      "id": "backend_src_main_java_org_library_service_authservice_authservice",
-      "label": "AuthService",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "authservice",
-      "source_file": "backend/src/main/java/org/library/service/AuthService.java",
-      "source_location": "L5"
-    },
-    {
       "id": "backend_src_main_java_org_library_service_impl_authserviceimpl_authserviceimpl",
       "label": "AuthServiceImpl",
       "_callable": true,
@@ -691,6 +678,19 @@
       "norm_label": "authserviceimpl",
       "source_file": "backend/src/main/java/org/library/service/impl/AuthServiceImpl.java",
       "source_location": "L15"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_userserviceimpl",
+      "label": "UserServiceImpl",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": "userserviceimpl",
+      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
+      "source_location": "L12"
     },
     {
       "id": "backend_src_main_java_org_library_exception_borrownotfoundexception_borrownotfoundexception",
@@ -784,6 +784,19 @@
       "source_location": "L6"
     },
     {
+      "id": "backend_src_main_java_org_library_controller_authcontroller_authcontroller",
+      "label": "AuthController",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": ".login",
+      "file_type": "code",
+      "norm_label": "authcontroller",
+      "source_file": "backend/src/main/java/org/library/controller/AuthController.java",
+      "source_location": "L10"
+    },
+    {
       "id": "backend_src_main_java_org_library_dto_loginrequest_loginrequest",
       "label": "LoginRequest",
       "_callable": true,
@@ -808,6 +821,19 @@
       "norm_label": "registerrequest",
       "source_file": "backend/src/main/java/org/library/dto/RegisterRequest.java",
       "source_location": "L3"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_authservice_authservice",
+      "label": "AuthService",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": ".login",
+      "file_type": "code",
+      "norm_label": "authservice",
+      "source_file": "backend/src/main/java/org/library/service/AuthService.java",
+      "source_location": "L5"
     },
     {
       "id": "backend_src_main_java_org_library_dto_authresponse_authresponse",
@@ -836,6 +862,32 @@
       "source_location": "L87"
     },
     {
+      "id": "frontend_src_services_authors_author",
+      "label": "Author",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "books.vue",
+      "file_type": "code",
+      "norm_label": "author",
+      "source_file": "frontend/src/services/authors.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "frontend_src_services_books_book",
+      "label": "Book",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "books.vue",
+      "file_type": "code",
+      "norm_label": "book",
+      "source_file": "frontend/src/services/books.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "frontend_src_services_books_bookinput",
       "label": "BookInput",
       "_callable": true,
@@ -847,6 +899,19 @@
       "norm_label": "bookinput",
       "source_file": "frontend/src/services/books.ts",
       "source_location": "L15"
+    },
+    {
+      "id": "frontend_src_services_categories_category",
+      "label": "Category",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "books.vue",
+      "file_type": "code",
+      "norm_label": "category",
+      "source_file": "frontend/src/services/categories.ts",
+      "source_location": "L4"
     },
     {
       "id": "backend_src_main_java_org_library_exception_bookalreadyreturnedexception_bookalreadyreturnedexception",
@@ -901,6 +966,45 @@
       "source_location": "L9"
     },
     {
+      "id": "backend_src_main_java_org_library_controller_authorcontroller_authorcontroller",
+      "label": "AuthorController",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "authorcontroller",
+      "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
+      "source_location": "L16"
+    },
+    {
+      "id": "backend_src_main_java_org_library_dto_authorrequest_authorrequest",
+      "label": "AuthorRequest",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "authorrequest",
+      "source_file": "backend/src/main/java/org/library/dto/AuthorRequest.java",
+      "source_location": "L5"
+    },
+    {
+      "id": "backend_src_main_java_org_library_dto_authorresponse_authorresponse",
+      "label": "AuthorResponse",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "authorresponse",
+      "source_file": "backend/src/main/java/org/library/dto/AuthorResponse.java",
+      "source_location": "L3"
+    },
+    {
       "id": "backend_src_main_java_org_library_controller_healthcontroller_healthcontroller",
       "label": "HealthController",
       "_callable": true,
@@ -938,6 +1042,45 @@
       "norm_label": "apiresponse",
       "source_file": "backend/src/main/java/org/library/payload/ApiResponse.java",
       "source_location": "L5"
+    },
+    {
+      "id": "backend_src_main_java_org_library_dto_userresponse_userresponse",
+      "label": "UserResponse",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": "userresponse",
+      "source_file": "backend/src/main/java/org/library/dto/UserResponse.java",
+      "source_location": "L3"
+    },
+    {
+      "id": "backend_src_main_java_org_library_mapper_usermapper_usermapper",
+      "label": "UserMapper",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": "usermapper",
+      "source_file": "backend/src/main/java/org/library/mapper/UserMapper.java",
+      "source_location": "L6"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_userservice_userservice",
+      "label": "UserService",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": "userservice",
+      "source_file": "backend/src/main/java/org/library/service/UserService.java",
+      "source_location": "L7"
     },
     {
       "id": "frontend_src_services_auth_authresponse",
@@ -1005,32 +1148,6 @@
       "source_location": "L5"
     },
     {
-      "id": "backend_src_main_java_org_library_dto_userresponse_userresponse",
-      "label": "UserResponse",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "userresponse",
-      "source_file": "backend/src/main/java/org/library/dto/UserResponse.java",
-      "source_location": "L3"
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_borrowrecord",
-      "label": "BorrowRecord",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "borrowrecord",
-      "source_file": "backend/src/main/java/org/library/entity/BorrowRecord.java",
-      "source_location": "L8"
-    },
-    {
       "id": "backend_src_main_java_org_library_mapper_borrowmapper_borrowmapper",
       "label": "BorrowMapper",
       "_callable": true,
@@ -1042,32 +1159,6 @@
       "norm_label": "borrowmapper",
       "source_file": "backend/src/main/java/org/library/mapper/BorrowMapper.java",
       "source_location": "L6"
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_usermapper_usermapper",
-      "label": "UserMapper",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "usermapper",
-      "source_file": "backend/src/main/java/org/library/mapper/UserMapper.java",
-      "source_location": "L6"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository",
-      "label": "BorrowRecordRepository",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "borrowrecordrepository",
-      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
-      "source_location": "L9"
     },
     {
       "id": "backend_src_main_java_org_library_service_borrowservice_borrowservice",
@@ -1096,38 +1187,12 @@
       "source_location": "L18"
     },
     {
-      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_userserviceimpl",
-      "label": "UserServiceImpl",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "userserviceimpl",
-      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
-      "source_location": "L12"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_userservice_userservice",
-      "label": "UserService",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "userservice",
-      "source_file": "backend/src/main/java/org/library/service/UserService.java",
-      "source_location": "L7"
-    },
-    {
       "id": "backend_src_main_java_org_library_controller_categorycontroller_categorycontroller_createcategory",
       "label": ".createCategory()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": ".createcategory()",
       "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
@@ -1139,7 +1204,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": ".deletecategory()",
       "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
@@ -1151,7 +1216,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": ".getcategories()",
       "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
@@ -1163,7 +1228,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": ".getcategorybyid()",
       "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
@@ -1175,7 +1240,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": ".updatecategory()",
       "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
@@ -1187,7 +1252,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": ".toentity()",
       "source_file": "backend/src/main/java/org/library/mapper/CategoryMapper.java",
@@ -1199,11 +1264,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": ".toresponse()",
       "source_file": "backend/src/main/java/org/library/mapper/CategoryMapper.java",
       "source_location": "L8"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_categoryrepository_categoryrepository_findbyname",
+      "label": ".findByName()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": ".findbyname()",
+      "source_file": "backend/src/main/java/org/library/repository/CategoryRepository.java",
+      "source_location": "L10"
     },
     {
       "id": "backend_src_main_java_org_library_entity_user_user_getauthorities",
@@ -1288,6 +1365,18 @@
       "norm_label": "getnotivuetheme()",
       "source_file": "frontend/src/App.vue",
       "source_location": "L57"
+    },
+    {
+      "id": "frontend_src_app_handlelogout",
+      "label": "handleLogout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "App.vue",
+      "file_type": "code",
+      "norm_label": "handlelogout()",
+      "source_file": "frontend/src/App.vue",
+      "source_location": "L131"
     },
     {
       "id": "frontend_src_app_navitem",
@@ -1422,30 +1511,6 @@
       "source_location": "L85"
     },
     {
-      "id": "backend_src_main_java_org_library_repository_bookrepository_bookrepository_findbytitle",
-      "label": ".findByTitle()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TestDataConfig",
-      "file_type": "code",
-      "norm_label": ".findbytitle()",
-      "source_file": "backend/src/main/java/org/library/repository/BookRepository.java",
-      "source_location": "L13"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_categoryrepository_categoryrepository_findbyname",
-      "label": ".findByName()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TestDataConfig",
-      "file_type": "code",
-      "norm_label": ".findbyname()",
-      "source_file": "backend/src/main/java/org/library/repository/CategoryRepository.java",
-      "source_location": "L10"
-    },
-    {
       "id": "backend_src_main_java_org_library_repository_userrepository_userrepository_findbyemail",
       "label": ".findByEmail()",
       "_callable": true,
@@ -1494,30 +1559,6 @@
       "source_location": "L13"
     },
     {
-      "id": "backend_src_main_java_org_library_controller_authorcontroller_authorcontroller_createauthor",
-      "label": ".createAuthor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": ".createauthor()",
-      "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
-      "source_location": "L33"
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_authorcontroller_authorcontroller_updateauthor",
-      "label": ".updateAuthor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": ".updateauthor()",
-      "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
-      "source_location": "L42"
-    },
-    {
       "id": "backend_src_main_java_org_library_entity_book_book_decreaseavailablecopies",
       "label": ".decreaseAvailableCopies()",
       "_callable": true,
@@ -1554,30 +1595,6 @@
       "source_location": "L46"
     },
     {
-      "id": "backend_src_main_java_org_library_mapper_authormapper_authormapper_toentity",
-      "label": ".toEntity()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": ".toentity()",
-      "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
-      "source_location": "L14"
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_authormapper_authormapper_toresponse",
-      "label": ".toResponse()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": ".toresponse()",
-      "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
-      "source_location": "L9"
-    },
-    {
       "id": "backend_src_main_java_org_library_repository_authorrepository_authorrepository_findbyname",
       "label": ".findByName()",
       "_callable": true,
@@ -1599,6 +1616,42 @@
       "file_type": "code",
       "norm_label": ".findbycategoryid()",
       "source_file": "backend/src/main/java/org/library/repository/BookRepository.java",
+      "source_location": "L11"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_bookrepository_bookrepository_findbytitle",
+      "label": ".findByTitle()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Book",
+      "file_type": "code",
+      "norm_label": ".findbytitle()",
+      "source_file": "backend/src/main/java/org/library/repository/BookRepository.java",
+      "source_location": "L13"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository_findbyuserandbookandborrowdate",
+      "label": ".findByUserAndBookAndBorrowDate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Book",
+      "file_type": "code",
+      "norm_label": ".findbyuserandbookandborrowdate()",
+      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
+      "source_location": "L13"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository_findonebyuserandbook",
+      "label": ".findOneByUserAndBook()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Book",
+      "file_type": "code",
+      "norm_label": ".findonebyuserandbook()",
+      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
       "source_location": "L11"
     },
     {
@@ -2010,28 +2063,16 @@
       "source_location": "L33"
     },
     {
-      "id": "frontend_src_pages_dashboard_activitydate",
-      "label": "activityDate()",
+      "id": "frontend_src_pages_dashboard_activitykindlabel",
+      "label": "activityKindLabel()",
       "_callable": true,
       "_origin": "ast",
       "community": 27,
       "community_name": "dashboard.vue",
       "file_type": "code",
-      "norm_label": "activitydate()",
+      "norm_label": "activitykindlabel()",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L182"
-    },
-    {
-      "id": "frontend_src_pages_dashboard_bookinitials",
-      "label": "bookInitials()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "dashboard.vue",
-      "file_type": "code",
-      "norm_label": "bookinitials()",
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L193"
+      "source_location": "L184"
     },
     {
       "id": "frontend_src_pages_dashboard_overduelabel",
@@ -2043,7 +2084,7 @@
       "file_type": "code",
       "norm_label": "overduelabel()",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L211"
+      "source_location": "L230"
     },
     {
       "id": "frontend_src_pages_dashboard_personinitials",
@@ -2055,7 +2096,7 @@
       "file_type": "code",
       "norm_label": "personinitials()",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L202"
+      "source_location": "L221"
     },
     {
       "id": "frontend_src_pages_dashboard_statusclass",
@@ -2067,7 +2108,7 @@
       "file_type": "code",
       "norm_label": "statusclass()",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L217"
+      "source_location": "L236"
     },
     {
       "id": "frontend_src_pages_dashboard_statuslabel",
@@ -2079,7 +2120,7 @@
       "file_type": "code",
       "norm_label": "statuslabel()",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L230"
+      "source_location": "L249"
     },
     {
       "id": "frontend_src_pages_dashboard_todatekey",
@@ -2091,7 +2132,7 @@
       "file_type": "code",
       "norm_label": "todatekey()",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L186"
+      "source_location": "L214"
     },
     {
       "id": "frontend_src_services_api_apierror_constructor",
@@ -2850,6 +2891,54 @@
       "source_location": "L27"
     },
     {
+      "id": "backend_src_main_java_org_library_controller_authorcontroller_authorcontroller_createauthor",
+      "label": ".createAuthor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": ".createauthor()",
+      "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
+      "source_location": "L33"
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_authorcontroller_authorcontroller_updateauthor",
+      "label": ".updateAuthor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": ".updateauthor()",
+      "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
+      "source_location": "L42"
+    },
+    {
+      "id": "backend_src_main_java_org_library_mapper_authormapper_authormapper_toentity",
+      "label": ".toEntity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": ".toentity()",
+      "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
+      "source_location": "L14"
+    },
+    {
+      "id": "backend_src_main_java_org_library_mapper_authormapper_authormapper_toresponse",
+      "label": ".toResponse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": ".toresponse()",
+      "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
+      "source_location": "L9"
+    },
+    {
       "id": "frontend_src_services_mock_author",
       "label": "author()",
       "_callable": true,
@@ -2883,7 +2972,7 @@
       "file_type": "code",
       "norm_label": "borrowbook()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L180"
+      "source_location": "L190"
     },
     {
       "id": "frontend_src_services_mock_category",
@@ -2907,7 +2996,7 @@
       "file_type": "code",
       "norm_label": "createauthor()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L155"
+      "source_location": "L165"
     },
     {
       "id": "frontend_src_services_mock_createbook",
@@ -2919,7 +3008,7 @@
       "file_type": "code",
       "norm_label": "createbook()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L96"
+      "source_location": "L106"
     },
     {
       "id": "frontend_src_services_mock_createcategory",
@@ -2931,7 +3020,7 @@
       "file_type": "code",
       "norm_label": "createcategory()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L134"
+      "source_location": "L144"
     },
     {
       "id": "frontend_src_services_mock_datestr",
@@ -2955,7 +3044,7 @@
       "file_type": "code",
       "norm_label": "deleteauthor()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L168"
+      "source_location": "L178"
     },
     {
       "id": "frontend_src_services_mock_deletebook",
@@ -2967,7 +3056,7 @@
       "file_type": "code",
       "norm_label": "deletebook()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L126"
+      "source_location": "L136"
     },
     {
       "id": "frontend_src_services_mock_deletecategory",
@@ -2979,7 +3068,7 @@
       "file_type": "code",
       "norm_label": "deletecategory()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L147"
+      "source_location": "L157"
     },
     {
       "id": "frontend_src_services_mock_fetchauthors",
@@ -2991,7 +3080,7 @@
       "file_type": "code",
       "norm_label": "fetchauthors()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L151"
+      "source_location": "L161"
     },
     {
       "id": "frontend_src_services_mock_fetchbooks",
@@ -3003,7 +3092,7 @@
       "file_type": "code",
       "norm_label": "fetchbooks()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L92"
+      "source_location": "L102"
     },
     {
       "id": "frontend_src_services_mock_fetchborrowings",
@@ -3015,7 +3104,7 @@
       "file_type": "code",
       "norm_label": "fetchborrowings()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L172"
+      "source_location": "L182"
     },
     {
       "id": "frontend_src_services_mock_fetchcategories",
@@ -3027,7 +3116,7 @@
       "file_type": "code",
       "norm_label": "fetchcategories()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L130"
+      "source_location": "L140"
     },
     {
       "id": "frontend_src_services_mock_fetchusers",
@@ -3039,7 +3128,7 @@
       "file_type": "code",
       "norm_label": "fetchusers()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L176"
+      "source_location": "L186"
     },
     {
       "id": "frontend_src_services_mock_nextid",
@@ -3051,7 +3140,7 @@
       "file_type": "code",
       "norm_label": "nextid()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L88"
+      "source_location": "L98"
     },
     {
       "id": "frontend_src_services_mock_returnbook",
@@ -3063,7 +3152,7 @@
       "file_type": "code",
       "norm_label": "returnbook()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L197"
+      "source_location": "L207"
     },
     {
       "id": "frontend_src_services_mock_updateauthor",
@@ -3075,7 +3164,7 @@
       "file_type": "code",
       "norm_label": "updateauthor()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L161"
+      "source_location": "L171"
     },
     {
       "id": "frontend_src_services_mock_updatebook",
@@ -3087,7 +3176,7 @@
       "file_type": "code",
       "norm_label": "updatebook()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L110"
+      "source_location": "L120"
     },
     {
       "id": "frontend_src_services_mock_updatecategory",
@@ -3099,7 +3188,7 @@
       "file_type": "code",
       "norm_label": "updatecategory()",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L140"
+      "source_location": "L150"
     },
     {
       "id": "backend_src_main_java_org_library_controller_authorcontroller_authorcontroller_deleteauthor",
@@ -3222,6 +3311,42 @@
       "source_location": "L17"
     },
     {
+      "id": "backend_src_main_java_org_library_mapper_usermapper_usermapper_toresponse",
+      "label": ".toResponse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": ".toresponse()",
+      "source_file": "backend/src/main/java/org/library/mapper/UserMapper.java",
+      "source_location": "L8"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_userserviceimpl_getallusers",
+      "label": ".getAllUsers()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": ".getallusers()",
+      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
+      "source_location": "L18"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_userservice_userservice_getallusers",
+      "label": ".getAllUsers()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": ".getallusers()",
+      "source_file": "backend/src/main/java/org/library/service/UserService.java",
+      "source_location": "L9"
+    },
+    {
       "id": "frontend_src_composables_usecrudpage_usecrudpage",
       "label": "useCrudPage()",
       "_callable": true,
@@ -3330,18 +3455,6 @@
       "source_location": "L235"
     },
     {
-      "id": "frontend_src_app_handlelogout",
-      "label": "handleLogout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 80,
-      "community_name": "auth.ts",
-      "file_type": "code",
-      "norm_label": "handlelogout()",
-      "source_file": "frontend/src/App.vue",
-      "source_location": "L131"
-    },
-    {
       "id": "frontend_src_services_api_cleartoken",
       "label": "clearToken()",
       "_callable": true,
@@ -3400,42 +3513,6 @@
       "norm_label": ".toresponse()",
       "source_file": "backend/src/main/java/org/library/mapper/BorrowMapper.java",
       "source_location": "L8"
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_usermapper_usermapper_toresponse",
-      "label": ".toResponse()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": ".toresponse()",
-      "source_file": "backend/src/main/java/org/library/mapper/UserMapper.java",
-      "source_location": "L8"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository_findbyuserandbookandborrowdate",
-      "label": ".findByUserAndBookAndBorrowDate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": ".findbyuserandbookandborrowdate()",
-      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
-      "source_location": "L13"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_borrowrecordrepository_findonebyuserandbook",
-      "label": ".findOneByUserAndBook()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": ".findonebyuserandbook()",
-      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
-      "source_location": "L11"
     },
     {
       "id": "backend_src_main_java_org_library_service_borrowservice_borrowservice_borrow",
@@ -3522,35 +3599,22 @@
       "source_location": "L58"
     },
     {
-      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_userserviceimpl_getallusers",
-      "label": ".getAllUsers()",
-      "_callable": true,
+      "id": "backend_src_main_java_org_library_controller_categorycontroller",
+      "label": "CategoryController.java",
       "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
+      "community": 0,
+      "community_name": "Category",
       "file_type": "code",
-      "norm_label": ".getallusers()",
-      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
-      "source_location": "L18"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_userservice_userservice_getallusers",
-      "label": ".getAllUsers()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": ".getallusers()",
-      "source_file": "backend/src/main/java/org/library/service/UserService.java",
-      "source_location": "L9"
+      "norm_label": "categorycontroller.java",
+      "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
+      "source_location": "L1"
     },
     {
       "id": "backend_src_main_java_org_library_controller_categorycontroller_java_deletemapping",
       "label": "DeleteMapping",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "deletemapping",
       "source_file": "",
@@ -3561,7 +3625,7 @@
       "label": "GetMapping",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "getmapping",
       "source_file": "",
@@ -3572,7 +3636,7 @@
       "label": "PostMapping",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "postmapping",
       "source_file": "",
@@ -3583,7 +3647,7 @@
       "label": "PutMapping",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "putmapping",
       "source_file": "",
@@ -3594,7 +3658,7 @@
       "label": "RequestMapping",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "requestmapping",
       "source_file": "",
@@ -3605,7 +3669,7 @@
       "label": "ResponseEntity",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "responseentity",
       "source_file": "",
@@ -3616,7 +3680,7 @@
       "label": "RestController",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "restcontroller",
       "source_file": "",
@@ -3627,7 +3691,7 @@
       "label": "CategoryRequest.java",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "categoryrequest.java",
       "source_file": "backend/src/main/java/org/library/dto/CategoryRequest.java",
@@ -3638,10 +3702,87 @@
       "label": "CategoryResponse.java",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "categoryresponse.java",
       "source_file": "backend/src/main/java/org/library/dto/CategoryResponse.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_category",
+      "label": "Category.java",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "category.java",
+      "source_file": "backend/src/main/java/org/library/entity/Category.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_category_java_allargsconstructor",
+      "label": "AllArgsConstructor",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "allargsconstructor",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_category_java_data",
+      "label": "Data",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "data",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_category_java_entity",
+      "label": "Entity",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "entity",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_category_java_noargsconstructor",
+      "label": "NoArgsConstructor",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "noargsconstructor",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_category_java_table",
+      "label": "Table",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "table",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_mapper_categorymapper",
+      "label": "CategoryMapper.java",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "categorymapper.java",
+      "source_file": "backend/src/main/java/org/library/mapper/CategoryMapper.java",
       "source_location": "L1"
     },
     {
@@ -3649,11 +3790,22 @@
       "label": "Category",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CategoryController",
+      "community_name": "Category",
       "file_type": "code",
       "norm_label": "category",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_categoryrepository",
+      "label": "CategoryRepository.java",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Category",
+      "file_type": "code",
+      "norm_label": "categoryrepository.java",
+      "source_file": "backend/src/main/java/org/library/repository/CategoryRepository.java",
+      "source_location": "L1"
     },
     {
       "id": "backend_src_main_java_org_library_entity_user",
@@ -4560,6 +4712,72 @@
       "source_location": "L200"
     },
     {
+      "id": "frontend_package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 111,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "frontend/package.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "frontend_package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 111,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "frontend/package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "frontend_package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 111,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "frontend/package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "frontend_package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 111,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "frontend/package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "frontend_package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 111,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "frontend/package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "frontend_package_scripts_typecheck",
+      "label": "typecheck",
+      "_origin": "ast",
+      "community": 111,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "typecheck",
+      "source_file": "frontend/package.json",
+      "source_location": "L10"
+    },
+    {
       "id": "agents_skills_ag_update_references_changes_file_preamble",
       "label": "changes-file-preamble.md",
       "_origin": "ast",
@@ -4863,6 +5081,275 @@
       "source_location": "L1"
     },
     {
+      "id": "agents_skills_nuxt_ui_references_recipes_navigation_breadcrumbs",
+      "label": "Breadcrumbs",
+      "_origin": "ast",
+      "community": 122,
+      "community_name": "Navigation",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "breadcrumbs",
+      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
+      "source_location": "L37"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_recipes_navigation_header_with_mobile_menu",
+      "label": "Header with mobile menu",
+      "_origin": "ast",
+      "community": 122,
+      "community_name": "Navigation",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "header with mobile menu",
+      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_recipes_navigation_navigation",
+      "label": "Navigation",
+      "_origin": "ast",
+      "community": 122,
+      "community_name": "Navigation",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "navigation",
+      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_recipes_navigation_sidebar_navigation_dashboard",
+      "label": "Sidebar navigation (dashboard)",
+      "_origin": "ast",
+      "community": 122,
+      "community_name": "Navigation",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "sidebar navigation (dashboard)",
+      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
+      "source_location": "L30"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_recipes_navigation_tab_navigation_within_a_page",
+      "label": "Tab navigation (within a page)",
+      "_origin": "ast",
+      "community": 122,
+      "community_name": "Navigation",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "tab navigation (within a page)",
+      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
+      "source_location": "L57"
+    },
+    {
+      "id": "frontend_package",
+      "label": "package.json",
+      "_origin": "ast",
+      "community": 123,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "package.json",
+      "source_file": "frontend/package.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_package_name",
+      "label": "name",
+      "_origin": "ast",
+      "community": 123,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "name",
+      "source_file": "frontend/package.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "frontend_package_packagemanager",
+      "label": "packageManager",
+      "_origin": "ast",
+      "community": 123,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "packagemanager",
+      "source_file": "frontend/package.json",
+      "source_location": "L36"
+    },
+    {
+      "id": "frontend_package_private",
+      "label": "private",
+      "_origin": "ast",
+      "community": 123,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "private",
+      "source_file": "frontend/package.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "frontend_package_type",
+      "label": "type",
+      "_origin": "ast",
+      "community": 123,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "type",
+      "source_file": "frontend/package.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "frontend_src_components_dashboard_categorydonutchart",
+      "label": "CategoryDonutChart.vue",
+      "_origin": "ast",
+      "community": 124,
+      "community_name": "CategoryDonutChart.vue",
+      "file_type": "code",
+      "norm_label": "categorydonutchart.vue",
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_components_dashboard_categorydonutchart_option",
+      "label": "option",
+      "_origin": "ast",
+      "community": 124,
+      "community_name": "CategoryDonutChart.vue",
+      "file_type": "code",
+      "norm_label": "option",
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L37"
+    },
+    {
+      "id": "frontend_src_components_dashboard_categorydonutchart_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 124,
+      "community_name": "CategoryDonutChart.vue",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L32"
+    },
+    {
+      "id": "frontend_src_components_dashboard_activitychart",
+      "label": "ActivityChart.vue",
+      "_origin": "ast",
+      "community": 125,
+      "community_name": "ActivityChart.vue",
+      "file_type": "code",
+      "norm_label": "activitychart.vue",
+      "source_file": "frontend/src/components/dashboard/ActivityChart.vue",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_components_dashboard_activitychart_option",
+      "label": "option",
+      "_origin": "ast",
+      "community": 125,
+      "community_name": "ActivityChart.vue",
+      "file_type": "code",
+      "norm_label": "option",
+      "source_file": "frontend/src/components/dashboard/ActivityChart.vue",
+      "source_location": "L29"
+    },
+    {
+      "id": "frontend_src_components_dashboard_activitychart_props",
+      "label": "props",
+      "_origin": "ast",
+      "community": 125,
+      "community_name": "ActivityChart.vue",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "frontend/src/components/dashboard/ActivityChart.vue",
+      "source_location": "L24"
+    },
+    {
+      "id": "frontend_package_dependencies_ag_grid_vue3",
+      "label": "ag-grid-vue3",
+      "_origin": "ast",
+      "community": 126,
+      "community_name": "ag-grid-vue3",
+      "file_type": "code",
+      "norm_label": "ag-grid-vue3",
+      "source_file": "frontend/package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "ag_grid_vue3",
+      "label": "ag-grid-vue3",
+      "_origin": "ast",
+      "community": 126,
+      "community_name": "ag-grid-vue3",
+      "file_type": "concept",
+      "norm_label": "ag-grid-vue3",
+      "source_file": "frontend/package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "frontend_package_dependencies_echarts",
+      "label": "echarts",
+      "_origin": "ast",
+      "community": 127,
+      "community_name": "echarts",
+      "file_type": "code",
+      "norm_label": "echarts",
+      "source_file": "frontend/package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "echarts",
+      "label": "echarts",
+      "_origin": "ast",
+      "community": 127,
+      "community_name": "echarts",
+      "file_type": "concept",
+      "norm_label": "echarts",
+      "source_file": "frontend/package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "frontend_package_dependencies_fontsource_variable_inter",
+      "label": "@fontsource-variable/inter",
+      "_origin": "ast",
+      "community": 128,
+      "community_name": "@fontsource-variable/inter",
+      "file_type": "code",
+      "norm_label": "@fontsource-variable/inter",
+      "source_file": "frontend/package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "fontsource_variable_inter",
+      "label": "@fontsource-variable/inter",
+      "_origin": "ast",
+      "community": 128,
+      "community_name": "@fontsource-variable/inter",
+      "file_type": "concept",
+      "norm_label": "@fontsource-variable/inter",
+      "source_file": "frontend/package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "frontend_package_dependencies_unhead_vue",
+      "label": "@unhead/vue",
+      "_origin": "ast",
+      "community": 129,
+      "community_name": "@unhead/vue",
+      "file_type": "code",
+      "norm_label": "@unhead/vue",
+      "source_file": "frontend/package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "unhead_vue",
+      "label": "@unhead/vue",
+      "_origin": "ast",
+      "community": 129,
+      "community_name": "@unhead/vue",
+      "file_type": "concept",
+      "norm_label": "@unhead/vue",
+      "source_file": "frontend/package.json",
+      "source_location": "L16"
+    },
+    {
       "id": "backend_src_main_java_org_library_controller_authorcontroller",
       "label": "AuthorController.java",
       "_origin": "ast",
@@ -4871,83 +5358,6 @@
       "file_type": "code",
       "norm_label": "authorcontroller.java",
       "source_file": "backend/src/main/java/org/library/controller/AuthorController.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_authorcontroller_java_postmapping",
-      "label": "PostMapping",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "postmapping",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_authorcontroller_java_putmapping",
-      "label": "PutMapping",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "putmapping",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_authorcontroller_java_requestmapping",
-      "label": "RequestMapping",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "requestmapping",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_authorcontroller_java_restcontroller",
-      "label": "RestController",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "restcontroller",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_categorycontroller",
-      "label": "CategoryController.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "categorycontroller.java",
-      "source_file": "backend/src/main/java/org/library/controller/CategoryController.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_dto_authorrequest",
-      "label": "AuthorRequest.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "authorrequest.java",
-      "source_file": "backend/src/main/java/org/library/dto/AuthorRequest.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_dto_authorresponse",
-      "label": "AuthorResponse.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "authorresponse.java",
-      "source_file": "backend/src/main/java/org/library/dto/AuthorResponse.java",
       "source_location": "L1"
     },
     {
@@ -5083,18 +5493,18 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_entity_category",
-      "label": "Category.java",
+      "id": "backend_src_main_java_org_library_entity_borrowrecord",
+      "label": "BorrowRecord.java",
       "_origin": "ast",
       "community": 13,
       "community_name": "Book",
       "file_type": "code",
-      "norm_label": "category.java",
-      "source_file": "backend/src/main/java/org/library/entity/Category.java",
+      "norm_label": "borrowrecord.java",
+      "source_file": "backend/src/main/java/org/library/entity/BorrowRecord.java",
       "source_location": "L1"
     },
     {
-      "id": "backend_src_main_java_org_library_entity_category_java_allargsconstructor",
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_allargsconstructor",
       "label": "AllArgsConstructor",
       "_origin": "ast",
       "community": 13,
@@ -5105,7 +5515,18 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_entity_category_java_data",
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_builder",
+      "label": "Builder",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Book",
+      "file_type": "code",
+      "norm_label": "builder",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_data",
       "label": "Data",
       "_origin": "ast",
       "community": 13,
@@ -5116,7 +5537,7 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_entity_category_java_entity",
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_entity",
       "label": "Entity",
       "_origin": "ast",
       "community": 13,
@@ -5127,7 +5548,7 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_entity_category_java_noargsconstructor",
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_noargsconstructor",
       "label": "NoArgsConstructor",
       "_origin": "ast",
       "community": 13,
@@ -5138,7 +5559,7 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_entity_category_java_table",
+      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_table",
       "label": "Table",
       "_origin": "ast",
       "community": 13,
@@ -5157,28 +5578,6 @@
       "file_type": "code",
       "norm_label": "authormapper.java",
       "source_file": "backend/src/main/java/org/library/mapper/AuthorMapper.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_authormapper_java_author",
-      "label": "Author",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "author",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_categorymapper",
-      "label": "CategoryMapper.java",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "Book",
-      "file_type": "code",
-      "norm_label": "categorymapper.java",
-      "source_file": "backend/src/main/java/org/library/mapper/CategoryMapper.java",
       "source_location": "L1"
     },
     {
@@ -5204,14 +5603,36 @@
       "source_location": "L1"
     },
     {
-      "id": "backend_src_main_java_org_library_repository_categoryrepository",
-      "label": "CategoryRepository.java",
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository",
+      "label": "BorrowRecordRepository.java",
       "_origin": "ast",
       "community": 13,
       "community_name": "Book",
       "file_type": "code",
-      "norm_label": "categoryrepository.java",
-      "source_file": "backend/src/main/java/org/library/repository/CategoryRepository.java",
+      "norm_label": "borrowrecordrepository.java",
+      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_java_book",
+      "label": "Book",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Book",
+      "file_type": "code",
+      "norm_label": "book",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_repository_userrepository",
+      "label": "UserRepository.java",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Book",
+      "file_type": "code",
+      "norm_label": "userrepository.java",
+      "source_file": "backend/src/main/java/org/library/repository/UserRepository.java",
       "source_location": "L1"
     },
     {
@@ -5246,6 +5667,50 @@
       "norm_label": "setter",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "frontend_package_dependencies_vue",
+      "label": "vue",
+      "_origin": "ast",
+      "community": 130,
+      "community_name": "vue",
+      "file_type": "code",
+      "norm_label": "vue",
+      "source_file": "frontend/package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "vue",
+      "label": "vue",
+      "_origin": "ast",
+      "community": 130,
+      "community_name": "vue",
+      "file_type": "concept",
+      "norm_label": "vue",
+      "source_file": "frontend/package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "frontend_package_dependencies_vueuse_core",
+      "label": "@vueuse/core",
+      "_origin": "ast",
+      "community": 131,
+      "community_name": "@vueuse/core",
+      "file_type": "code",
+      "norm_label": "@vueuse/core",
+      "source_file": "frontend/package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "vueuse_core",
+      "label": "@vueuse/core",
+      "_origin": "ast",
+      "community": 131,
+      "community_name": "@vueuse/core",
+      "file_type": "concept",
+      "norm_label": "@vueuse/core",
+      "source_file": "frontend/package.json",
+      "source_location": "L17"
     },
     {
       "id": "frontend_src_components_grid_actionscell",
@@ -5369,17 +5834,6 @@
       "source_location": "L28"
     },
     {
-      "id": "frontend_src_services_categories_fetchcategories",
-      "label": "fetchCategories",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "categories.vue",
-      "file_type": "code",
-      "norm_label": "fetchcategories",
-      "source_file": "frontend/src/services/categories.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "frontend_src_services_categories_updatecategory",
       "label": "updateCategory",
       "_origin": "ast",
@@ -5457,6 +5911,17 @@
       "source_location": "L68"
     },
     {
+      "id": "frontend_src_services_api_api",
+      "label": "api",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "authors.vue",
+      "file_type": "code",
+      "norm_label": "api",
+      "source_file": "frontend/src/services/api.ts",
+      "source_location": "L108"
+    },
+    {
       "id": "frontend_src_services_authors",
       "label": "authors.ts",
       "_origin": "ast",
@@ -5510,6 +5975,17 @@
       "norm_label": "updateauthor",
       "source_file": "frontend/src/services/authors.ts",
       "source_location": "L23"
+    },
+    {
+      "id": "frontend_src_services_categories_fetchcategories",
+      "label": "fetchCategories",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "authors.vue",
+      "file_type": "code",
+      "norm_label": "fetchcategories",
+      "source_file": "frontend/src/services/categories.ts",
+      "source_location": "L13"
     },
     {
       "id": "frontend_src_pages_register",
@@ -6392,543 +6868,169 @@
       "source_location": "L26"
     },
     {
-      "id": "frontend_package",
-      "label": "package.json",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "package.json",
-      "source_file": "frontend/package.json",
-      "source_location": "L1"
-    },
-    {
-      "id": "frontend_package_dependencies",
-      "label": "dependencies",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "dependencies",
-      "source_file": "frontend/package.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "frontend_package_dependencies_ag_grid_community",
-      "label": "ag-grid-community",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "ag-grid-community",
-      "source_file": "frontend/package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "frontend_package_dependencies_ag_grid_vue3",
-      "label": "ag-grid-vue3",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "ag-grid-vue3",
-      "source_file": "frontend/package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "frontend_package_dependencies_fontsource_variable_geist",
-      "label": "@fontsource-variable/geist",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@fontsource-variable/geist",
-      "source_file": "frontend/package.json",
-      "source_location": "L13"
-    },
-    {
-      "id": "frontend_package_dependencies_fontsource_variable_inter",
-      "label": "@fontsource-variable/inter",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@fontsource-variable/inter",
-      "source_file": "frontend/package.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "frontend_package_dependencies_notivue",
-      "label": "notivue",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "notivue",
-      "source_file": "frontend/package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "frontend_package_dependencies_nuxt_ui",
-      "label": "@nuxt/ui",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@nuxt/ui",
-      "source_file": "frontend/package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "frontend_package_dependencies_tailwindcss",
-      "label": "tailwindcss",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "tailwindcss",
-      "source_file": "frontend/package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "frontend_package_dependencies_unhead_vue",
-      "label": "@unhead/vue",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@unhead/vue",
-      "source_file": "frontend/package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "frontend_package_dependencies_vue",
-      "label": "vue",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "vue",
-      "source_file": "frontend/package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "frontend_package_dependencies_vue_router",
-      "label": "vue-router",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "vue-router",
-      "source_file": "frontend/package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "frontend_package_dependencies_vueuse_core",
-      "label": "@vueuse/core",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@vueuse/core",
-      "source_file": "frontend/package.json",
-      "source_location": "L17"
-    },
-    {
       "id": "frontend_package_devdependencies",
       "label": "devDependencies",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "frontend/package.json",
-      "source_location": "L25"
+      "source_location": "L27"
     },
     {
       "id": "frontend_package_devdependencies_eslint",
       "label": "eslint",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "eslint",
       "source_file": "frontend/package.json",
-      "source_location": "L27"
+      "source_location": "L29"
     },
     {
       "id": "frontend_package_devdependencies_eslint_plugin_vue",
       "label": "eslint-plugin-vue",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "eslint-plugin-vue",
       "source_file": "frontend/package.json",
-      "source_location": "L28"
+      "source_location": "L30"
     },
     {
       "id": "frontend_package_devdependencies_typescript",
       "label": "typescript",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "frontend/package.json",
-      "source_location": "L29"
+      "source_location": "L31"
     },
     {
       "id": "frontend_package_devdependencies_typescript_eslint",
       "label": "typescript-eslint",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "typescript-eslint",
       "source_file": "frontend/package.json",
-      "source_location": "L30"
+      "source_location": "L32"
     },
     {
       "id": "frontend_package_devdependencies_vite",
       "label": "vite",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "vite",
       "source_file": "frontend/package.json",
-      "source_location": "L31"
+      "source_location": "L33"
     },
     {
       "id": "frontend_package_devdependencies_vitejs_plugin_vue",
       "label": "@vitejs/plugin-vue",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "@vitejs/plugin-vue",
       "source_file": "frontend/package.json",
-      "source_location": "L26"
+      "source_location": "L28"
     },
     {
       "id": "frontend_package_devdependencies_vue_tsc",
       "label": "vue-tsc",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "vue-tsc",
       "source_file": "frontend/package.json",
-      "source_location": "L32"
-    },
-    {
-      "id": "frontend_package_name",
-      "label": "name",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "name",
-      "source_file": "frontend/package.json",
-      "source_location": "L2"
-    },
-    {
-      "id": "frontend_package_packagemanager",
-      "label": "packageManager",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "packagemanager",
-      "source_file": "frontend/package.json",
       "source_location": "L34"
-    },
-    {
-      "id": "frontend_package_private",
-      "label": "private",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "private",
-      "source_file": "frontend/package.json",
-      "source_location": "L3"
-    },
-    {
-      "id": "frontend_package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "frontend/package.json",
-      "source_location": "L5"
-    },
-    {
-      "id": "frontend_package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "frontend/package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "frontend_package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "frontend/package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "frontend_package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "frontend/package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "frontend_package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "frontend/package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "frontend_package_scripts_typecheck",
-      "label": "typecheck",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "typecheck",
-      "source_file": "frontend/package.json",
-      "source_location": "L10"
-    },
-    {
-      "id": "frontend_package_type",
-      "label": "type",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "type",
-      "source_file": "frontend/package.json",
-      "source_location": "L4"
-    },
-    {
-      "id": "ag_grid_community",
-      "label": "ag-grid-community",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "ag-grid-community",
-      "source_file": "frontend/package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "ag_grid_vue3",
-      "label": "ag-grid-vue3",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "ag-grid-vue3",
-      "source_file": "frontend/package.json",
-      "source_location": "L19"
     },
     {
       "id": "eslint",
       "label": "eslint",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "concept",
       "norm_label": "eslint",
       "source_file": "frontend/package.json",
-      "source_location": "L27"
+      "source_location": "L29"
     },
     {
       "id": "eslint_plugin_vue",
       "label": "eslint-plugin-vue",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "concept",
       "norm_label": "eslint-plugin-vue",
       "source_file": "frontend/package.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "fontsource_variable_geist",
-      "label": "@fontsource-variable/geist",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "@fontsource-variable/geist",
-      "source_file": "frontend/package.json",
-      "source_location": "L13"
-    },
-    {
-      "id": "fontsource_variable_inter",
-      "label": "@fontsource-variable/inter",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "@fontsource-variable/inter",
-      "source_file": "frontend/package.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "notivue",
-      "label": "notivue",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "notivue",
-      "source_file": "frontend/package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "nuxt_ui",
-      "label": "@nuxt/ui",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "@nuxt/ui",
-      "source_file": "frontend/package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "tailwindcss",
-      "label": "tailwindcss",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "tailwindcss",
-      "source_file": "frontend/package.json",
-      "source_location": "L21"
+      "source_location": "L30"
     },
     {
       "id": "typescript",
       "label": "typescript",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "frontend/package.json",
-      "source_location": "L29"
+      "source_location": "L31"
     },
     {
       "id": "typescript_eslint",
       "label": "typescript-eslint",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "concept",
       "norm_label": "typescript-eslint",
       "source_file": "frontend/package.json",
-      "source_location": "L30"
-    },
-    {
-      "id": "unhead_vue",
-      "label": "@unhead/vue",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "@unhead/vue",
-      "source_file": "frontend/package.json",
-      "source_location": "L16"
+      "source_location": "L32"
     },
     {
       "id": "vite",
       "label": "vite",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "concept",
       "norm_label": "vite",
       "source_file": "frontend/package.json",
-      "source_location": "L31"
+      "source_location": "L33"
     },
     {
       "id": "vitejs_plugin_vue",
       "label": "@vitejs/plugin-vue",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "concept",
       "norm_label": "@vitejs/plugin-vue",
       "source_file": "frontend/package.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "vue",
-      "label": "vue",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "vue",
-      "source_file": "frontend/package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "vue_router",
-      "label": "vue-router",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "vue-router",
-      "source_file": "frontend/package.json",
-      "source_location": "L23"
+      "source_location": "L28"
     },
     {
       "id": "vue_tsc",
       "label": "vue-tsc",
       "_origin": "ast",
       "community": 2,
-      "community_name": "dependencies",
+      "community_name": "devDependencies",
       "file_type": "concept",
       "norm_label": "vue-tsc",
       "source_file": "frontend/package.json",
-      "source_location": "L32"
-    },
-    {
-      "id": "vueuse_core",
-      "label": "@vueuse/core",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "@vueuse/core",
-      "source_file": "frontend/package.json",
-      "source_location": "L17"
+      "source_location": "L34"
     },
     {
       "id": "backend_src_main_java_org_library_security_jwtauthfilter_java_override",
@@ -7629,7 +7731,7 @@
       "file_type": "code",
       "norm_label": "overdueborrowings",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L36"
+      "source_location": "L39"
     },
     {
       "id": "frontend_src_data_books",
@@ -7849,7 +7951,7 @@
       "file_type": "code",
       "norm_label": "activeborrowings",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L33"
+      "source_location": "L36"
     },
     {
       "id": "frontend_src_pages_dashboard_activitychart",
@@ -7860,7 +7962,18 @@
       "file_type": "code",
       "norm_label": "activitychart",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L145"
+      "source_location": "L193"
+    },
+    {
+      "id": "frontend_src_pages_dashboard_activitykindstyle",
+      "label": "activityKindStyle",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "dashboard.vue",
+      "file_type": "code",
+      "norm_label": "activitykindstyle",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L177"
     },
     {
       "id": "frontend_src_pages_dashboard_authorcount",
@@ -7871,7 +7984,7 @@
       "file_type": "code",
       "norm_label": "authorcount",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L13"
+      "source_location": "L16"
     },
     {
       "id": "frontend_src_pages_dashboard_availabilityrate",
@@ -7882,7 +7995,7 @@
       "file_type": "code",
       "norm_label": "availabilityrate",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L42"
+      "source_location": "L45"
     },
     {
       "id": "frontend_src_pages_dashboard_availablecopies",
@@ -7893,18 +8006,7 @@
       "file_type": "code",
       "norm_label": "availablecopies",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L30"
-    },
-    {
-      "id": "frontend_src_pages_dashboard_bookcovercolors",
-      "label": "bookCoverColors",
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "dashboard.vue",
-      "file_type": "code",
-      "norm_label": "bookcovercolors",
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L174"
+      "source_location": "L33"
     },
     {
       "id": "frontend_src_pages_dashboard_books",
@@ -7915,7 +8017,7 @@
       "file_type": "code",
       "norm_label": "books",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L10"
+      "source_location": "L13"
     },
     {
       "id": "frontend_src_pages_dashboard_borrowings",
@@ -7926,7 +8028,7 @@
       "file_type": "code",
       "norm_label": "borrowings",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L11"
+      "source_location": "L14"
     },
     {
       "id": "frontend_src_pages_dashboard_categories",
@@ -7937,7 +8039,7 @@
       "file_type": "code",
       "norm_label": "categories",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L12"
+      "source_location": "L15"
     },
     {
       "id": "frontend_src_pages_dashboard_categorybreakdown",
@@ -7948,7 +8050,7 @@
       "file_type": "code",
       "norm_label": "categorybreakdown",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L98"
+      "source_location": "L101"
     },
     {
       "id": "frontend_src_pages_dashboard_dashboardstats",
@@ -7959,7 +8061,7 @@
       "file_type": "code",
       "norm_label": "dashboardstats",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L63"
+      "source_location": "L66"
     },
     {
       "id": "frontend_src_pages_dashboard_datelabel",
@@ -7970,7 +8072,7 @@
       "file_type": "code",
       "norm_label": "datelabel",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L47"
+      "source_location": "L50"
     },
     {
       "id": "frontend_src_pages_dashboard_donutsegments",
@@ -7981,7 +8083,7 @@
       "file_type": "code",
       "norm_label": "donutsegments",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L117"
+      "source_location": "L120"
     },
     {
       "id": "frontend_src_pages_dashboard_greeting",
@@ -7992,7 +8094,7 @@
       "file_type": "code",
       "norm_label": "greeting",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L56"
+      "source_location": "L59"
     },
     {
       "id": "frontend_src_pages_dashboard_overduebooks",
@@ -8003,7 +8105,7 @@
       "file_type": "code",
       "norm_label": "overduebooks",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L41"
+      "source_location": "L44"
     },
     {
       "id": "frontend_src_pages_dashboard_recentactivity",
@@ -8014,18 +8116,7 @@
       "file_type": "code",
       "norm_label": "recentactivity",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L136"
-    },
-    {
-      "id": "frontend_src_pages_dashboard_recentborrowings",
-      "label": "recentBorrowings",
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "dashboard.vue",
-      "file_type": "code",
-      "norm_label": "recentborrowings",
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L129"
+      "source_location": "L135"
     },
     {
       "id": "frontend_src_pages_dashboard_totalbooks",
@@ -8036,7 +8127,7 @@
       "file_type": "code",
       "norm_label": "totalbooks",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L29"
+      "source_location": "L32"
     },
     {
       "id": "frontend_src_composables_usecrudpage",
@@ -8059,6 +8150,17 @@
       "norm_label": "api.ts",
       "source_file": "frontend/src/services/api.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_services_api_mock_token",
+      "label": "MOCK_TOKEN",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "mock_token",
+      "source_file": "frontend/src/services/api.ts",
+      "source_location": "L3"
     },
     {
       "id": "frontend_src_components_appdatagrid",
@@ -8512,17 +8614,6 @@
       "source_location": "L30"
     },
     {
-      "id": "backend_src_main_java_org_library_repository_userrepository",
-      "label": "UserRepository.java",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "SecurityConfig.java",
-      "file_type": "code",
-      "norm_label": "userrepository.java",
-      "source_file": "backend/src/main/java/org/library/repository/UserRepository.java",
-      "source_location": "L1"
-    },
-    {
       "id": "backend_src_main_java_org_library_security_securityconfig",
       "label": "SecurityConfig.java",
       "_origin": "ast",
@@ -8871,17 +8962,6 @@
       "source_location": "L11"
     },
     {
-      "id": "auto_routes",
-      "label": "vue-router/auto-routes",
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "route-map.d.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "vue-router/auto-routes",
-      "source_file": "vue-router/auto-routes"
-    },
-    {
       "id": "frontend_src_route_map_d",
       "label": "route-map.d.ts",
       "_origin": "ast",
@@ -8937,50 +9017,6 @@
       "source_location": ""
     },
     {
-      "id": "backend_src_main_java_org_library_controller_authcontroller",
-      "label": "AuthController.java",
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "authcontroller.java",
-      "source_file": "backend/src/main/java/org/library/controller/AuthController.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_authcontroller_java_requestmapping",
-      "label": "RequestMapping",
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "requestmapping",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_controller_authcontroller_java_restcontroller",
-      "label": "RestController",
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "restcontroller",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_authservice",
-      "label": "AuthService.java",
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "lombok.RequiredArgsConstructor",
-      "file_type": "code",
-      "norm_label": "authservice.java",
-      "source_file": "backend/src/main/java/org/library/service/AuthService.java",
-      "source_location": "L1"
-    },
-    {
       "id": "backend_src_main_java_org_library_service_impl_authserviceimpl",
       "label": "AuthServiceImpl.java",
       "_origin": "ast",
@@ -9001,6 +9037,17 @@
       "norm_label": "authenticationmanager",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl",
+      "label": "UserServiceImpl.java",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": "userserviceimpl.java",
+      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
+      "source_location": "L1"
     },
     {
       "id": "lombok_requiredargsconstructor",
@@ -9032,6 +9079,17 @@
       "community_name": "lombok.RequiredArgsConstructor",
       "file_type": "code",
       "norm_label": "org.springframework.security.crypto.password.passwordencoder",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "org_springframework_stereotype_service",
+      "label": "org.springframework.stereotype.Service",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "lombok.RequiredArgsConstructor",
+      "file_type": "code",
+      "norm_label": "org.springframework.stereotype.service",
       "source_file": "",
       "source_location": ""
     },
@@ -9133,6 +9191,171 @@
       "norm_label": "borrownotfoundexception.java",
       "source_file": "backend/src/main/java/org/library/exception/BorrowNotFoundException.java",
       "source_location": "L1"
+    },
+    {
+      "id": "frontend_package_dependencies",
+      "label": "dependencies",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "dependencies",
+      "source_file": "frontend/package.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "frontend_package_dependencies_ag_grid_community",
+      "label": "ag-grid-community",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "ag-grid-community",
+      "source_file": "frontend/package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "frontend_package_dependencies_fontsource_variable_geist",
+      "label": "@fontsource-variable/geist",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@fontsource-variable/geist",
+      "source_file": "frontend/package.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "frontend_package_dependencies_notivue",
+      "label": "notivue",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "notivue",
+      "source_file": "frontend/package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "frontend_package_dependencies_nuxt_ui",
+      "label": "@nuxt/ui",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@nuxt/ui",
+      "source_file": "frontend/package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "frontend_package_dependencies_tailwindcss",
+      "label": "tailwindcss",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "tailwindcss",
+      "source_file": "frontend/package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "frontend_package_dependencies_vue_echarts",
+      "label": "vue-echarts",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "vue-echarts",
+      "source_file": "frontend/package.json",
+      "source_location": "L24"
+    },
+    {
+      "id": "frontend_package_dependencies_vue_router",
+      "label": "vue-router",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "vue-router",
+      "source_file": "frontend/package.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "ag_grid_community",
+      "label": "ag-grid-community",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "ag-grid-community",
+      "source_file": "frontend/package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "fontsource_variable_geist",
+      "label": "@fontsource-variable/geist",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "@fontsource-variable/geist",
+      "source_file": "frontend/package.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "notivue",
+      "label": "notivue",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "notivue",
+      "source_file": "frontend/package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "nuxt_ui",
+      "label": "@nuxt/ui",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "@nuxt/ui",
+      "source_file": "frontend/package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "tailwindcss",
+      "label": "tailwindcss",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "tailwindcss",
+      "source_file": "frontend/package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "vue_echarts",
+      "label": "vue-echarts",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "vue-echarts",
+      "source_file": "frontend/package.json",
+      "source_location": "L24"
+    },
+    {
+      "id": "vue_router",
+      "label": "vue-router",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "vue-router",
+      "source_file": "frontend/package.json",
+      "source_location": "L25"
     },
     {
       "id": "agents_skills_nuxt_ui_references_guidelines_conventions_auto_registered_modules",
@@ -10299,6 +10522,17 @@
       "source_location": "L3"
     },
     {
+      "id": "backend_src_main_java_org_library_controller_authcontroller",
+      "label": "AuthController.java",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": ".login",
+      "file_type": "code",
+      "norm_label": "authcontroller.java",
+      "source_file": "backend/src/main/java/org/library/controller/AuthController.java",
+      "source_location": "L1"
+    },
+    {
       "id": "backend_src_main_java_org_library_controller_authcontroller_java_authresponse",
       "label": "AuthResponse",
       "_origin": "ast",
@@ -10317,6 +10551,28 @@
       "community_name": ".login",
       "file_type": "code",
       "norm_label": "postmapping",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_authcontroller_java_requestmapping",
+      "label": "RequestMapping",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": ".login",
+      "file_type": "code",
+      "norm_label": "requestmapping",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_authcontroller_java_restcontroller",
+      "label": "RestController",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": ".login",
+      "file_type": "code",
+      "norm_label": "restcontroller",
       "source_file": "",
       "source_location": ""
     },
@@ -10340,6 +10596,17 @@
       "file_type": "code",
       "norm_label": "registerrequest.java",
       "source_file": "backend/src/main/java/org/library/dto/RegisterRequest.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_authservice",
+      "label": "AuthService.java",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": ".login",
+      "file_type": "code",
+      "norm_label": "authservice.java",
+      "source_file": "backend/src/main/java/org/library/service/AuthService.java",
       "source_location": "L1"
     },
     {
@@ -11027,66 +11294,6 @@
       "source_location": "L1"
     },
     {
-      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_dashboardgroup",
-      "label": "DashboardGroup",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "Dashboard Layout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "dashboardgroup",
-      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
-      "source_location": "L120"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_dashboardnavbar_dashboardtoolbar",
-      "label": "DashboardNavbar / DashboardToolbar",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "Dashboard Layout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "dashboardnavbar / dashboardtoolbar",
-      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
-      "source_location": "L146"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_dashboardpanel",
-      "label": "DashboardPanel",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "Dashboard Layout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "dashboardpanel",
-      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
-      "source_location": "L142"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_dashboardsidebar",
-      "label": "DashboardSidebar",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "Dashboard Layout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "dashboardsidebar",
-      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
-      "source_location": "L129"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_key_components",
-      "label": "Key components",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "Dashboard Layout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "key components",
-      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
-      "source_location": "L118"
-    },
-    {
       "id": "agents_skills_nuxt_ui_references_layouts_dashboard_layout",
       "label": "Layout",
       "_origin": "ast",
@@ -11135,18 +11342,6 @@
       "source_location": "L219"
     },
     {
-      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_unavigationmenu_in_sidebar",
-      "label": "UNavigationMenu in sidebar",
-      "_origin": "ast",
-      "community": 60,
-      "community_name": "Dashboard Layout",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "unavigationmenu in sidebar",
-      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
-      "source_location": "L151"
-    },
-    {
       "id": "agents_skills_nuxt_ui_references_layouts_dashboard_when_to_use",
       "label": "When to use",
       "_origin": "ast",
@@ -11181,6 +11376,83 @@
       "norm_label": "with toolbar",
       "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
       "source_location": "L183"
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_authorcontroller_java_postmapping",
+      "label": "PostMapping",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "postmapping",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_authorcontroller_java_putmapping",
+      "label": "PutMapping",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "putmapping",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_authorcontroller_java_requestmapping",
+      "label": "RequestMapping",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "requestmapping",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_controller_authorcontroller_java_restcontroller",
+      "label": "RestController",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "restcontroller",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_dto_authorrequest",
+      "label": "AuthorRequest.java",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "authorrequest.java",
+      "source_file": "backend/src/main/java/org/library/dto/AuthorRequest.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_dto_authorresponse",
+      "label": "AuthorResponse.java",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "authorresponse.java",
+      "source_file": "backend/src/main/java/org/library/dto/AuthorResponse.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_mapper_authormapper_java_author",
+      "label": "Author",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "AuthorController",
+      "file_type": "code",
+      "norm_label": "author",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "context",
@@ -11977,66 +12249,6 @@
       "norm_label": "navigation.md",
       "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
       "source_location": "L1"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_recipes_navigation_breadcrumbs",
-      "label": "Breadcrumbs",
-      "_origin": "ast",
-      "community": 66,
-      "community_name": "nuxt-ui/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "breadcrumbs",
-      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
-      "source_location": "L37"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_recipes_navigation_header_with_mobile_menu",
-      "label": "Header with mobile menu",
-      "_origin": "ast",
-      "community": 66,
-      "community_name": "nuxt-ui/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "header with mobile menu",
-      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
-      "source_location": "L5"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_recipes_navigation_navigation",
-      "label": "Navigation",
-      "_origin": "ast",
-      "community": 66,
-      "community_name": "nuxt-ui/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "navigation",
-      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_recipes_navigation_sidebar_navigation_dashboard",
-      "label": "Sidebar navigation (dashboard)",
-      "_origin": "ast",
-      "community": 66,
-      "community_name": "nuxt-ui/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "sidebar navigation (dashboard)",
-      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
-      "source_location": "L30"
-    },
-    {
-      "id": "agents_skills_nuxt_ui_references_recipes_navigation_tab_navigation_within_a_page",
-      "label": "Tab navigation (within a page)",
-      "_origin": "ast",
-      "community": 66,
-      "community_name": "nuxt-ui/SKILL.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "tab navigation (within a page)",
-      "source_file": ".agents/skills/nuxt-ui/references/recipes/navigation.md",
-      "source_location": "L57"
     },
     {
       "id": "agents_skills_nuxt_ui_references_recipes_overlays",
@@ -13714,26 +13926,48 @@
       "source_location": "L121"
     },
     {
-      "id": "frontend_src_services_api_api",
-      "label": "api",
+      "id": "backend_src_main_java_org_library_dto_userresponse",
+      "label": "UserResponse.java",
       "_origin": "ast",
-      "community": 80,
-      "community_name": "auth.ts",
+      "community": 79,
+      "community_name": "UserResponse",
       "file_type": "code",
-      "norm_label": "api",
-      "source_file": "frontend/src/services/api.ts",
-      "source_location": "L108"
+      "norm_label": "userresponse.java",
+      "source_file": "backend/src/main/java/org/library/dto/UserResponse.java",
+      "source_location": "L1"
     },
     {
-      "id": "frontend_src_services_api_mock_token",
-      "label": "MOCK_TOKEN",
+      "id": "backend_src_main_java_org_library_mapper_usermapper",
+      "label": "UserMapper.java",
       "_origin": "ast",
-      "community": 80,
-      "community_name": "auth.ts",
+      "community": 79,
+      "community_name": "UserResponse",
       "file_type": "code",
-      "norm_label": "mock_token",
-      "source_file": "frontend/src/services/api.ts",
-      "source_location": "L3"
+      "norm_label": "usermapper.java",
+      "source_file": "backend/src/main/java/org/library/mapper/UserMapper.java",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_java_override",
+      "label": "Override",
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": "override",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_src_main_java_org_library_service_userservice",
+      "label": "UserService.java",
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "UserResponse",
+      "file_type": "code",
+      "norm_label": "userservice.java",
+      "source_file": "backend/src/main/java/org/library/service/UserService.java",
+      "source_location": "L1"
     },
     {
       "id": "frontend_src_services_auth",
@@ -14371,6 +14605,78 @@
       "source_location": "L108"
     },
     {
+      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_dashboardgroup",
+      "label": "DashboardGroup",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "Key components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "dashboardgroup",
+      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
+      "source_location": "L120"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_dashboardnavbar_dashboardtoolbar",
+      "label": "DashboardNavbar / DashboardToolbar",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "Key components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "dashboardnavbar / dashboardtoolbar",
+      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
+      "source_location": "L146"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_dashboardpanel",
+      "label": "DashboardPanel",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "Key components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "dashboardpanel",
+      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
+      "source_location": "L142"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_dashboardsidebar",
+      "label": "DashboardSidebar",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "Key components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "dashboardsidebar",
+      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
+      "source_location": "L129"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_key_components",
+      "label": "Key components",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "Key components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "key components",
+      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
+      "source_location": "L118"
+    },
+    {
+      "id": "agents_skills_nuxt_ui_references_layouts_dashboard_unavigationmenu_in_sidebar",
+      "label": "UNavigationMenu in sidebar",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "Key components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "unavigationmenu in sidebar",
+      "source_file": ".agents/skills/nuxt-ui/references/layouts/dashboard.md",
+      "source_location": "L151"
+    },
+    {
       "id": "docs_agents_issue_tracker",
       "label": "issue-tracker.md",
       "_origin": "ast",
@@ -14499,94 +14805,6 @@
       "source_location": "L1"
     },
     {
-      "id": "backend_src_main_java_org_library_dto_userresponse",
-      "label": "UserResponse.java",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "userresponse.java",
-      "source_file": "backend/src/main/java/org/library/dto/UserResponse.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord",
-      "label": "BorrowRecord.java",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "borrowrecord.java",
-      "source_file": "backend/src/main/java/org/library/entity/BorrowRecord.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_allargsconstructor",
-      "label": "AllArgsConstructor",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "allargsconstructor",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_builder",
-      "label": "Builder",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "builder",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_data",
-      "label": "Data",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "data",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_entity",
-      "label": "Entity",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "entity",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_noargsconstructor",
-      "label": "NoArgsConstructor",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "noargsconstructor",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_entity_borrowrecord_java_table",
-      "label": "Table",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "table",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "backend_src_main_java_org_library_mapper_borrowmapper",
       "label": "BorrowMapper.java",
       "_origin": "ast",
@@ -14596,39 +14814,6 @@
       "norm_label": "borrowmapper.java",
       "source_file": "backend/src/main/java/org/library/mapper/BorrowMapper.java",
       "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_mapper_usermapper",
-      "label": "UserMapper.java",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "usermapper.java",
-      "source_file": "backend/src/main/java/org/library/mapper/UserMapper.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository",
-      "label": "BorrowRecordRepository.java",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "borrowrecordrepository.java",
-      "source_file": "backend/src/main/java/org/library/repository/BorrowRecordRepository.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_repository_borrowrecordrepository_java_book",
-      "label": "Book",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "book",
-      "source_file": "",
-      "source_location": ""
     },
     {
       "id": "backend_src_main_java_org_library_service_borrowservice",
@@ -14660,50 +14845,6 @@
       "community_name": "BorrowResponse",
       "file_type": "code",
       "norm_label": "override",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl",
-      "label": "UserServiceImpl.java",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "userserviceimpl.java",
-      "source_file": "backend/src/main/java/org/library/service/impl/UserServiceImpl.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_impl_userserviceimpl_java_override",
-      "label": "Override",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "override",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "backend_src_main_java_org_library_service_userservice",
-      "label": "UserService.java",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "userservice.java",
-      "source_file": "backend/src/main/java/org/library/service/UserService.java",
-      "source_location": "L1"
-    },
-    {
-      "id": "org_springframework_stereotype_service",
-      "label": "org.springframework.stereotype.Service",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "BorrowResponse",
-      "file_type": "code",
-      "norm_label": "org.springframework.stereotype.service",
       "source_file": "",
       "source_location": ""
     },
@@ -18453,7 +18594,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L150",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -18465,19 +18606,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L38",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
-      "source": "frontend_src_pages_dashboard_recentborrowings",
-      "target": "frontend_src_pages_dashboard_activitydate",
+      "source": "frontend_src_pages_dashboard_recentactivity",
+      "target": "frontend_src_pages_dashboard_personinitials",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L132",
+      "source_location": "L143",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard_recentactivity",
+      "target": "frontend_src_pages_dashboard_todatekey",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -18705,7 +18858,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L186",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -18717,7 +18870,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L189",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -18729,7 +18882,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L156",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -18741,7 +18894,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L99",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -18753,7 +18906,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L135",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -18765,7 +18918,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L201",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -21889,6 +22042,18 @@
       "weight": 1.0
     },
     {
+      "source": "frontend_package_dependencies_echarts",
+      "target": "echarts",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/package.json",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
       "source": "frontend_package_dependencies_fontsource_variable_geist",
       "target": "fontsource_variable_geist",
       "relation": "imports",
@@ -21921,7 +22086,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -21945,7 +22110,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -21969,7 +22134,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L22",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_dependencies_vue_echarts",
+      "target": "vue_echarts",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/package.json",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -21981,7 +22158,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L23",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -22005,7 +22182,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -22017,7 +22194,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -22029,7 +22206,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -22041,7 +22218,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -22053,7 +22230,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -22065,7 +22242,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -22077,7 +22254,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -22694,6 +22871,42 @@
     },
     {
       "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_categories_category",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_borrowings_borrowing",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_borrowings_borrowingstatus",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
       "target": "frontend_src_services_authors_fetchauthors",
       "relation": "imports",
       "_origin": "ast",
@@ -22773,31 +22986,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_services_borrowings_borrowing",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_services_borrowings_borrowingstatus",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L8",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -23550,18 +23739,6 @@
     },
     {
       "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_services_authors",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
       "target": "frontend_src_services_categories",
       "relation": "imports_from",
       "_origin": "ast",
@@ -23569,19 +23746,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_services_books",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L7",
+      "source_location": "L10",
       "type_only": true,
       "weight": 1.0
     },
@@ -23594,7 +23759,56 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L11",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_authors",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_components_dashboard_activitychart",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_components_dashboard_categorydonutchart",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/pages/dashboard.vue",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_services_books",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L9",
       "type_only": true,
       "weight": 1.0
     },
@@ -30811,7 +31025,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -30833,7 +31047,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -30937,7 +31151,7 @@
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_notivue",
+      "target": "frontend_package_dependencies_echarts",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -30948,7 +31162,7 @@
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_tailwindcss",
+      "target": "frontend_package_dependencies_notivue",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -30959,7 +31173,7 @@
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_vue",
+      "target": "frontend_package_dependencies_tailwindcss",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -30970,13 +31184,35 @@
     },
     {
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_vue_router",
+      "target": "frontend_package_dependencies_vue",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
       "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_dependencies",
+      "target": "frontend_package_dependencies_vue_echarts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_package_dependencies",
+      "target": "frontend_package_dependencies_vue_router",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/package.json",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -30987,7 +31223,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -30998,7 +31234,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -31009,7 +31245,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L28",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -31020,7 +31256,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L29",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -31031,7 +31267,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -31042,7 +31278,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L31",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -31053,7 +31289,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/package.json",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -31450,6 +31686,83 @@
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/AppDataGrid.vue",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_dashboard_activitychart",
+      "target": "frontend_src_components_dashboard_activitychart_ecoption",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/dashboard/ActivityChart.vue",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_dashboard_activitychart",
+      "target": "frontend_src_components_dashboard_activitychart_props",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/dashboard/ActivityChart.vue",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_dashboard_activitychart",
+      "target": "frontend_src_components_dashboard_activitychart_option",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/dashboard/ActivityChart.vue",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_dashboard_categorydonutchart",
+      "target": "frontend_src_components_dashboard_categorydonutchart_ecoption",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_dashboard_categorydonutchart",
+      "target": "frontend_src_components_dashboard_categorydonutchart_donutitem",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_dashboard_categorydonutchart",
+      "target": "frontend_src_components_dashboard_categorydonutchart_props",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_dashboard_categorydonutchart",
+      "target": "frontend_src_components_dashboard_categorydonutchart_option",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/dashboard/CategoryDonutChart.vue",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -32631,24 +32944,13 @@
     },
     {
       "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_books",
+      "target": "frontend_src_pages_dashboard_categorybreakdown",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_borrowings",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L11",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
@@ -32659,34 +32961,34 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L117",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
       "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_categories",
+      "target": "frontend_src_pages_dashboard_activitykind",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L12",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
       "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_recentborrowings",
+      "target": "frontend_src_pages_dashboard_activityitem",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L129",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
       "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_authorcount",
+      "target": "frontend_src_pages_dashboard_books",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -32703,7 +33005,62 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L136",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_pages_dashboard_borrowings",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_pages_dashboard_categories",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_pages_dashboard_authorcount",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_pages_dashboard_activitykindstyle",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L177",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_pages_dashboard",
+      "target": "frontend_src_pages_dashboard_activitykindlabel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/pages/dashboard.vue",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -32714,29 +33071,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L145",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_bookcovercolors",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L174",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_activitydate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L182",
+      "source_location": "L193",
       "weight": 1.0
     },
     {
@@ -32747,18 +33082,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L186",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_bookinitials",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L193",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -32769,7 +33093,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L202",
+      "source_location": "L221",
       "weight": 1.0
     },
     {
@@ -32780,7 +33104,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L211",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -32791,7 +33115,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L217",
+      "source_location": "L236",
       "weight": 1.0
     },
     {
@@ -32802,7 +33126,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L230",
+      "source_location": "L249",
       "weight": 1.0
     },
     {
@@ -32813,7 +33137,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L29",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -32824,7 +33148,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L30",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -32835,7 +33159,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -32846,7 +33170,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L36",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -32857,7 +33181,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L41",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -32868,7 +33192,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L42",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -32879,7 +33203,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L47",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -32890,7 +33214,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L56",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -32901,18 +33225,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L63",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_pages_dashboard",
-      "target": "frontend_src_pages_dashboard_categorybreakdown",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/pages/dashboard.vue",
-      "source_location": "L98",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -33841,13 +34154,35 @@
     },
     {
       "source": "frontend_src_services_mock",
+      "target": "frontend_src_services_mock_fetchbooks",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/services/mock.ts",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_services_mock",
+      "target": "frontend_src_services_mock_createbook",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/services/mock.ts",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_services_mock",
       "target": "frontend_src_services_mock_updatebook",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L110",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -33858,29 +34193,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L126",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_services_mock",
-      "target": "frontend_src_services_mock_fetchcategories",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L130",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_services_mock",
-      "target": "frontend_src_services_mock_createcategory",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L134",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
@@ -33896,7 +34209,7 @@
     },
     {
       "source": "frontend_src_services_mock",
-      "target": "frontend_src_services_mock_updatecategory",
+      "target": "frontend_src_services_mock_fetchcategories",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -33907,13 +34220,35 @@
     },
     {
       "source": "frontend_src_services_mock",
+      "target": "frontend_src_services_mock_createcategory",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/services/mock.ts",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_services_mock",
+      "target": "frontend_src_services_mock_updatecategory",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/services/mock.ts",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_services_mock",
       "target": "frontend_src_services_mock_deletecategory",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L147",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -33924,7 +34259,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L151",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -33935,7 +34270,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L155",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -33946,7 +34281,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L161",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -33957,7 +34292,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L168",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -33968,7 +34303,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L172",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -33979,7 +34314,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L176",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -33990,7 +34325,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L180",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -34001,7 +34336,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L197",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -34100,29 +34435,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L88",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_services_mock",
-      "target": "frontend_src_services_mock_fetchbooks",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L92",
-      "weight": 1.0
-    },
-    {
-      "source": "frontend_src_services_mock",
-      "target": "frontend_src_services_mock_createbook",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/services/mock.ts",
-      "source_location": "L96",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -34861,15 +35174,6 @@
       "source_file": "backend/mvnw",
       "source_location": "L95",
       "weight": 1.0
-    },
-    {
-      "source": "frontend_src_route_map_d",
-      "target": "auto_routes",
-      "relation": "dynamic_import",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/src/route-map.d.ts"
     },
     {
       "source": "backend_src_main_java_org_library_entity_user_user",
@@ -37162,5 +37466,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c1ec9911aa11b5db91dbdecd76a3fce620c22ff3"
+  "built_at_commit": "0245b6569679e5132c33dcdb81899991e10325d8"
 }

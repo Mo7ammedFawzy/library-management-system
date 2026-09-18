@@ -372,10 +372,10 @@
     "semantic_hash": "29068f7726d2e67e302d227af1b81b94"
   },
   "frontend/package.json": {
-    "mtime": 1787828039.8384862,
-    "seen": 1788450175.5696545,
-    "ast_hash": "2d9e838ddd17264bdea11fde22dd3938",
-    "semantic_hash": "2d9e838ddd17264bdea11fde22dd3938"
+    "mtime": 1789744433.4910233,
+    "seen": 1789750872.3764026,
+    "ast_hash": "aa069a68e1b956c65e67bef9a44bbccc",
+    "semantic_hash": ""
   },
   "frontend/renovate.json": {
     "mtime": 1787828039.8534777,
@@ -384,9 +384,9 @@
     "semantic_hash": "4edc132708119ceca9d4cb2df9a7cec0"
   },
   "frontend/src/App.vue": {
-    "mtime": 1789742451.9421144,
-    "seen": 1789742603.9045472,
-    "ast_hash": "37db869f7bcb1256792e57483a4a5154",
+    "mtime": 1789750740.607,
+    "seen": 1789750872.3764026,
+    "ast_hash": "0e423e74c5393458c8a5e892734761c0",
     "semantic_hash": ""
   },
   "frontend/src/components/AppDataGrid.vue": {
@@ -516,9 +516,9 @@
     "semantic_hash": "2ba6178191b8752eac2e4cbf0cda6dfb"
   },
   "frontend/src/pages/dashboard.vue": {
-    "mtime": 1789742920.5439603,
-    "seen": 1789743014.3357036,
-    "ast_hash": "9c4b5622deddacba43860c5c27d9527a",
+    "mtime": 1789750690.4394233,
+    "seen": 1789750872.3764026,
+    "ast_hash": "d8db95eac00ef0f6ea9e3affd29a4402",
     "semantic_hash": ""
   },
   "frontend/src/pages/index.vue": {
@@ -558,8 +558,8 @@
     "semantic_hash": "e7ba02ccec7c55599682993dd08a3959"
   },
   "frontend/src/route-map.d.ts": {
-    "mtime": 1789742319.3837676,
-    "seen": 1789742603.9045472,
+    "mtime": 1789750697.9387126,
+    "seen": 1789750872.3764026,
     "ast_hash": "15fbb2c561d35cb3caa4262225cedb44",
     "semantic_hash": "15fbb2c561d35cb3caa4262225cedb44"
   },
@@ -600,9 +600,9 @@
     "semantic_hash": "9b15e3ccb9a08a788b093c8ad94566a4"
   },
   "frontend/src/services/mock.ts": {
-    "mtime": 1788624753.420043,
-    "seen": 1789673317.2303362,
-    "ast_hash": "e5ff7af8df41a18aa4de737b9f406dd8",
+    "mtime": 1789744444.1291811,
+    "seen": 1789750872.3764026,
+    "ast_hash": "834c5c14789acd7af7e92b5efba9b792",
     "semantic_hash": ""
   },
   "frontend/src/vite-env.d.ts": {
@@ -921,6 +921,18 @@
     "mtime": 1787828039.8464816,
     "seen": 1788451115.1142042,
     "ast_hash": "c9e7125d0de2131225e5507d14ef31d4",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/dashboard/ActivityChart.vue": {
+    "mtime": 1789744458.411498,
+    "seen": 1789750872.3764026,
+    "ast_hash": "c5228c8e16de44e6d30e94a885933476",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/dashboard/CategoryDonutChart.vue": {
+    "mtime": 1789744472.9778717,
+    "seen": 1789750872.3764026,
+    "ast_hash": "e97d699b338bcba5489f9acd989e0209",
     "semantic_hash": ""
   }
 }

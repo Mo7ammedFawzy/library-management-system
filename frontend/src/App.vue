@@ -96,12 +96,6 @@ const navSections = computed(() => [
   }
 ])
 
-const quickActions = [
-  { label: 'Add new book', icon: 'i-lucide-plus', to: '/books' },
-  { label: 'Add new member', icon: 'i-lucide-user-plus', to: '/members' },
-  { label: 'New borrowing', icon: 'i-lucide-book-plus', to: '/borrowings' }
-]
-
 const activeNavClass = "bg-[#edf4ff] text-[#173b70] before:absolute before:inset-y-2 before:left-0 before:w-1 before:rounded-r-full before:bg-[#e5a214] before:content-['']"
 const inactiveNavClass = 'text-[#60728e] hover:bg-[#f5f8fc] hover:text-[#173b70]'
 

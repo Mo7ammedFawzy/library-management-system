@@ -297,7 +297,7 @@ function statusLabel(status: BorrowingStatus) {
     </section>
 
     <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
+      <article class="overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
         <div class="flex items-start justify-between gap-3">
           <div>
             <h2 class="font-serif text-lg font-bold text-[#132f57]">Library activity</h2>
@@ -309,12 +309,12 @@ function statusLabel(status: BorrowingStatus) {
           </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4 min-w-0">
           <ActivityChart :labels="activityChart.labels" :counts="activityChart.counts" />
         </div>
       </article>
 
-      <article class="rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
+      <article class="overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6">
         <div class="flex items-start justify-between gap-3">
           <div>
             <h2 class="font-serif text-lg font-bold text-[#132f57]">Books by category</h2>
@@ -326,10 +326,10 @@ function statusLabel(status: BorrowingStatus) {
           </RouterLink>
         </div>
 
-        <div class="mt-4 flex flex-col items-center gap-5 sm:flex-row sm:justify-around">
+        <div class="mt-4 grid min-w-0 grid-cols-1 items-center justify-items-center gap-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:justify-items-stretch">
           <CategoryDonutChart :items="donutSegments" :total="totalBooks" />
 
-          <div class="w-full max-w-[250px] divide-y divide-[#edf1f6]">
+          <div class="w-full min-w-0 max-w-[250px] divide-y divide-[#edf1f6] sm:max-w-none">
             <div v-for="category in categoryBreakdown" :key="category.name" class="flex items-center justify-between gap-4 py-2.5 first:pt-0 last:pb-0">
               <span class="flex min-w-0 items-center gap-2.5 text-sm font-medium text-[#304968]">
                 <span class="size-2.5 shrink-0 rounded-full" :style="{ backgroundColor: category.color }" />
