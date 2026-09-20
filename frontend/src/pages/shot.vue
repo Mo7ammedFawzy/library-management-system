@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { MOCK_TOKEN, setToken } from '../services/api'
+import {onMounted} from 'vue'
+import {useRoute, useRouter} from 'vue-router'
+import {MOCK_TOKEN, setToken} from '../services/api'
 
 // TEMPORARY local-only screenshot helper. Sets the mock auth token and
 // redirects to the route in `?to=`. Deleted after the UI screenshot pass.
