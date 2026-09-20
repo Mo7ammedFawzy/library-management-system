@@ -14,6 +14,7 @@ const breadcrumbItems = ref<BreadcrumbItem[]>([
       <UBreadcrumb class="mb-2" :items="breadcrumbItems">
         <template #item="{ item }">
           <span
+            :aria-current="!item.to ? 'page' : undefined"
             :class="[
               'flex items-center gap-1.5 text-sm transition-colors',
               item.to ? 'text-muted hover:text-highlighted cursor-pointer' : 'font-semibold text-highlighted'
@@ -62,7 +63,7 @@ const breadcrumbItems = ref<BreadcrumbItem[]>([
         <UButton
           to="/borrowings"
           icon="i-lucide-repeat-2"
-          class="!h-[38px] !rounded-xl !px-4 shadow-sm"
+          class="!h-10 !rounded-xl !px-4 shadow-sm"
         >
           View borrowings
         </UButton>
@@ -71,7 +72,7 @@ const breadcrumbItems = ref<BreadcrumbItem[]>([
           color="neutral"
           variant="outline"
           icon="i-lucide-library-big"
-          class="!h-[38px] !rounded-xl !bg-white !px-4 shadow-sm"
+          class="!h-10 !rounded-xl !bg-white !px-4 shadow-sm"
         >
           Browse books
         </UButton>

@@ -20,7 +20,7 @@ const hasUppercase = computed(() => /[A-Z]/.test(newPassword.value))
 const hasNumber = computed(() => /[0-9]/.test(newPassword.value))
 const meetsRequirements = computed(() => hasMinLength.value && hasUppercase.value && hasNumber.value)
 
-const isSubmitDisabled = computed(() => isLoading.value || !currentPassword.value || !newPassword.value || !confirmPassword.value)
+const isSubmitDisabled = computed(() => isLoading.value)
 
 function validate(): boolean {
   currentFieldError.value = ''
@@ -100,7 +100,7 @@ function handleReset() {
         <div
           v-if="error"
           role="alert"
-          class="mb-4 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs sm:text-sm text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
+          class="mb-4 flex items-center gap-2 rounded-lg border border-[#f1c4bd] bg-[#fff0ee] px-3 py-2 text-xs sm:text-sm text-[#b3261e]"
         >
           <UIcon
             name="i-lucide-alert-circle"
@@ -113,7 +113,7 @@ function handleReset() {
         <div
           v-if="success"
           role="status"
-          class="mb-4 flex items-center gap-2 rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 text-xs sm:text-sm text-teal-800 dark:border-teal-900 dark:bg-teal-950/30 dark:text-teal-300"
+          class="mb-4 flex items-center gap-2 rounded-lg border border-[#bfe0d4] bg-[#eaf7f2] px-3 py-2 text-xs sm:text-sm text-[#175c4c]"
         >
           <UIcon
             name="i-lucide-check-circle-2"
@@ -150,14 +150,15 @@ function handleReset() {
                 autocomplete="current-password"
                 placeholder="Enter your current password"
                 :aria-invalid="currentFieldError ? 'true' : undefined"
-                aria-describedby="current-password-error"
+                :aria-describedby="currentFieldError ? 'current-password-error' : undefined"
                 class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-10 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                :class="currentFieldError ? '!border-[#d84332] focus:!border-[#d84332] focus:!ring-[#d84332]/15' : ''"
               >
               <button
                 type="button"
                 :aria-label="showCurrent ? 'Hide current password' : 'Show current password'"
                 :aria-pressed="showCurrent"
-                class="absolute inset-y-0 right-0 flex items-center pr-3 text-dimmed transition-colors hover:text-default"
+                class="absolute inset-y-0 right-0 flex items-center rounded-r-lg pr-3 text-dimmed transition-colors hover:text-default focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
                 @click="showCurrent = !showCurrent"
               >
                 <UIcon
@@ -170,7 +171,7 @@ function handleReset() {
             <p
               v-if="currentFieldError"
               id="current-password-error"
-              class="mt-1 text-xs text-red-600 dark:text-red-400"
+              class="mt-1 text-xs text-[#b3261e]"
             >
               {{ currentFieldError }}
             </p>
@@ -198,14 +199,15 @@ function handleReset() {
                 autocomplete="new-password"
                 placeholder="Create a new password"
                 :aria-invalid="newFieldError ? 'true' : undefined"
-                aria-describedby="new-password-requirements new-password-error"
+                :aria-describedby="newFieldError ? 'new-password-requirements new-password-error' : 'new-password-requirements'"
                 class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-10 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                :class="newFieldError ? '!border-[#d84332] focus:!border-[#d84332] focus:!ring-[#d84332]/15' : ''"
               >
               <button
                 type="button"
                 :aria-label="showNew ? 'Hide new password' : 'Show new password'"
                 :aria-pressed="showNew"
-                class="absolute inset-y-0 right-0 flex items-center pr-3 text-dimmed transition-colors hover:text-default"
+                class="absolute inset-y-0 right-0 flex items-center rounded-r-lg pr-3 text-dimmed transition-colors hover:text-default focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
                 @click="showNew = !showNew"
               >
                 <UIcon
@@ -218,7 +220,7 @@ function handleReset() {
             <p
               v-if="newFieldError"
               id="new-password-error"
-              class="mt-1 text-xs text-red-600 dark:text-red-400"
+              class="mt-1 text-xs text-[#b3261e]"
             >
               {{ newFieldError }}
             </p>
@@ -226,12 +228,12 @@ function handleReset() {
 
           <div
             id="new-password-requirements"
-            class="rounded-lg border border-teal-200 bg-teal-50 p-3 text-[11px] sm:text-xs text-teal-800 dark:border-teal-900 dark:bg-teal-950/30 dark:text-teal-300"
+            class="rounded-lg border border-[#cdd9e8] bg-[#edf4ff] p-3 text-[11px] sm:text-xs text-[#263f5f]"
           >
-            <div class="mb-1 flex items-center gap-1.5 font-semibold text-teal-900 dark:text-teal-200">
+            <div class="mb-1 flex items-center gap-1.5 font-semibold text-[#132f57]">
               <UIcon
                 name="i-lucide-check-circle-2"
-                class="size-3.5 text-teal-600 dark:text-teal-400"
+                class="size-3.5 text-[#2161bf]"
                 aria-hidden="true"
               />
               <span>Password must contain:</span>
@@ -239,36 +241,36 @@ function handleReset() {
             <ul class="space-y-0.5 pl-4">
               <li
                 class="flex items-center gap-1 transition-colors duration-150"
-                :class="hasMinLength ? 'text-teal-800 font-medium dark:text-teal-300' : 'text-teal-500/80 dark:text-teal-400/60'"
+                :class="hasMinLength ? 'text-[#175c4c] font-medium' : 'text-[#667896]'"
               >
                 <UIcon
                   name="i-lucide-check"
                   class="size-3 shrink-0"
-                  :class="hasMinLength ? 'text-teal-600 stroke-[2.5] dark:text-teal-400' : 'text-teal-300 dark:text-teal-700'"
+                  :class="hasMinLength ? 'text-[#20876e] stroke-[2.5]' : 'text-[#a7b6c9]'"
                   aria-hidden="true"
                 />
                 <span>At least 8 characters</span>
               </li>
               <li
                 class="flex items-center gap-1 transition-colors duration-150"
-                :class="hasUppercase ? 'text-teal-800 font-medium dark:text-teal-300' : 'text-teal-500/80 dark:text-teal-400/60'"
+                :class="hasUppercase ? 'text-[#175c4c] font-medium' : 'text-[#667896]'"
               >
                 <UIcon
                   name="i-lucide-check"
                   class="size-3 shrink-0"
-                  :class="hasUppercase ? 'text-teal-600 stroke-[2.5] dark:text-teal-400' : 'text-teal-300 dark:text-teal-700'"
+                  :class="hasUppercase ? 'text-[#20876e] stroke-[2.5]' : 'text-[#a7b6c9]'"
                   aria-hidden="true"
                 />
                 <span>One uppercase letter</span>
               </li>
               <li
                 class="flex items-center gap-1 transition-colors duration-150"
-                :class="hasNumber ? 'text-teal-800 font-medium dark:text-teal-300' : 'text-teal-500/80 dark:text-teal-400/60'"
+                :class="hasNumber ? 'text-[#175c4c] font-medium' : 'text-[#667896]'"
               >
                 <UIcon
                   name="i-lucide-check"
                   class="size-3 shrink-0"
-                  :class="hasNumber ? 'text-teal-600 stroke-[2.5] dark:text-teal-400' : 'text-teal-300 dark:text-teal-700'"
+                  :class="hasNumber ? 'text-[#20876e] stroke-[2.5]' : 'text-[#a7b6c9]'"
                   aria-hidden="true"
                 />
                 <span>One number</span>
@@ -298,14 +300,15 @@ function handleReset() {
                 autocomplete="new-password"
                 placeholder="Repeat your new password"
                 :aria-invalid="confirmFieldError ? 'true' : undefined"
-                aria-describedby="confirm-password-error"
+                :aria-describedby="confirmFieldError ? 'confirm-password-error' : undefined"
                 class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-10 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                :class="confirmFieldError ? '!border-[#d84332] focus:!border-[#d84332] focus:!ring-[#d84332]/15' : ''"
               >
               <button
                 type="button"
                 :aria-label="showConfirm ? 'Hide confirm password' : 'Show confirm password'"
                 :aria-pressed="showConfirm"
-                class="absolute inset-y-0 right-0 flex items-center pr-3 text-dimmed transition-colors hover:text-default"
+                class="absolute inset-y-0 right-0 flex items-center rounded-r-lg pr-3 text-dimmed transition-colors hover:text-default focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
                 @click="showConfirm = !showConfirm"
               >
                 <UIcon
@@ -318,7 +321,7 @@ function handleReset() {
             <p
               v-if="confirmFieldError"
               id="confirm-password-error"
-              class="mt-1 text-xs text-red-600 dark:text-red-400"
+              class="mt-1 text-xs text-[#b3261e]"
             >
               {{ confirmFieldError }}
             </p>
@@ -336,7 +339,7 @@ function handleReset() {
             <button
               type="submit"
               :disabled="isSubmitDisabled"
-              class="flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-primary-600 active:bg-primary-700 dark:hover:bg-primary-300 dark:active:bg-primary-200 disabled:cursor-not-allowed disabled:opacity-70 cursor-pointer"
+              class="flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-primary-600 active:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70 cursor-pointer"
             >
               <UIcon
                 v-if="isLoading"

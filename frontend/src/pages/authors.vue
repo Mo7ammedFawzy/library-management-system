@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import type { ColDef } from 'ag-grid-community'
+import type { ColDef, ICellRendererParams, ValueGetterParams } from 'ag-grid-community'
 import ActionsCell from '../components/grid/ActionsCell.vue'
 import type { FormError, BreadcrumbItem } from '@nuxt/ui'
 import {
@@ -18,7 +18,7 @@ const breadcrumbItems = ref<BreadcrumbItem[]>([
 ])
 
 const fieldUi = {
-  base: '!rounded-lg !bg-(--ui-bg-card) !py-3 !text-sm !ring-(--ui-border) !placeholder:text-muted focus-visible:!ring-2 focus-visible:!ring-primary focus-visible:!outline-none'
+  base: '!rounded-xl !bg-(--ui-bg-card) !py-3 !text-sm !ring-(--ui-border) !placeholder:text-muted focus-visible:!ring-2 focus-visible:!ring-primary focus-visible:!outline-none'
 }
 
 function validateName(state: { name: string }): FormError[] {
@@ -29,7 +29,7 @@ function validateName(state: { name: string }): FormError[] {
   return errors
 }
 
-function getRowId(params: any) {
+function getRowId(params: ICellRendererParams<Author>) {
   return String((params.data as Author).id)
 }
 
@@ -39,7 +39,7 @@ const columns: ColDef[] = [
     sortable: false,
     filter: false,
     width: 48,
-    valueGetter: (params: any) => (params.node?.rowIndex ?? 0) + 1,
+    valueGetter: (params: ValueGetterParams) => (params.node?.rowIndex ?? 0) + 1,
     cellStyle: { textAlign: 'center' },
     cellClass: 'text-dimmed'
   },
@@ -59,8 +59,8 @@ const columns: ColDef[] = [
     headerClass: 'ag-right-aligned-header',
     cellRenderer: ActionsCell,
     cellRendererParams: {
-      onEdit: (params: any) => openEdit(params.data as Author),
-      onDelete: (params: any) => openDelete(params.data as Author)
+      onEdit: (params: ICellRendererParams) => openEdit(params.data as Author),
+      onDelete: (params: ICellRendererParams) => openDelete(params.data as Author)
     }
   }
 ]
@@ -171,13 +171,13 @@ watch(name, (val: string) => {
           type="search"
           placeholder="Search authors by name..."
           aria-label="Search authors by name"
-          class="h-10 w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-4 text-sm text-highlighted shadow-sm outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary"
+          class="h-10 w-full rounded-xl border border-[#e4ebf3] bg-[#f9fbfe] pl-9 pr-4 text-sm text-[#263f5f] shadow-sm outline-none transition-all placeholder:text-[#92a0b2] hover:border-[#cdd9e8] focus:border-[#8ca9ce] focus:bg-white focus:ring-4 focus:ring-[#edf4ff]"
         >
       </div>
 
       <UButton
         icon="i-lucide-plus"
-        class="!h-10 w-full justify-center !rounded-lg !px-4 shadow-sm md:w-auto"
+        class="!h-10 w-full justify-center !rounded-xl !px-4 shadow-sm md:w-auto"
         @click="openAdd"
       >
         Add Author
@@ -306,7 +306,7 @@ watch(name, (val: string) => {
               color="neutral"
               variant="outline"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
+              class="!rounded-xl !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
               @click="close"
             >
               Cancel
@@ -316,7 +316,7 @@ watch(name, (val: string) => {
               variant="solid"
               :icon="editingItem ? 'i-lucide-save' : 'i-lucide-user'"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5 !bg-brand-700 dark:!bg-primary-400 hover:!bg-brand-600 dark:hover:!bg-primary-300"
+              class="!rounded-xl !px-8 !py-2.5 !bg-brand-700 dark:!bg-primary-400 hover:!bg-brand-600 dark:hover:!bg-primary-300"
               :loading="saving"
               @click="entityForm?.submit()"
             >
@@ -386,7 +386,7 @@ watch(name, (val: string) => {
               color="neutral"
               variant="outline"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
+              class="!rounded-xl !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
               @click="deleteTarget = null"
             >
               Cancel
@@ -396,7 +396,7 @@ watch(name, (val: string) => {
               variant="solid"
               icon="i-lucide-trash-2"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5"
+              class="!rounded-xl !px-8 !py-2.5"
               :loading="deleting"
               @click="confirmDelete"
             >

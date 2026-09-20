@@ -44,7 +44,10 @@ function handleReset() {
     <div class="mb-3">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 class="font-display text-[28px] font-semibold leading-9 tracking-tight text-highlighted">
+          <h1
+            id="settings-heading"
+            class="font-serif text-[28px] font-bold leading-9 tracking-[-0.035em] text-[#132f57] sm:text-[30px]"
+          >
             Settings
           </h1>
           <p class="mt-1 text-sm text-muted">
@@ -73,7 +76,7 @@ function handleReset() {
           <div>
             <h2
               id="settings-account"
-              class="font-display text-[18px] font-semibold leading-tight text-highlighted"
+              class="font-serif text-lg font-bold leading-tight text-[#132f57]"
             >
               Account
             </h2>
@@ -134,7 +137,7 @@ function handleReset() {
           <div>
             <h2
               id="settings-library"
-              class="font-display text-[18px] font-semibold leading-tight text-highlighted"
+              class="font-serif text-lg font-bold leading-tight text-[#132f57]"
             >
               Library preferences
             </h2>
