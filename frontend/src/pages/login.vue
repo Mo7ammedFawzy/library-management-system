@@ -44,19 +44,26 @@ function handleGoogleSignIn() {}
 </script>
 
 <template>
-  <div class="relative h-screen w-full bg-(--ui-bg) flex flex-col justify-between p-4 sm:p-6 lg:px-12 lg:py-6 overflow-hidden selection:bg-primary-200 selection:text-primary-800">
-    <!-- Realistic Watercolor Background Illustration -->
+  <div class="relative h-screen w-full max-w-[100vw] min-w-0 bg-(--ui-bg) flex flex-col justify-between p-4 sm:p-6 lg:px-12 lg:py-6 overflow-hidden selection:bg-primary-200 selection:text-primary-800">
+    <!-- Softened library illustration with legibility scrims -->
     <div
       class="pointer-events-none absolute inset-0 select-none overflow-hidden"
       aria-hidden="true"
     >
       <img
-        src="/images/auth-login-bg.jpg"
-        alt="Library Interior"
+        src="/images/auth-login-bg.png"
+        alt=""
+        fetchpriority="high"
+        draggable="false"
         class="h-full w-full object-cover object-left lg:object-left-top"
       >
+      <!-- Base veil tames the bright watercolor so UI text keeps contrast -->
+      <div class="absolute inset-0 bg-(--ui-bg)/30 dark:bg-black/50" />
       <!-- Soft right fade overlay to seamlessly integrate card area -->
-      <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 bg-gradient-to-l from-(--ui-bg)/95 via-(--ui-bg)/60 to-transparent pointer-events-none" />
+      <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 bg-gradient-to-l from-(--ui-bg) via-(--ui-bg)/70 to-transparent dark:via-(--ui-bg)/80 pointer-events-none" />
+      <!-- Top/bottom scrims keep the logo and footer readable over the illustration -->
+      <div class="absolute inset-x-0 top-0 h-24 sm:h-28 bg-gradient-to-b from-(--ui-bg)/90 via-(--ui-bg)/30 to-transparent pointer-events-none" />
+      <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-(--ui-bg)/90 via-(--ui-bg)/30 to-transparent pointer-events-none" />
     </div>
 
     <!-- Top Header / Brand Logo -->
@@ -65,8 +72,8 @@ function handleGoogleSignIn() {}
     </header>
 
     <!-- Center Content / Auth Card -->
-    <main class="relative z-10 flex w-full flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 my-auto">
-      <div class="w-full max-w-[420px] rounded-2xl bg-(--ui-bg-card) p-6 sm:p-8 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
+    <main class="relative z-10 flex w-full max-w-full min-w-0 flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 my-auto">
+      <div class="w-full max-w-[calc(100vw-2rem)] min-w-0 rounded-2xl bg-(--ui-bg-card) p-5 sm:max-w-[420px] sm:p-8 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
         <!-- Title & Subtitle -->
         <div class="mb-5">
           <h2 class="text-[22px] sm:text-2xl font-bold tracking-tight text-default leading-tight">
@@ -86,23 +93,23 @@ function handleGoogleSignIn() {}
             name="i-lucide-alert-circle"
             class="size-4 shrink-0"
           />
-          <span>{{ error }}</span>
+          <span class="min-w-0 break-words">{{ error }}</span>
         </div>
 
         <!-- Form -->
         <form
-          class="space-y-3.5"
+          class="min-w-0 space-y-3.5"
           @submit.prevent="handleSubmit"
         >
           <!-- Email Field -->
-          <div>
+          <div class="min-w-0">
             <label
               for="email"
               class="block text-xs font-semibold text-default mb-1"
             >
               Email address
             </label>
-            <div class="relative">
+            <div class="relative min-w-0">
               <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-dimmed">
                 <UIcon
                   name="i-lucide-mail"
@@ -115,20 +122,20 @@ function handleGoogleSignIn() {}
                 type="email"
                 required
                 placeholder="Enter your email"
-                class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-3 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-3 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
             </div>
           </div>
 
           <!-- Password Field -->
-          <div>
+          <div class="min-w-0">
             <label
               for="password"
               class="block text-xs font-semibold text-default mb-1"
             >
               Password
             </label>
-            <div class="relative">
+            <div class="relative min-w-0">
               <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-dimmed">
                 <UIcon
                   name="i-lucide-lock"
@@ -141,7 +148,7 @@ function handleGoogleSignIn() {}
                 :type="showPassword ? 'text' : 'password'"
                 required
                 placeholder="Enter your password"
-                class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-10 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-10 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
               <button
                 type="button"
@@ -158,7 +165,7 @@ function handleGoogleSignIn() {}
           </div>
 
           <!-- Forgot Password Link (Right aligned) -->
-          <div class="flex justify-end pt-0.5">
+          <div class="flex min-w-0 justify-end pt-0.5">
             <a
               href="#"
               class="text-xs font-semibold text-primary transition-colors hover:text-primary-600 dark:hover:text-primary-300 hover:underline"
@@ -189,11 +196,11 @@ function handleGoogleSignIn() {}
             <button
               type="button"
               :disabled="isLoading"
-              class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 px-4 text-xs sm:text-sm font-medium text-default transition-colors duration-150 hover:bg-(--ui-bg-accented) hover:border-(--ui-border-accented) active:bg-(--ui-bg-accented) flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+              class="w-full max-w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 px-4 text-xs sm:text-sm font-medium text-default transition-colors duration-150 hover:bg-(--ui-bg-accented) hover:border-(--ui-border-accented) active:bg-(--ui-bg-accented) flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
               @click="handleTestLogin"
             >
-              <UIcon name="i-lucide-flask-conical" class="size-4" />
-              <span>Test Login (auto-fill)</span>
+              <UIcon name="i-lucide-flask-conical" class="size-4 shrink-0" />
+              <span class="min-w-0 truncate">Test Login (auto-fill)</span>
             </button>
           </div>
 
@@ -201,7 +208,7 @@ function handleGoogleSignIn() {}
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full rounded-lg bg-primary py-2.5 px-4 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-primary-600 active:bg-primary-700 dark:hover:bg-primary-300 dark:active:bg-primary-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer mt-1"
+            class="w-full max-w-full min-w-0 rounded-lg bg-primary py-2.5 px-4 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-primary-600 active:bg-primary-700 dark:hover:bg-primary-300 dark:active:bg-primary-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer mt-1"
           >
             <UIcon
               v-if="isLoading"
@@ -224,7 +231,7 @@ function handleGoogleSignIn() {}
         <button
           type="button"
           :disabled="isLoading"
-          class="w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 px-4 text-xs sm:text-sm font-medium text-default transition-colors duration-150 hover:bg-(--ui-bg-accented) hover:border-(--ui-border-accented) active:bg-(--ui-bg-accented) flex items-center justify-center gap-2.5 cursor-pointer"
+          class="w-full max-w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 px-4 text-xs sm:text-sm font-medium text-default transition-colors duration-150 hover:bg-(--ui-bg-accented) hover:border-(--ui-border-accented) active:bg-(--ui-bg-accented) flex items-center justify-center gap-2.5 cursor-pointer"
           @click="handleGoogleSignIn"
         >
           <svg
@@ -248,11 +255,11 @@ function handleGoogleSignIn() {}
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
             />
           </svg>
-          <span>Sign in with Google</span>
+          <span class="min-w-0 truncate">Sign in with Google</span>
         </button>
 
         <!-- Card Footer Link -->
-        <p class="mt-4 text-center text-xs text-dimmed">
+        <p class="mt-4 min-w-0 text-center text-xs text-dimmed break-words">
           Don't have an account?
           <RouterLink
             to="/register"

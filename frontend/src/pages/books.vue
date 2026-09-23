@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
-import type { ColDef, GetRowIdParams } from 'ag-grid-community'
+import type { ColDef, GetRowIdParams, ICellRendererParams } from 'ag-grid-community'
 import ActionsCell from '../components/grid/ActionsCell.vue'
+import BookTitleCell from '../components/grid/BookTitleCell.vue'
+import CategoryCell from '../components/grid/CategoryCell.vue'
+import CopiesCell from '../components/grid/CopiesCell.vue'
 import type { FormError, BreadcrumbItem } from '@nuxt/ui'
 import {
   createBook,
@@ -48,38 +51,46 @@ const columns: ColDef<Book>[] = [
     field: 'title',
     headerName: 'Title',
     flex: 2,
-    cellStyle: { fontWeight: 500 },
-    cellClass: 'text-highlighted'
+    minWidth: 180,
+    cellRenderer: BookTitleCell,
+    cellClass: 'book-title-cell'
   },
   {
     headerName: 'Authors',
     flex: 2,
+    minWidth: 140,
     valueGetter: (params) => (params.data as Book).authors.map((author) => author.name).join(', ')
   },
   {
     headerName: 'Category',
     flex: 1,
+    minWidth: 140,
     valueGetter: (params) => (params.data as Book).category.name,
+    cellRenderer: CategoryCell,
     filter: 'agTextColumnFilter'
   },
   {
     field: 'availableCopies',
     headerName: 'Copies',
-    width: 90,
+    width: 96,
+    minWidth: 84,
     sortable: true,
-    filter: false
+    filter: false,
+    headerClass: 'ag-center-aligned-header',
+    cellRenderer: CopiesCell
   },
   {
     headerName: 'Actions',
     sortable: false,
     filter: false,
-    width: 104,
+    width: 96,
+    minWidth: 88,
     pinned: 'right',
     headerClass: 'ag-right-aligned-header',
     cellRenderer: ActionsCell,
     cellRendererParams: {
-      onEdit: (params: any) => openEdit(params.data as Book),
-      onDelete: (params: any) => openDelete(params.data as Book)
+      onEdit: (params: ICellRendererParams) => openEdit(params.data as Book),
+      onDelete: (params: ICellRendererParams) => openDelete(params.data as Book)
     }
   }
 ]
@@ -111,7 +122,7 @@ function validateBook(state: BookFormState): FormError[] {
   return errors
 }
 
-function toInput(state: BookFormState, editingItem: Book | null): BookInput {
+function toInput(state: BookFormState): BookInput {
   return {
     title: state.title.trim(),
     description: state.description.trim(),
@@ -169,6 +180,80 @@ const categoryOptions = computed(() =>
 const authorOptions = computed(() =>
   authors.value.map((author: Author) => ({ label: author.name, value: author.id }))
 )
+
+const visibleBooks = computed(() => {
+  const q = search.value.trim().toLowerCase()
+  return rows.value.filter((book: Book) => {
+    if (categoryFilters.value.length > 0 && !categoryFilters.value.includes(book.category.name)) {
+      return false
+    }
+    if (!q) return true
+    const haystack = [book.title, book.category.name, ...book.authors.map((author) => author.name)]
+      .join(' ')
+      .toLowerCase()
+    return haystack.includes(q)
+  })
+})
+
+const totalCopies = computed(() =>
+  rows.value.reduce((total, book) => total + (Number(book.availableCopies) || 0), 0)
+)
+
+const categoryCount = computed(() => categories.value.length)
+
+const lowStockCount = computed(() =>
+  rows.value.filter((book) => (Number(book.availableCopies) || 0) <= 2).length
+)
+
+const hasActiveFilters = computed(() => categoryFilters.value.length > 0 || search.value.trim().length > 0)
+
+const bookStats = computed(() => [
+  {
+    label: 'Total titles',
+    value: rows.value.length,
+    detail: `${categoryCount.value} categories`,
+    icon: 'i-lucide-library-big',
+    iconClass: 'bg-[#edf4ff] text-[#2161bf]',
+    dotClass: 'bg-[#2161bf]'
+  },
+  {
+    label: 'Available copies',
+    value: totalCopies.value,
+    detail: 'Ready to borrow',
+    icon: 'i-lucide-book-check',
+    iconClass: 'bg-[#eaf7f2] text-[#20876e]',
+    dotClass: 'bg-[#20876e]'
+  },
+  {
+    label: 'Categories',
+    value: categoryCount.value,
+    detail: 'Across the catalog',
+    icon: 'i-lucide-tags',
+    iconClass: 'bg-[#fff6e5] text-[#b76c00]',
+    dotClass: 'bg-[#e5a214]'
+  },
+  {
+    label: 'Low stock',
+    value: lowStockCount.value,
+    detail: lowStockCount.value ? '2 or fewer copies' : 'All stocked up',
+    icon: 'i-lucide-triangle-alert',
+    iconClass: 'bg-[#fff0ee] text-[#d84332]',
+    dotClass: 'bg-[#d84332]'
+  }
+])
+
+function clearSearch() {
+  search.value = ''
+}
+
+function removeCategoryFilter(category: string) {
+  categoryFilters.value = categoryFilters.value.filter((name) => name !== category)
+}
+
+function clearAllFilters() {
+  categoryFilters.value = []
+  search.value = ''
+}
 
 watch(formOpen, (open: boolean) => {
   if (open) {
@@ -239,7 +324,7 @@ async function loadAll() {
 onMounted(loadAll)
 
 const fieldUi = {
-  base: '!rounded-lg !bg-(--ui-bg-card) !py-3 !text-sm !ring-(--ui-border) !placeholder:text-muted focus-visible:!ring-2 focus-visible:!ring-primary focus-visible:!outline-none'
+  base: '!rounded-xl !bg-(--ui-bg-card) !py-3 !text-sm !ring-(--ui-border) !placeholder:text-muted focus-visible:!ring-2 focus-visible:!ring-primary focus-visible:!outline-none'
 }
 
 const copiesUi = {
@@ -250,115 +335,348 @@ const copiesUi = {
 </script>
 
 <template>
-  <div class="flex min-h-0 flex-1 flex-col">
-    <div class="mb-4">
-      <UBreadcrumb class="mb-2" :items="breadcrumbItems">
-        <template #item="{ item }">
-          <span
-            :class="[
-              'flex items-center gap-1.5 text-sm transition-colors',
-              item.to ? 'text-muted hover:text-highlighted cursor-pointer' : 'font-semibold text-highlighted'
-            ]"
-          >
-            <UIcon
-              v-if="item.icon"
-              :name="item.icon"
-              class="size-4 text-muted"
-            />
-            {{ item.label }}
+  <div class="mx-auto flex w-full max-w-[1400px] min-w-0 flex-none flex-col gap-5 overflow-x-clip pb-2 md:min-h-0 md:flex-1">
+    <UBreadcrumb :items="breadcrumbItems">
+      <template #item="{ item }">
+        <RouterLink
+          v-if="item.to"
+          :to="item.to"
+          class="flex items-center gap-1.5 rounded text-sm text-muted transition-colors motion-reduce:transition-none hover:text-highlighted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce] focus-visible:ring-offset-1"
+        >
+          <UIcon
+            v-if="item.icon"
+            :name="item.icon"
+            class="size-4 text-muted"
+            aria-hidden="true"
+          />
+          {{ item.label }}
+        </RouterLink>
+        <span
+          v-else
+          class="flex items-center gap-1.5 text-sm font-semibold text-highlighted"
+          aria-current="page"
+        >
+          <UIcon
+            v-if="item.icon"
+            :name="item.icon"
+            class="size-4 text-muted"
+            aria-hidden="true"
+          />
+          {{ item.label }}
+        </span>
+      </template>
+      <template #separator>
+        <UIcon name="i-lucide-chevron-right" class="size-3.5 text-muted" aria-hidden="true" />
+      </template>
+    </UBreadcrumb>
+
+    <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end" aria-labelledby="books-heading">
+      <div>
+        <p class="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a99ae]">
+          <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />
+          Library manager · Catalog
+        </p>
+        <h1 id="books-heading" class="flex flex-wrap items-center gap-3 font-serif text-3xl font-bold tracking-[-0.035em] text-[#132f57] sm:text-[2rem]">
+          Books
+          <span class="inline-flex items-center rounded-full bg-[#edf4ff] px-2.5 py-1 font-sans text-[11px] font-bold leading-4 tracking-normal text-[#173b70]">
+            {{ rows.length }} {{ rows.length === 1 ? 'title' : 'titles' }}
           </span>
-        </template>
-        <template #separator>
-          <UIcon name="i-lucide-chevron-right" class="size-3.5 text-muted" />
-        </template>
-      </UBreadcrumb>
-      <p class="text-sm text-muted">
-        Manage and organize all library books.
-      </p>
-    </div>
+        </h1>
+        <p class="mt-1.5 max-w-md text-sm leading-relaxed text-[#667896]">
+          Manage and organize all library books — search the catalog, filter by category, and keep copies stocked.
+        </p>
+      </div>
+
+      <UButton
+        icon="i-lucide-plus"
+        aria-label="Add book"
+        class="!h-10 shrink-0 !rounded-xl !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce] focus-visible:!ring-offset-1"
+        @click="openAdd"
+      >
+        Add Book
+      </UButton>
+    </section>
 
     <div
       v-if="loadError"
-      class="mb-4 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
+      class="flex items-center gap-2 rounded-2xl border border-[#f3c5c0] bg-[#fff0ee] px-4 py-3 text-sm text-[#b3261e]"
+      role="alert"
     >
       <UIcon
         name="i-lucide-alert-circle"
         class="size-4 shrink-0"
+        aria-hidden="true"
       />
       <span>{{ loadError }}</span>
     </div>
 
-    <div class="mb-3 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-      <div class="relative w-full md:w-[400px]">
-        <UIcon
-          name="i-lucide-search"
-          class="pointer-events-none absolute left-3 top-1/2 size-[18px] -translate-y-1/2 text-muted"
-        />
-        <input
-          v-model="search"
-          type="text"
-          placeholder="Search books by title, author or category..."
-          class="h-[38px] w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-4 text-sm text-highlighted shadow-sm outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary"
-        >
+    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Catalog statistics">
+      <article
+        v-for="stat in bookStats"
+        :key="stat.label"
+        class="group rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.045)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#cdd9e8] hover:shadow-[0_12px_32px_rgba(27,59,102,0.08)] motion-reduce:transform-none motion-reduce:transition-none"
+      >
+        <div class="flex items-start gap-4">
+          <div class="flex size-12 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04] transition-transform duration-150 group-hover:scale-[1.04] motion-reduce:transform-none" :class="stat.iconClass">
+            <UIcon :name="stat.icon" class="size-5" aria-hidden="true" />
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#7a8ba3]">{{ stat.label }}</p>
+            <p class="mt-1 font-serif text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#132f57]">
+              {{ stat.value.toLocaleString() }}
+            </p>
+            <p class="mt-2 flex items-center gap-1.5 text-xs text-[#7a8ba3]">
+              <span class="size-1.5 shrink-0 rounded-full" :class="stat.dotClass" aria-hidden="true" />
+              {{ stat.detail }}
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="rounded-2xl border border-[#e4ebf3] bg-white px-3.5 py-3 shadow-[0_8px_24px_rgba(27,59,102,0.04)] sm:px-4" aria-label="Search and filter books">
+      <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
+        <div class="relative w-full lg:max-w-[420px]">
+          <label for="books-search" class="sr-only">Search books by title, author or category</label>
+          <UIcon
+            name="i-lucide-search"
+            class="pointer-events-none absolute left-3 top-1/2 size-[18px] -translate-y-1/2 text-muted"
+            aria-hidden="true"
+          />
+          <input
+            id="books-search"
+            v-model="search"
+            type="search"
+            placeholder="Search books by title, author or category..."
+            aria-label="Search books by title, author or category"
+            class="h-10 w-full rounded-xl border border-[#e4ebf3] bg-[#f9fbfe] pl-9 pr-9 text-sm leading-5 text-[#263f5f] shadow-sm outline-none transition-colors motion-reduce:transition-none placeholder:text-[#8a99ae] hover:border-[#cdd9e8] focus-visible:border-[#8ca9ce] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#edf4ff]"
+          >
+          <button
+            v-if="search"
+            type="button"
+            aria-label="Clear search"
+            class="absolute right-2 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-lg text-[#8a99ae] transition-colors hover:bg-[#edf4ff] hover:text-[#173b70] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
+            @click="clearSearch"
+          >
+            <UIcon name="i-lucide-x" class="size-4" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3 lg:ml-auto">
+          <p role="status" aria-live="polite" class="mr-auto text-xs tabular-nums text-[#7a8ba3] lg:mr-1">
+            {{ visibleBooks.length }} of {{ rows.length }} shown
+          </p>
+          <UPopover>
+            <UButton
+              color="neutral"
+              variant="outline"
+              icon="i-lucide-filter"
+              :aria-label="categoryFilters.length ? `Filters, ${categoryFilters.length} category filter${categoryFilters.length > 1 ? 's' : ''} active` : 'Filters'"
+              class="!h-10 !rounded-xl !border-[#e4ebf3] !bg-white !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]"
+            >
+              Filters
+              <span
+                v-if="categoryFilters.length"
+                class="ml-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#edf4ff] px-1.5 text-[11px] font-bold text-[#173b70]"
+              >
+                {{ categoryFilters.length }}
+              </span>
+            </UButton>
+
+            <template #content>
+              <div class="flex w-64 flex-col gap-5 p-4">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[11px] font-semibold uppercase tracking-wide text-muted">
+                    Category
+                  </p>
+                  <UCheckboxGroup
+                    v-model="categoryFilters"
+                    size="sm"
+                    variant="list"
+                    :items="categories.map((category) => category.name)"
+                  />
+                </div>
+
+                <UButton
+                  color="neutral"
+                  variant="ghost"
+                  size="sm"
+                  class="self-start"
+                  @click="resetFilters"
+                >
+                  Clear filters
+                </UButton>
+              </div>
+            </template>
+          </UPopover>
+        </div>
       </div>
 
-      <div class="flex items-center gap-3">
-        <UPopover>
-          <UButton
-            color="neutral"
-            variant="outline"
-            icon="i-lucide-filter"
-            class="!h-[38px] !rounded-lg !bg-(--ui-bg-card) !px-4 shadow-sm"
-          >
-            Filters
-          </UButton>
+      <div v-if="categoryFilters.length" class="mt-3 flex flex-wrap items-center gap-2 border-t border-[#edf1f6] pt-3" aria-label="Active category filters">
+        <button
+          v-for="name in categoryFilters"
+          :key="name"
+          type="button"
+          :aria-label="`Remove ${name} filter`"
+          class="inline-flex max-w-full items-center gap-1.5 truncate rounded-full bg-[#edf4ff] py-1 pl-2.5 pr-1.5 text-[11px] font-bold leading-4 text-[#173b70] ring-1 ring-inset ring-[#cdd9e8] transition-colors hover:bg-[#dce9fd] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
+          @click="removeCategoryFilter(name)"
+        >
+          <span class="truncate">{{ name }}</span>
+          <UIcon name="i-lucide-x" class="size-3.5 shrink-0" aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          class="rounded-lg px-2 py-1 text-xs font-semibold text-[#667896] transition-colors hover:bg-[#f1f5fb] hover:text-[#304968] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
+          @click="resetFilters"
+        >
+          Clear all
+        </button>
+      </div>
+    </section>
 
-          <template #content>
-            <div class="flex w-64 flex-col gap-5 p-4">
-              <div class="flex flex-col gap-2">
-                <p class="text-[11px] font-semibold uppercase tracking-wide text-muted">
-                  Category
-                </p>
-                <UCheckboxGroup
-                  v-model="categoryFilters"
-                  size="sm"
-                  variant="list"
-                  :items="categories.map((category) => category.name)"
-                />
-              </div>
+    <section class="hidden min-h-[520px] min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.05)] md:flex" aria-labelledby="catalog-heading">
+      <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
+          <h2 id="catalog-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Book collection</h2>
+          <p class="mt-0.5 text-xs text-[#7486a0]">{{ visibleBooks.length }} of {{ rows.length }} titles{{ categoryFilters.length ? ` · ${categoryFilters.length} filter${categoryFilters.length > 1 ? 's' : ''} on` : '' }}</p>
+        </div>
+        <button
+          v-if="hasActiveFilters"
+          type="button"
+          class="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
+          @click="clearAllFilters"
+        >
+          <UIcon name="i-lucide-rotate-ccw" class="size-3.5" aria-hidden="true" />
+          Reset view
+        </button>
+      </div>
+      <div
+        class="flex min-h-0 flex-1 flex-col"
+        role="region"
+        aria-label="Books data grid"
+      >
+        <AppDataGrid
+          v-model:api="gridApi"
+          :rows="rows"
+          :columns="columns"
+          :quick-filter-text="search"
+          :get-row-id="getRowId"
+          :row-height="44"
+          height="100%"
+        />
+      </div>
+    </section>
 
-              <UButton
-                color="neutral"
-                variant="ghost"
-                size="sm"
-                class="self-start"
-                @click="resetFilters"
-              >
-                Clear filters
-              </UButton>
-            </div>
-          </template>
-        </UPopover>
+    <div
+      class="flex w-full min-w-0 flex-none flex-col gap-3 md:hidden"
+      role="list"
+      aria-label="Books list"
+    >
+      <article
+        v-for="book in visibleBooks"
+        :key="book.id"
+        role="listitem"
+        class="flex min-w-0 flex-col gap-2 overflow-hidden rounded-2xl bg-(--ui-bg-card) px-4 py-3 shadow-sm ring-1 ring-(--ui-border)"
+      >
+        <div class="flex min-w-0 flex-wrap items-start justify-between gap-2">
+          <div class="min-w-0 flex-1 basis-40">
+            <h2 class="truncate text-sm font-semibold leading-6 text-highlighted">
+              {{ book.title }}
+            </h2>
+            <p class="mt-0.5 truncate text-sm leading-5 text-muted">
+              {{ book.authors.map((author: Author) => author.name).join(', ') }}
+            </p>
+          </div>
+          <span class="inline-flex max-w-full shrink-0 items-center truncate rounded-full bg-[#edf4ff] px-2.5 py-1 text-[11px] font-bold leading-4 text-[#173b70]">
+            {{ book.category.name }}
+          </span>
+        </div>
+        <div class="flex min-w-0 flex-wrap items-center justify-between gap-2 border-t border-(--ui-border) pt-2">
+          <p class="text-sm leading-5 text-muted">
+            <span class="font-semibold tabular-nums text-highlighted">{{ book.availableCopies }}</span>
+            {{ book.availableCopies === 1 ? 'copy' : 'copies' }} available
+          </p>
+          <div class="flex shrink-0 items-center gap-1">
+            <UButton
+              icon="i-lucide-pencil"
+              color="neutral"
+              variant="ghost"
+              size="sm"
+              :aria-label="`Edit ${book.title}`"
+              @click="openEdit(book)"
+            />
+            <UButton
+              icon="i-lucide-trash-2"
+              color="neutral"
+              variant="ghost"
+              size="sm"
+              :aria-label="`Delete ${book.title}`"
+              class="hover:!bg-red-50 hover:!text-red-600"
+              @click="openDelete(book)"
+            />
+          </div>
+        </div>
+      </article>
 
+      <div
+        v-if="!loadError && visibleBooks.length === 0"
+        class="flex flex-col items-center gap-2 rounded-2xl bg-(--ui-bg-card) px-6 py-10 text-center shadow-sm ring-1 ring-(--ui-border)"
+      >
+        <div class="flex size-11 items-center justify-center rounded-full bg-(--ui-bg-accented)">
+          <UIcon name="i-lucide-book-open" class="size-5 text-muted" aria-hidden="true" />
+        </div>
+        <h2 class="text-sm font-semibold text-highlighted">
+          {{ rows.length === 0 ? 'No books yet' : 'No books match your search' }}
+        </h2>
+        <p class="max-w-sm text-sm leading-6 text-muted">
+          {{ rows.length === 0 ? 'Add your first book to start building the catalog. Books you add will appear here.' : 'Try a different search term or clear the category filters.' }}
+        </p>
         <UButton
+          v-if="rows.length === 0"
           icon="i-lucide-plus"
-          class="!h-[38px] !rounded-lg !px-4 shadow-sm"
+          class="!h-10 !rounded-xl !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]"
           @click="openAdd"
         >
           Add Book
         </UButton>
+        <UButton
+          v-else
+          color="neutral"
+          variant="outline"
+          size="sm"
+          class="!rounded-xl"
+          @click="resetFilters(); search = ''"
+        >
+          Clear search and filters
+        </UButton>
       </div>
     </div>
 
-    <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl bg-(--ui-bg-card) shadow-sm ring-1 ring-(--ui-border)">
-      <AppDataGrid
-        v-model:api="gridApi"
-        :rows="rows"
-        :columns="columns"
-        :quick-filter-text="search"
-        :get-row-id="getRowId"
-        height="100%"
-      />
+    <p role="status" aria-live="polite" class="sr-only">
+      {{ visibleBooks.length }} of {{ rows.length }} books shown
+    </p>
+
+    <div
+      v-if="!loadError && rows.length === 0"
+      class="mt-3 hidden flex-col items-center gap-2 rounded-2xl bg-(--ui-bg-card) px-6 py-10 text-center shadow-sm ring-1 ring-(--ui-border) md:flex"
+    >
+      <div class="flex size-11 items-center justify-center rounded-full bg-(--ui-bg-accented)">
+        <UIcon name="i-lucide-book-open" class="size-5 text-muted" aria-hidden="true" />
+      </div>
+      <h2 class="text-sm font-semibold text-highlighted">
+        No books yet
+      </h2>
+      <p class="max-w-sm text-sm leading-6 text-muted">
+        Add your first book to start building the catalog. Books you add will appear in this table.
+      </p>
+      <UButton
+        icon="i-lucide-plus"
+        class="!h-10 !rounded-xl !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]"
+        @click="openAdd"
+      >
+        Add Book
+      </UButton>
     </div>
 
     <UModal
@@ -381,7 +699,7 @@ const copiesUi = {
                 />
               </div>
               <div>
-                <h2 class="font-display text-[20px] font-semibold leading-tight text-highlighted">
+                <h2 class="font-serif text-[20px] font-bold leading-tight text-highlighted">
                   {{ editingItem ? 'Edit Book' : 'Add Book' }}
                 </h2>
                 <p class="text-xs font-medium text-muted">
@@ -402,7 +720,7 @@ const copiesUi = {
           <div class="grow overflow-y-auto py-2 px-3">
             <div
               v-if="formError"
-              class="mb-4 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
+              class="mb-4 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
             >
               <UIcon
                 name="i-lucide-alert-circle"
@@ -487,7 +805,7 @@ const copiesUi = {
                       <div class="flex h-full flex-col border-l border-(--ui-border)">
                         <button
                           type="button"
-                          class="flex flex-1 items-center justify-center px-2 text-muted transition-colors hover:bg-(--ui-bg-accented)"
+                          class="flex flex-1 items-center justify-center px-2 text-muted transition-colors motion-reduce:transition-none hover:bg-(--ui-bg-accented) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#8ca9ce]"
                           aria-label="Increase copies"
                           @click="incrementCopies"
                         >
@@ -498,7 +816,7 @@ const copiesUi = {
                         </button>
                         <button
                           type="button"
-                          class="flex flex-1 items-center justify-center border-t border-(--ui-border) px-2 text-muted transition-colors hover:bg-(--ui-bg-accented)"
+                          class="flex flex-1 items-center justify-center border-t border-(--ui-border) px-2 text-muted transition-colors motion-reduce:transition-none hover:bg-(--ui-bg-accented) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#8ca9ce]"
                           aria-label="Decrease copies"
                           @click="decrementCopies"
                         >
@@ -540,7 +858,7 @@ const copiesUi = {
               color="neutral"
               variant="outline"
               size="lg"
-              class="rounded-lg px-8 py-2.5 bg-transparent ring-black/10 hover:bg-black/10 dark:ring-white/10 dark:hover:!bg-white/10"
+              class="rounded-xl px-8 py-2.5 bg-transparent ring-black/10 hover:bg-black/10"
               @click="close"
             >
               Cancel
@@ -550,7 +868,7 @@ const copiesUi = {
               variant="solid"
               :icon="editingItem ? 'i-lucide-save' : 'i-lucide-book-open'"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5 !bg-brand-700 dark:!bg-primary-400 hover:!bg-brand-600 dark:hover:!bg-primary-300"
+              class="!rounded-xl !px-8 !py-2.5 !bg-brand-700 hover:!bg-brand-600"
               :loading="saving"
               @click="entityForm?.submit()"
             >
@@ -572,14 +890,14 @@ const copiesUi = {
         <div class="flex flex-col">
           <div class="flex shrink-0 items-center justify-between gap-4 border-b border-(--ui-border) px-4 py-3">
             <div class="flex items-center gap-4">
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-50 dark:bg-red-950/50">
-                <UIcon
-                  name="i-lucide-trash-2"
-                  class="text-lg text-red-600 dark:text-red-400"
-                />
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-50">
+                  <UIcon
+                    name="i-lucide-trash-2"
+                    class="text-lg text-red-600"
+                  />
               </div>
               <div>
-                <h2 class="font-display text-[20px] font-semibold leading-tight text-highlighted">
+                <h2 class="font-serif text-[20px] font-bold leading-tight text-highlighted">
                   Delete Book?
                 </h2>
                 <p class="text-xs font-medium text-muted">
@@ -605,7 +923,7 @@ const copiesUi = {
 
             <div
               v-if="deleteError"
-              class="mt-3 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
+              class="mt-3 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
             >
               <UIcon
                 name="i-lucide-alert-circle"
@@ -620,7 +938,7 @@ const copiesUi = {
               color="neutral"
               variant="outline"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
+              class="!rounded-xl !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
               @click="deleteTarget = null"
             >
               Cancel
@@ -630,7 +948,7 @@ const copiesUi = {
               variant="solid"
               icon="i-lucide-trash-2"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5"
+              class="!rounded-xl !px-8 !py-2.5"
               :loading="deleting"
               @click="confirmDelete"
             >

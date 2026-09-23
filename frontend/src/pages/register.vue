@@ -48,19 +48,26 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="relative min-h-svh lg:h-screen w-full bg-(--ui-bg) flex flex-col justify-between p-3 sm:p-4 lg:px-12 lg:py-4 overflow-y-auto lg:overflow-hidden selection:bg-primary-200 selection:text-primary-800">
-    <!-- Realistic Watercolor Background Illustration -->
+  <div class="relative min-h-svh lg:h-screen w-full max-w-[100vw] min-w-0 bg-(--ui-bg) flex flex-col justify-between p-3 sm:p-4 lg:px-12 lg:py-4 overflow-y-auto overflow-x-hidden lg:overflow-hidden selection:bg-primary-200 selection:text-primary-800">
+    <!-- Softened library illustration with legibility scrims -->
     <div
       class="pointer-events-none absolute inset-0 select-none overflow-hidden"
       aria-hidden="true"
     >
       <img
-        src="/images/auth-register-bg.jpg"
-        alt="Library Reading Room"
+        src="/images/auth-register-bg.png"
+        alt=""
+        fetchpriority="high"
+        draggable="false"
         class="h-full w-full object-cover object-left lg:object-left-top"
       >
+      <!-- Base veil tames the bright watercolor so UI text keeps contrast -->
+      <div class="absolute inset-0 bg-(--ui-bg)/30 dark:bg-black/50" />
       <!-- Soft right fade overlay to seamlessly integrate card area -->
-      <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 bg-gradient-to-l from-(--ui-bg)/95 via-(--ui-bg)/60 to-transparent pointer-events-none" />
+      <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 bg-gradient-to-l from-(--ui-bg) via-(--ui-bg)/70 to-transparent dark:via-(--ui-bg)/80 pointer-events-none" />
+      <!-- Top/bottom scrims keep the logo and footer readable over the illustration -->
+      <div class="absolute inset-x-0 top-0 h-24 sm:h-28 bg-gradient-to-b from-(--ui-bg)/90 via-(--ui-bg)/30 to-transparent pointer-events-none" />
+      <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-(--ui-bg)/90 via-(--ui-bg)/30 to-transparent pointer-events-none" />
     </div>
 
     <!-- Top Header / Brand Logo -->
@@ -69,8 +76,8 @@ async function handleSubmit() {
     </header>
 
     <!-- Center Content / Auth Card -->
-    <main class="relative z-10 flex w-full flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 py-2 my-auto">
-      <div class="w-full max-w-[400px] rounded-2xl bg-(--ui-bg-card) p-4 sm:p-5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
+    <main class="relative z-10 flex w-full max-w-full min-w-0 flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 py-2 my-auto">
+      <div class="w-full max-w-[calc(100vw-2rem)] min-w-0 sm:max-w-[400px] rounded-2xl bg-(--ui-bg-card) p-4 sm:p-5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
         <!-- Title & Subtitle -->
         <div class="mb-2.5">
           <h2 class="text-xl sm:text-[21px] font-bold tracking-tight text-default leading-tight">
@@ -84,29 +91,30 @@ async function handleSubmit() {
         <!-- Error Banner -->
         <div
           v-if="error"
+          role="alert"
           class="mb-2 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-[11px] text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
         >
           <UIcon
             name="i-lucide-alert-circle"
             class="size-3.5 shrink-0"
           />
-          <span>{{ error }}</span>
+          <span class="min-w-0 break-words">{{ error }}</span>
         </div>
 
         <!-- Form -->
         <form
-          class="space-y-2"
+          class="min-w-0 space-y-2"
           @submit.prevent="handleSubmit"
         >
           <!-- Full Name Field -->
-          <div>
+          <div class="min-w-0">
             <label
               for="fullName"
               class="block text-[11px] font-semibold text-default mb-0.5"
             >
               Full name
             </label>
-            <div class="relative">
+            <div class="relative min-w-0">
               <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-dimmed">
                 <UIcon
                   name="i-lucide-user"
@@ -119,20 +127,20 @@ async function handleSubmit() {
                 type="text"
                 required
                 placeholder="Enter your full name"
-                class="h-8 w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-2.5 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="h-8 w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-2.5 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
             </div>
           </div>
 
           <!-- Email Field -->
-          <div>
+          <div class="min-w-0">
             <label
               for="email"
               class="block text-[11px] font-semibold text-default mb-0.5"
             >
               Email address
             </label>
-            <div class="relative">
+            <div class="relative min-w-0">
               <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-dimmed">
                 <UIcon
                   name="i-lucide-mail"
@@ -145,20 +153,20 @@ async function handleSubmit() {
                 type="email"
                 required
                 placeholder="Enter your email"
-                class="h-8 w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-2.5 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="h-8 w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-2.5 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
             </div>
           </div>
 
           <!-- Password Field -->
-          <div>
+          <div class="min-w-0">
             <label
               for="password"
               class="block text-[11px] font-semibold text-default mb-0.5"
             >
               Password
             </label>
-            <div class="relative">
+            <div class="relative min-w-0">
               <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-dimmed">
                 <UIcon
                   name="i-lucide-lock"
@@ -171,7 +179,7 @@ async function handleSubmit() {
                 :type="showPassword ? 'text' : 'password'"
                 required
                 placeholder="Create a password"
-                class="h-8 w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-8 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="h-8 w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-8 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
               <button
                 type="button"
@@ -188,14 +196,14 @@ async function handleSubmit() {
           </div>
 
           <!-- Confirm Password Field -->
-          <div>
+          <div class="min-w-0">
             <label
               for="confirmPassword"
               class="block text-[11px] font-semibold text-default mb-0.5"
             >
               Confirm password
             </label>
-            <div class="relative">
+            <div class="relative min-w-0">
               <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-dimmed">
                 <UIcon
                   name="i-lucide-lock"
@@ -208,7 +216,7 @@ async function handleSubmit() {
                 :type="showConfirmPassword ? 'text' : 'password'"
                 required
                 placeholder="Confirm your password"
-                class="h-8 w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-8 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="h-8 w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-8 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
               <button
                 type="button"
@@ -225,7 +233,7 @@ async function handleSubmit() {
           </div>
 
           <!-- Password Requirements Box -->
-          <div class="rounded-lg border border-teal-200 bg-teal-50 p-2 text-[10px] sm:text-[11px] text-teal-800 dark:border-teal-900 dark:bg-teal-950/30 dark:text-teal-300">
+          <div class="min-w-0 rounded-lg border border-teal-200 bg-teal-50 p-2 text-[10px] sm:text-[11px] text-teal-800 dark:border-teal-900 dark:bg-teal-950/30 dark:text-teal-300 break-words">
             <div class="flex items-center gap-1.5 font-semibold text-teal-900 dark:text-teal-200 mb-1">
               <UIcon
                 name="i-lucide-check-circle-2"
@@ -271,17 +279,17 @@ async function handleSubmit() {
           </div>
 
           <!-- Terms Checkbox -->
-          <div class="flex items-start gap-1.5 pt-0.5">
+          <div class="flex min-w-0 items-start gap-1.5 pt-0.5">
             <input
               id="terms"
               v-model="agreeTerms"
               type="checkbox"
               required
-              class="mt-0.5 h-3.5 w-3.5 rounded border-(--ui-border-accented) text-primary accent-primary focus:ring-primary/20 cursor-pointer"
+              class="mt-0.5 h-3.5 w-3.5 shrink-0 rounded border-(--ui-border-accented) text-primary accent-primary focus:ring-primary/20 cursor-pointer"
             >
             <label
               for="terms"
-              class="text-[10.5px] leading-tight text-dimmed cursor-pointer select-none"
+              class="min-w-0 text-[10.5px] leading-tight text-dimmed cursor-pointer select-none"
             >
               I agree to the
               <a
@@ -302,7 +310,7 @@ async function handleSubmit() {
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full rounded-lg bg-primary py-2 px-3 text-xs sm:text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-primary-600 active:bg-primary-700 dark:hover:bg-primary-300 dark:active:bg-primary-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer mt-1"
+            class="w-full max-w-full min-w-0 rounded-lg bg-primary py-2 px-3 text-xs sm:text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-primary-600 active:bg-primary-700 dark:hover:bg-primary-300 dark:active:bg-primary-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer mt-1"
           >
             <UIcon
               v-if="isLoading"
@@ -314,7 +322,7 @@ async function handleSubmit() {
         </form>
 
         <!-- Card Footer Link -->
-        <p class="mt-2.5 text-center text-[11px] text-dimmed">
+        <p class="mt-2.5 min-w-0 text-center text-[11px] text-dimmed break-words">
           Already have an account?
           <RouterLink
             to="/login"

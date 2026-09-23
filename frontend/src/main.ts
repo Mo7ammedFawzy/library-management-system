@@ -20,7 +20,7 @@ const router = createRouter({
   history: createWebHistory()
 })
 
-const authPages = ['/login', '/register']
+const authPages = ['/login', '/register', '/shot'] // TEMP: '/shot' is a local-only screenshot helper, removed after the UI pass
 
 router.beforeEach((to) => {
   if (to.path === '/') {

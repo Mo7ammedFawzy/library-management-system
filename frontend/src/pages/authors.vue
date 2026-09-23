@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import type { ColDef } from 'ag-grid-community'
+import type { ColDef, ICellRendererParams, ValueGetterParams } from 'ag-grid-community'
 import ActionsCell from '../components/grid/ActionsCell.vue'
 import type { FormError, BreadcrumbItem } from '@nuxt/ui'
 import {
@@ -14,11 +14,11 @@ import { useCrudPage } from '../composables/useCrudPage'
 
 const breadcrumbItems = ref<BreadcrumbItem[]>([
   { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/dashboard' },
-  { label: 'Authors', icon: 'i-lucide-user' }
+  { label: 'Authors', icon: 'i-lucide-pen-line' }
 ])
 
 const fieldUi = {
-  base: '!rounded-lg !bg-(--ui-bg-card) !py-3 !text-sm !ring-(--ui-border) !placeholder:text-muted focus-visible:!ring-2 focus-visible:!ring-primary focus-visible:!outline-none'
+  base: '!rounded-xl !bg-(--ui-bg-card) !py-3 !text-sm !ring-(--ui-border) !placeholder:text-muted focus-visible:!ring-2 focus-visible:!ring-primary focus-visible:!outline-none'
 }
 
 function validateName(state: { name: string }): FormError[] {
@@ -29,7 +29,7 @@ function validateName(state: { name: string }): FormError[] {
   return errors
 }
 
-function getRowId(params: any) {
+function getRowId(params: ICellRendererParams<Author>) {
   return String((params.data as Author).id)
 }
 
@@ -39,7 +39,7 @@ const columns: ColDef[] = [
     sortable: false,
     filter: false,
     width: 48,
-    valueGetter: (params: any) => (params.node?.rowIndex ?? 0) + 1,
+    valueGetter: (params: ValueGetterParams) => (params.node?.rowIndex ?? 0) + 1,
     cellStyle: { textAlign: 'center' },
     cellClass: 'text-dimmed'
   },
@@ -59,8 +59,8 @@ const columns: ColDef[] = [
     headerClass: 'ag-right-aligned-header',
     cellRenderer: ActionsCell,
     cellRendererParams: {
-      onEdit: (params: any) => openEdit(params.data as Author),
-      onDelete: (params: any) => openDelete(params.data as Author)
+      onEdit: (params: ICellRendererParams) => openEdit(params.data as Author),
+      onDelete: (params: ICellRendererParams) => openDelete(params.data as Author)
     }
   }
 ]
@@ -117,16 +117,39 @@ watch(name, (val: string) => {
 <template>
   <div class="flex min-h-0 flex-1 flex-col">
     <div class="mb-4">
-      <h1 class="font-display text-[28px] font-semibold leading-9 tracking-tight text-highlighted">
+      <UBreadcrumb class="mb-2" :items="breadcrumbItems">
+        <template #item="{ item }">
+          <span
+            :aria-current="!item.to ? 'page' : undefined"
+            :class="[
+              'flex items-center gap-1.5 text-sm transition-colors',
+              item.to ? 'text-muted hover:text-highlighted cursor-pointer' : 'font-semibold text-highlighted'
+            ]"
+          >
+            <UIcon
+              v-if="item.icon"
+              :name="item.icon"
+              aria-hidden="true"
+              class="size-4 text-muted"
+            />
+            {{ item.label }}
+          </span>
+        </template>
+        <template #separator>
+          <UIcon name="i-lucide-chevron-right" aria-hidden="true" class="size-3.5 text-muted" />
+        </template>
+      </UBreadcrumb>
+      <h1 id="authors-heading" class="font-serif text-[28px] font-bold leading-9 tracking-[-0.035em] text-[#132f57] sm:text-[30px]">
         Authors
       </h1>
-      <p class="mt-1 text-sm text-muted">
+      <p class="mt-1 max-w-xl text-sm leading-relaxed text-[#667896]">
         Browse the authors in the library catalog.
       </p>
     </div>
 
     <div
       v-if="loadError"
+      role="alert"
       class="mb-4 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-950 dark:bg-red-950/40 dark:text-red-300"
     >
       <UIcon
@@ -140,26 +163,28 @@ watch(name, (val: string) => {
       <div class="relative w-full md:w-[400px]">
         <UIcon
           name="i-lucide-search"
+          aria-hidden="true"
           class="pointer-events-none absolute left-3 top-1/2 size-[18px] -translate-y-1/2 text-muted"
         />
         <input
           v-model="search"
-          type="text"
+          type="search"
           placeholder="Search authors by name..."
-          class="h-[38px] w-full rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-4 text-sm text-highlighted shadow-sm outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-1 focus:ring-primary"
+          aria-label="Search authors by name"
+          class="h-10 w-full rounded-xl border border-[#e4ebf3] bg-[#f9fbfe] pl-9 pr-4 text-sm text-[#263f5f] shadow-sm outline-none transition-all placeholder:text-[#92a0b2] hover:border-[#cdd9e8] focus:border-[#8ca9ce] focus:bg-white focus:ring-4 focus:ring-[#edf4ff]"
         >
       </div>
 
       <UButton
         icon="i-lucide-plus"
-        class="!h-[38px] !rounded-lg !px-4 shadow-sm"
+        class="!h-10 w-full justify-center !rounded-xl !px-4 shadow-sm md:w-auto"
         @click="openAdd"
       >
         Add Author
       </UButton>
     </div>
 
-    <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl bg-(--ui-bg-card) shadow-sm ring-1 ring-(--ui-border)">
+    <div v-if="rows.length > 0" class="flex min-h-[320px] flex-1 flex-col overflow-hidden rounded-2xl bg-(--ui-bg-card) shadow-sm ring-1 ring-(--ui-border)">
       <AppDataGrid
         v-model:api="gridApi"
         :rows="rows"
@@ -169,6 +194,42 @@ watch(name, (val: string) => {
         height="100%"
       />
     </div>
+
+    <section
+      v-else-if="!loadError"
+      aria-labelledby="authors-empty-title"
+      class="flex min-h-[320px] flex-1 flex-col items-center justify-center gap-3 rounded-2xl border border-[#e4ebf3] bg-white px-6 py-12 text-center shadow-[0_8px_24px_rgba(27,59,102,0.04)] sm:py-16"
+    >
+      <span class="flex size-12 items-center justify-center rounded-xl bg-[#edf4ff] text-[#173b70] ring-1 ring-inset ring-black/[0.04]">
+        <UIcon name="i-lucide-pen-line" class="size-5" aria-hidden="true" />
+      </span>
+      <p id="authors-empty-title" class="text-sm font-semibold text-[#132f57]">
+        {{ search ? 'No authors match your search' : 'No authors yet' }}
+      </p>
+      <p class="max-w-sm text-sm leading-relaxed text-[#667896]">
+        {{ search ? 'Try a different name or clear the search to see all authors.' : 'Add the first author to start building the library catalog.' }}
+      </p>
+      <div class="mt-2 flex flex-col items-center gap-2 sm:flex-row">
+        <UButton
+          v-if="search"
+          color="neutral"
+          variant="outline"
+          icon="i-lucide-x"
+          class="!h-10 !rounded-xl !bg-white !px-4 shadow-sm"
+          @click="search = ''"
+        >
+          Clear search
+        </UButton>
+        <UButton
+          v-else
+          icon="i-lucide-plus"
+          class="!h-10 !rounded-xl !px-4 shadow-sm"
+          @click="openAdd"
+        >
+          Add Author
+        </UButton>
+      </div>
+    </section>
 
     <UModal
       v-model:open="formOpen"
@@ -245,7 +306,7 @@ watch(name, (val: string) => {
               color="neutral"
               variant="outline"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
+              class="!rounded-xl !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
               @click="close"
             >
               Cancel
@@ -255,7 +316,7 @@ watch(name, (val: string) => {
               variant="solid"
               :icon="editingItem ? 'i-lucide-save' : 'i-lucide-user'"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5 !bg-brand-700 dark:!bg-primary-400 hover:!bg-brand-600 dark:hover:!bg-primary-300"
+              class="!rounded-xl !px-8 !py-2.5 !bg-brand-700 dark:!bg-primary-400 hover:!bg-brand-600 dark:hover:!bg-primary-300"
               :loading="saving"
               @click="entityForm?.submit()"
             >
@@ -325,7 +386,7 @@ watch(name, (val: string) => {
               color="neutral"
               variant="outline"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
+              class="!rounded-xl !px-8 !py-2.5 !bg-transparent ring-(--ui-border-accented) hover:!bg-(--ui-bg-accented)"
               @click="deleteTarget = null"
             >
               Cancel
@@ -335,7 +396,7 @@ watch(name, (val: string) => {
               variant="solid"
               icon="i-lucide-trash-2"
               size="lg"
-              class="!rounded-lg !px-8 !py-2.5"
+              class="!rounded-xl !px-8 !py-2.5"
               :loading="deleting"
               @click="confirmDelete"
             >
