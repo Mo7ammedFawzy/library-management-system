@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueRouter from 'vue-router/vite'
 import ui from '@nuxt/ui/vite'
@@ -23,6 +23,9 @@ export default defineConfig({
       }
     })
   ],
+  build: {
+    sourcemap: true
+  },
   server: {
     proxy: {
       '/api': {

@@ -2,6 +2,9 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import type { ColDef, GetRowIdParams, ICellRendererParams } from 'ag-grid-community'
 import ActionsCell from '../components/grid/ActionsCell.vue'
+import BookTitleCell from '../components/grid/BookTitleCell.vue'
+import CategoryCell from '../components/grid/CategoryCell.vue'
+import CopiesCell from '../components/grid/CopiesCell.vue'
 import type { FormError, BreadcrumbItem } from '@nuxt/ui'
 import {
   createBook,
@@ -48,9 +51,9 @@ const columns: ColDef<Book>[] = [
     field: 'title',
     headerName: 'Title',
     flex: 2,
-    minWidth: 150,
-    cellStyle: { fontWeight: 500, lineHeight: '21px' },
-    cellClass: 'text-highlighted'
+    minWidth: 180,
+    cellRenderer: BookTitleCell,
+    cellClass: 'book-title-cell'
   },
   {
     headerName: 'Authors',
@@ -61,20 +64,20 @@ const columns: ColDef<Book>[] = [
   {
     headerName: 'Category',
     flex: 1,
-    minWidth: 120,
+    minWidth: 140,
     valueGetter: (params) => (params.data as Book).category.name,
+    cellRenderer: CategoryCell,
     filter: 'agTextColumnFilter'
   },
   {
     field: 'availableCopies',
     headerName: 'Copies',
-    width: 88,
-    minWidth: 76,
+    width: 96,
+    minWidth: 84,
     sortable: true,
     filter: false,
     headerClass: 'ag-center-aligned-header',
-    cellStyle: { textAlign: 'center', fontVariantNumeric: 'tabular-nums' },
-    cellClass: 'tabular-nums'
+    cellRenderer: CopiesCell
   },
   {
     headerName: 'Actions',
