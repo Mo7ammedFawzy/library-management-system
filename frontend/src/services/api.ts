@@ -71,6 +71,14 @@ export async function checkBackendHealth(): Promise<boolean> {
   }
 }
 
+async function shouldUseFallback(error: unknown): Promise<boolean> {
+  if (isBackendUnavailable(error)) {
+    return true
+  }
+
+  return error instanceof ApiError && error.status === 404 && !(await checkBackendHealth())
+}
+
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
@@ -120,7 +128,7 @@ export function withFallback<TArgs extends unknown[], T>(
     try {
       return await apiFn(...args)
     } catch (error) {
-      if (isBackendUnavailable(error)) {
+      if (await shouldUseFallback(error)) {
         return await mockFn(...args)
       }
       throw error
