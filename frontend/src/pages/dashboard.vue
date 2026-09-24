@@ -260,10 +260,11 @@ function statusLabel(status: BorrowingStatus) {
 </script>
 
 <template>
-  <div class="workspace-page mx-auto flex w-full flex-col gap-6 pb-2">
+  <div class="dashboard-page workspace-page mx-auto flex w-full flex-col gap-4 pb-2">
     <PageBreadcrumb :items="breadcrumbItems" />
-    <section class="data-panel relative flex flex-col justify-between gap-5 px-5 py-6 sm:px-7 sm:py-7 lg:flex-row lg:items-end" aria-labelledby="dashboard-greeting">
-      <div>
+
+    <section class="dashboard-hero" aria-labelledby="dashboard-greeting">
+      <div class="dashboard-hero__copy">
         <p class="workspace-kicker">Library manager · Overview</p>
         <h1 id="dashboard-greeting" class="workspace-title">
           {{ greeting }}, Mohammad
@@ -273,21 +274,21 @@ function statusLabel(status: BorrowingStatus) {
         </p>
       </div>
 
-      <div class="flex items-center gap-2.5 self-start rounded-xl border border-[#dce5ef] bg-[#f7f9fc] px-3.5 py-2.5 text-sm text-[#304968] shadow-[0_4px_14px_rgba(27,59,102,0.04)] lg:self-auto">
-        <span class="flex size-7 items-center justify-center rounded-lg bg-[#edf4ff] text-[#244a6c]">
+      <div class="dashboard-date">
+        <span class="dashboard-date__icon">
           <UIcon name="i-lucide-calendar-days" class="size-4" aria-hidden="true" />
         </span>
         <span class="font-medium"><span class="sr-only">Today's date: </span><time :datetime="toDateKey(new Date())">{{ dateLabel }}</time></span>
       </div>
     </section>
 
-    <section class="metric-strip" aria-label="Library statistics">
+    <section class="dashboard-metrics" aria-label="Library statistics">
       <article
         v-for="stat in dashboardStats"
         :key="stat.label"
-        class="metric-card group"
+        class="dashboard-metric"
       >
-        <div class="flex items-start gap-4">
+        <div class="flex items-start gap-3">
           <div class="metric-card__icon" :class="stat.iconClass">
             <UIcon :name="stat.icon" class="size-5" aria-hidden="true" />
           </div>
@@ -305,26 +306,26 @@ function statusLabel(status: BorrowingStatus) {
       </article>
     </section>
 
-    <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="data-panel overflow-hidden xl:col-span-6" aria-labelledby="activity-heading">
+    <section class="dashboard-grid">
+      <article class="dashboard-panel dashboard-panel--wide" aria-labelledby="activity-heading">
         <div class="data-panel__header">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Circulation</p>
             <h2 id="activity-heading" class="mt-1 font-display text-lg font-bold leading-tight text-[#172f49]">Library activity</h2>
             <p class="mt-0.5 text-xs text-[#7486a0]">Loans created over the last seven days</p>
           </div>
-          <div class="shrink-0 rounded-xl border border-[#e4ebf3] bg-[#f6f8fc] px-3 py-2 text-right">
+          <div class="dashboard-summary">
             <p class="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#72849d]">This week</p>
             <p class="mt-0.5 font-display text-base font-bold leading-none text-[#244a6c]">{{ activityChart.total }} loans</p>
           </div>
         </div>
 
-        <div class="min-w-0 px-5 pb-5 pt-4" role="img" :aria-label="`Loans per day over the last seven days, ${activityChart.total} loans in total`">
+        <div class="dashboard-panel__body min-w-0" role="img" :aria-label="`Loans per day over the last seven days, ${activityChart.total} loans in total`">
           <ActivityChart :labels="activityChart.labels" :counts="activityChart.counts" aria-hidden="true" />
         </div>
       </article>
 
-      <article class="data-panel overflow-hidden xl:col-span-6" aria-labelledby="category-heading">
+      <article class="dashboard-panel dashboard-panel--narrow" aria-labelledby="category-heading">
         <div class="data-panel__header">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Collection</p>
@@ -337,7 +338,7 @@ function statusLabel(status: BorrowingStatus) {
           </RouterLink>
         </div>
 
-        <div class="grid min-w-0 grid-cols-1 items-center justify-items-center gap-5 px-5 pb-5 pt-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:justify-items-stretch">
+        <div class="dashboard-panel__body dashboard-category__body grid min-w-0 grid-cols-1 items-center justify-items-center gap-5 sm:grid-cols-[auto_minmax(0,1fr)] sm:justify-items-stretch">
           <CategoryDonutChart :items="donutSegments" :total="totalBooks" />
 
           <div class="w-full min-w-0 max-w-[250px] divide-y divide-[#edf1f6] sm:max-w-none">
@@ -356,8 +357,8 @@ function statusLabel(status: BorrowingStatus) {
       </article>
     </section>
 
-    <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="data-panel flex flex-col overflow-hidden xl:col-span-6" aria-labelledby="recent-heading">
+    <section class="dashboard-grid">
+      <article class="dashboard-panel dashboard-panel--wide flex flex-col" aria-labelledby="recent-heading">
         <div class="data-panel__header">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Timeline</p>
@@ -370,7 +371,7 @@ function statusLabel(status: BorrowingStatus) {
           </RouterLink>
         </div>
 
-        <div class="flex-1 divide-y divide-[#edf1f6] px-3 pb-2 pt-1 sm:px-4">
+        <div class="dashboard-panel__body flex-1 divide-y divide-[#edf1f6]">
           <div v-for="item in recentActivity" :key="item.id" class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-3 rounded-xl px-2 py-3 transition-colors hover:bg-[#f8fbff] sm:grid-cols-[2.5rem_minmax(0,1.4fr)_minmax(0,1fr)_auto] sm:items-center">
             <div class="flex size-10 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04]" :class="activityKindStyle[item.kind].chip" :title="activityKindLabel(item.kind)">
               <UIcon :name="activityKindStyle[item.kind].icon" class="size-5" aria-hidden="true" />
@@ -402,7 +403,7 @@ function statusLabel(status: BorrowingStatus) {
         </div>
       </article>
 
-      <article class="data-panel flex flex-col overflow-hidden xl:col-span-6" aria-labelledby="attention-heading">
+      <article class="dashboard-panel dashboard-panel--narrow flex flex-col" aria-labelledby="attention-heading">
         <div class="data-panel__header">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Follow-up</p>
@@ -415,7 +416,7 @@ function statusLabel(status: BorrowingStatus) {
           </RouterLink>
         </div>
 
-        <div v-if="overdueBorrowings.length" class="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-[#f3d4cf] bg-[#fff5f3] px-3.5 py-3 text-sm sm:mx-5" role="alert">
+        <div v-if="overdueBorrowings.length" class="dashboard-alert" role="alert">
           <div class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#df4634] text-white shadow-[0_4px_12px_rgba(223,70,52,0.3)]">
             <UIcon name="i-lucide-circle-alert" class="size-4" aria-hidden="true" />
           </div>
@@ -428,7 +429,7 @@ function statusLabel(status: BorrowingStatus) {
           </RouterLink>
         </div>
 
-        <div v-if="overdueBorrowings.length" class="flex-1 divide-y divide-[#edf1f6] px-3 pb-2 pt-1 sm:px-4">
+        <div v-if="overdueBorrowings.length" class="dashboard-panel__body dashboard-overdue-list flex-1 divide-y divide-[#edf1f6]">
           <div v-for="borrowing in overdueBorrowings.slice(0, 5)" :key="borrowing.id" class="grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 rounded-xl px-2 py-3 transition-colors hover:bg-[#fff8f7]">
             <div class="flex size-10 items-center justify-center rounded-xl bg-[#fff0ee] text-[#d84332] ring-1 ring-inset ring-[#f3d4cf]" title="Overdue">
               <UIcon name="i-lucide-calendar-clock" class="size-5" aria-hidden="true" />
@@ -446,7 +447,7 @@ function statusLabel(status: BorrowingStatus) {
           </div>
         </div>
 
-        <div v-else class="mx-4 mb-4 mt-4 flex min-h-56 flex-col items-center justify-center rounded-xl border border-dashed border-[#dfe7f1] bg-[#fbfcfe] px-5 py-8 text-center sm:mx-5">
+        <div v-else class="dashboard-empty">
           <div class="flex size-11 items-center justify-center rounded-full bg-[#eaf7f2] text-[#20876e] ring-1 ring-inset ring-[#bfe6d8]">
             <UIcon name="i-lucide-circle-check-big" class="size-5" aria-hidden="true" />
           </div>
@@ -456,7 +457,7 @@ function statusLabel(status: BorrowingStatus) {
       </article>
     </section>
 
-    <footer class="flex flex-col items-center gap-1.5 border-t border-[#e9eef5] pt-4 text-center text-xs text-[#8a99ae] sm:flex-row sm:justify-center sm:gap-2">
+    <footer class="dashboard-footer">
       <span class="inline-flex items-center gap-1.5">
         <span class="size-1.5 rounded-full bg-[#20876e]" aria-hidden="true" />
         {{ authorCount }} authors · {{ categories.length }} categories
@@ -466,3 +467,293 @@ function statusLabel(status: BorrowingStatus) {
     </footer>
   </div>
 </template>
+
+<style scoped>
+.dashboard-page {
+  --dashboard-border: #dfe6ee;
+  --dashboard-divider: #e9eef4;
+  --dashboard-muted: #6b7d93;
+  --dashboard-text: #1c3552;
+  color: var(--dashboard-text);
+}
+
+.dashboard-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.5rem 0.25rem 0.75rem;
+}
+
+.dashboard-hero__copy {
+  min-width: 0;
+}
+
+.dashboard-page :deep(.workspace-kicker) {
+  margin-bottom: 0.55rem;
+  color: #64778f;
+}
+
+.dashboard-page :deep(.workspace-title) {
+  font-size: clamp(1.65rem, 2.2vw, 2rem);
+}
+
+.dashboard-page :deep(.workspace-description) {
+  max-width: 40rem;
+  margin-top: 0.4rem;
+}
+
+.dashboard-date {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 0.625rem;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.55rem 0.75rem;
+  color: #405772;
+  font-size: 0.8125rem;
+}
+
+.dashboard-date__icon {
+  display: flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
+  background: #eaf2fb;
+  color: #315f8d;
+}
+
+.dashboard-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.dashboard-metric {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  transition: background-color 160ms ease;
+}
+
+.dashboard-metric + .dashboard-metric {
+  border-left: 1px solid var(--dashboard-divider);
+}
+
+.dashboard-metric:hover {
+  background: #f9fbfd;
+}
+
+.dashboard-metric .metric-card__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.55rem;
+}
+
+.dashboard-metric .metric-card__label {
+  font-size: 0.65rem;
+}
+
+.dashboard-metric .metric-card__value {
+  margin-top: 0.2rem;
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.dashboard-metric .metric-card__detail {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  color: var(--dashboard-muted);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.dashboard-panel {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.dashboard-panel--wide {
+  grid-column: span 7;
+}
+
+.dashboard-panel--narrow {
+  grid-column: span 5;
+}
+
+.dashboard-panel :deep(.data-panel__header) {
+  min-height: 4.5rem;
+  border-bottom-color: var(--dashboard-divider);
+  background: transparent;
+  padding: 0.85rem 1rem;
+}
+
+.dashboard-summary {
+  flex-shrink: 0;
+  border-left: 2px solid #b9cce0;
+  padding: 0.15rem 0 0.15rem 0.65rem;
+  text-align: right;
+}
+
+.dashboard-panel__body {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.dashboard-category__body {
+  min-height: 15.5rem;
+}
+
+.dashboard-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.9rem 1rem 0.25rem;
+  border: 1px solid #f0d2cd;
+  border-radius: 0.625rem;
+  background: #fff6f4;
+  padding: 0.65rem 0.75rem;
+  color: #6f3e37;
+  font-size: 0.8125rem;
+}
+
+.dashboard-empty {
+  display: flex;
+  min-height: 15rem;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.9rem 1rem 1rem;
+  border: 1px dashed #d9e2ec;
+  border-radius: 0.625rem;
+  background: #fafcfe;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.dashboard-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  border-top: 1px solid var(--dashboard-divider);
+  padding-top: 0.8rem;
+  color: #7a8ba1;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.dashboard-panel a {
+  min-height: 2.25rem;
+  touch-action: manipulation;
+}
+
+@media (min-width: 640px) {
+  .dashboard-footer {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .dashboard-alert {
+    gap: 0.875rem;
+    padding: 0.7rem 0.8rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .dashboard-panel--wide,
+  .dashboard-panel--narrow {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .dashboard-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding-inline: 0;
+  }
+
+  .dashboard-date {
+    width: 100%;
+  }
+}
+
+@media (max-width: 639px) {
+  .dashboard-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-metric {
+    padding: 0.8rem;
+  }
+
+  .dashboard-metric + .dashboard-metric {
+    border-left: 0;
+  }
+
+  .dashboard-metric:nth-child(even) {
+    border-left: 1px solid var(--dashboard-divider);
+  }
+
+  .dashboard-metric:nth-child(n + 3) {
+    border-top: 1px solid var(--dashboard-divider);
+  }
+
+  .dashboard-panel :deep(.data-panel__header) {
+    align-items: flex-start;
+    padding: 0.8rem;
+  }
+
+  .dashboard-panel__body {
+    padding: 0.75rem 0.8rem 0.85rem;
+  }
+
+  .dashboard-category__body {
+    min-height: auto;
+  }
+
+  .dashboard-panel a {
+    min-height: 2.75rem;
+  }
+
+  .dashboard-alert,
+  .dashboard-empty {
+    margin-inline: 0.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .dashboard-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-metric:nth-child(even) {
+    border-left: 0;
+  }
+
+  .dashboard-metric:nth-child(n + 2) {
+    border-top: 1px solid var(--dashboard-divider);
+  }
+}
+</style>

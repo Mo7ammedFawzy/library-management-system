@@ -196,52 +196,7 @@ const visibleBooks = computed(() => {
   })
 })
 
-const totalCopies = computed(() =>
-  rows.value.reduce((total, book) => total + (Number(book.availableCopies) || 0), 0)
-)
-
-const categoryCount = computed(() => categories.value.length)
-
-const lowStockCount = computed(() =>
-  rows.value.filter((book) => (Number(book.availableCopies) || 0) <= 2).length
-)
-
 const hasActiveFilters = computed(() => categoryFilters.value.length > 0 || search.value.trim().length > 0)
-
-const bookStats = computed(() => [
-  {
-    label: 'Total titles',
-    value: rows.value.length,
-    detail: `${categoryCount.value} categories`,
-    icon: 'i-lucide-library-big',
-    iconClass: 'bg-[#edf4ff] text-[#2161bf]',
-    dotClass: 'bg-[#2161bf]'
-  },
-  {
-    label: 'Available copies',
-    value: totalCopies.value,
-    detail: 'Ready to borrow',
-    icon: 'i-lucide-book-check',
-    iconClass: 'bg-[#eaf7f2] text-[#20876e]',
-    dotClass: 'bg-[#20876e]'
-  },
-  {
-    label: 'Categories',
-    value: categoryCount.value,
-    detail: 'Across the catalog',
-    icon: 'i-lucide-tags',
-    iconClass: 'bg-[#fff6e5] text-[#b76c00]',
-    dotClass: 'bg-[#e5a214]'
-  },
-  {
-    label: 'Low stock',
-    value: lowStockCount.value,
-    detail: lowStockCount.value ? '2 or fewer copies' : 'All stocked up',
-    icon: 'i-lucide-triangle-alert',
-    iconClass: 'bg-[#fff0ee] text-[#d84332]',
-    dotClass: 'bg-[#d84332]'
-  }
-])
 
 function clearSearch() {
   search.value = ''
@@ -336,7 +291,7 @@ const copiesUi = {
 </script>
 
 <template>
-  <div class="workspace-page mx-auto flex w-full min-w-0 flex-none flex-col gap-5 overflow-x-clip pb-2 md:min-h-0 md:flex-1">
+  <div class="books-page workspace-page mx-auto flex w-full min-w-0 flex-none flex-col gap-5 overflow-x-clip pb-2 md:min-h-0 md:flex-1">
     <PageBreadcrumb :items="breadcrumbItems" />
 
     <section class="workspace-heading" aria-labelledby="books-heading">
@@ -376,31 +331,7 @@ const copiesUi = {
       <span>{{ loadError }}</span>
     </div>
 
-    <section class="metric-strip" aria-label="Catalog statistics">
-      <article
-        v-for="stat in bookStats"
-        :key="stat.label"
-        class="metric-card group"
-      >
-        <div class="flex items-start gap-4">
-          <div class="metric-card__icon" :class="stat.iconClass">
-            <UIcon :name="stat.icon" class="size-5" aria-hidden="true" />
-          </div>
-          <div class="min-w-0 flex-1">
-            <p class="metric-card__label">{{ stat.label }}</p>
-            <p class="metric-card__value">
-              {{ stat.value.toLocaleString() }}
-            </p>
-            <p class="metric-card__detail">
-              <span class="size-1.5 shrink-0 rounded-full" :class="stat.dotClass" aria-hidden="true" />
-              {{ stat.detail }}
-            </p>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <section class="filter-panel" aria-label="Search and filter books">
+    <section class="books-page__filters filter-panel" aria-label="Search and filter books">
       <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
         <div class="relative w-full lg:max-w-[420px]">
           <label for="books-search" class="sr-only">Search books by title, author or category</label>
@@ -500,7 +431,7 @@ const copiesUi = {
       </div>
     </section>
 
-    <section class="data-panel hidden min-h-[520px] min-w-0 flex-1 flex-col md:flex" aria-labelledby="catalog-heading">
+    <section class="books-page__catalog data-panel hidden min-h-[520px] min-w-0 flex-1 flex-col md:flex" aria-labelledby="catalog-heading">
       <div class="data-panel__header">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
@@ -926,3 +857,31 @@ const copiesUi = {
     </UModal>
   </div>
 </template>
+
+<style scoped>
+/* Books uses a quieter, content-first treatment: filters read as a toolbar
+   and the catalog remains the single primary surface on the page. */
+.books-page__filters {
+  border: 0;
+  border-top: 1px solid #e5ebf2;
+  border-bottom: 1px solid #e5ebf2;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.875rem 0;
+}
+
+.books-page__catalog {
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgba(23, 47, 73, 0.03);
+}
+
+.books-page__catalog :deep(.data-panel__header) {
+  background: #fff;
+}
+
+@media (max-width: 639px) {
+  .books-page__filters {
+    padding: 0.75rem 0;
+  }
+}
+</style>

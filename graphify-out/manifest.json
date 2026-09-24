@@ -384,15 +384,15 @@
     "semantic_hash": "4edc132708119ceca9d4cb2df9a7cec0"
   },
   "frontend/src/App.vue": {
-    "mtime": 1789764752.4039402,
-    "seen": 1789764894.96379,
-    "ast_hash": "2de19d9057f1e0f9875d34efb4817c9d",
+    "mtime": 1790280191.3548222,
+    "seen": 1790280383.0778687,
+    "ast_hash": "3dda2689b1a5d0800058ad2ce5278d44",
     "semantic_hash": ""
   },
   "frontend/src/components/AppDataGrid.vue": {
-    "mtime": 1790196691.8248577,
-    "seen": 1790198555.3207269,
-    "ast_hash": "b69da651e33aac40743770b5dfe7d0f7",
+    "mtime": 1790280427.5904913,
+    "seen": 1790280453.3043945,
+    "ast_hash": "a1f5eca010e144acdfc679434cecd890",
     "semantic_hash": ""
   },
   "frontend/src/components/PageStub.vue": {
@@ -486,27 +486,27 @@
     "semantic_hash": ""
   },
   "frontend/src/pages/authors.vue": {
-    "mtime": 1790196691.828857,
-    "seen": 1790198555.3207269,
-    "ast_hash": "b37b938b7ea73c18897bf8a358d2e78c",
+    "mtime": 1790279013.3208537,
+    "seen": 1790280087.514759,
+    "ast_hash": "d3961172208811b0580c1bd822ebd9ef",
     "semantic_hash": ""
   },
   "frontend/src/pages/books.vue": {
-    "mtime": 1790196691.8298564,
-    "seen": 1790198555.3207269,
-    "ast_hash": "feb3875599007121af239899a3ebfb4b",
+    "mtime": 1790282082.2234254,
+    "seen": 1790282145.2015202,
+    "ast_hash": "f959fd364a93f35e7c9b70520d79cb85",
     "semantic_hash": ""
   },
   "frontend/src/pages/borrowings.vue": {
-    "mtime": 1790196691.8308842,
-    "seen": 1790198555.3207269,
-    "ast_hash": "50199819e35f6c1ac45f6050ecbb544c",
+    "mtime": 1790282089.497132,
+    "seen": 1790282145.2015202,
+    "ast_hash": "b42a713410a7f1f2850f886debd8d25f",
     "semantic_hash": ""
   },
   "frontend/src/pages/categories.vue": {
-    "mtime": 1790196691.8308842,
-    "seen": 1790198555.3207269,
-    "ast_hash": "aa9b06f0e54fb264b95e83804e9acea8",
+    "mtime": 1790279016.2326984,
+    "seen": 1790280087.514759,
+    "ast_hash": "4b20c1d2bb054b1208b1885a492f1de2",
     "semantic_hash": ""
   },
   "frontend/src/pages/change-password.vue": {
@@ -516,9 +516,9 @@
     "semantic_hash": ""
   },
   "frontend/src/pages/dashboard.vue": {
-    "mtime": 1790196691.8328547,
-    "seen": 1790198555.3207269,
-    "ast_hash": "f56f1249d76e542638b7cb4ab274421a",
+    "mtime": 1790282100.525358,
+    "seen": 1790282145.2015202,
+    "ast_hash": "d7727e5eafe94fbd126f9becc160935c",
     "semantic_hash": ""
   },
   "frontend/src/pages/index.vue": {
@@ -528,15 +528,15 @@
     "semantic_hash": "96f870f1d3b52e356f1da7b720e92ee0"
   },
   "frontend/src/pages/login.vue": {
-    "mtime": 1790196691.8328547,
-    "seen": 1790198555.3207269,
-    "ast_hash": "1d41287e5df2cab56715533fa4441459",
+    "mtime": 1790280249.2141423,
+    "seen": 1790280383.0778687,
+    "ast_hash": "cc5877865094e6f65c640cb7a835c2f6",
     "semantic_hash": ""
   },
   "frontend/src/pages/members.vue": {
-    "mtime": 1790196691.8338525,
-    "seen": 1790198555.3207269,
-    "ast_hash": "d0116c2129b125f9757c18e326d35ca4",
+    "mtime": 1790279010.237396,
+    "seen": 1790280087.514759,
+    "ast_hash": "77a0fa90c18828ed337b27944121fe94",
     "semantic_hash": ""
   },
   "frontend/src/pages/profile.vue": {
@@ -546,9 +546,9 @@
     "semantic_hash": ""
   },
   "frontend/src/pages/register.vue": {
-    "mtime": 1790196691.8348534,
-    "seen": 1790198555.3207269,
-    "ast_hash": "96a27fe084b5a4c5e98b11f404df42b6",
+    "mtime": 1790280266.381452,
+    "seen": 1790280383.0778687,
+    "ast_hash": "bcc434ac7f6136cd7157794adfdd8a6f",
     "semantic_hash": ""
   },
   "frontend/src/pages/settings.vue": {
@@ -558,8 +558,8 @@
     "semantic_hash": ""
   },
   "frontend/src/route-map.d.ts": {
-    "mtime": 1790198514.3645735,
-    "seen": 1790198555.3207269,
+    "mtime": 1790282139.2046385,
+    "seen": 1790282145.2015202,
     "ast_hash": "57ba3574651dc68c5af3d2eec1839e59",
     "semantic_hash": ""
   },
@@ -840,21 +840,21 @@
     "semantic_hash": ""
   },
   "CONTEXT.md": {
-    "mtime": 1787828039.79651,
-    "seen": 1788451115.1142042,
-    "ast_hash": "f4c47347ada948679ae39b921dd2796f",
+    "mtime": 1790280068.8309202,
+    "seen": 1790280087.514759,
+    "ast_hash": "c88eae9396e45928996ef243ab7f5994",
     "semantic_hash": ""
   },
   "DESIGN.md": {
-    "mtime": 1789764580.982804,
-    "seen": 1789764636.7702584,
-    "ast_hash": "9555eff55174ceb66d0697a46f20ee43",
+    "mtime": 1790280353.51514,
+    "seen": 1790280383.0778687,
+    "ast_hash": "d57be0859bfbf60d987e5ac50f1af04b",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1788628133.2384324,
-    "seen": 1789673317.2303362,
-    "ast_hash": "5d2929ccac13050b6a0e77784c532c94",
+    "mtime": 1790279958.1994941,
+    "seen": 1790280087.514759,
+    "ast_hash": "de202b5dfcef95d4ebfff306f6cb53ee",
     "semantic_hash": ""
   },
   "backend/README.md": {
@@ -924,15 +924,15 @@
     "semantic_hash": ""
   },
   "frontend/src/components/dashboard/ActivityChart.vue": {
-    "mtime": 1789764483.8378797,
-    "seen": 1789764636.769259,
-    "ast_hash": "ca407394c6ef3aaa520b64ad7d75a79d",
+    "mtime": 1790278785.8939617,
+    "seen": 1790280087.514759,
+    "ast_hash": "361c48c29e86c593ee6a9ae9f0cb87bc",
     "semantic_hash": ""
   },
   "frontend/src/components/dashboard/CategoryDonutChart.vue": {
-    "mtime": 1789764483.8388786,
-    "seen": 1789764636.769259,
-    "ast_hash": "6ddfcecb6d95ea2749371561aadca503",
+    "mtime": 1790280280.552562,
+    "seen": 1790280383.0778687,
+    "ast_hash": "df2ebb77a3aa111d0c1bee4d5df97209",
     "semantic_hash": ""
   },
   ".scratch/audit-2026-09-18/issues/01-backend-test-harness-ci.md": {
@@ -1011,6 +1011,18 @@
     "mtime": 1790198485.0790699,
     "seen": 1790198555.3207269,
     "ast_hash": "30cda2f813727607b18506d73ce3e4e5",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/PageBreadcrumb.vue": {
+    "mtime": 1790279000.619335,
+    "seen": 1790280087.514759,
+    "ast_hash": "c290f773be01a9b3309d01ac5e53ef3d",
+    "semantic_hash": ""
+  },
+  "docs/system-overview.md": {
+    "mtime": 1790280046.2206829,
+    "seen": 1790280087.514759,
+    "ast_hash": "3b40d8709aebc39f7ad7e73a3310cf29",
     "semantic_hash": ""
   }
 }

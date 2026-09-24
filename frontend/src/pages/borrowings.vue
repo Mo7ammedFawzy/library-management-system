@@ -18,7 +18,6 @@ import {
   formatDate,
   getStatus,
   returnBook,
-  todayStr,
   type Borrowing,
   type BorrowingStatus,
   type BorrowingUser
@@ -41,8 +40,6 @@ const loadError = ref('')
 const statusFilters = ref<BorrowingStatus[]>([])
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dateRange = ref<any>(null)
-
-const today = todayStr()
 
 async function loadAll() {
   loadError.value = ''
@@ -128,11 +125,6 @@ const columns: ColDef<Borrowing>[] = [
     }
   }
 ]
-
-const totalBorrowings = computed(() => rows.value.length)
-const currentlyBorrowed = computed(() => rows.value.filter((borrowing) => !borrowing.returnDate).length)
-const dueToday = computed(() => rows.value.filter((borrowing) => !borrowing.returnDate && borrowing.dueDate === today).length)
-const overdue = computed(() => rows.value.filter((borrowing) => !borrowing.returnDate && borrowing.dueDate < today).length)
 
 const ALL_STATUS = '__all__'
 
@@ -309,90 +301,8 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
       <span>{{ loadError }}</span>
     </div>
 
-    <div class="metric-strip">
-      <div class="metric-card">
-        <div class="metric-card__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-400">
-          <UIcon
-            name="i-lucide-book-marked"
-            class="size-5"
-          />
-        </div>
-        <div class="min-w-0">
-          <p class="metric-card__label">
-            Total Borrowings
-          </p>
-          <p class="metric-card__value">
-            {{ totalBorrowings }}
-          </p>
-          <p class="metric-card__detail">
-            All time
-          </p>
-        </div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-card__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400">
-          <UIcon
-            name="i-lucide-hourglass"
-            class="size-5"
-          />
-        </div>
-        <div class="min-w-0">
-          <p class="metric-card__label">
-            Currently Borrowed
-          </p>
-          <p class="metric-card__value">
-            {{ currentlyBorrowed }}
-          </p>
-          <p class="metric-card__detail">
-            Books out
-          </p>
-        </div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-card__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
-          <UIcon
-            name="i-lucide-calendar-days"
-            class="size-5"
-          />
-        </div>
-        <div class="min-w-0">
-          <p class="metric-card__label">
-            Due Today
-          </p>
-          <p class="metric-card__value">
-            {{ dueToday }}
-          </p>
-          <p class="metric-card__detail">
-            Due today
-          </p>
-        </div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-card__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-700 dark:bg-red-950/50 dark:text-red-400">
-          <UIcon
-            name="i-lucide-triangle-alert"
-            class="size-5"
-          />
-        </div>
-        <div class="min-w-0">
-          <p class="metric-card__label">
-            Overdue
-          </p>
-          <p class="metric-card__value">
-            {{ overdue }}
-          </p>
-          <p class="metric-card__detail">
-            Past due date
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="data-panel flex min-h-0 flex-1 flex-col">
-      <div class="flex flex-col gap-2 border-b border-[#edf1f5] bg-[#fbfcfe] p-3 lg:flex-row lg:items-center lg:overflow-x-auto">
+    <section class="borrowing-table-panel flex min-h-0 flex-1 flex-col">
+      <div class="borrowing-table-toolbar flex flex-col gap-2 border-b border-(--ui-border) p-3 lg:flex-row lg:items-center lg:overflow-x-auto">
         <div class="relative w-full lg:w-auto lg:min-w-[220px] lg:flex-1">
           <UIcon
             name="i-lucide-search"
@@ -494,7 +404,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
         :row-height="52"
         height="100%"
       />
-    </div>
+    </section>
 
     <UModal
       v-model:open="addOpen"
@@ -516,7 +426,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
                 <h2 class="font-display text-[20px] font-semibold leading-tight text-highlighted">
                   New Borrowing
                 </h2>
-                <p class="metric-card__label">
+                <p class="modal-eyebrow">
                   Borrow a book for a member
                 </p>
               </div>
@@ -637,7 +547,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
                 <h2 class="font-display text-[20px] font-semibold leading-tight text-highlighted">
                   Borrowing Details
                 </h2>
-                <p class="metric-card__label">
+                <p class="modal-eyebrow">
                   #{{ detail?.id }}
                 </p>
               </div>
@@ -751,3 +661,31 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
     </UModal>
   </div>
 </template>
+
+<style scoped>
+.borrowing-table-panel {
+  overflow: hidden;
+  border: 1px solid var(--ui-border);
+  border-radius: 0.5rem;
+  background: var(--ui-bg-card);
+}
+
+.borrowing-table-toolbar {
+  background: transparent;
+}
+
+.modal-eyebrow {
+  color: var(--ui-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+@media (max-width: 639px) {
+  .borrowing-table-panel {
+    border-radius: 0.375rem;
+  }
+}
+</style>
