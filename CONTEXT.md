@@ -1,50 +1,61 @@
-# Domain Glossary — Athenaeum Library Management System
+# Library Management
 
-A two-app system: a Spring Boot backend and a Vue 3 frontend, managing a physical library's catalog and lending operations.
+Athenaeum models the catalog and lending operations of a physical library. This glossary defines the domain language shared by the API, frontend, tests, and documentation.
 
-## Core Domain Concepts
+## Collection
 
-### Book
-A catalog entry with a title, description, available copy count, a single Category, and zero or more Authors. The Book is the central entity — both the Catalog and Borrowing subsystems revolve around it.
+**Catalog**:
+The library's collection of book titles and the information used to identify and classify them.
+_Avoid_: Inventory when referring to the complete collection
 
-### Author
-A person who wrote one or more Books. Many-to-many relationship with Book.
+**Book**:
+A cataloged title with a description, available-copy count, exactly one Category, and one or more Authors.
+_Avoid_: Copy, ISBN
 
-### Category
-A genre or classification label applied to a Book. Many-to-one: each Book belongs to exactly one Category.
+**Available Copies**:
+The number of physical copies of a Book that are currently available to borrow. Borrowing a copy decreases this count; returning it increases the count.
+_Avoid_: Total copies, stock
 
-### BorrowRecord
-A lending transaction. Tracks which User borrowed which Book, on what date, when it's due, and (optionally) when it was returned. A BorrowRecord is created when a Book is borrowed and mutated when the Book is returned.
+**Author**:
+A person credited with writing one or more Books.
+_Avoid_: Writer when naming the domain entity
 
-### User
-A library member with name, email, password, and a role (ADMIN or USER). Implements Spring Security's `UserDetails`. Users authenticate via JWT.
+**Category**:
+A classification for a Book, such as fiction, history, or science.
+_Avoid_: Genre when both creative and non-creative classifications are included
 
-### Borrowing (frontend concept)
-The frontend's view of a BorrowRecord, enriched with computed status (Overdue, Due Today, Borrowed, Returned). This is a presentation-layer concept, not a backend entity.
+## Lending
 
-## Subsystems
+**BorrowRecord**:
+The record of a User borrowing a Book, including the borrow date, due date, and return date when completed.
+_Avoid_: Loan, borrowing record
 
-### Catalog Subsystem
-Manages Books, Authors, and Categories. Responsibilities: CRUD operations, validation that referenced Categories and Authors exist, maintaining available copy counts.
+**Borrowing**:
+The lifecycle of a Book checkout represented by a BorrowRecord. It remains open until the Book is returned.
+_Avoid_: Loan, reservation
 
-### Borrowing Subsystem
-Manages lending transactions. Responsibilities: borrowing a Book (decrement copies, create BorrowRecord), returning a Book (set returnDate, increment copies), listing borrow records.
+**Borrowing Status**:
+The current classification of a Borrowing: Borrowed, Due Today, Overdue, or Returned.
+_Avoid_: Loan status
 
-### Auth Subsystem
-Manages user registration and JWT-based authentication. Responsibilities: register (create User with USER role, return JWT), login (authenticate, return JWT), JWT token generation/validation.
+**Due Date**:
+The date by which a Borrowing is expected to be returned.
+_Avoid_: Expiry date
 
-### Frontend Mock Subsystem
-Provides in-memory fallback data when the backend is unavailable. Every API service function is wrapped with `withFallback()` to transparently fall back to mock implementations.
+**Return Date**:
+The date on which a borrowed Book was returned. An absent Return Date means the Borrowing is still open.
+_Avoid_: Completion date
 
-## Key Cross-Cutting Concerns
+## Identity
 
-- **JWT Authentication**: Stateless, Bearer token in Authorization header. All endpoints except `/api/auth/**` require a valid token.
-- **ApiResponse Envelope**: All successful responses wrapped in `{ success, data, message }`. Errors in `{ status, message, timestamp }`.
-- **Hibernate DDL**: Schema managed by `ddl-auto=update`. No migrations.
-- **Current User Resolution**: Abstracted behind `UserContext` interface with `SecurityContextUserContext` (prod) and `FakeUserContext` (test double).
+**User**:
+A library account with a name, email, password, and ADMIN or USER role. A User may be the borrower in a BorrowRecord.
+_Avoid_: Member, customer, librarian
 
-## Terminology Notes
+**Admin**:
+A User with the ADMIN role.
+_Avoid_: Administrator when referring to the role value
 
-- "Borrowing" on the frontend = "BorrowRecord" on the backend. The frontend adds computed status; the backend stores raw dates.
-- "Members" (frontend page, currently stubbed) = "Users" in the backend. No user management UI exists yet.
-- The frontend app is branded "Athenaeum"; the backend package is `org.library`.
+**Role**:
+An account classification: ADMIN or USER.
+_Avoid_: Permission
