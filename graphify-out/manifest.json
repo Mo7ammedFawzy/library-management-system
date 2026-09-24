@@ -384,9 +384,9 @@
     "semantic_hash": "4edc132708119ceca9d4cb2df9a7cec0"
   },
   "frontend/src/App.vue": {
-    "mtime": 1790280191.3548222,
-    "seen": 1790280383.0778687,
-    "ast_hash": "3dda2689b1a5d0800058ad2ce5278d44",
+    "mtime": 1790284205.2618082,
+    "seen": 1790284336.4110627,
+    "ast_hash": "5933f2f0a36e00515a097cd2a1dd311c",
     "semantic_hash": ""
   },
   "frontend/src/components/AppDataGrid.vue": {
@@ -492,9 +492,9 @@
     "semantic_hash": ""
   },
   "frontend/src/pages/books.vue": {
-    "mtime": 1790282082.2234254,
-    "seen": 1790282145.2015202,
-    "ast_hash": "f959fd364a93f35e7c9b70520d79cb85",
+    "mtime": 1790284425.4131262,
+    "seen": 1790284474.585126,
+    "ast_hash": "313eff63e5e5deebcf27b2975c38b961",
     "semantic_hash": ""
   },
   "frontend/src/pages/borrowings.vue": {
@@ -558,8 +558,8 @@
     "semantic_hash": ""
   },
   "frontend/src/route-map.d.ts": {
-    "mtime": 1790282164.036605,
-    "seen": 1790282208.0505178,
+    "mtime": 1790284432.5886488,
+    "seen": 1790284474.585126,
     "ast_hash": "57ba3574651dc68c5af3d2eec1839e59",
     "semantic_hash": ""
   },

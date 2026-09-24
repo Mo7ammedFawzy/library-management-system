@@ -332,7 +332,19 @@ const copiesUi = {
     </div>
 
     <section class="books-page__filters" aria-label="Search and filter books">
-      <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
+      <div class="books-page__toolbar-heading">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-[#8293a8]">Catalog workspace</p>
+          <h2 class="mt-1 font-display text-lg font-bold tracking-[-0.025em] text-[#172f49]">Book collection</h2>
+          <p class="mt-1 text-xs text-[#7a8ba3]">{{ visibleBooks.length }} of {{ rows.length }} titles available in the catalog</p>
+        </div>
+        <div class="books-page__toolbar-status">
+          <span class="size-1.5 rounded-full bg-[#20876e]" aria-hidden="true" />
+          Catalog synced
+        </div>
+      </div>
+
+      <div class="books-page__toolbar-controls">
         <div class="relative w-full lg:max-w-[420px]">
           <label for="books-search" class="sr-only">Search books by title, author or category</label>
           <UIcon
@@ -432,7 +444,7 @@ const copiesUi = {
     </section>
 
     <section class="books-page__catalog hidden min-h-[520px] min-w-0 flex-1 flex-col md:flex" aria-labelledby="catalog-heading">
-      <div class="data-panel__header">
+      <div class="books-page__catalog-heading hidden">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
           <h2 id="catalog-heading" class="data-panel__title">Book collection</h2>
@@ -867,7 +879,35 @@ const copiesUi = {
   border: 1px solid #dce5ef;
   border-radius: 0.75rem 0.75rem 0 0;
   background: #fff;
-  padding: 0.875rem 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+}
+
+.books-page__toolbar-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.125rem;
+}
+
+.books-page__toolbar-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.25rem;
+  color: #6f8298;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.books-page__toolbar-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid #edf1f5;
+  padding-top: 1rem;
 }
 
 .books-page__catalog {
@@ -880,10 +920,8 @@ const copiesUi = {
   box-shadow: 0 1px 2px rgba(23, 47, 73, 0.03);
 }
 
-.books-page__catalog :deep(.data-panel__header) {
-  min-height: 4.75rem;
-  background: #fbfcfe;
-  padding-inline: 1.25rem;
+.books-page__catalog-heading {
+  display: none;
 }
 
 .books-modal__header {
@@ -907,7 +945,15 @@ const copiesUi = {
 @media (max-width: 639px) {
   .books-page__filters {
     border-radius: 0.625rem 0.625rem 0 0;
-    padding: 0.75rem;
+    padding: 1rem 0.875rem 0.875rem;
+  }
+
+  .books-page__toolbar-heading {
+    margin-bottom: 0.875rem;
+  }
+
+  .books-page__toolbar-status {
+    display: none;
   }
 
   .books-page__catalog {
