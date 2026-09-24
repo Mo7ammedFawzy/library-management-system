@@ -5,7 +5,7 @@ import ActionsCell from '../components/grid/ActionsCell.vue'
 import BookTitleCell from '../components/grid/BookTitleCell.vue'
 import CategoryCell from '../components/grid/CategoryCell.vue'
 import CopiesCell from '../components/grid/CopiesCell.vue'
-import type { FormError, BreadcrumbItem } from '@nuxt/ui'
+import type { FormError } from '@nuxt/ui'
 import {
   createBook,
   deleteBook,
@@ -17,12 +17,6 @@ import {
 import { fetchCategories, type Category } from '../services/categories'
 import { fetchAuthors, type Author } from '../services/authors'
 import { useCrudPage } from '../composables/useCrudPage'
-import PageBreadcrumb from '../components/PageBreadcrumb.vue'
-
-const breadcrumbItems = ref<BreadcrumbItem[]>([
-  { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/dashboard' },
-  { label: 'Books', icon: 'i-lucide-book-open' }
-])
 
 const categories = ref<Category[]>([])
 const authors = ref<Author[]>([])
@@ -224,10 +218,6 @@ function clearSearch() {
   search.value = ''
 }
 
-function removeCategoryFilter(category: string) {
-  categoryFilters.value = categoryFilters.value.filter((name) => name !== category)
-}
-
 function toggleCategoryFilter(category: string) {
   categoryFilters.value = categoryFilters.value.includes(category)
     ? categoryFilters.value.filter((name) => name !== category)
@@ -319,9 +309,7 @@ const copiesUi = {
 </script>
 
 <template>
-  <div class="books-page workspace-page mx-auto flex w-full min-w-0 flex-none flex-col gap-5 overflow-x-clip pb-2 md:min-h-0 md:flex-1">
-    <PageBreadcrumb :items="breadcrumbItems" />
-
+  <div class="books-page workspace-page mx-auto flex w-full min-w-0 flex-none flex-col gap-4 overflow-x-clip pb-2">
     <section
       class="books-hero"
       aria-labelledby="books-heading"
@@ -343,7 +331,7 @@ const copiesUi = {
             The collection, in order.
           </h1>
           <p class="books-hero__description">
-            Find every title, follow each shelf, and keep the collection ready for the next reader.
+            Find every title, follow each shelf, and keep every copy ready.
           </p>
           <UButton
             icon="i-lucide-plus"
@@ -415,21 +403,12 @@ const copiesUi = {
       class="books-page__filters"
       aria-label="Search and filter books"
     >
-      <div class="books-page__toolbar-heading">
-        <div>
+      <div class="books-page__toolbar-main">
+        <div class="books-page__toolbar-title">
           <h2>Browse the collection</h2>
-          <p>Search by title, author, description, or shelf.</p>
+          <p>Search the catalogue or choose a shelf.</p>
         </div>
-        <div class="books-page__toolbar-status">
-          <span
-            class="size-1.5 rounded-full bg-[#20876e]"
-            aria-hidden="true"
-          />
-          Inventory loaded
-        </div>
-      </div>
 
-      <div class="books-page__toolbar-controls">
         <div class="books-page__search">
           <label
             for="books-search"
@@ -437,7 +416,7 @@ const copiesUi = {
           >Search books by title, author, description or category</label>
           <UIcon
             name="i-lucide-search"
-            class="pointer-events-none absolute left-3.5 top-1/2 size-[18px] -translate-y-1/2 text-[#6c7f96]"
+            class="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#60768c]"
             aria-hidden="true"
           />
           <input
@@ -462,27 +441,29 @@ const copiesUi = {
           </button>
         </div>
 
-        <p
-          role="status"
-          aria-live="polite"
-          class="books-page__result-count"
-        >
-          <strong>{{ visibleBooks.length }}</strong> of {{ rows.length }} titles
-        </p>
-
-        <button
-          v-if="hasActiveFilters"
-          type="button"
-          class="books-page__reset"
-          @click="clearAllFilters"
-        >
-          <UIcon
-            name="i-lucide-rotate-ccw"
-            class="size-3.5"
-            aria-hidden="true"
-          />
-          Reset
-        </button>
+        <div class="books-page__toolbar-meta">
+          <p
+            role="status"
+            aria-live="polite"
+            class="books-page__result-count"
+          >
+            <strong>{{ visibleBooks.length }}</strong> of {{ rows.length }} titles
+          </p>
+          <button
+            v-if="hasActiveFilters"
+            type="button"
+            class="books-page__reset"
+            aria-label="Reset catalogue filters"
+            @click="clearAllFilters"
+          >
+            <UIcon
+              name="i-lucide-rotate-ccw"
+              class="size-3.5"
+              aria-hidden="true"
+            />
+            Reset
+          </button>
+        </div>
       </div>
 
       <div
@@ -513,27 +494,6 @@ const copiesUi = {
             <span>{{ category.count }}</span>
           </button>
         </div>
-      </div>
-
-      <div
-        v-if="categoryFilters.length"
-        class="books-page__active-filters"
-        aria-label="Active category filters"
-      >
-        <button
-          v-for="name in categoryFilters"
-          :key="name"
-          type="button"
-          :aria-label="`Remove ${name} filter`"
-          @click="removeCategoryFilter(name)"
-        >
-          {{ name }}
-          <UIcon
-            name="i-lucide-x"
-            class="size-3.5 shrink-0"
-            aria-hidden="true"
-          />
-        </button>
       </div>
     </section>
 
@@ -581,10 +541,10 @@ const copiesUi = {
           :rows="visibleBooks"
           :columns="columns"
           :get-row-id="getRowId"
-          :row-height="62"
-          :header-height="44"
-          :page-size="6"
-          :page-size-selector="[6, 12, 24]"
+          :row-height="58"
+          :header-height="42"
+          :page-size="7"
+          :page-size-selector="[7, 14, 28]"
           height="100%"
         />
       </div>
@@ -927,18 +887,20 @@ const copiesUi = {
   --books-line: #dce5ee;
   --books-navy: #102f49;
   --books-gold: #e4ae35;
-  gap: 1.5rem;
+  flex: none;
+  gap: 1rem;
 }
 
 .books-hero {
   position: relative;
   isolation: isolate;
+  flex: none;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.25rem;
   background: #102f49;
   color: #f8fafc;
-  box-shadow: 0 20px 50px rgba(15, 42, 65, 0.14);
+  box-shadow: 0 14px 36px rgba(15, 42, 65, 0.12);
 }
 
 .books-hero::before {
@@ -965,9 +927,9 @@ const copiesUi = {
 
 .books-hero__main {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(19rem, 0.8fr);
-  gap: 2.5rem;
-  padding: 2.5rem 2.75rem 2rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  gap: 1.75rem;
+  padding: 1.5rem 2rem 1.25rem;
 }
 
 .books-hero__copy {
@@ -985,26 +947,25 @@ const copiesUi = {
 }
 
 .books-hero__title {
-  max-width: 11ch;
-  margin-top: 1rem;
+  margin-top: 0.65rem;
   color: #f8fafc;
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4vw, 3.45rem);
+  font-size: clamp(2rem, 3vw, 2.65rem);
   font-weight: 650;
-  letter-spacing: -0.055em;
-  line-height: 1.02;
+  letter-spacing: -0.05em;
+  line-height: 1.04;
 }
 
 .books-hero__description {
   max-width: 35rem;
-  margin-top: 1.125rem;
+  margin-top: 0.55rem;
   color: #c6d3df;
-  font-size: 0.9375rem;
-  line-height: 1.65;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .books-hero__action {
-  margin-top: 1.5rem;
+  margin-top: 0.85rem;
   background: var(--books-gold) !important;
   color: #102f49 !important;
   box-shadow: 0 8px 22px rgba(4, 19, 32, 0.18) !important;
@@ -1026,23 +987,23 @@ const copiesUi = {
   min-width: 0;
   align-items: center;
   justify-content: flex-end;
-  gap: 1rem;
+  gap: 0.75rem;
   border-left: 1px solid rgba(255, 255, 255, 0.12);
-  padding-left: 2rem;
+  padding-left: 1.5rem;
 }
 
 .books-hero__book-stack {
   position: relative;
-  width: 13.5rem;
-  height: 10.25rem;
+  width: 10.5rem;
+  height: 7.5rem;
   flex: 0 0 auto;
 }
 
 .books-hero__book {
   position: absolute;
   display: flex;
-  width: 4.5rem;
-  height: 8.25rem;
+  width: 3.45rem;
+  height: 6.25rem;
   align-items: center;
   justify-content: center;
   border-radius: 0.25rem 0.45rem 0.45rem 0.25rem;
@@ -1065,8 +1026,8 @@ const copiesUi = {
 }
 
 .books-hero__book--one {
-  top: 1.25rem;
-  left: 0.5rem;
+  top: 0.85rem;
+  left: 0.35rem;
   background: #d8a536;
   color: #17334b;
   transform: rotate(-8deg);
@@ -1074,22 +1035,22 @@ const copiesUi = {
 
 .books-hero__book--two {
   z-index: 2;
-  top: 0.25rem;
-  left: 4.5rem;
+  top: 0.1rem;
+  left: 3.45rem;
   background: #e7edf2;
   color: #17334b;
 }
 
 .books-hero__book--three {
-  top: 1.4rem;
-  left: 8.25rem;
+  top: 0.9rem;
+  left: 6.45rem;
   background: #356b83;
   color: #f4f7fa;
   transform: rotate(8deg);
 }
 
 .books-hero__health {
-  min-width: 9rem;
+  min-width: 8rem;
 }
 
 .books-hero__health p {
@@ -1105,7 +1066,7 @@ const copiesUi = {
   margin-top: 0.4rem;
   color: #f8fafc;
   font-family: var(--font-display);
-  font-size: 2.25rem;
+  font-size: 1.9rem;
   font-weight: 650;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -1113,9 +1074,9 @@ const copiesUi = {
 
 .books-hero__health span {
   display: block;
-  margin-top: 0.55rem;
+  margin-top: 0.4rem;
   color: #b9c8d5;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   line-height: 1.45;
 }
 
@@ -1132,7 +1093,7 @@ const copiesUi = {
   justify-content: space-between;
   gap: 1rem;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1rem 1.4rem;
+  padding: 0.65rem 1.25rem;
 }
 
 .books-hero__stats > div:last-child {
@@ -1150,7 +1111,7 @@ const copiesUi = {
 .books-hero__stats dd {
   color: #f8fafc;
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 650;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.035em;
@@ -1159,38 +1120,45 @@ const copiesUi = {
 .books-page__filters {
   position: relative;
   z-index: 2;
-  margin-top: -1.5rem;
+  flex: none;
+  margin-top: -1rem;
   margin-bottom: -1px;
   border: 1px solid var(--books-line);
   border-radius: 1.125rem 1.125rem 0 0;
   background: #fff;
-  padding: 1.375rem 1.5rem 1.125rem;
-  box-shadow: 0 12px 32px rgba(26, 55, 81, 0.08);
+  padding: 0.875rem 1rem 0.75rem;
+  box-shadow: 0 10px 26px rgba(26, 55, 81, 0.07);
 }
 
-.books-page__toolbar-heading {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+.books-page__toolbar-main {
+  display: grid;
+  grid-template-columns: minmax(10.5rem, 0.7fr) minmax(18rem, 1.3fr) auto;
+  align-items: center;
   gap: 1rem;
 }
 
-.books-page__toolbar-heading h2 {
+.books-page__toolbar-title h2 {
   color: var(--books-ink);
   font-family: var(--font-display);
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 650;
-  letter-spacing: -0.025em;
-  line-height: 1.3;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
-.books-page__toolbar-heading p {
-  margin-top: 0.25rem;
+.books-page__toolbar-title p {
+  margin-top: 0.15rem;
   color: var(--books-muted);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
 }
 
-.books-page__toolbar-status,
+.books-page__toolbar-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 .books-page__catalog-meta {
   display: inline-flex;
   align-items: center;
@@ -1202,27 +1170,17 @@ const copiesUi = {
   text-transform: uppercase;
 }
 
-.books-page__toolbar-controls {
-  display: grid;
-  grid-template-columns: minmax(18rem, 1fr) auto auto;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 1.125rem;
-  border-top: 1px solid #edf1f5;
-  padding-top: 1.125rem;
-}
-
 .books-page__search {
   position: relative;
 }
 
 .books-page__search input {
   width: 100%;
-  height: 3rem;
+  height: 2.625rem;
   border: 1px solid #d6e0ea;
-  border-radius: 0.75rem;
+  border-radius: 0.7rem;
   background: #f8fafc;
-  padding: 0 3.25rem 0 2.75rem;
+  padding: 0 2.5rem 0 2.35rem;
   color: #213c55;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -1247,10 +1205,10 @@ const copiesUi = {
 .books-page__search-clear {
   position: absolute;
   top: 50%;
-  right: 0.375rem;
+  right: 0.25rem;
   display: flex;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2rem;
+  height: 2rem;
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
@@ -1266,8 +1224,7 @@ const copiesUi = {
 
 .books-page__search-clear:focus-visible,
 .books-page__reset:focus-visible,
-.books-page__shelf-list button:focus-visible,
-.books-page__active-filters button:focus-visible {
+.books-page__shelf-list button:focus-visible {
   outline: 2px solid #7398bd;
   outline-offset: 2px;
 }
@@ -1286,11 +1243,11 @@ const copiesUi = {
 
 .books-page__reset {
   display: inline-flex;
-  min-height: 2.5rem;
+  min-height: 2.25rem;
   align-items: center;
-  gap: 0.4rem;
-  border-radius: 0.625rem;
-  padding: 0 0.75rem;
+  gap: 0.35rem;
+  border-radius: 0.55rem;
+  padding: 0 0.6rem;
   color: #44617d;
   font-size: 0.75rem;
   font-weight: 650;
@@ -1305,15 +1262,15 @@ const copiesUi = {
 .books-page__shelves {
   display: flex;
   align-items: flex-start;
-  gap: 0.875rem;
-  margin-top: 1rem;
+  gap: 0.75rem;
+  margin-top: 0.625rem;
   border-top: 1px solid #edf1f5;
-  padding-top: 1rem;
+  padding-top: 0.625rem;
 }
 
 .books-page__shelves-label {
   flex: 0 0 auto;
-  padding-top: 0.625rem;
+  padding-top: 0.5rem;
   color: #61758a;
   font-size: 0.6875rem;
   font-weight: 700;
@@ -1325,18 +1282,18 @@ const copiesUi = {
   display: flex;
   min-width: 0;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .books-page__shelf-list button {
   display: inline-flex;
-  min-height: 2.5rem;
+  min-height: 2.25rem;
   align-items: center;
   gap: 0.5rem;
   border: 1px solid #dfe6ed;
   border-radius: 0.625rem;
   background: #fff;
-  padding: 0.375rem 0.625rem 0.375rem 0.75rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.65rem;
   color: #50677f;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1346,8 +1303,8 @@ const copiesUi = {
 
 .books-page__shelf-list button span {
   display: inline-flex;
-  min-width: 1.5rem;
-  height: 1.5rem;
+  min-width: 1.3rem;
+  height: 1.3rem;
   align-items: center;
   justify-content: center;
   border-radius: 0.375rem;
@@ -1379,38 +1336,11 @@ const copiesUi = {
   color: #fff;
 }
 
-.books-page__active-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.875rem;
-  border-top: 1px solid #edf1f5;
-  padding-top: 0.875rem;
-}
-
-.books-page__active-filters button {
-  display: inline-flex;
-  min-height: 2rem;
-  align-items: center;
-  gap: 0.35rem;
-  border-radius: 999px;
-  background: #eaf1f7;
-  padding: 0.25rem 0.5rem 0.25rem 0.75rem;
-  color: #284b69;
-  font-size: 0.6875rem;
-  font-weight: 650;
-  transition: background-color 150ms ease, color 150ms ease;
-}
-
-.books-page__active-filters button:hover {
-  background: #dce8f2;
-  color: #173c5e;
-}
-
 .books-page__catalog {
   position: relative;
   z-index: 1;
-  height: 35.5rem;
+  flex: none;
+  height: 37rem;
   overflow: hidden;
   border: 1px solid var(--books-line);
   border-radius: 0 0 1.125rem 1.125rem;
@@ -1420,26 +1350,27 @@ const copiesUi = {
 
 .books-page__catalog-header {
   display: flex;
-  min-height: 4.75rem;
+  min-height: 3.5rem;
+  flex: none;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 1px solid #e3e9ef;
   background: #fbfcfd;
-  padding: 0.875rem 1.375rem;
+  padding: 0.625rem 1rem;
 }
 
 .books-page__catalog-title {
   display: flex;
   min-width: 0;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.625rem;
 }
 
 .books-page__catalog-icon {
   display: flex;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2rem;
+  height: 2rem;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
@@ -1459,9 +1390,9 @@ const copiesUi = {
 }
 
 .books-page__catalog-title p {
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
   color: #62768b;
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
 }
 
 .books-page__catalog :deep(.ag-header) {
@@ -1579,7 +1510,7 @@ const copiesUi = {
 @media (max-width: 1023px) {
   .books-hero__main {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 0;
   }
 
   .books-hero__collection {
@@ -1589,7 +1520,7 @@ const copiesUi = {
 
 @media (max-width: 767px) {
   .books-page {
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
   .books-hero {
@@ -1597,24 +1528,21 @@ const copiesUi = {
   }
 
   .books-hero__main {
-    padding: 1.75rem 1.375rem 1.5rem;
+    padding: 1.25rem 1.25rem 1rem;
   }
 
   .books-hero__title {
-    max-width: 12ch;
-    margin-top: 0.875rem;
-    font-size: clamp(2rem, 10vw, 2.75rem);
+    margin-top: 0.5rem;
+    font-size: clamp(1.85rem, 9vw, 2.25rem);
   }
 
   .books-hero__description {
-    margin-top: 0.875rem;
-    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
   }
 
   .books-hero__action {
-    width: 100%;
-    justify-content: center;
-    margin-top: 1.25rem;
+    margin-top: 0.75rem;
   }
 
   .books-hero__stats {
@@ -1623,7 +1551,7 @@ const copiesUi = {
 
   .books-hero__stats > div {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0.875rem 1rem;
+    padding: 0.625rem 0.875rem;
   }
 
   .books-hero__stats > div:nth-child(2) {
@@ -1639,45 +1567,46 @@ const copiesUi = {
   }
 
   .books-hero__stats dd {
-    font-size: 1.15rem;
+    font-size: 1rem;
   }
 
   .books-page__filters {
     margin-top: 0;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 0.75rem;
     box-shadow: 0 6px 20px rgba(26, 55, 81, 0.05);
   }
 
-  .books-page__toolbar-status {
-    display: none;
+  .books-page__toolbar-main {
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
   }
 
-  .books-page__toolbar-controls {
-    grid-template-columns: 1fr auto;
-    gap: 0.625rem;
+  .books-page__toolbar-title {
+    grid-column: 1;
+  }
+
+  .books-page__toolbar-meta {
+    grid-column: 2;
   }
 
   .books-page__search {
+    grid-row: 2;
     grid-column: 1 / -1;
   }
 
   .books-page__search input {
-    height: 3.25rem;
+    height: 3rem;
     font-size: 1rem;
   }
 
-  .books-page__result-count {
-    font-size: 0.75rem;
-  }
-
   .books-page__reset {
-    min-height: 2.75rem;
+    min-height: 2.5rem;
   }
 
   .books-page__shelves {
     flex-direction: column;
-    gap: 0.625rem;
+    gap: 0.5rem;
   }
 
   .books-page__shelves-label {
@@ -1691,17 +1620,15 @@ const copiesUi = {
   .books-page__shelf-list button {
     min-height: 2.75rem;
   }
+
+  .books-page__catalog {
+    height: 35rem;
+  }
 }
 
 @media (max-width: 420px) {
   .books-hero__eyebrow {
     font-size: 0.625rem;
-  }
-
-  .books-hero__stats > div {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.25rem;
   }
 }
 
@@ -1710,8 +1637,7 @@ const copiesUi = {
   .books-page__search input,
   .books-page__search-clear,
   .books-page__reset,
-  .books-page__shelf-list button,
-  .books-page__active-filters button {
+  .books-page__shelf-list button {
     transition: none;
   }
 }
