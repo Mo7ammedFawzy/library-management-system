@@ -345,9 +345,9 @@ const copiesUi = {
           <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />
           Library manager · Catalog
         </p>
-        <h1 id="books-heading" class="flex flex-wrap items-center gap-3 font-serif text-3xl font-bold tracking-[-0.035em] text-[#102743] sm:text-[2rem]">
+        <h1 id="books-heading" class="flex flex-wrap items-center gap-3 font-display text-3xl font-bold tracking-[-0.035em] text-[#172f49] sm:text-[2rem]">
           Books
-          <span class="inline-flex items-center rounded-full bg-[#edf4ff] px-2.5 py-1 font-sans text-[11px] font-bold leading-4 tracking-normal text-[#173b70]">
+          <span class="inline-flex items-center rounded-full bg-[#edf4ff] px-2.5 py-1 font-sans text-[11px] font-bold leading-4 tracking-normal text-[#244a6c]">
             {{ rows.length }} {{ rows.length === 1 ? 'title' : 'titles' }}
           </span>
         </h1>
@@ -391,7 +391,7 @@ const copiesUi = {
           </div>
           <div class="min-w-0 flex-1">
             <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#7a8ba3]">{{ stat.label }}</p>
-            <p class="mt-1 font-serif text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#102743]">
+            <p class="mt-1 font-display text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#172f49]">
               {{ stat.value.toLocaleString() }}
             </p>
             <p class="mt-2 flex items-center gap-1.5 text-xs text-[#7a8ba3]">
@@ -424,7 +424,7 @@ const copiesUi = {
             v-if="search"
             type="button"
             aria-label="Clear search"
-            class="absolute right-2 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-lg text-[#8a99ae] transition-colors hover:bg-[#edf4ff] hover:text-[#173b70] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
+            class="absolute right-2 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-lg text-[#8a99ae] transition-colors hover:bg-[#edf4ff] hover:text-[#244a6c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
             @click="clearSearch"
           >
             <UIcon name="i-lucide-x" class="size-4" aria-hidden="true" />
@@ -446,7 +446,7 @@ const copiesUi = {
               Filters
               <span
                 v-if="categoryFilters.length"
-                class="ml-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#edf4ff] px-1.5 text-[11px] font-bold text-[#173b70]"
+                class="ml-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#edf4ff] px-1.5 text-[11px] font-bold text-[#244a6c]"
               >
                 {{ categoryFilters.length }}
               </span>
@@ -487,7 +487,7 @@ const copiesUi = {
           :key="name"
           type="button"
           :aria-label="`Remove ${name} filter`"
-          class="inline-flex max-w-full items-center gap-1.5 truncate rounded-full bg-[#edf4ff] py-1 pl-2.5 pr-1.5 text-[11px] font-bold leading-4 text-[#173b70] ring-1 ring-inset ring-[#cdd9e8] transition-colors hover:bg-[#dce9fd] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
+          class="inline-flex max-w-full items-center gap-1.5 truncate rounded-full bg-[#edf4ff] py-1 pl-2.5 pr-1.5 text-[11px] font-bold leading-4 text-[#244a6c] ring-1 ring-inset ring-[#cdd9e8] transition-colors hover:bg-[#dce9fd] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
           @click="removeCategoryFilter(name)"
         >
           <span class="truncate">{{ name }}</span>
@@ -507,13 +507,13 @@ const copiesUi = {
       <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] bg-[#fbfcfe] px-5 pb-4 pt-5">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
-          <h2 id="catalog-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#102743]">Book collection</h2>
+          <h2 id="catalog-heading" class="mt-1 font-display text-lg font-bold leading-tight text-[#172f49]">Book collection</h2>
           <p class="mt-0.5 text-xs text-[#7486a0]">{{ visibleBooks.length }} of {{ rows.length }} titles{{ categoryFilters.length ? ` · ${categoryFilters.length} filter${categoryFilters.length > 1 ? 's' : ''} on` : '' }}</p>
         </div>
         <button
           v-if="hasActiveFilters"
           type="button"
-          class="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#173b70] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
+          class="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#244a6c] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
           @click="clearAllFilters"
         >
           <UIcon name="i-lucide-rotate-ccw" class="size-3.5" aria-hidden="true" />
@@ -557,7 +557,7 @@ const copiesUi = {
               {{ book.authors.map((author: Author) => author.name).join(', ') }}
             </p>
           </div>
-          <span class="inline-flex max-w-full shrink-0 items-center truncate rounded-full bg-[#edf4ff] px-2.5 py-1 text-[11px] font-bold leading-4 text-[#173b70]">
+          <span class="inline-flex max-w-full shrink-0 items-center truncate rounded-full bg-[#edf4ff] px-2.5 py-1 text-[11px] font-bold leading-4 text-[#244a6c]">
             {{ book.category.name }}
           </span>
         </div>
@@ -668,7 +668,7 @@ const copiesUi = {
                 />
               </div>
               <div>
-                <h2 class="font-serif text-[20px] font-bold leading-tight text-highlighted">
+                <h2 class="font-display text-[20px] font-bold leading-tight text-highlighted">
                   {{ editingItem ? 'Edit Book' : 'Add Book' }}
                 </h2>
                 <p class="text-xs font-medium text-muted">
@@ -866,7 +866,7 @@ const copiesUi = {
                   />
               </div>
               <div>
-                <h2 class="font-serif text-[20px] font-bold leading-tight text-highlighted">
+                <h2 class="font-display text-[20px] font-bold leading-tight text-highlighted">
                   Delete Book?
                 </h2>
                 <p class="text-xs font-medium text-muted">
