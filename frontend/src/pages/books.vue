@@ -383,10 +383,10 @@ const copiesUi = {
       <article
         v-for="stat in bookStats"
         :key="stat.label"
-        class="group rounded-2xl border border-[#dce5ef] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.055)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#bfcfe1] hover:shadow-[0_14px_34px_rgba(27,59,102,0.1)] motion-reduce:transform-none motion-reduce:transition-none"
+        class="group rounded-xl border border-[#e5ebf2] bg-white p-5 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe] motion-reduce:transition-none"
       >
         <div class="flex items-start gap-4">
-          <div class="flex size-12 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04] transition-transform duration-150 group-hover:scale-[1.04] motion-reduce:transform-none" :class="stat.iconClass">
+          <div class="flex size-11 shrink-0 items-center justify-center rounded-lg ring-1 ring-inset ring-black/[0.04]" :class="stat.iconClass">
             <UIcon :name="stat.icon" class="size-5" aria-hidden="true" />
           </div>
           <div class="min-w-0 flex-1">
@@ -403,7 +403,7 @@ const copiesUi = {
       </article>
     </section>
 
-    <section class="rounded-2xl border border-[#dce5ef] bg-white px-3.5 py-3 shadow-[0_8px_24px_rgba(27,59,102,0.05)] sm:px-4" aria-label="Search and filter books">
+    <section class="rounded-xl border border-[#e5ebf2] bg-white px-3.5 py-3 sm:px-4" aria-label="Search and filter books">
       <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
         <div class="relative w-full lg:max-w-[420px]">
           <label for="books-search" class="sr-only">Search books by title, author or category</label>
@@ -503,7 +503,7 @@ const copiesUi = {
       </div>
     </section>
 
-    <section class="hidden min-h-[520px] min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-[#dce5ef] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.05)] md:flex" aria-labelledby="catalog-heading">
+    <section class="hidden min-h-[520px] min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-[#e5ebf2] bg-white md:flex" aria-labelledby="catalog-heading">
       <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] bg-[#fbfcfe] px-5 pb-4 pt-5">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
@@ -546,7 +546,7 @@ const copiesUi = {
         v-for="book in visibleBooks"
         :key="book.id"
         role="listitem"
-        class="flex min-w-0 flex-col gap-2 overflow-hidden rounded-2xl bg-(--ui-bg-card) px-4 py-3 shadow-sm ring-1 ring-(--ui-border)"
+        class="flex min-w-0 flex-col gap-2 overflow-hidden rounded-xl border border-[#e5ebf2] bg-white px-4 py-3"
       >
         <div class="flex min-w-0 flex-wrap items-start justify-between gap-2">
           <div class="min-w-0 flex-1 basis-40">

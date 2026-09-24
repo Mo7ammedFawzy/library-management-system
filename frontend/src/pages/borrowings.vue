@@ -316,8 +316,8 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
     </div>
 
     <div class="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-      <div class="flex items-center gap-4 rounded-2xl border border-[#dce5ef] bg-white p-4 shadow-[0_8px_24px_rgba(24,47,73,0.055)] ring-1 ring-transparent">
-        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-400">
+      <div class="flex items-center gap-4 rounded-xl border border-[#e5ebf2] bg-white p-4 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe]">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-400">
           <UIcon
             name="i-lucide-book-marked"
             class="size-5"
@@ -336,8 +336,8 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
         </div>
       </div>
 
-      <div class="flex items-center gap-4 rounded-2xl border border-[#dce5ef] bg-white p-4 shadow-[0_8px_24px_rgba(24,47,73,0.055)] ring-1 ring-transparent">
-        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400">
+      <div class="flex items-center gap-4 rounded-xl border border-[#e5ebf2] bg-white p-4 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe]">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400">
           <UIcon
             name="i-lucide-hourglass"
             class="size-5"
@@ -356,8 +356,8 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
         </div>
       </div>
 
-      <div class="flex items-center gap-4 rounded-2xl border border-[#dce5ef] bg-white p-4 shadow-[0_8px_24px_rgba(24,47,73,0.055)] ring-1 ring-transparent">
-        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
+      <div class="flex items-center gap-4 rounded-xl border border-[#e5ebf2] bg-white p-4 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe]">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
           <UIcon
             name="i-lucide-calendar-days"
             class="size-5"
@@ -376,8 +376,8 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
         </div>
       </div>
 
-      <div class="flex items-center gap-4 rounded-2xl border border-[#dce5ef] bg-white p-4 shadow-[0_8px_24px_rgba(24,47,73,0.055)] ring-1 ring-transparent">
-        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-700 dark:bg-red-950/50 dark:text-red-400">
+      <div class="flex items-center gap-4 rounded-xl border border-[#e5ebf2] bg-white p-4 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe]">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-700 dark:bg-red-950/50 dark:text-red-400">
           <UIcon
             name="i-lucide-triangle-alert"
             class="size-5"
@@ -397,7 +397,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
       </div>
     </div>
 
-    <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-[#dce5ef] bg-white shadow-[0_8px_24px_rgba(24,47,73,0.05)]">
+    <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-[#e5ebf2] bg-white">
       <div class="flex flex-col gap-2 border-b border-[#edf1f5] bg-[#fbfcfe] p-3 lg:flex-row lg:items-center lg:overflow-x-auto">
         <div class="relative w-full lg:w-auto lg:min-w-[220px] lg:flex-1">
           <UIcon
