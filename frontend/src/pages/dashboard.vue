@@ -9,6 +9,12 @@ import CategoryDonutChart from '../components/dashboard/CategoryDonutChart.vue'
 import type { Book } from '../services/books'
 import type { Category } from '../services/categories'
 import type { Borrowing, BorrowingStatus } from '../services/borrowings'
+import PageBreadcrumb from '../components/PageBreadcrumb.vue'
+import type { BreadcrumbItem } from '@nuxt/ui'
+
+const breadcrumbItems: BreadcrumbItem[] = [
+  { label: 'Dashboard', icon: 'i-lucide-layout-dashboard' }
+]
 
 const books = ref<Book[]>([])
 const borrowings = ref<Borrowing[]>([])
@@ -105,7 +111,7 @@ const categoryBreakdown = computed(() => {
     counts.set(name, (counts.get(name) ?? 0) + 1)
   }
 
-  const colors = ['#173b70', '#4d9b8b', '#e49b12', '#7661b9', '#ef7565', '#97a4b7']
+  const colors = ['#2b65ad', '#4d9b8b', '#e49b12', '#7661b9', '#ef7565', '#97a4b7']
   return Array.from(counts.entries())
     .sort((a, b) => b[1] - a[1])
     .slice(0, 6)
@@ -254,8 +260,9 @@ function statusLabel(status: BorrowingStatus) {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-5 pb-2">
-    <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end" aria-labelledby="dashboard-greeting">
+  <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-6 pb-2">
+    <PageBreadcrumb :items="breadcrumbItems" />
+    <section class="relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl border border-[#dce5ef] bg-white px-5 py-6 shadow-[0_10px_30px_rgba(27,59,102,0.06)] sm:px-7 sm:py-7 lg:flex-row lg:items-end" aria-labelledby="dashboard-greeting">
       <div>
         <p class="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a99ae]">
           <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />
@@ -269,7 +276,7 @@ function statusLabel(status: BorrowingStatus) {
         </p>
       </div>
 
-      <div class="flex items-center gap-2.5 self-start rounded-xl border border-[#e4ebf3] bg-white px-3.5 py-2.5 text-sm text-[#304968] shadow-[0_8px_24px_rgba(27,59,102,0.05)] lg:self-auto">
+      <div class="flex items-center gap-2.5 self-start rounded-xl border border-[#dce5ef] bg-[#f7f9fc] px-3.5 py-2.5 text-sm text-[#304968] shadow-[0_4px_14px_rgba(27,59,102,0.04)] lg:self-auto">
         <span class="flex size-7 items-center justify-center rounded-lg bg-[#edf4ff] text-[#173b70]">
           <UIcon name="i-lucide-calendar-days" class="size-4" aria-hidden="true" />
         </span>
@@ -281,7 +288,7 @@ function statusLabel(status: BorrowingStatus) {
       <article
         v-for="stat in dashboardStats"
         :key="stat.label"
-        class="group rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.045)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#cdd9e8] hover:shadow-[0_12px_32px_rgba(27,59,102,0.08)] motion-reduce:transform-none motion-reduce:transition-none focus-within:border-[#8ca9ce] focus-within:ring-4 focus-within:ring-[#edf4ff]"
+        class="group rounded-2xl border border-[#dce5ef] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.055)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#bfcfe1] hover:shadow-[0_14px_34px_rgba(27,59,102,0.1)] motion-reduce:transform-none motion-reduce:transition-none focus-within:border-[#8ca9ce] focus-within:ring-4 focus-within:ring-[#edf4ff]"
       >
         <div class="flex items-start gap-4">
           <div class="flex size-12 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04] transition-transform duration-150 group-hover:scale-[1.04] motion-reduce:transform-none" :class="stat.iconClass">
@@ -289,7 +296,7 @@ function statusLabel(status: BorrowingStatus) {
           </div>
           <div class="min-w-0 flex-1">
             <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#7a8ba3]">{{ stat.label }}</p>
-            <p class="mt-1 font-serif text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#132f57]">
+            <p class="mt-1 font-serif text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#102743]">
               {{ stat.value.toLocaleString() }}
             </p>
             <p class="mt-2 flex items-center gap-1.5 text-xs text-[#7a8ba3]">
@@ -302,7 +309,7 @@ function statusLabel(status: BorrowingStatus) {
     </section>
 
     <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="activity-heading">
+      <article class="overflow-hidden rounded-2xl border border-[#dce5ef] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.05)] xl:col-span-6" aria-labelledby="activity-heading">
         <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Circulation</p>
@@ -320,7 +327,7 @@ function statusLabel(status: BorrowingStatus) {
         </div>
       </article>
 
-      <article class="overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="category-heading">
+      <article class="overflow-hidden rounded-2xl border border-[#dce5ef] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.05)] xl:col-span-6" aria-labelledby="category-heading">
         <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Collection</p>
@@ -354,7 +361,7 @@ function statusLabel(status: BorrowingStatus) {
 
     <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
       <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="recent-heading">
-        <div class="flex items-center justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
+        <div class="flex items-center justify-between gap-3 border-b border-[#edf1f6] bg-[#fbfcfe] px-5 pb-4 pt-5">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Timeline</p>
             <h2 id="recent-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Recent activity</h2>
@@ -399,7 +406,7 @@ function statusLabel(status: BorrowingStatus) {
       </article>
 
       <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="attention-heading">
-        <div class="flex items-center justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
+        <div class="flex items-center justify-between gap-3 border-b border-[#edf1f6] bg-[#fbfcfe] px-5 pb-4 pt-5">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Follow-up</p>
             <h2 id="attention-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Needs attention</h2>

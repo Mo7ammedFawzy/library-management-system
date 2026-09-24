@@ -55,8 +55,8 @@ function buildOption(): EChartsCoreOption {
         smooth: true,
         symbol: 'circle',
         symbolSize: 9,
-        itemStyle: { color: '#173b70', borderColor: '#ffffff', borderWidth: 2.5 },
-        lineStyle: { color: '#173b70', width: 3, cap: 'round' },
+        itemStyle: { color: '#2b65ad', borderColor: '#ffffff', borderWidth: 2.5 },
+        lineStyle: { color: '#2b65ad', width: 3, cap: 'round' },
         areaStyle: {
           color: {
             type: 'linear',

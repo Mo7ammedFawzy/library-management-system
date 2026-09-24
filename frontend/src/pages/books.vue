@@ -17,6 +17,7 @@ import {
 import { fetchCategories, type Category } from '../services/categories'
 import { fetchAuthors, type Author } from '../services/authors'
 import { useCrudPage } from '../composables/useCrudPage'
+import PageBreadcrumb from '../components/PageBreadcrumb.vue'
 
 const breadcrumbItems = ref<BreadcrumbItem[]>([
   { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/dashboard' },
@@ -336,39 +337,7 @@ const copiesUi = {
 
 <template>
   <div class="mx-auto flex w-full max-w-[1400px] min-w-0 flex-none flex-col gap-5 overflow-x-clip pb-2 md:min-h-0 md:flex-1">
-    <UBreadcrumb :items="breadcrumbItems">
-      <template #item="{ item }">
-        <RouterLink
-          v-if="item.to"
-          :to="item.to"
-          class="flex items-center gap-1.5 rounded text-sm text-muted transition-colors motion-reduce:transition-none hover:text-highlighted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce] focus-visible:ring-offset-1"
-        >
-          <UIcon
-            v-if="item.icon"
-            :name="item.icon"
-            class="size-4 text-muted"
-            aria-hidden="true"
-          />
-          {{ item.label }}
-        </RouterLink>
-        <span
-          v-else
-          class="flex items-center gap-1.5 text-sm font-semibold text-highlighted"
-          aria-current="page"
-        >
-          <UIcon
-            v-if="item.icon"
-            :name="item.icon"
-            class="size-4 text-muted"
-            aria-hidden="true"
-          />
-          {{ item.label }}
-        </span>
-      </template>
-      <template #separator>
-        <UIcon name="i-lucide-chevron-right" class="size-3.5 text-muted" aria-hidden="true" />
-      </template>
-    </UBreadcrumb>
+    <PageBreadcrumb :items="breadcrumbItems" />
 
     <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end" aria-labelledby="books-heading">
       <div>
@@ -376,7 +345,7 @@ const copiesUi = {
           <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />
           Library manager · Catalog
         </p>
-        <h1 id="books-heading" class="flex flex-wrap items-center gap-3 font-serif text-3xl font-bold tracking-[-0.035em] text-[#132f57] sm:text-[2rem]">
+        <h1 id="books-heading" class="flex flex-wrap items-center gap-3 font-serif text-3xl font-bold tracking-[-0.035em] text-[#102743] sm:text-[2rem]">
           Books
           <span class="inline-flex items-center rounded-full bg-[#edf4ff] px-2.5 py-1 font-sans text-[11px] font-bold leading-4 tracking-normal text-[#173b70]">
             {{ rows.length }} {{ rows.length === 1 ? 'title' : 'titles' }}
@@ -414,7 +383,7 @@ const copiesUi = {
       <article
         v-for="stat in bookStats"
         :key="stat.label"
-        class="group rounded-2xl border border-[#e4ebf3] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.045)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#cdd9e8] hover:shadow-[0_12px_32px_rgba(27,59,102,0.08)] motion-reduce:transform-none motion-reduce:transition-none"
+        class="group rounded-2xl border border-[#dce5ef] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.055)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#bfcfe1] hover:shadow-[0_14px_34px_rgba(27,59,102,0.1)] motion-reduce:transform-none motion-reduce:transition-none"
       >
         <div class="flex items-start gap-4">
           <div class="flex size-12 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04] transition-transform duration-150 group-hover:scale-[1.04] motion-reduce:transform-none" :class="stat.iconClass">
@@ -422,7 +391,7 @@ const copiesUi = {
           </div>
           <div class="min-w-0 flex-1">
             <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#7a8ba3]">{{ stat.label }}</p>
-            <p class="mt-1 font-serif text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#132f57]">
+            <p class="mt-1 font-serif text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#102743]">
               {{ stat.value.toLocaleString() }}
             </p>
             <p class="mt-2 flex items-center gap-1.5 text-xs text-[#7a8ba3]">
@@ -434,7 +403,7 @@ const copiesUi = {
       </article>
     </section>
 
-    <section class="rounded-2xl border border-[#e4ebf3] bg-white px-3.5 py-3 shadow-[0_8px_24px_rgba(27,59,102,0.04)] sm:px-4" aria-label="Search and filter books">
+    <section class="rounded-2xl border border-[#dce5ef] bg-white px-3.5 py-3 shadow-[0_8px_24px_rgba(27,59,102,0.05)] sm:px-4" aria-label="Search and filter books">
       <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
         <div class="relative w-full lg:max-w-[420px]">
           <label for="books-search" class="sr-only">Search books by title, author or category</label>
@@ -449,7 +418,7 @@ const copiesUi = {
             type="search"
             placeholder="Search books by title, author or category..."
             aria-label="Search books by title, author or category"
-            class="h-10 w-full rounded-xl border border-[#e4ebf3] bg-[#f9fbfe] pl-9 pr-9 text-sm leading-5 text-[#263f5f] shadow-sm outline-none transition-colors motion-reduce:transition-none placeholder:text-[#8a99ae] hover:border-[#cdd9e8] focus-visible:border-[#8ca9ce] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#edf4ff]"
+            class="h-10 w-full rounded-xl border border-[#dce5ef] bg-[#f7f9fc] pl-9 pr-9 text-sm leading-5 text-[#263f5f] shadow-sm outline-none transition-colors motion-reduce:transition-none placeholder:text-[#8a99ae] hover:border-[#b8c8dc] focus-visible:border-[#8ca9ce] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#edf4ff]"
           >
           <button
             v-if="search"
@@ -534,11 +503,11 @@ const copiesUi = {
       </div>
     </section>
 
-    <section class="hidden min-h-[520px] min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.05)] md:flex" aria-labelledby="catalog-heading">
-      <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
+    <section class="hidden min-h-[520px] min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-[#dce5ef] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.05)] md:flex" aria-labelledby="catalog-heading">
+      <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] bg-[#fbfcfe] px-5 pb-4 pt-5">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
-          <h2 id="catalog-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#132f57]">Book collection</h2>
+          <h2 id="catalog-heading" class="mt-1 font-serif text-lg font-bold leading-tight text-[#102743]">Book collection</h2>
           <p class="mt-0.5 text-xs text-[#7486a0]">{{ visibleBooks.length }} of {{ rows.length }} titles{{ categoryFilters.length ? ` · ${categoryFilters.length} filter${categoryFilters.length > 1 ? 's' : ''} on` : '' }}</p>
         </div>
         <button

@@ -11,6 +11,7 @@ import {
   type Category
 } from '../services/categories'
 import { useCrudPage } from '../composables/useCrudPage'
+import PageBreadcrumb from '../components/PageBreadcrumb.vue'
 
 const breadcrumbItems = ref<BreadcrumbItem[]>([
   { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/dashboard' },
@@ -117,35 +118,7 @@ watch(name, (val: string) => {
 <template>
   <div class="flex min-h-0 flex-1 flex-col">
     <div class="mb-4">
-      <UBreadcrumb
-        class="mb-2"
-        :items="breadcrumbItems"
-      >
-        <template #item="{ item }">
-          <span
-            :aria-current="!item.to ? 'page' : undefined"
-            :class="[
-              'flex items-center gap-1.5 text-sm transition-colors',
-              item.to ? 'text-muted hover:text-highlighted cursor-pointer' : 'font-semibold text-highlighted'
-            ]"
-          >
-            <UIcon
-              v-if="item.icon"
-              :name="item.icon"
-              aria-hidden="true"
-              class="size-4 text-muted"
-            />
-            {{ item.label }}
-          </span>
-        </template>
-        <template #separator>
-          <UIcon
-            name="i-lucide-chevron-right"
-            aria-hidden="true"
-            class="size-3.5 text-muted"
-          />
-        </template>
-      </UBreadcrumb>
+      <PageBreadcrumb :items="breadcrumbItems" />
       <h1 class="font-display text-2xl font-semibold tracking-tight text-highlighted">
         Categories
       </h1>
