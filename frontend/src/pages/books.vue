@@ -331,7 +331,7 @@ const copiesUi = {
       <span>{{ loadError }}</span>
     </div>
 
-    <section class="books-page__filters filter-panel" aria-label="Search and filter books">
+    <section class="books-page__filters" aria-label="Search and filter books">
       <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
         <div class="relative w-full lg:max-w-[420px]">
           <label for="books-search" class="sr-only">Search books by title, author or category</label>
@@ -431,7 +431,7 @@ const copiesUi = {
       </div>
     </section>
 
-    <section class="books-page__catalog data-panel hidden min-h-[520px] min-w-0 flex-1 flex-col md:flex" aria-labelledby="catalog-heading">
+    <section class="books-page__catalog hidden min-h-[520px] min-w-0 flex-1 flex-col md:flex" aria-labelledby="catalog-heading">
       <div class="data-panel__header">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
@@ -582,12 +582,12 @@ const copiesUi = {
       :description="editingItem ? 'Update book details' : 'Add a new book to your library'"
       :ui="{
         overlay: '!bg-black/20 backdrop-blur-sm',
-        content: '!max-w-2xl !rounded-xl !bg-(--ui-bg-card) !shadow-[0_8px_32px_rgba(0,0,0,0.04)] !ring-0 border border-(--ui-border)'
+        content: 'books-modal !max-w-2xl !rounded-2xl !bg-white !shadow-[0_24px_70px_rgba(15,39,66,0.18)] !ring-1 !ring-[#cbd7e4]'
       }"
     >
       <template #content="{ close }">
         <div class="flex flex-col">
-          <div class="flex shrink-0 items-center justify-between gap-4 border-b border-(--ui-border) px-4 py-3">
+          <div class="books-modal__header flex shrink-0 items-center justify-between gap-4 border-b border-(--ui-border) px-5 py-4">
             <div class="flex items-center gap-4">
               <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-(--ui-bg-accented)">
                 <UIcon
@@ -614,7 +614,7 @@ const copiesUi = {
             />
           </div>
 
-          <div class="grow overflow-y-auto py-2 px-3">
+          <div class="books-modal__body grow overflow-y-auto px-5 py-5">
             <div
               v-if="formError"
               class="mb-4 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
@@ -750,7 +750,7 @@ const copiesUi = {
             </UForm>
           </div>
 
-          <div class="flex shrink-0 items-center justify-end gap-2 border-t border-(--ui-border) bg-(--ui-bg-accented) px-4 py-3">
+          <div class="books-modal__footer flex shrink-0 items-center justify-end gap-2 border-t border-(--ui-border) bg-[#fbfcfe] px-5 py-4">
             <UButton
               color="neutral"
               variant="outline"
@@ -785,7 +785,7 @@ const copiesUi = {
     >
       <template #content>
         <div class="flex flex-col">
-          <div class="flex shrink-0 items-center justify-between gap-4 border-b border-(--ui-border) px-4 py-3">
+          <div class="books-modal__header flex shrink-0 items-center justify-between gap-4 border-b border-(--ui-border) px-5 py-4">
             <div class="flex items-center gap-4">
                 <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-50">
                   <UIcon
@@ -830,7 +830,7 @@ const copiesUi = {
             </div>
           </div>
 
-          <div class="flex shrink-0 items-center justify-end gap-2 border-t border-(--ui-border) bg-(--ui-bg-accented) px-4 py-3">
+          <div class="books-modal__footer flex shrink-0 items-center justify-end gap-2 border-t border-(--ui-border) bg-[#fbfcfe] px-5 py-4">
             <UButton
               color="neutral"
               variant="outline"
@@ -859,29 +859,59 @@ const copiesUi = {
 </template>
 
 <style scoped>
-/* Books uses a quieter, content-first treatment: filters read as a toolbar
-   and the catalog remains the single primary surface on the page. */
+/* The filters and catalog form one continuous workspace surface. */
 .books-page__filters {
-  border: 0;
-  border-top: 1px solid #e5ebf2;
-  border-bottom: 1px solid #e5ebf2;
-  border-radius: 0;
-  background: transparent;
-  padding: 0.875rem 0;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1px;
+  border: 1px solid #dce5ef;
+  border-radius: 0.75rem 0.75rem 0 0;
+  background: #fff;
+  padding: 0.875rem 1rem;
 }
 
 .books-page__catalog {
-  border-radius: 0.75rem;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid #dce5ef;
+  border-radius: 0 0 0.75rem 0.75rem;
+  background: #fff;
   box-shadow: 0 1px 2px rgba(23, 47, 73, 0.03);
 }
 
 .books-page__catalog :deep(.data-panel__header) {
-  background: #fff;
+  min-height: 4.75rem;
+  background: #fbfcfe;
+  padding-inline: 1.25rem;
+}
+
+.books-modal__header {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+}
+
+.books-modal__body :deep(.field-ui),
+.books-modal__body :deep(input),
+.books-modal__body :deep(textarea) {
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.books-modal__footer {
+  box-shadow: 0 -1px 0 rgba(220, 229, 239, 0.7);
+}
+
+.books-modal__footer button {
+  min-height: 2.75rem;
 }
 
 @media (max-width: 639px) {
   .books-page__filters {
-    padding: 0.75rem 0;
+    border-radius: 0.625rem 0.625rem 0 0;
+    padding: 0.75rem;
+  }
+
+  .books-page__catalog {
+    border-radius: 0 0 0.625rem 0.625rem;
   }
 }
 </style>

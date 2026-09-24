@@ -61,7 +61,7 @@ function getNotivueTheme(item: NotivueItem) {
 const sidebarOpen = useLocalStorage('sidebar-open', true)
 
 const sidebarUi = {
-  root: '[--sidebar-width:16rem] [--sidebar-width-icon:4.5rem] border-r border-white/[0.07] bg-[#172f49] text-white shadow-[8px_0_28px_rgba(18,43,68,0.08)]',
+  root: '[--sidebar-width:16rem] [--sidebar-width-icon:4.5rem] border-r border-white/[0.08] bg-[#142b43] text-white shadow-[8px_0_28px_rgba(18,43,68,0.08)]',
   header: 'flex min-h-[4.5rem] items-center overflow-hidden border-b border-white/[0.08] px-5 group-data-[state=collapsed]/sidebar:justify-center group-data-[state=collapsed]/sidebar:px-0',
   body: 'flex min-h-0 flex-1 flex-col overflow-y-auto px-3 pb-4 pt-5 group-data-[state=collapsed]/sidebar:px-2'
 }
@@ -235,9 +235,9 @@ function handleLogout() {
           </template>
 
           <template #footer="{ state }">
-            <div class="flex min-w-0 flex-1 flex-col gap-2.5 border-t border-white/10 bg-white/[0.04] pt-4">
-              <div v-if="state === 'expanded'" class="flex items-center gap-2.5 rounded-xl border border-[#e4ebf3] bg-[#f6f8fc] px-3 py-2.5">
-                <span class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#173b70] text-[#f5c54a] shadow-[0_4px_12px_rgba(23,59,112,0.18)]">
+            <div class="flex min-w-0 flex-1 flex-col gap-2.5 border-t border-white/10 bg-[#142b43] pt-4">
+              <div v-if="state === 'expanded'" class="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.055] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                <span class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#e5a214]/15 text-[#f5c54a] ring-1 ring-[#e5a214]/25">
                   <UIcon name="i-lucide-landmark" class="size-4" aria-hidden="true" />
                 </span>
                 <span class="min-w-0 flex-1">
@@ -264,7 +264,7 @@ function handleLogout() {
         </USidebar>
 
         <div class="app-content flex min-w-0 flex-1 flex-col">
-          <UHeader :ui="{ root: 'sticky top-0 z-30 !h-[4.5rem] border-b border-[#e2e8f0] bg-white/90 px-4 shadow-[0_1px_0_rgba(24,47,73,0.02)] backdrop-blur-xl sm:px-6' }">
+          <UHeader :ui="{ root: 'sticky top-0 z-30 !h-[4.5rem] border-b border-[#dce5ef] bg-white px-4 shadow-[0_1px_0_rgba(24,47,73,0.03)] sm:px-6' }">
             <template #left>
               <div class="flex w-full items-center gap-2.5">
                 <UButton
@@ -282,7 +282,7 @@ function handleLogout() {
                     type="search"
                     placeholder="Search books, members, loans..."
                     aria-label="Search books, members, loans"
-                    class="h-10 w-full rounded-xl border border-[#dce5ef] bg-[#f7f9fc] pl-10 pr-16 text-sm text-[#263f5f] outline-none transition-all placeholder:text-[#92a0b2] hover:border-[#b8c8dc] focus:border-[#8ca9ce] focus:bg-white focus:ring-4 focus:ring-[#edf4ff]"
+                    class="h-10 w-full rounded-xl border border-[#dce5ef] bg-[#f8fafc] pl-10 pr-16 text-sm text-[#263f5f] outline-none transition-all placeholder:text-[#92a0b2] hover:border-[#b8c8dc] focus:border-[#8ca9ce] focus:bg-white focus:ring-4 focus:ring-[#edf4ff]"
                   >
                   <kbd class="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded-md border border-[#e4ebf3] bg-white px-1.5 py-0.5 text-[10px] font-semibold text-[#7a8ba3] lg:inline-flex" aria-hidden="true">
                     ⌘K
@@ -307,7 +307,7 @@ function handleLogout() {
                     color="neutral"
                     variant="ghost"
                     aria-label="Notifications, 3 unread"
-                    class="!rounded-xl text-[#304968] ring-1 ring-transparent transition-colors hover:!bg-[#f1f5fb] hover:text-[#173b70] focus-visible:!ring-[#8ca9ce]"
+                    class="!rounded-xl !bg-[#f8fafc] text-[#304968] ring-1 ring-[#dce5ef] transition-colors hover:!bg-[#eef4fa] hover:text-[#173b70] focus-visible:!ring-[#8ca9ce]"
                   />
                   <span class="absolute right-1.5 top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#e5a214] px-1 text-[9px] font-bold leading-none text-white ring-2 ring-white" aria-hidden="true">3</span>
                 </div>
@@ -321,7 +321,7 @@ function handleLogout() {
                 >
                   <UButton color="neutral" variant="ghost" aria-label="Account options" class="!h-auto !gap-2.5 !rounded-xl !border !border-transparent !px-2 !py-1.5 transition-colors hover:!border-[#e4ebf3] hover:!bg-[#f6f8fc] focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]">
                     <span class="relative shrink-0">
-                      <UAvatar size="sm" text="MF" color="primary" class="!bg-[#173b70] !text-[#f5c54a] ring-2 ring-[#edf4ff] shadow-[0_2px_8px_rgba(23,59,112,0.18)]" />
+                      <UAvatar size="sm" text="MF" color="primary" class="!bg-[#315f8d] !text-white ring-2 ring-[#e8f0f7] shadow-[0_2px_8px_rgba(23,59,112,0.14)]" />
                       <span class="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full border-2 border-white bg-[#20876e]" aria-hidden="true" />
                     </span>
                     <span class="hidden min-w-0 text-left sm:block">
