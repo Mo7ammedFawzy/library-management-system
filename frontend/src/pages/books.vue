@@ -336,22 +336,19 @@ const copiesUi = {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-[1400px] min-w-0 flex-none flex-col gap-5 overflow-x-clip pb-2 md:min-h-0 md:flex-1">
+  <div class="workspace-page mx-auto flex w-full min-w-0 flex-none flex-col gap-5 overflow-x-clip pb-2 md:min-h-0 md:flex-1">
     <PageBreadcrumb :items="breadcrumbItems" />
 
-    <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end" aria-labelledby="books-heading">
+    <section class="workspace-heading" aria-labelledby="books-heading">
       <div>
-        <p class="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a99ae]">
-          <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />
-          Library manager · Catalog
-        </p>
-        <h1 id="books-heading" class="flex flex-wrap items-center gap-3 font-display text-3xl font-bold tracking-[-0.035em] text-[#172f49] sm:text-[2rem]">
+        <p class="workspace-kicker">Library manager · Catalog</p>
+        <h1 id="books-heading" class="workspace-title flex flex-wrap items-center gap-3">
           Books
           <span class="inline-flex items-center rounded-full bg-[#edf4ff] px-2.5 py-1 font-sans text-[11px] font-bold leading-4 tracking-normal text-[#244a6c]">
             {{ rows.length }} {{ rows.length === 1 ? 'title' : 'titles' }}
           </span>
         </h1>
-        <p class="mt-1.5 max-w-md text-sm leading-relaxed text-[#667896]">
+        <p class="workspace-description">
           Manage and organize all library books — search the catalog, filter by category, and keep copies stocked.
         </p>
       </div>
@@ -359,7 +356,7 @@ const copiesUi = {
       <UButton
         icon="i-lucide-plus"
         aria-label="Add book"
-        class="!h-10 shrink-0 !rounded-xl !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce] focus-visible:!ring-offset-1"
+        class="workspace-action !h-10 shrink-0 !rounded-xl !px-4"
         @click="openAdd"
       >
         Add Book
@@ -379,22 +376,22 @@ const copiesUi = {
       <span>{{ loadError }}</span>
     </div>
 
-    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Catalog statistics">
+    <section class="metric-strip" aria-label="Catalog statistics">
       <article
         v-for="stat in bookStats"
         :key="stat.label"
-        class="group rounded-xl border border-[#e5ebf2] bg-white p-5 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe] motion-reduce:transition-none"
+        class="metric-card group"
       >
         <div class="flex items-start gap-4">
-          <div class="flex size-11 shrink-0 items-center justify-center rounded-lg ring-1 ring-inset ring-black/[0.04]" :class="stat.iconClass">
+          <div class="metric-card__icon" :class="stat.iconClass">
             <UIcon :name="stat.icon" class="size-5" aria-hidden="true" />
           </div>
           <div class="min-w-0 flex-1">
-            <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#7a8ba3]">{{ stat.label }}</p>
-            <p class="mt-1 font-display text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#172f49]">
+            <p class="metric-card__label">{{ stat.label }}</p>
+            <p class="metric-card__value">
               {{ stat.value.toLocaleString() }}
             </p>
-            <p class="mt-2 flex items-center gap-1.5 text-xs text-[#7a8ba3]">
+            <p class="metric-card__detail">
               <span class="size-1.5 shrink-0 rounded-full" :class="stat.dotClass" aria-hidden="true" />
               {{ stat.detail }}
             </p>
@@ -403,7 +400,7 @@ const copiesUi = {
       </article>
     </section>
 
-    <section class="rounded-xl border border-[#e5ebf2] bg-white px-3.5 py-3 sm:px-4" aria-label="Search and filter books">
+    <section class="filter-panel" aria-label="Search and filter books">
       <div class="flex flex-col gap-3 lg:flex-row lg:items-center">
         <div class="relative w-full lg:max-w-[420px]">
           <label for="books-search" class="sr-only">Search books by title, author or category</label>
@@ -503,12 +500,12 @@ const copiesUi = {
       </div>
     </section>
 
-    <section class="hidden min-h-[520px] min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-[#e5ebf2] bg-white md:flex" aria-labelledby="catalog-heading">
-      <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] bg-[#fbfcfe] px-5 pb-4 pt-5">
+    <section class="data-panel hidden min-h-[520px] min-w-0 flex-1 flex-col md:flex" aria-labelledby="catalog-heading">
+      <div class="data-panel__header">
         <div>
           <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
-          <h2 id="catalog-heading" class="mt-1 font-display text-lg font-bold leading-tight text-[#172f49]">Book collection</h2>
-          <p class="mt-0.5 text-xs text-[#7486a0]">{{ visibleBooks.length }} of {{ rows.length }} titles{{ categoryFilters.length ? ` · ${categoryFilters.length} filter${categoryFilters.length > 1 ? 's' : ''} on` : '' }}</p>
+          <h2 id="catalog-heading" class="data-panel__title">Book collection</h2>
+          <p class="data-panel__meta">{{ visibleBooks.length }} of {{ rows.length }} titles{{ categoryFilters.length ? ` · ${categoryFilters.length} filter${categoryFilters.length > 1 ? 's' : ''} on` : '' }}</p>
         </div>
         <button
           v-if="hasActiveFilters"

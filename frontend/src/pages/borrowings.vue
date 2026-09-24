@@ -279,29 +279,23 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
 </script>
 
 <template>
-  <div class="mx-auto flex min-h-0 w-full max-w-[1400px] flex-1 flex-col gap-5 pb-2">
+  <div class="workspace-page mx-auto flex min-h-0 w-full flex-1 flex-col gap-5 pb-2">
     <PageBreadcrumb :items="breadcrumbItems" />
 
-    <section class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end" aria-labelledby="borrowings-heading">
-
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 id="borrowings-heading" class="font-display text-3xl font-semibold tracking-[-0.035em] text-highlighted sm:text-[2rem]">
-            Borrowings
-          </h1>
-          <p class="mt-1 text-sm text-muted">
-            Track and manage all book borrowings.
-          </p>
-        </div>
-
-        <UButton
-          icon="i-lucide-plus"
-          class="!h-10 !rounded-xl !px-4 shadow-sm"
-          @click="openAdd"
-        >
-          New Borrowing
-        </UButton>
+    <section class="workspace-heading" aria-labelledby="borrowings-heading">
+      <div>
+        <p class="workspace-kicker">Library manager · Circulation</p>
+        <h1 id="borrowings-heading" class="workspace-title">Borrowings</h1>
+        <p class="workspace-description">Track and manage all book borrowings.</p>
       </div>
+
+      <UButton
+        icon="i-lucide-plus"
+        class="workspace-action !h-10 !rounded-xl !px-4"
+        @click="openAdd"
+      >
+        New Borrowing
+      </UButton>
     </section>
 
     <div
@@ -315,89 +309,89 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
       <span>{{ loadError }}</span>
     </div>
 
-    <div class="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-      <div class="flex items-center gap-4 rounded-xl border border-[#e5ebf2] bg-white p-4 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe]">
-        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-400">
+    <div class="metric-strip">
+      <div class="metric-card">
+        <div class="metric-card__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-400">
           <UIcon
             name="i-lucide-book-marked"
             class="size-5"
           />
         </div>
         <div class="min-w-0">
-          <p class="text-xs font-medium text-muted">
+          <p class="metric-card__label">
             Total Borrowings
           </p>
-          <p class="font-display text-[24px] font-semibold leading-7 text-highlighted">
+          <p class="metric-card__value">
             {{ totalBorrowings }}
           </p>
-          <p class="text-[10px] text-muted">
+          <p class="metric-card__detail">
             All time
           </p>
         </div>
       </div>
 
-      <div class="flex items-center gap-4 rounded-xl border border-[#e5ebf2] bg-white p-4 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe]">
-        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400">
+      <div class="metric-card">
+        <div class="metric-card__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400">
           <UIcon
             name="i-lucide-hourglass"
             class="size-5"
           />
         </div>
         <div class="min-w-0">
-          <p class="text-xs font-medium text-muted">
+          <p class="metric-card__label">
             Currently Borrowed
           </p>
-          <p class="font-display text-[24px] font-semibold leading-7 text-highlighted">
+          <p class="metric-card__value">
             {{ currentlyBorrowed }}
           </p>
-          <p class="text-[10px] text-muted">
+          <p class="metric-card__detail">
             Books out
           </p>
         </div>
       </div>
 
-      <div class="flex items-center gap-4 rounded-xl border border-[#e5ebf2] bg-white p-4 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe]">
-        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
+      <div class="metric-card">
+        <div class="metric-card__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-950/50 dark:text-blue-400">
           <UIcon
             name="i-lucide-calendar-days"
             class="size-5"
           />
         </div>
         <div class="min-w-0">
-          <p class="text-xs font-medium text-muted">
+          <p class="metric-card__label">
             Due Today
           </p>
-          <p class="font-display text-[24px] font-semibold leading-7 text-primary">
+          <p class="metric-card__value">
             {{ dueToday }}
           </p>
-          <p class="text-[10px] text-muted">
+          <p class="metric-card__detail">
             Due today
           </p>
         </div>
       </div>
 
-      <div class="flex items-center gap-4 rounded-xl border border-[#e5ebf2] bg-white p-4 transition-colors duration-150 hover:border-[#cbd7e4] hover:bg-[#fdfefe]">
-        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-700 dark:bg-red-950/50 dark:text-red-400">
+      <div class="metric-card">
+        <div class="metric-card__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-700 dark:bg-red-950/50 dark:text-red-400">
           <UIcon
             name="i-lucide-triangle-alert"
             class="size-5"
           />
         </div>
         <div class="min-w-0">
-          <p class="text-xs font-medium text-muted">
+          <p class="metric-card__label">
             Overdue
           </p>
-          <p class="font-display text-[24px] font-semibold leading-7 text-error">
+          <p class="metric-card__value">
             {{ overdue }}
           </p>
-          <p class="text-[10px] text-muted">
+          <p class="metric-card__detail">
             Past due date
           </p>
         </div>
       </div>
     </div>
 
-    <div class="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-[#e5ebf2] bg-white">
+    <div class="data-panel flex min-h-0 flex-1 flex-col">
       <div class="flex flex-col gap-2 border-b border-[#edf1f5] bg-[#fbfcfe] p-3 lg:flex-row lg:items-center lg:overflow-x-auto">
         <div class="relative w-full lg:w-auto lg:min-w-[220px] lg:flex-1">
           <UIcon
@@ -522,7 +516,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
                 <h2 class="font-display text-[20px] font-semibold leading-tight text-highlighted">
                   New Borrowing
                 </h2>
-                <p class="text-xs font-medium text-muted">
+                <p class="metric-card__label">
                   Borrow a book for a member
                 </p>
               </div>
@@ -643,7 +637,7 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
                 <h2 class="font-display text-[20px] font-semibold leading-tight text-highlighted">
                   Borrowing Details
                 </h2>
-                <p class="text-xs font-medium text-muted">
+                <p class="metric-card__label">
                   #{{ detail?.id }}
                 </p>
               </div>

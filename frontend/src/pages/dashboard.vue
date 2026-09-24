@@ -260,18 +260,15 @@ function statusLabel(status: BorrowingStatus) {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-6 pb-2">
+  <div class="workspace-page mx-auto flex w-full flex-col gap-6 pb-2">
     <PageBreadcrumb :items="breadcrumbItems" />
-    <section class="relative flex flex-col justify-between gap-5 overflow-hidden rounded-2xl border border-[#dce5ef] bg-white px-5 py-6 shadow-[0_8px_24px_rgba(24,47,73,0.06)] sm:px-7 sm:py-7 lg:flex-row lg:items-end" aria-labelledby="dashboard-greeting">
+    <section class="data-panel relative flex flex-col justify-between gap-5 px-5 py-6 sm:px-7 sm:py-7 lg:flex-row lg:items-end" aria-labelledby="dashboard-greeting">
       <div>
-        <p class="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a99ae]">
-          <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />
-          Library manager · Overview
-        </p>
-        <h1 id="dashboard-greeting" class="font-display text-3xl font-bold tracking-[-0.035em] text-[#172f49] sm:text-[2rem]">
+        <p class="workspace-kicker">Library manager · Overview</p>
+        <h1 id="dashboard-greeting" class="workspace-title">
           {{ greeting }}, Mohammad
         </h1>
-        <p class="mt-1.5 max-w-md text-sm leading-relaxed text-[#667896]">
+        <p class="workspace-description">
           Here’s an overview of your library today — circulation, collection health, and what needs a nudge.
         </p>
       </div>
@@ -284,22 +281,22 @@ function statusLabel(status: BorrowingStatus) {
       </div>
     </section>
 
-    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Library statistics">
+    <section class="metric-strip" aria-label="Library statistics">
       <article
         v-for="stat in dashboardStats"
         :key="stat.label"
-        class="group rounded-2xl border border-[#dce5ef] bg-white p-5 shadow-[0_8px_24px_rgba(27,59,102,0.055)] transition-all duration-150 hover:-translate-y-0.5 hover:border-[#bfcfe1] hover:shadow-[0_14px_34px_rgba(27,59,102,0.1)] motion-reduce:transform-none motion-reduce:transition-none focus-within:border-[#8ca9ce] focus-within:ring-4 focus-within:ring-[#edf4ff]"
+        class="metric-card group"
       >
         <div class="flex items-start gap-4">
-          <div class="flex size-12 shrink-0 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.04] transition-transform duration-150 group-hover:scale-[1.04] motion-reduce:transform-none" :class="stat.iconClass">
+          <div class="metric-card__icon" :class="stat.iconClass">
             <UIcon :name="stat.icon" class="size-5" aria-hidden="true" />
           </div>
           <div class="min-w-0 flex-1">
-            <p class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#7a8ba3]">{{ stat.label }}</p>
-            <p class="mt-1 font-display text-[1.75rem] font-bold leading-none tracking-[-0.04em] text-[#172f49]">
+            <p class="metric-card__label">{{ stat.label }}</p>
+            <p class="metric-card__value">
               {{ stat.value.toLocaleString() }}
             </p>
-            <p class="mt-2 flex items-center gap-1.5 text-xs text-[#7a8ba3]">
+            <p class="metric-card__detail">
               <span class="size-1.5 shrink-0 rounded-full" :class="stat.dotClass" aria-hidden="true" />
               {{ stat.detail }}
             </p>
@@ -309,8 +306,8 @@ function statusLabel(status: BorrowingStatus) {
     </section>
 
     <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="overflow-hidden rounded-2xl border border-[#dce5ef] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.05)] xl:col-span-6" aria-labelledby="activity-heading">
-        <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
+      <article class="data-panel overflow-hidden xl:col-span-6" aria-labelledby="activity-heading">
+        <div class="data-panel__header">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Circulation</p>
             <h2 id="activity-heading" class="mt-1 font-display text-lg font-bold leading-tight text-[#172f49]">Library activity</h2>
@@ -327,8 +324,8 @@ function statusLabel(status: BorrowingStatus) {
         </div>
       </article>
 
-      <article class="overflow-hidden rounded-2xl border border-[#dce5ef] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.05)] xl:col-span-6" aria-labelledby="category-heading">
-        <div class="flex items-start justify-between gap-3 border-b border-[#edf1f6] px-5 pb-4 pt-5">
+      <article class="data-panel overflow-hidden xl:col-span-6" aria-labelledby="category-heading">
+        <div class="data-panel__header">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Collection</p>
             <h2 id="category-heading" class="mt-1 font-display text-lg font-bold leading-tight text-[#172f49]">Books by category</h2>
@@ -360,8 +357,8 @@ function statusLabel(status: BorrowingStatus) {
     </section>
 
     <section class="grid grid-cols-1 gap-5 xl:grid-cols-12">
-      <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="recent-heading">
-        <div class="flex items-center justify-between gap-3 border-b border-[#edf1f6] bg-[#fbfcfe] px-5 pb-4 pt-5">
+      <article class="data-panel flex flex-col overflow-hidden xl:col-span-6" aria-labelledby="recent-heading">
+        <div class="data-panel__header">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Timeline</p>
             <h2 id="recent-heading" class="mt-1 font-display text-lg font-bold leading-tight text-[#172f49]">Recent activity</h2>
@@ -405,8 +402,8 @@ function statusLabel(status: BorrowingStatus) {
         </div>
       </article>
 
-      <article class="flex flex-col overflow-hidden rounded-2xl border border-[#e4ebf3] bg-white shadow-[0_8px_24px_rgba(27,59,102,0.04)] xl:col-span-6" aria-labelledby="attention-heading">
-        <div class="flex items-center justify-between gap-3 border-b border-[#edf1f6] bg-[#fbfcfe] px-5 pb-4 pt-5">
+      <article class="data-panel flex flex-col overflow-hidden xl:col-span-6" aria-labelledby="attention-heading">
+        <div class="data-panel__header">
           <div>
             <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Follow-up</p>
             <h2 id="attention-heading" class="mt-1 font-display text-lg font-bold leading-tight text-[#172f49]">Needs attention</h2>
