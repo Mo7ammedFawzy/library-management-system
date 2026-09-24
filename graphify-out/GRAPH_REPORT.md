@@ -1,21 +1,21 @@
 # Graph Report - library-management-system  (2026-09-25)
 
 ## Corpus Check
-- 167 files · ~61,405 words
+- 167 files · ~61,539 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1404 nodes · 1998 edges · 136 communities (101 shown, 25 thin omitted)
+- 1402 nodes · 1992 edges · 137 communities (101 shown, 24 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 47 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f818a41a`
+- Built from commit: `c0d4f7d7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- BookResponse
+- auth.ts
 - User
 - devDependencies
 - borrowings.vue
@@ -24,70 +24,69 @@
 - ApiError
 - mock.ts
 - useCrudPage
-- Book
+- TestDataConfig
 - App.vue
-- SecurityConfig.java
-- Category
-- UserRepository
+- StatusCell.vue
+- JwtUtil
+- main.ts
 - categories.vue
 - api.ts
 - register.vue
 - compilerOptions
 - login.vue
 - compilerOptions
-- Author
+- AuthorController
 - ApiResponse
-- org.springframework.http.ResponseEntity
+- UserResponse
 - Customizing components
-- borrowings.ts
+- getStatus
 - data/books.ts
-- JwtUtil
 - dashboard.vue
 - MemberCell.vue
 - AppDataGrid.vue
 - authors.vue
 - mvnw
-- loadAll
+- borrowings.ts
 - Borrowing
 - route-map.d.ts
-- TestDataConfig
+- Book
 - renovate.json
 - BorrowResponse
 - dependencies
 - Conventions
 - LibraryApplicationTests.java
-- BookServiceImpl
+- BookResponse
 - Common field patterns
 - AGENTS.md
 - LibraryApplication
 - Components
 - settings.vue
 - tsconfig.json
-- lombok.RequiredArgsConstructor
+- .login
 - AuthResponse.java
 - change-password.vue
 - profile.vue
 - org.library:library
 - Athenaeum Navy Design System
 - Dashboard Layout
+- lombok.RequiredArgsConstructor
 - JwtAuthFilter
-- BookServiceImpl.java
 - Special rules
 - Component Selection
 - Chat Layout
-- nuxt-ui/SKILL.md
 - backend/README.md
 - caveman/SKILL.md
 - Topics You Will Learn
 - Packages reference
 - ag-update/SKILL.md
 - Landing Page Layout
-- CategoryController
+- Category
 - PHASE 6 — Authentication & Security
-- BorrowNotFoundException
+- org.springframework.http.ResponseEntity
 - Docs Layout
 - Editor Layout
 - Nuxt UI
+- Navigation
 - Data Tables
 - Phase 9 - Notifications, Recycle Bin & Audit Log
 - TASKS.md — Library Management System
@@ -155,6 +154,8 @@
 10. `Author` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `status` --calls--> `getStatus()`  [EXTRACTED]
+  frontend/src/components/grid/StatusCell.vue → frontend/src/services/borrowings.ts
 - `TestDataConfig` --references--> `AuthorRepository`  [EXTRACTED]
   backend/src/main/java/org/library/config/TestDataConfig.java → backend/src/main/java/org/library/repository/AuthorRepository.java
 - `TestDataConfig` --references--> `BookRepository`  [EXTRACTED]
@@ -163,20 +164,18 @@
   backend/src/main/java/org/library/config/TestDataConfig.java → backend/src/main/java/org/library/repository/BorrowRecordRepository.java
 - `TestDataConfig` --references--> `CategoryRepository`  [EXTRACTED]
   backend/src/main/java/org/library/config/TestDataConfig.java → backend/src/main/java/org/library/repository/CategoryRepository.java
-- `TestDataConfig` --references--> `UserRepository`  [EXTRACTED]
-  backend/src/main/java/org/library/config/TestDataConfig.java → backend/src/main/java/org/library/repository/UserRepository.java
 
 ## Import Cycles
 - None detected.
 
-## Communities (136 total, 25 thin omitted)
+## Communities (137 total, 24 thin omitted)
 
-### Community 0 - "BookResponse"
+### Community 0 - "auth.ts"
 Cohesion: 0.17
-Nodes (9): BookController, GetMapping, PostMapping, PutMapping, RequestMapping, RestController, BookRequest, BookResponse (+1 more)
+Nodes (14): handleLogout(), handleSubmit(), route, router, clearToken(), isAuthenticated(), MOCK_TOKEN, setToken() (+6 more)
 
 ### Community 1 - "User"
-Cohesion: 0.13
+Cohesion: 0.12
 Nodes (15): AllArgsConstructor, Builder, Data, Entity, NoArgsConstructor, Override, Table, User (+7 more)
 
 ### Community 2 - "devDependencies"
@@ -185,7 +184,7 @@ Nodes (15): eslint, eslint-plugin-vue, devDependencies, eslint, eslint-plugin-vu
 
 ### Community 3 - "borrowings.vue"
 Cohesion: 0.06
-Nodes (29): addOpen, bookOptions, books, borrowForm, borrowState, breadcrumbItems, columns, dateRange (+21 more)
+Nodes (28): addOpen, bookOptions, books, borrowForm, borrowState, columns, dateRange, detail (+20 more)
 
 ### Community 4 - "services/books.ts"
 Cohesion: 0.13
@@ -193,43 +192,43 @@ Nodes (15): book, initials, props, name, props, copies, props, status (+7 more)
 
 ### Community 5 - "books.vue"
 Cohesion: 0.07
-Nodes (20): authorOptions, authors, BookFormState, categories, categoryCounts, categoryFilters, categoryOptions, collectionHealth (+12 more)
+Nodes (17): authorOptions, authors, BookFormState, categories, categoryCounts, categoryFilters, categoryOptions, collectionHealth (+9 more)
 
 ### Community 6 - "ApiError"
 Cohesion: 0.14
 Nodes (12): BookAlreadyReturnedException, BookUnavailableException, GlobalExceptionHandler, ResponseEntity, ApiError, ResponseEntity, ExceptionHandler, HttpStatus (+4 more)
 
 ### Community 7 - "mock.ts"
-Cohesion: 0.08
-Nodes (14): BookInput, CategoryInput, authors, books, borrowBook(), borrowings, categories, createAuthor() (+6 more)
+Cohesion: 0.09
+Nodes (12): authors, books, borrowBook(), borrowings, categories, createAuthor(), createBook(), createCategory() (+4 more)
 
 ### Community 8 - "useCrudPage"
 Cohesion: 0.28
 Nodes (5): useCrudPage(), confirmDelete(), load(), submitForm(), loadAll()
 
-### Community 9 - "Book"
+### Community 9 - "TestDataConfig"
 Cohesion: 0.15
-Nodes (9): Book, AllArgsConstructor, Builder, Entity, NoArgsConstructor, Table, BookRepository, Getter (+1 more)
+Nodes (13): UserDetailsService, Author, Book, Category, TestDataConfig, UserData, SecurityConfig, org.springframework.boot.ApplicationRunner (+5 more)
 
 ### Community 10 - "App.vue"
-Cohesion: 0.10
-Nodes (16): handleLogout(), headerMenuItems, isAuthPage, navItem(), navSections, notivueCompactTheme, route, router (+8 more)
+Cohesion: 0.12
+Nodes (13): breadcrumbsByPath, dashboardBreadcrumb, headerMenuItems, isAuthPage, isDashboardPage, navItem(), navSections, notivueCompactTheme (+5 more)
 
-### Community 11 - "SecurityConfig.java"
-Cohesion: 0.39
-Nodes (5): SecurityConfig, org.springframework.context.annotation.Configuration, org.springframework.security.config.annotation.web.builders.HttpSecurity, org.springframework.security.config.annotation.web.configuration.EnableWebSecurity, org.springframework.security.web.SecurityFilterChain
+### Community 11 - "StatusCell.vue"
+Cohesion: 0.33
+Nodes (4): badgeColor, props, status, BorrowingStatus
 
-### Community 12 - "Category"
-Cohesion: 0.20
-Nodes (10): Category, AllArgsConstructor, Data, Entity, NoArgsConstructor, Table, CategoryMapper, Category (+2 more)
+### Community 12 - "JwtUtil"
+Cohesion: 0.16
+Nodes (10): Override, JwtUtil, AuthResponse, Override, Claims, FilterChain, HttpServletRequest, HttpServletResponse (+2 more)
 
-### Community 13 - "UserRepository"
-Cohesion: 0.36
-Nodes (5): ApplicationConfig, AuthenticationManager, UserRepository, org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration, org.springframework.security.crypto.password.PasswordEncoder
+### Community 13 - "main.ts"
+Cohesion: 0.40
+Nodes (4): app, authPages, head, router
 
 ### Community 14 - "categories.vue"
-Cohesion: 0.15
-Nodes (10): breadcrumbItems, columns, fieldUi, name, {
+Cohesion: 0.17
+Nodes (11): loadOptions(), columns, fieldUi, name, {
   rows,
   gridApi,
   search,
@@ -249,15 +248,15 @@ Nodes (10): breadcrumbItems, columns, fieldUi, name, {
   submitForm,
   openDelete,
   confirmDelete
-}, breadcrumbItems, api, createCategory (+2 more)
+}, api, CategoryInput, createCategory (+3 more)
 
 ### Community 15 - "api.ts"
-Cohesion: 0.12
-Nodes (22): CrudPageConfig, route, router, ApiEnvelope, ApiError, checkBackendHealth(), clearToken(), ErrorBody (+14 more)
+Cohesion: 0.20
+Nodes (11): CrudPageConfig, ApiEnvelope, ApiError, checkBackendHealth(), ErrorBody, getToken(), isBackendUnavailable(), NetworkError (+3 more)
 
 ### Community 16 - "register.vue"
-Cohesion: 0.13
-Nodes (15): agreeTerms, confirmPassword, email, error, fullName, handleSubmit(), hasMinLength, hasNumber (+7 more)
+Cohesion: 0.14
+Nodes (13): agreeTerms, confirmPassword, email, error, fullName, hasMinLength, hasNumber, hasUppercase (+5 more)
 
 ### Community 17 - "compilerOptions"
 Cohesion: 0.06
@@ -265,43 +264,39 @@ Nodes (33): compilerOptions, allowImportingTsExtensions, isolatedModules, jsx, l
 
 ### Community 18 - "login.vue"
 Cohesion: 0.18
-Nodes (10): email, error, fillTestCredentials(), handleSubmit(), handleTestLogin(), isLoading, password, rememberMe (+2 more)
+Nodes (11): email, error, fillTestCredentials(), handleSubmit(), handleTestLogin(), isLoading, password, rememberMe (+3 more)
 
 ### Community 19 - "compilerOptions"
 Cohesion: 0.10
 Nodes (20): compilerOptions, allowImportingTsExtensions, isolatedModules, lib, module, moduleDetection, moduleResolution, noEmit (+12 more)
 
-### Community 20 - "Author"
-Cohesion: 0.12
-Nodes (16): AuthorController, PostMapping, PutMapping, RequestMapping, RestController, AuthorRequest, AuthorResponse, Author (+8 more)
+### Community 20 - "AuthorController"
+Cohesion: 0.23
+Nodes (7): AuthorController, PostMapping, PutMapping, RequestMapping, RestController, AuthorRequest, AuthorResponse
 
 ### Community 21 - "ApiResponse"
-Cohesion: 0.21
+Cohesion: 0.22
 Nodes (5): DeleteMapping, GetMapping, DeleteMapping, ApiResponse, ResponseEntity
 
-### Community 22 - "org.springframework.http.ResponseEntity"
-Cohesion: 0.44
-Nodes (6): HealthController, UserController, org.springframework.http.ResponseEntity, org.springframework.web.bind.annotation.GetMapping, org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind.annotation.RestController
+### Community 22 - "UserResponse"
+Cohesion: 0.24
+Nodes (4): UserResponse, UserMapper, Override, UserService
 
 ### Community 23 - "Customizing components"
 Cohesion: 0.07
 Nodes (29): Adding custom brand colors, Backgrounds, Black/white as primary, Borders, Breakpoints, Choosing colors for components, `class` prop, Color shade overrides (+21 more)
 
-### Community 24 - "borrowings.ts"
-Cohesion: 0.14
-Nodes (18): borrowing, props, status, subtext, badgeColor, props, status, detailStatus (+10 more)
+### Community 24 - "getStatus"
+Cohesion: 0.19
+Nodes (12): borrowing, props, status, subtext, detailStatus, rangeLabel, visibleRows, overdueBorrowings (+4 more)
 
 ### Community 25 - "data/books.ts"
 Cohesion: 0.18
 Nodes (11): authors, Book, bookCategories, books, buildRows(), categories, initialRows, mulberry32() (+3 more)
 
-### Community 26 - "JwtUtil"
-Cohesion: 0.21
-Nodes (8): Override, JwtUtil, Claims, FilterChain, HttpServletRequest, HttpServletResponse, javax.crypto.SecretKey, org.springframework.security.core.userdetails.UserDetails
-
 ### Community 27 - "dashboard.vue"
-Cohesion: 0.08
-Nodes (22): activeBorrowings, activityChart, ActivityItem, ActivityKind, activityKindStyle, authorCount, availabilityRate, availableCopies (+14 more)
+Cohesion: 0.09
+Nodes (21): activeBorrowings, activityChart, ActivityItem, ActivityKind, activityKindStyle, authorCount, availabilityRate, availableCopies (+13 more)
 
 ### Community 28 - "MemberCell.vue"
 Cohesion: 0.33
@@ -313,15 +308,35 @@ Nodes (6): defaultColDef, emit, gridApi, lightTheme, onGridReady(), props
 
 ### Community 30 - "authors.vue"
 Cohesion: 0.13
-Nodes (13): ActionItem, ActionsCellParams, itemName, props, breadcrumbItems, columns, fieldUi, name (+5 more)
+Nodes (14): ActionItem, ActionsCellParams, itemName, props, columns, fieldUi, name, {
+  rows,
+  gridApi,
+  search,
+  loadError,
+  formOpen,
+  editingItem,
+  saving,
+  formError,
+  entityForm,
+  deleteTarget,
+  deleting,
+  deleteError,
+  deleteModalOpen,
+  openAdd,
+  openEdit,
+  setFormState,
+  submitForm,
+  openDelete,
+  confirmDelete
+} (+6 more)
 
 ### Community 31 - "mvnw"
 Cohesion: 0.38
 Nodes (8): mvnw script, clean(), die(), exec_maven(), hash_string(), set_java_home(), trim(), verbose()
 
-### Community 32 - "loadAll"
-Cohesion: 0.28
-Nodes (9): loadAll(), submitBorrow(), submitReturn(), fetchBooks, borrowBook, fetchBorrowings, fetchUsers, returnBook (+1 more)
+### Community 32 - "borrowings.ts"
+Cohesion: 0.26
+Nodes (11): loadAll(), submitBorrow(), submitReturn(), fetchBooks, borrowBook, BORROWING_STATUSES, BorrowingUser, fetchBorrowings (+3 more)
 
 ### Community 33 - "Borrowing"
 Cohesion: 0.25
@@ -331,17 +346,17 @@ Nodes (7): authors, borrowing, props, BorrowingActionsParams, items, props, Borr
 Cohesion: 0.25
 Nodes (6): _RouteFileInfoMap, RouteNamedMap, _RouteNamesForFilePath, TypesConfig, vue-router, vue-router/auto-routes
 
-### Community 35 - "TestDataConfig"
-Cohesion: 0.19
-Nodes (8): UserDetailsService, Author, Book, Category, TestDataConfig, UserData, org.springframework.boot.ApplicationRunner, org.springframework.context.annotation.Bean
+### Community 35 - "Book"
+Cohesion: 0.06
+Nodes (28): Author, AllArgsConstructor, Data, Entity, NoArgsConstructor, Table, Book, AllArgsConstructor (+20 more)
 
 ### Community 36 - "renovate.json"
 Cohesion: 0.25
 Nodes (7): extends, lockFileMaintenance, enabled, packageRules, postUpdateOptions, github>nuxt/renovate-config-nuxt, pnpmDedupe
 
 ### Community 37 - "BorrowResponse"
-Cohesion: 0.07
-Nodes (26): BorrowController, GetMapping, PostMapping, RequestMapping, RestController, BorrowResponse, UserResponse, BorrowRecord (+18 more)
+Cohesion: 0.15
+Nodes (11): BorrowController, GetMapping, PostMapping, RequestMapping, RestController, BorrowResponse, BorrowMapper, BorrowService (+3 more)
 
 ### Community 38 - "dependencies"
 Cohesion: 0.13
@@ -355,9 +370,9 @@ Nodes (22): Auto-registered modules, Color mode, Composables, Content module int
 Cohesion: 0.60
 Nodes (3): LibraryApplicationTests, org.junit.jupiter.api.Test, org.springframework.boot.test.context.SpringBootTest
 
-### Community 41 - "BookServiceImpl"
-Cohesion: 0.31
-Nodes (3): ResourceNotFoundException, BookServiceImpl, Override
+### Community 41 - "BookResponse"
+Cohesion: 0.15
+Nodes (9): BookController, GetMapping, PostMapping, PutMapping, RequestMapping, RestController, BookRequest, BookResponse (+1 more)
 
 ### Community 42 - "Common field patterns"
 Cohesion: 0.11
@@ -375,9 +390,9 @@ Nodes (17): Blog & Changelog, Chat (AI), Color Mode, Components, Content (Nuxt C
 Cohesion: 0.18
 Nodes (8): displayName, email, emailReminders, isSaving, loanDays, overdueDigest, savedAt, saveError
 
-### Community 48 - "lombok.RequiredArgsConstructor"
-Cohesion: 0.13
-Nodes (14): AuthController, AuthResponse, PostMapping, RequestMapping, RestController, LoginRequest, RegisterRequest, AuthService (+6 more)
+### Community 48 - ".login"
+Cohesion: 0.18
+Nodes (9): AuthController, AuthResponse, PostMapping, RequestMapping, RestController, LoginRequest, RegisterRequest, AuthService (+1 more)
 
 ### Community 53 - "change-password.vue"
 Cohesion: 0.10
@@ -395,13 +410,13 @@ Nodes (45): Collection, Identity, Lending, Library Management, Athenaeum Navy De
 Cohesion: 0.12
 Nodes (16): Common mistakes, Component tree, Dashboard Layout, DashboardGroup, DashboardNavbar / DashboardToolbar, DashboardPanel, DashboardSidebar, Key components (+8 more)
 
-### Community 61 - "JwtAuthFilter"
+### Community 61 - "lombok.RequiredArgsConstructor"
+Cohesion: 0.28
+Nodes (10): ApplicationConfig, AuthenticationManager, UserRepository, AuthServiceImpl, AuthenticationManager, UserServiceImpl, lombok.RequiredArgsConstructor, org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration (+2 more)
+
+### Community 62 - "JwtAuthFilter"
 Cohesion: 0.25
 Nodes (7): UserDetailsService, JwtAuthFilter, Override, SecurityContextUserContext, org.springframework.stereotype.Component, org.springframework.web.filter.OncePerRequestFilter, UserDetails
-
-### Community 62 - "BookServiceImpl.java"
-Cohesion: 0.33
-Nodes (4): BookMapper, Author, Book, Category
 
 ### Community 63 - "Special rules"
 Cohesion: 0.13
@@ -414,10 +429,6 @@ Nodes (13): Component Selection, Feedback, Inputs, Layout containers, Markdown, 
 ### Community 65 - "Chat Layout"
 Cohesion: 0.14
 Nodes (13): Chat in a modal, Chat Layout, Component tree, Conversation sidebar, Dark mode for syntax highlighting, Full page chat, Install dependencies, Key components (+5 more)
-
-### Community 66 - "nuxt-ui/SKILL.md"
-Cohesion: 0.21
-Nodes (5): Breadcrumbs, Header with mobile menu, Navigation, Sidebar navigation (dashboard), Tab navigation (within a page)
 
 ### Community 67 - "backend/README.md"
 Cohesion: 0.15
@@ -443,13 +454,17 @@ Nodes (9): Check for existing plan, Determine scope, Determine the full set of c
 Cohesion: 0.20
 Nodes (10): Alternating feature sections, App shell, Blog listing, Changelog, Common mistakes, Key components, Landing page, Landing Page Layout (+2 more)
 
-### Community 73 - "CategoryController"
-Cohesion: 0.19
-Nodes (10): CategoryController, DeleteMapping, GetMapping, PostMapping, PutMapping, RequestMapping, ResponseEntity, RestController (+2 more)
+### Community 73 - "Category"
+Cohesion: 0.07
+Nodes (27): CategoryController, DeleteMapping, GetMapping, PostMapping, PutMapping, RequestMapping, ResponseEntity, RestController (+19 more)
 
 ### Community 74 - "PHASE 6 — Authentication & Security"
 Cohesion: 0.20
 Nodes (10): Auth Service & Controller, Dependencies, DTOs for Auth, JWT Utility, PHASE 6 — Authentication & Security, Role-Based Access, Security Config, Security Filter (+2 more)
+
+### Community 75 - "org.springframework.http.ResponseEntity"
+Cohesion: 0.44
+Nodes (6): HealthController, UserController, org.springframework.http.ResponseEntity, org.springframework.web.bind.annotation.GetMapping, org.springframework.web.bind.annotation.RequestMapping, org.springframework.web.bind.annotation.RestController
 
 ### Community 76 - "Docs Layout"
 Cohesion: 0.22
@@ -462,6 +477,10 @@ Nodes (8): Basic editor, Component tree, Content types, Editor Layout, Key compo
 ### Community 78 - "Nuxt UI"
 Cohesion: 0.22
 Nodes (9): Core rules (always apply), How to use this skill, Installation, MCP Server, Nuxt, Nuxt UI, Reference files, Routing table (+1 more)
+
+### Community 79 - "Navigation"
+Cohesion: 0.40
+Nodes (5): Breadcrumbs, Header with mobile menu, Navigation, Sidebar navigation (dashboard), Tab navigation (within a page)
 
 ### Community 81 - "Data Tables"
 Cohesion: 0.25
@@ -596,24 +615,24 @@ Cohesion: 0.50
 Nodes (4): buildOption(), el, props, render()
 
 ## Knowledge Gaps
-- **659 isolated node(s):** `org.library:library`, `AuthResponse`, `ADMIN`, `USER`, `name` (+654 more)
+- **657 isolated node(s):** `org.library:library`, `AuthResponse`, `ADMIN`, `USER`, `name` (+652 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 838 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **25 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **24 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `User` connect `User` to `TestDataConfig`, `BorrowResponse`, `SecurityConfig.java`, `UserRepository`, `JwtUtil`, `JwtAuthFilter`?**
+- **Why does `User` connect `User` to `Book`, `BorrowResponse`, `TestDataConfig`, `JwtUtil`, `UserResponse`, `lombok.RequiredArgsConstructor`, `JwtAuthFilter`?**
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **Why does `ResourceNotFoundException` connect `BookServiceImpl` to `ApiError`, `BorrowNotFoundException`, `Category`, `Author`, `BookServiceImpl.java`?**
+- **Why does `ResourceNotFoundException` connect `Category` to `Book`, `ApiError`?**
   _High betweenness centrality (0.009) - this node is a cross-community bridge._
-- **Why does `Book` connect `Book` to `TestDataConfig`, `BorrowResponse`, `Author`, `Category`?**
+- **Why does `Book` connect `Book` to `Category`, `TestDataConfig`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **What connects `org.library:library`, `AuthResponse`, `ADMIN` to the rest of the system?**
-  _659 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _657 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `User` be split into smaller, more focused modules?**
-  _Cohesion score 0.12666666666666668 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11666666666666667 - nodes in this community are weakly interconnected._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `borrowings.vue` be split into smaller, more focused modules?**
-  _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.058823529411764705 - nodes in this community are weakly interconnected._

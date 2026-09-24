@@ -21,26 +21,26 @@ const status = computed(() => copies.value <= 2 ? 'Low stock' : copies.value <= 
   </div>
 </template>
 
-<style scoped>
+<style>
 .stock-cell {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .stock-cell__count {
   display: inline-flex;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
   align-items: center;
   justify-content: center;
   border: 1px solid #cfe2da;
   border-radius: 0.5rem;
   background: #edf7f3;
   color: #17634f;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-variant-numeric: tabular-nums;
   font-weight: 750;
   line-height: 1;
@@ -51,14 +51,14 @@ const status = computed(() => copies.value <= 2 ? 'Low stock' : copies.value <= 
   min-width: 0;
   flex-direction: column;
   color: #526a81;
-  font-size: 0.6875rem;
-  line-height: 1.25;
+  font-size: 0.625rem;
+  line-height: 1.2;
 }
 
 .stock-cell__copy small {
   color: #5f7489;
-  font-size: 0.625rem;
-  line-height: 1.2;
+  font-size: 0.5625rem;
+  line-height: 1.15;
 }
 
 .stock-cell[data-stock='low-stock'] .stock-cell__count {

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, type Ref } from 'vue'
 import type { ColDef, GetRowIdParams, GridApi } from 'ag-grid-community'
-import type { BreadcrumbItem, FormError, SelectMenuItem } from '@nuxt/ui'
-import PageBreadcrumb from '../components/PageBreadcrumb.vue'
+import type { FormError, SelectMenuItem } from '@nuxt/ui'
 import { push } from 'notivue'
 import BookCell from '../components/grid/BookCell.vue'
 import MemberCell from '../components/grid/MemberCell.vue'
@@ -24,11 +23,6 @@ import {
 } from '../services/borrowings'
 import { fetchBooks, type Book } from '../services/books'
 import { ApiError } from '../services/api'
-
-const breadcrumbItems: BreadcrumbItem[] = [
-  { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/dashboard' },
-  { label: 'Borrowings', icon: 'i-lucide-repeat-2' }
-]
 
 const rows: Ref<Borrowing[]> = ref([])
 const books: Ref<Book[]> = ref([])
@@ -272,8 +266,6 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
 
 <template>
   <div class="workspace-page mx-auto flex min-h-0 w-full flex-1 flex-col gap-5 pb-2">
-    <PageBreadcrumb :items="breadcrumbItems" />
-
     <section class="workspace-heading" aria-labelledby="borrowings-heading">
       <div>
         <p class="workspace-kicker">Library manager · Circulation</p>

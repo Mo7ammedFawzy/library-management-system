@@ -40,20 +40,21 @@ const initials = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style>
 .book-title-cell {
   display: flex;
   width: 100%;
+  height: 100%;
   min-width: 0;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.625rem;
 }
 
 .book-title-cell__cover {
   position: relative;
   display: flex;
-  width: 2.125rem;
-  height: 2.875rem;
+  width: 2rem;
+  height: 2.625rem;
   flex: 0 0 auto;
   align-items: flex-end;
   justify-content: flex-end;
@@ -63,7 +64,7 @@ const initials = computed(() => {
   padding: 0.3rem;
   color: #173c5e;
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 750;
   line-height: 1;
   box-shadow: 0 5px 10px rgba(20, 47, 70, 0.16);
@@ -109,7 +110,7 @@ const initials = computed(() => {
   min-width: 0;
   flex: 1;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.1rem;
 }
 
 .book-title-cell__title,
@@ -122,7 +123,7 @@ const initials = computed(() => {
 .book-title-cell__title {
   color: #163957;
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 650;
   letter-spacing: -0.012em;
   line-height: 1.3;
@@ -130,7 +131,7 @@ const initials = computed(() => {
 
 .book-title-cell__description {
   color: #5f7489;
-  font-size: 0.75rem;
-  line-height: 1.35;
+  font-size: 0.6875rem;
+  line-height: 1.3;
 }
 </style>

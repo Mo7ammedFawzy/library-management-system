@@ -1,18 +1,6 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { BreadcrumbItem } from '@nuxt/ui'
-import PageBreadcrumb from '../components/PageBreadcrumb.vue'
-
-const breadcrumbItems = ref<BreadcrumbItem[]>([
-  { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/dashboard' },
-  { label: 'Members', icon: 'i-lucide-users-round' }
-])
-</script>
-
 <template>
   <div class="flex min-h-0 flex-1 flex-col">
     <div class="mb-4">
-    <PageBreadcrumb :items="breadcrumbItems" />
       <p class="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a99ae]">
         <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />
         Workspace · Members

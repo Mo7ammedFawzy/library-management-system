@@ -31,7 +31,7 @@ const itemName = computed(() => {
       variant="ghost"
       size="sm"
       :aria-label="itemName ? `Edit ${itemName}` : 'Edit item'"
-      class="!size-9 !min-w-9 !rounded-lg !text-[#5b7188] hover:!bg-[#eaf0f5] hover:!text-[#173c5e]"
+      class="!size-8 !min-w-8 !rounded-lg !text-[#5b7188] hover:!bg-[#eaf0f5] hover:!text-[#173c5e]"
       @click="props.params.onEdit?.(props.params)"
     />
     <UButton
@@ -41,7 +41,7 @@ const itemName = computed(() => {
       variant="ghost"
       size="sm"
       :aria-label="itemName ? `Delete ${itemName}` : 'Delete item'"
-      class="!size-9 !min-w-9 !rounded-lg !text-[#718397] hover:!bg-red-50 hover:!text-red-700"
+      class="!size-8 !min-w-8 !rounded-lg !text-[#718397] hover:!bg-red-50 hover:!text-red-700"
       @click="props.params.onDelete?.(props.params)"
     />
   </div>

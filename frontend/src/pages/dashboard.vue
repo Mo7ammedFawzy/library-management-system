@@ -9,13 +9,6 @@ import CategoryDonutChart from '../components/dashboard/CategoryDonutChart.vue'
 import type { Book } from '../services/books'
 import type { Category } from '../services/categories'
 import type { Borrowing, BorrowingStatus } from '../services/borrowings'
-import PageBreadcrumb from '../components/PageBreadcrumb.vue'
-import type { BreadcrumbItem } from '@nuxt/ui'
-
-const breadcrumbItems: BreadcrumbItem[] = [
-  { label: 'Dashboard', icon: 'i-lucide-layout-dashboard' }
-]
-
 const books = ref<Book[]>([])
 const borrowings = ref<Borrowing[]>([])
 const categories = ref<Category[]>([])
@@ -261,8 +254,6 @@ function statusLabel(status: BorrowingStatus) {
 
 <template>
   <div class="dashboard-page workspace-page mx-auto flex w-full flex-col gap-4 pb-2">
-    <PageBreadcrumb :items="breadcrumbItems" />
-
     <section class="dashboard-hero" aria-labelledby="dashboard-greeting">
       <div class="dashboard-hero__copy">
         <p class="workspace-kicker">Library manager · Overview</p>

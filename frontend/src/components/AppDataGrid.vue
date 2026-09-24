@@ -66,7 +66,7 @@ const lightTheme = themeQuartz.withParams({
   checkboxUncheckedBorderColor: '#c1cddb',
   rowHeight: props.rowHeight,
   headerHeight: props.headerHeight,
-  paginationPanelHeight: 52,
+  paginationPanelHeight: 46,
   spacing: 8,
   iconSize: 16
 })

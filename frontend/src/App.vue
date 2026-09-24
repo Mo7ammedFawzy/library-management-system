@@ -10,9 +10,10 @@ import {
   type NotivueItem,
   type NotivueTheme
 } from 'notivue'
-import type { DropdownMenuItem } from '@nuxt/ui'
+import type { BreadcrumbItem, DropdownMenuItem } from '@nuxt/ui'
 import { checkBackendHealth } from './services/api'
 import { logout } from './services/auth'
+import PageBreadcrumb from './components/PageBreadcrumb.vue'
 
 onMounted(async () => {
   const notification = push.promise({
@@ -43,7 +44,70 @@ const route = useRoute()
 const router = useRouter()
 
 const isAuthPage = computed(() => ['/login', '/register'].includes(route.path))
-const showHeaderBreadcrumb = computed(() => route.path === '/books')
+const isDashboardPage = computed(() => route.path === '/dashboard')
+
+const dashboardBreadcrumb: BreadcrumbItem = {
+  label: 'Dashboard',
+  icon: 'i-lucide-layout-dashboard',
+  to: '/dashboard'
+}
+
+const breadcrumbsByPath: Record<string, BreadcrumbItem[]> = {
+  '/dashboard': [
+    { label: 'Dashboard', icon: 'i-lucide-layout-dashboard' }
+  ],
+  '/books': [
+    dashboardBreadcrumb,
+    { label: 'Books', icon: 'i-lucide-library-big' }
+  ],
+  '/members': [
+    dashboardBreadcrumb,
+    { label: 'Members', icon: 'i-lucide-users-round' }
+  ],
+  '/borrowings': [
+    dashboardBreadcrumb,
+    { label: 'Borrowings', icon: 'i-lucide-repeat-2' }
+  ],
+  '/authors': [
+    dashboardBreadcrumb,
+    { label: 'Authors', icon: 'i-lucide-pen-line' }
+  ],
+  '/categories': [
+    dashboardBreadcrumb,
+    { label: 'Categories', icon: 'i-lucide-tags' }
+  ],
+  '/settings': [
+    dashboardBreadcrumb,
+    { label: 'Settings', icon: 'i-lucide-settings-2' }
+  ],
+  '/profile': [
+    dashboardBreadcrumb,
+    { label: 'Profile', icon: 'i-lucide-circle-user-round' }
+  ],
+  '/change-password': [
+    { label: 'Profile', icon: 'i-lucide-circle-user-round', to: '/profile' },
+    { label: 'Change password', icon: 'i-lucide-key-round' }
+  ],
+  '/shot': [
+    dashboardBreadcrumb,
+    { label: 'Preview', icon: 'i-lucide-image' }
+  ]
+}
+
+const pageBreadcrumbItems = computed(() => {
+  if (breadcrumbsByPath[route.path]) {
+    return breadcrumbsByPath[route.path]
+  }
+
+  const label = route.path
+    .split('/')
+    .filter(Boolean)
+    .pop()
+    ?.replace(/-/g, ' ')
+    .replace(/^./, character => character.toUpperCase()) || 'Workspace'
+
+  return [dashboardBreadcrumb, { label }]
+})
 
 const notivueCompactTheme: NotivueTheme = {
   ...lightTheme,
@@ -277,46 +341,7 @@ function handleLogout() {
                   class="text-[#5e718d] hover:bg-[#f1f5fb] hover:text-[#173b70] lg:hidden"
                   @click="toggleSidebar"
                 />
-
-                <nav
-                  v-if="showHeaderBreadcrumb"
-                  aria-label="Breadcrumb"
-                  class="flex min-w-0 items-center gap-1.5"
-                >
-                  <RouterLink
-                    to="/dashboard"
-                    class="hidden rounded-lg px-1.5 py-1 text-xs font-medium text-[#64788f] transition-colors hover:bg-[#f1f5f9] hover:text-[#234a6d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce] sm:inline-flex"
-                  >
-                    Dashboard
-                  </RouterLink>
-                  <UIcon
-                    name="i-lucide-chevron-right"
-                    class="hidden size-3.5 shrink-0 text-[#9aa8b7] sm:block"
-                    aria-hidden="true"
-                  />
-                  <span
-                    aria-current="page"
-                    class="inline-flex min-w-0 items-center gap-1.5 rounded-lg bg-[#edf4fa] px-2 py-1 text-xs font-semibold text-[#244a6c]"
-                  >
-                    <UIcon
-                      name="i-lucide-library-big"
-                      class="size-3.5 shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span class="truncate">Books</span>
-                  </span>
-                </nav>
-
-                <span
-                  v-if="showHeaderBreadcrumb"
-                  class="hidden h-5 w-px shrink-0 bg-[#e2e8ef] xl:block"
-                  aria-hidden="true"
-                />
-
-                <label
-                  class="group relative min-w-0 flex-1"
-                  :class="showHeaderBreadcrumb ? 'hidden max-w-sm xl:block' : 'hidden max-w-xl md:block'"
-                >
+                <label class="group relative hidden w-full max-w-xl md:block">
                   <UIcon name="i-lucide-search" class="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-[#71829a] transition-colors group-focus-within:text-[#173b70]" aria-hidden="true" />
                   <input
                     type="search"
@@ -334,8 +359,7 @@ function handleLogout() {
                   variant="ghost"
                   size="sm"
                   aria-label="Search"
-                  class="text-[#304968] hover:bg-[#f1f5fb]"
-                  :class="showHeaderBreadcrumb ? 'xl:hidden' : 'md:hidden'"
+                  class="text-[#304968] hover:bg-[#f1f5fb] md:hidden"
                 />
               </div>
             </template>
@@ -377,9 +401,12 @@ function handleLogout() {
           </UHeader>
 
           <main
-            class="app-scroll flex min-h-0 w-full flex-1 flex-col overflow-y-scroll overflow-x-hidden px-4 py-5 sm:px-6 lg:px-8"
-            :class="showHeaderBreadcrumb ? 'lg:py-5' : 'lg:py-7'"
+            class="app-scroll flex min-h-0 w-full flex-1 flex-col overflow-x-hidden px-4 py-3 sm:px-6 lg:px-8"
+            :class="isDashboardPage ? 'overflow-y-scroll pb-5 lg:py-7' : 'overflow-hidden pb-3 lg:py-4'"
           >
+            <div class="mx-auto w-full max-w-[1400px] shrink-0">
+              <PageBreadcrumb :items="pageBreadcrumbItems" />
+            </div>
             <RouterView />
           </main>
         </div>

@@ -22,26 +22,26 @@ const name = computed(() => (props.params.data as Book).category.name)
   </div>
 </template>
 
-<style scoped>
+<style>
 .category-label {
   display: inline-flex;
   max-width: 100%;
-  min-height: 1.75rem;
+  min-height: 1.5rem;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.35rem;
   border: 1px solid #dce4eb;
-  border-radius: 0.5rem;
+  border-radius: 0.45rem;
   background: #f8fafc;
-  padding: 0.25rem 0.55rem;
+  padding: 0.2rem 0.45rem;
   color: #4e667e;
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 650;
   line-height: 1;
 }
 
 .category-label__marker {
-  width: 0.375rem;
-  height: 0.375rem;
+  width: 0.3rem;
+  height: 0.3rem;
   flex: 0 0 auto;
   border-radius: 0.125rem;
   background: #668096;

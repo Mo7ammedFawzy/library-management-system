@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue'
 import type { ColDef, ICellRendererParams, ValueGetterParams } from 'ag-grid-community'
 import ActionsCell from '../components/grid/ActionsCell.vue'
-import type { FormError, BreadcrumbItem } from '@nuxt/ui'
+import type { FormError } from '@nuxt/ui'
 import {
   createAuthor,
   deleteAuthor,
@@ -11,12 +11,6 @@ import {
   type Author
 } from '../services/authors'
 import { useCrudPage } from '../composables/useCrudPage'
-import PageBreadcrumb from '../components/PageBreadcrumb.vue'
-
-const breadcrumbItems = ref<BreadcrumbItem[]>([
-  { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/dashboard' },
-  { label: 'Authors', icon: 'i-lucide-pen-line' }
-])
 
 const fieldUi = {
   base: '!rounded-xl !bg-(--ui-bg-card) !py-3 !text-sm !ring-(--ui-border) !placeholder:text-muted focus-visible:!ring-2 focus-visible:!ring-primary focus-visible:!outline-none'
@@ -118,7 +112,6 @@ watch(name, (val: string) => {
 <template>
   <div class="flex min-h-0 flex-1 flex-col">
     <div class="mb-4">
-      <PageBreadcrumb :items="breadcrumbItems" />
       <h1 id="authors-heading" class="font-serif text-[28px] font-bold leading-9 tracking-[-0.035em] text-[#132f57] sm:text-[30px]">
         Authors
       </h1>
