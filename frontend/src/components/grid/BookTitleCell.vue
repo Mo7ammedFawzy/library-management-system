@@ -5,18 +5,132 @@ import type { Book } from '../../services/books'
 
 const props = defineProps<{ params: ICellRendererParams }>()
 const book = computed(() => props.params.data as Book)
+
+const initials = computed(() => {
+  const words = book.value.title.split(/\s+/).filter(Boolean)
+  return words
+    .slice(0, 2)
+    .map((word) => word.replace(/[^a-z0-9]/gi, '').charAt(0))
+    .join('')
+    .toUpperCase() || 'BK'
+})
 </script>
 
 <template>
-  <div class="flex h-full min-w-0 items-center gap-2.5">
+  <div class="book-title-cell">
     <span
-      class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#edf4ff] text-[#2161bf] ring-1 ring-inset ring-[#cdd9e8]"
+      class="book-title-cell__cover"
+      :data-category="book.category.name"
       aria-hidden="true"
     >
-      <UIcon name="i-lucide-book-open" class="size-4" />
+      <span class="book-title-cell__spine" />
+      <span class="book-title-cell__initials">{{ initials }}</span>
     </span>
-    <span class="min-w-0 truncate font-serif text-[14px] font-bold tracking-[-0.01em] text-[#132f57]">
-      {{ book.title }}
+
+    <span class="book-title-cell__copy">
+      <span
+        class="book-title-cell__title"
+        :title="book.title"
+      >{{ book.title }}</span>
+      <span
+        class="book-title-cell__description"
+        :title="book.description"
+      >{{ book.description }}</span>
     </span>
   </div>
 </template>
+
+<style scoped>
+.book-title-cell {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.book-title-cell__cover {
+  position: relative;
+  display: flex;
+  width: 2.125rem;
+  height: 2.875rem;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 0.1875rem 0.3125rem 0.3125rem 0.1875rem;
+  background: #d8e3ec;
+  padding: 0.3rem;
+  color: #173c5e;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 750;
+  line-height: 1;
+  box-shadow: 0 5px 10px rgba(20, 47, 70, 0.16);
+}
+
+.book-title-cell__cover[data-category='Programming'] {
+  background: #d9aa3f;
+  color: #17334b;
+}
+
+.book-title-cell__cover[data-category='Software Design'] {
+  background: #d9e4eb;
+  color: #214967;
+}
+
+.book-title-cell__cover[data-category='Fiction'] {
+  background: #315f7b;
+  color: #f3f6f8;
+}
+
+.book-title-cell__cover[data-category='Science'] {
+  background: #477a72;
+  color: #f4f8f7;
+}
+
+.book-title-cell__cover[data-category='History'] {
+  background: #805945;
+  color: #fbf7f3;
+}
+
+.book-title-cell__spine {
+  position: absolute;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  left: 0.2rem;
+  width: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.book-title-cell__copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.book-title-cell__title,
+.book-title-cell__description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book-title-cell__title {
+  color: #163957;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 650;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+}
+
+.book-title-cell__description {
+  color: #5f7489;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+</style>

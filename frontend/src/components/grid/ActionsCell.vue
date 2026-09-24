@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { ICellRendererParams } from 'ag-grid-community'
 
 interface ActionsCellParams extends ICellRendererParams {
@@ -6,20 +7,31 @@ interface ActionsCellParams extends ICellRendererParams {
   onDelete?: (params: ICellRendererParams) => void
 }
 
+interface ActionItem {
+  name?: string
+  title?: string
+}
+
 const props = defineProps<{
   params: ActionsCellParams
 }>()
+
+const itemName = computed(() => {
+  const item = props.params.data as ActionItem | undefined
+  return item?.title || item?.name || ''
+})
 </script>
 
 <template>
-  <div class="flex h-full items-center justify-end gap-0.5">
+  <div class="flex h-full items-center justify-end gap-1">
     <UButton
       v-if="props.params.onEdit"
       icon="i-lucide-pencil"
       color="neutral"
       variant="ghost"
       size="sm"
-      aria-label="Edit"
+      :aria-label="itemName ? `Edit ${itemName}` : 'Edit item'"
+      class="!size-9 !min-w-9 !rounded-lg !text-[#5b7188] hover:!bg-[#eaf0f5] hover:!text-[#173c5e]"
       @click="props.params.onEdit?.(props.params)"
     />
     <UButton
@@ -28,8 +40,8 @@ const props = defineProps<{
       color="neutral"
       variant="ghost"
       size="sm"
-      aria-label="Delete"
-      class="hover:!bg-red-50 hover:!text-red-600 dark:hover:!bg-red-950/50 dark:hover:!text-red-400"
+      :aria-label="itemName ? `Delete ${itemName}` : 'Delete item'"
+      class="!size-9 !min-w-9 !rounded-lg !text-[#718397] hover:!bg-red-50 hover:!text-red-700"
       @click="props.params.onDelete?.(props.params)"
     />
   </div>

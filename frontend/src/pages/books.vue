@@ -40,52 +40,54 @@ function getRowId(params: GetRowIdParams) {
 
 const columns: ColDef<Book>[] = [
   {
-    headerName: '#',
+    headerName: 'No.',
     sortable: false,
     filter: false,
-    width: 48,
-    valueGetter: (params) => (params.node?.rowIndex ?? 0) + 1,
+    width: 56,
+    valueGetter: (params) => String((params.node?.rowIndex ?? 0) + 1).padStart(2, '0'),
     cellStyle: { textAlign: 'center' },
-    cellClass: 'text-dimmed'
+    cellClass: 'book-index-cell'
   },
   {
     field: 'title',
-    headerName: 'Title',
-    flex: 2,
-    minWidth: 180,
+    headerName: 'Book',
+    flex: 2.4,
+    minWidth: 270,
     cellRenderer: BookTitleCell,
     cellClass: 'book-title-cell'
   },
   {
-    headerName: 'Authors',
-    flex: 2,
-    minWidth: 140,
-    valueGetter: (params) => (params.data as Book).authors.map((author) => author.name).join(', ')
+    headerName: 'Author',
+    colId: 'authors',
+    flex: 1.6,
+    minWidth: 170,
+    valueGetter: (params) => (params.data?.authors ?? []).map((author) => author.name).join(', ')
   },
   {
-    headerName: 'Category',
-    flex: 1,
-    minWidth: 140,
-    valueGetter: (params) => (params.data as Book).category.name,
+    headerName: 'Shelf',
+    colId: 'category',
+    flex: 1.15,
+    minWidth: 150,
+    valueGetter: (params) => params.data?.category.name ?? '',
     cellRenderer: CategoryCell,
     filter: 'agTextColumnFilter'
   },
   {
     field: 'availableCopies',
-    headerName: 'Copies',
-    width: 96,
-    minWidth: 84,
+    headerName: 'Stock',
+    width: 116,
+    minWidth: 108,
     sortable: true,
     filter: false,
     headerClass: 'ag-center-aligned-header',
     cellRenderer: CopiesCell
   },
   {
-    headerName: 'Actions',
+    headerName: '',
     sortable: false,
     filter: false,
-    width: 96,
-    minWidth: 88,
+    width: 88,
+    minWidth: 80,
     pinned: 'right',
     headerClass: 'ag-right-aligned-header',
     cellRenderer: ActionsCell,
@@ -189,12 +191,32 @@ const visibleBooks = computed(() => {
       return false
     }
     if (!q) return true
-    const haystack = [book.title, book.category.name, ...book.authors.map((author) => author.name)]
+    const haystack = [book.title, book.description, book.category.name, ...book.authors.map((author) => author.name)]
       .join(' ')
       .toLowerCase()
     return haystack.includes(q)
   })
 })
+
+const totalCopies = computed(() =>
+  rows.value.reduce((total: number, book: Book) => total + Number(book.availableCopies || 0), 0)
+)
+
+const lowStockCount = computed(() =>
+  rows.value.filter((book: Book) => Number(book.availableCopies || 0) <= 2).length
+)
+
+const collectionHealth = computed(() => {
+  if (rows.value.length === 0) return 0
+  return Math.round(((rows.value.length - lowStockCount.value) / rows.value.length) * 100)
+})
+
+const categoryCounts = computed(() =>
+  categories.value.map((category) => ({
+    name: category.name,
+    count: rows.value.filter((book: Book) => book.category.id === category.id).length
+  }))
+)
 
 const hasActiveFilters = computed(() => categoryFilters.value.length > 0 || search.value.trim().length > 0)
 
@@ -204,6 +226,12 @@ function clearSearch() {
 
 function removeCategoryFilter(category: string) {
   categoryFilters.value = categoryFilters.value.filter((name) => name !== category)
+}
+
+function toggleCategoryFilter(category: string) {
+  categoryFilters.value = categoryFilters.value.includes(category)
+    ? categoryFilters.value.filter((name) => name !== category)
+    : [...categoryFilters.value, category]
 }
 
 function clearAllFilters() {
@@ -280,7 +308,7 @@ async function loadAll() {
 onMounted(loadAll)
 
 const fieldUi = {
-  base: '!rounded-xl !bg-(--ui-bg-card) !py-3 !text-sm !ring-(--ui-border) !placeholder:text-muted focus-visible:!ring-2 focus-visible:!ring-primary focus-visible:!outline-none'
+  base: '!rounded-[10px] !bg-white !py-3 !text-sm !ring-[#d6e0ea] !placeholder:text-[#65798e] focus-visible:!ring-2 focus-visible:ring-[#7398bd] focus-visible:!outline-none'
 }
 
 const copiesUi = {
@@ -294,28 +322,80 @@ const copiesUi = {
   <div class="books-page workspace-page mx-auto flex w-full min-w-0 flex-none flex-col gap-5 overflow-x-clip pb-2 md:min-h-0 md:flex-1">
     <PageBreadcrumb :items="breadcrumbItems" />
 
-    <section class="workspace-heading" aria-labelledby="books-heading">
-      <div>
-        <p class="workspace-kicker">Library manager · Catalog</p>
-        <h1 id="books-heading" class="workspace-title flex flex-wrap items-center gap-3">
-          Books
-          <span class="inline-flex items-center rounded-full bg-[#edf4ff] px-2.5 py-1 font-sans text-[11px] font-bold leading-4 tracking-normal text-[#244a6c]">
-            {{ rows.length }} {{ rows.length === 1 ? 'title' : 'titles' }}
-          </span>
-        </h1>
-        <p class="workspace-description">
-          Manage and organize all library books — search the catalog, filter by category, and keep copies stocked.
-        </p>
+    <section
+      class="books-hero"
+      aria-labelledby="books-heading"
+    >
+      <div class="books-hero__main">
+        <div class="books-hero__copy">
+          <p class="books-hero__eyebrow">
+            <UIcon
+              name="i-lucide-library-big"
+              class="size-3.5 text-[#f4c762]"
+              aria-hidden="true"
+            />
+            Athenaeum catalogue
+          </p>
+          <h1
+            id="books-heading"
+            class="books-hero__title"
+          >
+            The collection, in order.
+          </h1>
+          <p class="books-hero__description">
+            Find every title, follow each shelf, and keep the collection ready for the next reader.
+          </p>
+          <UButton
+            icon="i-lucide-plus"
+            aria-label="Add book"
+            class="books-hero__action !min-h-11 !rounded-[10px] !px-5 !font-bold"
+            @click="openAdd"
+          >
+            Add a title
+          </UButton>
+        </div>
+
+        <div
+          class="books-hero__collection"
+          role="group"
+          aria-label="Collection health"
+        >
+          <div
+            class="books-hero__book-stack"
+            aria-hidden="true"
+          >
+            <span class="books-hero__book books-hero__book--one">IDEAS</span>
+            <span class="books-hero__book books-hero__book--two">STORIES</span>
+            <span class="books-hero__book books-hero__book--three">SCIENCE</span>
+          </div>
+          <div class="books-hero__health">
+            <p>Collection health</p>
+            <strong>{{ collectionHealth }}%</strong>
+            <span>
+              {{ lowStockCount ? `${lowStockCount} ${lowStockCount === 1 ? 'title needs' : 'titles need'} restocking` : 'All titles are well stocked' }}
+            </span>
+          </div>
+        </div>
       </div>
 
-      <UButton
-        icon="i-lucide-plus"
-        aria-label="Add book"
-        class="workspace-action !h-10 shrink-0 !rounded-xl !px-4"
-        @click="openAdd"
-      >
-        Add Book
-      </UButton>
+      <dl class="books-hero__stats">
+        <div>
+          <dt>Titles</dt>
+          <dd>{{ rows.length }}</dd>
+        </div>
+        <div>
+          <dt>Copies available</dt>
+          <dd>{{ totalCopies }}</dd>
+        </div>
+        <div>
+          <dt>Shelves</dt>
+          <dd>{{ categoryCounts.length }}</dd>
+        </div>
+        <div>
+          <dt>Low stock</dt>
+          <dd>{{ lowStockCount }}</dd>
+        </div>
+      </dl>
     </section>
 
     <div
@@ -331,262 +411,232 @@ const copiesUi = {
       <span>{{ loadError }}</span>
     </div>
 
-    <section class="books-page__filters" aria-label="Search and filter books">
+    <section
+      class="books-page__filters"
+      aria-label="Search and filter books"
+    >
       <div class="books-page__toolbar-heading">
         <div>
-          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-[#8293a8]">Catalog workspace</p>
-          <h2 class="mt-1 font-display text-lg font-bold tracking-[-0.025em] text-[#172f49]">Book collection</h2>
-          <p class="mt-1 text-xs text-[#7a8ba3]">{{ visibleBooks.length }} of {{ rows.length }} titles available in the catalog</p>
+          <h2>Browse the collection</h2>
+          <p>Search by title, author, description, or shelf.</p>
         </div>
         <div class="books-page__toolbar-status">
-          <span class="size-1.5 rounded-full bg-[#20876e]" aria-hidden="true" />
-          Catalog synced
+          <span
+            class="size-1.5 rounded-full bg-[#20876e]"
+            aria-hidden="true"
+          />
+          Inventory loaded
         </div>
       </div>
 
       <div class="books-page__toolbar-controls">
-        <div class="relative w-full lg:max-w-[420px]">
-          <label for="books-search" class="sr-only">Search books by title, author or category</label>
+        <div class="books-page__search">
+          <label
+            for="books-search"
+            class="sr-only"
+          >Search books by title, author, description or category</label>
           <UIcon
             name="i-lucide-search"
-            class="pointer-events-none absolute left-3 top-1/2 size-[18px] -translate-y-1/2 text-muted"
+            class="pointer-events-none absolute left-3.5 top-1/2 size-[18px] -translate-y-1/2 text-[#6c7f96]"
             aria-hidden="true"
           />
           <input
             id="books-search"
             v-model="search"
             type="search"
-            placeholder="Search books by title, author or category..."
-            aria-label="Search books by title, author or category"
-            class="h-10 w-full rounded-xl border border-[#dce5ef] bg-[#f7f9fc] pl-9 pr-9 text-sm leading-5 text-[#263f5f] shadow-sm outline-none transition-colors motion-reduce:transition-none placeholder:text-[#8a99ae] hover:border-[#b8c8dc] focus-visible:border-[#8ca9ce] focus-visible:bg-white focus-visible:ring-4 focus-visible:ring-[#edf4ff]"
+            placeholder="Search the catalogue..."
+            aria-label="Search books by title, author, description or category"
           >
           <button
             v-if="search"
             type="button"
             aria-label="Clear search"
-            class="absolute right-2 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-lg text-[#8a99ae] transition-colors hover:bg-[#edf4ff] hover:text-[#244a6c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
+            class="books-page__search-clear"
             @click="clearSearch"
           >
-            <UIcon name="i-lucide-x" class="size-4" aria-hidden="true" />
+            <UIcon
+              name="i-lucide-x"
+              class="size-4"
+              aria-hidden="true"
+            />
           </button>
         </div>
 
-        <div class="flex flex-wrap items-center gap-2 sm:gap-3 lg:ml-auto">
-          <p role="status" aria-live="polite" class="mr-auto text-xs tabular-nums text-[#7a8ba3] lg:mr-1">
-            {{ visibleBooks.length }} of {{ rows.length }} shown
-          </p>
-          <UPopover>
-            <UButton
-              color="neutral"
-              variant="outline"
-              icon="i-lucide-filter"
-              :aria-label="categoryFilters.length ? `Filters, ${categoryFilters.length} category filter${categoryFilters.length > 1 ? 's' : ''} active` : 'Filters'"
-              class="!h-10 !rounded-xl !border-[#e4ebf3] !bg-white !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]"
-            >
-              Filters
-              <span
-                v-if="categoryFilters.length"
-                class="ml-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#edf4ff] px-1.5 text-[11px] font-bold text-[#244a6c]"
-              >
-                {{ categoryFilters.length }}
-              </span>
-            </UButton>
+        <p
+          role="status"
+          aria-live="polite"
+          class="books-page__result-count"
+        >
+          <strong>{{ visibleBooks.length }}</strong> of {{ rows.length }} titles
+        </p>
 
-            <template #content>
-              <div class="flex w-64 flex-col gap-5 p-4">
-                <div class="flex flex-col gap-2">
-                  <p class="text-[11px] font-semibold uppercase tracking-wide text-muted">
-                    Category
-                  </p>
-                  <UCheckboxGroup
-                    v-model="categoryFilters"
-                    size="sm"
-                    variant="list"
-                    :items="categories.map((category) => category.name)"
-                  />
-                </div>
+        <button
+          v-if="hasActiveFilters"
+          type="button"
+          class="books-page__reset"
+          @click="clearAllFilters"
+        >
+          <UIcon
+            name="i-lucide-rotate-ccw"
+            class="size-3.5"
+            aria-hidden="true"
+          />
+          Reset
+        </button>
+      </div>
 
-                <UButton
-                  color="neutral"
-                  variant="ghost"
-                  size="sm"
-                  class="self-start"
-                  @click="resetFilters"
-                >
-                  Clear filters
-                </UButton>
-              </div>
-            </template>
-          </UPopover>
+      <div
+        class="books-page__shelves"
+        role="group"
+        aria-label="Filter by shelf"
+      >
+        <span class="books-page__shelves-label">Shelves</span>
+        <div class="books-page__shelf-list">
+          <button
+            type="button"
+            :aria-pressed="categoryFilters.length === 0"
+            :class="{ 'books-page__shelf--active': categoryFilters.length === 0 }"
+            @click="resetFilters"
+          >
+            All titles
+            <span>{{ rows.length }}</span>
+          </button>
+          <button
+            v-for="category in categoryCounts"
+            :key="category.name"
+            type="button"
+            :aria-pressed="categoryFilters.includes(category.name)"
+            :class="{ 'books-page__shelf--active': categoryFilters.includes(category.name) }"
+            @click="toggleCategoryFilter(category.name)"
+          >
+            {{ category.name }}
+            <span>{{ category.count }}</span>
+          </button>
         </div>
       </div>
 
-      <div v-if="categoryFilters.length" class="mt-3 flex flex-wrap items-center gap-2 border-t border-[#edf1f6] pt-3" aria-label="Active category filters">
+      <div
+        v-if="categoryFilters.length"
+        class="books-page__active-filters"
+        aria-label="Active category filters"
+      >
         <button
           v-for="name in categoryFilters"
           :key="name"
           type="button"
           :aria-label="`Remove ${name} filter`"
-          class="inline-flex max-w-full items-center gap-1.5 truncate rounded-full bg-[#edf4ff] py-1 pl-2.5 pr-1.5 text-[11px] font-bold leading-4 text-[#244a6c] ring-1 ring-inset ring-[#cdd9e8] transition-colors hover:bg-[#dce9fd] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
           @click="removeCategoryFilter(name)"
         >
-          <span class="truncate">{{ name }}</span>
-          <UIcon name="i-lucide-x" class="size-3.5 shrink-0" aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          class="rounded-lg px-2 py-1 text-xs font-semibold text-[#667896] transition-colors hover:bg-[#f1f5fb] hover:text-[#304968] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
-          @click="resetFilters"
-        >
-          Clear all
+          {{ name }}
+          <UIcon
+            name="i-lucide-x"
+            class="size-3.5 shrink-0"
+            aria-hidden="true"
+          />
         </button>
       </div>
     </section>
 
-    <section class="books-page__catalog hidden min-h-[520px] min-w-0 flex-1 flex-col md:flex" aria-labelledby="catalog-heading">
-      <div class="books-page__catalog-heading hidden">
-        <div>
-          <p class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#8a99ae]">Catalog</p>
-          <h2 id="catalog-heading" class="data-panel__title">Book collection</h2>
-          <p class="data-panel__meta">{{ visibleBooks.length }} of {{ rows.length }} titles{{ categoryFilters.length ? ` · ${categoryFilters.length} filter${categoryFilters.length > 1 ? 's' : ''} on` : '' }}</p>
+    <section
+      class="books-page__catalog flex min-w-0 flex-col"
+      aria-labelledby="catalog-heading"
+    >
+      <header class="books-page__catalog-header">
+        <div class="books-page__catalog-title">
+          <span
+            class="books-page__catalog-icon"
+            aria-hidden="true"
+          >
+            <UIcon
+              name="i-lucide-library-big"
+              class="size-4"
+            />
+          </span>
+          <div>
+            <h2 id="catalog-heading">
+              All titles
+            </h2>
+            <p>
+              {{ visibleBooks.length }} {{ visibleBooks.length === 1 ? 'match' : 'matches' }} in the current view
+            </p>
+          </div>
         </div>
-        <button
-          v-if="hasActiveFilters"
-          type="button"
-          class="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-lg px-2 py-1 text-xs font-semibold text-[#244a6c] transition-colors hover:bg-[#edf4ff] hover:text-[#2b65ad] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8ca9ce]"
-          @click="clearAllFilters"
-        >
-          <UIcon name="i-lucide-rotate-ccw" class="size-3.5" aria-hidden="true" />
-          Reset view
-        </button>
-      </div>
+        <div class="books-page__catalog-meta">
+          <span
+            class="size-1.5 rounded-full bg-[#20876e]"
+            aria-hidden="true"
+          />
+          Inventory view
+        </div>
+      </header>
+
       <div
+        v-if="!loadError && rows.length > 0 && visibleBooks.length > 0"
         class="flex min-h-0 flex-1 flex-col"
         role="region"
         aria-label="Books data grid"
       >
         <AppDataGrid
           v-model:api="gridApi"
-          :rows="rows"
+          :rows="visibleBooks"
           :columns="columns"
-          :quick-filter-text="search"
           :get-row-id="getRowId"
-          :row-height="44"
+          :row-height="62"
+          :header-height="44"
+          :page-size="6"
+          :page-size-selector="[6, 12, 24]"
           height="100%"
         />
       </div>
-    </section>
-
-    <div
-      class="flex w-full min-w-0 flex-none flex-col gap-3 md:hidden"
-      role="list"
-      aria-label="Books list"
-    >
-      <article
-        v-for="book in visibleBooks"
-        :key="book.id"
-        role="listitem"
-        class="flex min-w-0 flex-col gap-2 overflow-hidden rounded-xl border border-[#e5ebf2] bg-white px-4 py-3"
-      >
-        <div class="flex min-w-0 flex-wrap items-start justify-between gap-2">
-          <div class="min-w-0 flex-1 basis-40">
-            <h2 class="truncate text-sm font-semibold leading-6 text-highlighted">
-              {{ book.title }}
-            </h2>
-            <p class="mt-0.5 truncate text-sm leading-5 text-muted">
-              {{ book.authors.map((author: Author) => author.name).join(', ') }}
-            </p>
-          </div>
-          <span class="inline-flex max-w-full shrink-0 items-center truncate rounded-full bg-[#edf4ff] px-2.5 py-1 text-[11px] font-bold leading-4 text-[#244a6c]">
-            {{ book.category.name }}
-          </span>
-        </div>
-        <div class="flex min-w-0 flex-wrap items-center justify-between gap-2 border-t border-(--ui-border) pt-2">
-          <p class="text-sm leading-5 text-muted">
-            <span class="font-semibold tabular-nums text-highlighted">{{ book.availableCopies }}</span>
-            {{ book.availableCopies === 1 ? 'copy' : 'copies' }} available
-          </p>
-          <div class="flex shrink-0 items-center gap-1">
-            <UButton
-              icon="i-lucide-pencil"
-              color="neutral"
-              variant="ghost"
-              size="sm"
-              :aria-label="`Edit ${book.title}`"
-              @click="openEdit(book)"
-            />
-            <UButton
-              icon="i-lucide-trash-2"
-              color="neutral"
-              variant="ghost"
-              size="sm"
-              :aria-label="`Delete ${book.title}`"
-              class="hover:!bg-red-50 hover:!text-red-600"
-              @click="openDelete(book)"
-            />
-          </div>
-        </div>
-      </article>
 
       <div
-        v-if="!loadError && visibleBooks.length === 0"
-        class="flex flex-col items-center gap-2 rounded-2xl bg-(--ui-bg-card) px-6 py-10 text-center shadow-sm ring-1 ring-(--ui-border)"
+        v-else-if="!loadError"
+        class="books-page__empty"
       >
-        <div class="flex size-11 items-center justify-center rounded-full bg-(--ui-bg-accented)">
-          <UIcon name="i-lucide-book-open" class="size-5 text-muted" aria-hidden="true" />
-        </div>
-        <h2 class="text-sm font-semibold text-highlighted">
-          {{ rows.length === 0 ? 'No books yet' : 'No books match your search' }}
-        </h2>
-        <p class="max-w-sm text-sm leading-6 text-muted">
-          {{ rows.length === 0 ? 'Add your first book to start building the catalog. Books you add will appear here.' : 'Try a different search term or clear the category filters.' }}
+        <span
+          class="books-page__empty-icon"
+          aria-hidden="true"
+        >
+          <UIcon
+            :name="rows.length === 0 ? 'i-lucide-library-big' : 'i-lucide-search-x'"
+            class="size-6"
+          />
+        </span>
+        <h3>{{ rows.length === 0 ? 'The shelves are waiting' : 'No books match this view' }}</h3>
+        <p>
+          {{ rows.length === 0
+            ? 'Add the first title to begin building the Athenaeum collection.'
+            : 'Try a broader search or reset the selected shelves.'
+          }}
         </p>
         <UButton
           v-if="rows.length === 0"
           icon="i-lucide-plus"
-          class="!h-10 !rounded-xl !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]"
+          class="!min-h-11 !rounded-[10px] !px-5"
           @click="openAdd"
         >
-          Add Book
+          Add a title
         </UButton>
         <UButton
           v-else
           color="neutral"
           variant="outline"
-          size="sm"
-          class="!rounded-xl"
-          @click="resetFilters(); search = ''"
+          icon="i-lucide-rotate-ccw"
+          class="!min-h-11 !rounded-[10px] !px-5"
+          @click="clearAllFilters"
         >
-          Clear search and filters
+          Reset view
         </UButton>
       </div>
-    </div>
+    </section>
 
-    <p role="status" aria-live="polite" class="sr-only">
+    <p
+      role="status"
+      aria-live="polite"
+      class="sr-only"
+    >
       {{ visibleBooks.length }} of {{ rows.length }} books shown
     </p>
-
-    <div
-      v-if="!loadError && rows.length === 0"
-      class="mt-3 hidden flex-col items-center gap-2 rounded-2xl bg-(--ui-bg-card) px-6 py-10 text-center shadow-sm ring-1 ring-(--ui-border) md:flex"
-    >
-      <div class="flex size-11 items-center justify-center rounded-full bg-(--ui-bg-accented)">
-        <UIcon name="i-lucide-book-open" class="size-5 text-muted" aria-hidden="true" />
-      </div>
-      <h2 class="text-sm font-semibold text-highlighted">
-        No books yet
-      </h2>
-      <p class="max-w-sm text-sm leading-6 text-muted">
-        Add your first book to start building the catalog. Books you add will appear in this table.
-      </p>
-      <UButton
-        icon="i-lucide-plus"
-        class="!h-10 !rounded-xl !px-4 shadow-sm motion-reduce:transition-none focus-visible:!outline-none focus-visible:!ring-2 focus-visible:!ring-[#8ca9ce]"
-        @click="openAdd"
-      >
-        Add Book
-      </UButton>
-    </div>
 
     <UModal
       v-model:open="formOpen"
@@ -799,11 +849,11 @@ const copiesUi = {
         <div class="flex flex-col">
           <div class="books-modal__header flex shrink-0 items-center justify-between gap-4 border-b border-(--ui-border) px-5 py-4">
             <div class="flex items-center gap-4">
-                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-50">
-                  <UIcon
-                    name="i-lucide-trash-2"
-                    class="text-lg text-red-600"
-                  />
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-50">
+                <UIcon
+                  name="i-lucide-trash-2"
+                  class="text-lg text-red-600"
+                />
               </div>
               <div>
                 <h2 class="font-display text-[20px] font-bold leading-tight text-highlighted">
@@ -871,15 +921,251 @@ const copiesUi = {
 </template>
 
 <style scoped>
-/* The filters and catalog form one continuous workspace surface. */
+.books-page {
+  --books-ink: #102f49;
+  --books-muted: #667a91;
+  --books-line: #dce5ee;
+  --books-navy: #102f49;
+  --books-gold: #e4ae35;
+  gap: 1.5rem;
+}
+
+.books-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  background: #102f49;
+  color: #f8fafc;
+  box-shadow: 0 20px 50px rgba(15, 42, 65, 0.14);
+}
+
+.books-hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(105deg, transparent 48%, rgba(255, 255, 255, 0.035) 48%, rgba(255, 255, 255, 0.035) 49%, transparent 49%),
+    repeating-linear-gradient(90deg, transparent 0, transparent 72px, rgba(255, 255, 255, 0.035) 73px, transparent 74px);
+  content: '';
+  mask-image: linear-gradient(90deg, transparent, #000 45%, #000);
+}
+
+.books-hero::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--books-gold);
+  content: '';
+}
+
+.books-hero__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(19rem, 0.8fr);
+  gap: 2.5rem;
+  padding: 2.5rem 2.75rem 2rem;
+}
+
+.books-hero__copy {
+  min-width: 0;
+  align-self: center;
+}
+
+.books-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #b8c8d6;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.books-hero__title {
+  max-width: 11ch;
+  margin-top: 1rem;
+  color: #f8fafc;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.45rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.books-hero__description {
+  max-width: 35rem;
+  margin-top: 1.125rem;
+  color: #c6d3df;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.books-hero__action {
+  margin-top: 1.5rem;
+  background: var(--books-gold) !important;
+  color: #102f49 !important;
+  box-shadow: 0 8px 22px rgba(4, 19, 32, 0.18) !important;
+  transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.books-hero__action:hover {
+  background: #f4c762 !important;
+  box-shadow: 0 10px 26px rgba(4, 19, 32, 0.24) !important;
+  transform: translateY(-1px);
+}
+
+.books-hero__action:active {
+  transform: translateY(1px);
+}
+
+.books-hero__collection {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 2rem;
+}
+
+.books-hero__book-stack {
+  position: relative;
+  width: 13.5rem;
+  height: 10.25rem;
+  flex: 0 0 auto;
+}
+
+.books-hero__book {
+  position: absolute;
+  display: flex;
+  width: 4.5rem;
+  height: 8.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem 0.45rem 0.45rem 0.25rem;
+  box-shadow: 0 18px 26px rgba(4, 19, 32, 0.28);
+  font-size: 0.5625rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  writing-mode: vertical-rl;
+}
+
+.books-hero__book::before {
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.3rem;
+  width: 1px;
+  background: currentColor;
+  content: '';
+  opacity: 0.28;
+}
+
+.books-hero__book--one {
+  top: 1.25rem;
+  left: 0.5rem;
+  background: #d8a536;
+  color: #17334b;
+  transform: rotate(-8deg);
+}
+
+.books-hero__book--two {
+  z-index: 2;
+  top: 0.25rem;
+  left: 4.5rem;
+  background: #e7edf2;
+  color: #17334b;
+}
+
+.books-hero__book--three {
+  top: 1.4rem;
+  left: 8.25rem;
+  background: #356b83;
+  color: #f4f7fa;
+  transform: rotate(8deg);
+}
+
+.books-hero__health {
+  min-width: 9rem;
+}
+
+.books-hero__health p {
+  color: #aebfce;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.books-hero__health strong {
+  display: block;
+  margin-top: 0.4rem;
+  color: #f8fafc;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 650;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.books-hero__health span {
+  display: block;
+  margin-top: 0.55rem;
+  color: #b9c8d5;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.books-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+  background: rgba(5, 24, 40, 0.24);
+}
+
+.books-hero__stats > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.4rem;
+}
+
+.books-hero__stats > div:last-child {
+  border-right: 0;
+}
+
+.books-hero__stats dt {
+  color: #aebfce;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.books-hero__stats dd {
+  color: #f8fafc;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.035em;
+}
+
 .books-page__filters {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  margin-top: -1.5rem;
   margin-bottom: -1px;
-  border: 1px solid #dce5ef;
-  border-radius: 0.75rem 0.75rem 0 0;
+  border: 1px solid var(--books-line);
+  border-radius: 1.125rem 1.125rem 0 0;
   background: #fff;
-  padding: 1.25rem 1.25rem 1rem;
+  padding: 1.375rem 1.5rem 1.125rem;
+  box-shadow: 0 12px 32px rgba(26, 55, 81, 0.08);
 }
 
 .books-page__toolbar-heading {
@@ -887,15 +1173,29 @@ const copiesUi = {
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.125rem;
 }
 
-.books-page__toolbar-status {
+.books-page__toolbar-heading h2 {
+  color: var(--books-ink);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.books-page__toolbar-heading p {
+  margin-top: 0.25rem;
+  color: var(--books-muted);
+  font-size: 0.8125rem;
+}
+
+.books-page__toolbar-status,
+.books-page__catalog-meta {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  margin-top: 0.25rem;
-  color: #6f8298;
+  color: #64788f;
   font-size: 0.6875rem;
   font-weight: 650;
   letter-spacing: 0.04em;
@@ -903,32 +1203,366 @@ const copiesUi = {
 }
 
 .books-page__toolbar-controls {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(18rem, 1fr) auto auto;
+  align-items: center;
   gap: 0.75rem;
+  margin-top: 1.125rem;
+  border-top: 1px solid #edf1f5;
+  padding-top: 1.125rem;
+}
+
+.books-page__search {
+  position: relative;
+}
+
+.books-page__search input {
+  width: 100%;
+  height: 3rem;
+  border: 1px solid #d6e0ea;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  padding: 0 3.25rem 0 2.75rem;
+  color: #213c55;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.books-page__search input::placeholder {
+  color: #65798e;
+}
+
+.books-page__search input:hover {
+  border-color: #b9c8d8;
+}
+
+.books-page__search input:focus-visible {
+  border-color: #6f95bd;
+  background: #fff;
+  box-shadow: 0 0 0 4px #edf4fa;
+}
+
+.books-page__search-clear {
+  position: absolute;
+  top: 50%;
+  right: 0.375rem;
+  display: flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  color: #6e8197;
+  transform: translateY(-50%);
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.books-page__search-clear:hover {
+  background: #edf3f8;
+  color: #1d486e;
+}
+
+.books-page__search-clear:focus-visible,
+.books-page__reset:focus-visible,
+.books-page__shelf-list button:focus-visible,
+.books-page__active-filters button:focus-visible {
+  outline: 2px solid #7398bd;
+  outline-offset: 2px;
+}
+
+.books-page__result-count {
+  white-space: nowrap;
+  color: #5d7289;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.books-page__result-count strong {
+  color: #203c57;
+  font-weight: 700;
+}
+
+.books-page__reset {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.625rem;
+  padding: 0 0.75rem;
+  color: #44617d;
+  font-size: 0.75rem;
+  font-weight: 650;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.books-page__reset:hover {
+  background: #edf3f8;
+  color: #183d60;
+}
+
+.books-page__shelves {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  margin-top: 1rem;
   border-top: 1px solid #edf1f5;
   padding-top: 1rem;
 }
 
-.books-page__catalog {
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
-  border: 1px solid #dce5ef;
-  border-radius: 0 0 0.75rem 0.75rem;
-  background: #fff;
-  box-shadow: 0 1px 2px rgba(23, 47, 73, 0.03);
+.books-page__shelves-label {
+  flex: 0 0 auto;
+  padding-top: 0.625rem;
+  color: #61758a;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.books-page__catalog-heading {
-  display: none;
+.books-page__shelf-list {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.books-page__shelf-list button {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #dfe6ed;
+  border-radius: 0.625rem;
+  background: #fff;
+  padding: 0.375rem 0.625rem 0.375rem 0.75rem;
+  color: #50677f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.books-page__shelf-list button span {
+  display: inline-flex;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background: #eef3f7;
+  color: #64798f;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.books-page__shelf-list button:hover {
+  border-color: #bfccd9;
+  background: #f8fafc;
+  color: #203f5c;
+}
+
+.books-page__shelf-list button:active {
+  transform: translateY(1px);
+}
+
+.books-page__shelf-list .books-page__shelf--active {
+  border-color: #173c5e;
+  background: #173c5e;
+  color: #fff;
+}
+
+.books-page__shelf-list .books-page__shelf--active span {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.books-page__active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.875rem;
+  border-top: 1px solid #edf1f5;
+  padding-top: 0.875rem;
+}
+
+.books-page__active-filters button {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  background: #eaf1f7;
+  padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+  color: #284b69;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.books-page__active-filters button:hover {
+  background: #dce8f2;
+  color: #173c5e;
+}
+
+.books-page__catalog {
+  position: relative;
+  z-index: 1;
+  height: 35.5rem;
+  overflow: hidden;
+  border: 1px solid var(--books-line);
+  border-radius: 0 0 1.125rem 1.125rem;
+  background: #fff;
+  box-shadow: 0 8px 28px rgba(26, 55, 81, 0.06);
+}
+
+.books-page__catalog-header {
+  display: flex;
+  min-height: 4.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #e3e9ef;
+  background: #fbfcfd;
+  padding: 0.875rem 1.375rem;
+}
+
+.books-page__catalog-title {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.books-page__catalog-icon {
+  display: flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d8e3ed;
+  border-radius: 0.625rem;
+  background: #fff;
+  color: #315a7b;
+  box-shadow: 0 1px 2px rgba(21, 52, 79, 0.04);
+}
+
+.books-page__catalog-title h2 {
+  color: var(--books-ink);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.books-page__catalog-title p {
+  margin-top: 0.2rem;
+  color: #62768b;
+  font-size: 0.6875rem;
+}
+
+.books-page__catalog :deep(.ag-header) {
+  background: #f6f8fa;
+  border-bottom-color: #dfe6ed;
+}
+
+.books-page__catalog :deep(.ag-header-cell-text) {
+  color: #6e8195;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.books-page__catalog :deep(.ag-header-cell:hover) {
+  background: #eef3f7;
+}
+
+.books-page__catalog :deep(.ag-row) {
+  border-bottom-color: #e8edf2;
+}
+
+.books-page__catalog :deep(.ag-row-odd) {
+  background: #fbfcfd;
+}
+
+.books-page__catalog :deep(.ag-row-hover) {
+  background: #f2f6f9;
+  box-shadow: inset 3px 0 0 #d4a233;
+}
+
+.books-page__catalog :deep(.ag-row-selected) {
+  background: #eaf1f7;
+}
+
+.books-page__catalog :deep(.book-index-cell) {
+  color: #6e8194;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+.books-page__catalog :deep(.ag-paging-panel) {
+  background: #f8fafc;
+}
+
+.books-page__catalog :deep(.ag-root-wrapper) {
+  border-radius: 0 0 1.125rem 1.125rem;
+}
+
+.books-page__empty {
+  display: flex;
+  min-height: 22rem;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.books-page__empty-icon {
+  display: flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dce5ed;
+  border-radius: 1rem;
+  background: #f4f7fa;
+  color: #41627f;
+  transform: rotate(-3deg);
+}
+
+.books-page__empty h2,
+.books-page__empty h3 {
+  margin-top: 1rem;
+  color: var(--books-ink);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.books-page__empty p {
+  max-width: 28rem;
+  margin-top: 0.45rem;
+  color: #6d8094;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.books-page__empty :deep(button) {
+  margin-top: 1.25rem;
 }
 
 .books-modal__header {
-  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
 }
 
-.books-modal__body :deep(.field-ui),
 .books-modal__body :deep(input),
 .books-modal__body :deep(textarea) {
   transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
@@ -942,22 +1576,143 @@ const copiesUi = {
   min-height: 2.75rem;
 }
 
-@media (max-width: 639px) {
-  .books-page__filters {
-    border-radius: 0.625rem 0.625rem 0 0;
-    padding: 1rem 0.875rem 0.875rem;
+@media (max-width: 1023px) {
+  .books-hero__main {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
   }
 
-  .books-page__toolbar-heading {
-    margin-bottom: 0.875rem;
+  .books-hero__collection {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .books-page {
+    gap: 1rem;
+  }
+
+  .books-hero {
+    border-radius: 1rem;
+  }
+
+  .books-hero__main {
+    padding: 1.75rem 1.375rem 1.5rem;
+  }
+
+  .books-hero__title {
+    max-width: 12ch;
+    margin-top: 0.875rem;
+    font-size: clamp(2rem, 10vw, 2.75rem);
+  }
+
+  .books-hero__description {
+    margin-top: 0.875rem;
+    font-size: 0.875rem;
+  }
+
+  .books-hero__action {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1.25rem;
+  }
+
+  .books-hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .books-hero__stats > div {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.875rem 1rem;
+  }
+
+  .books-hero__stats > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .books-hero__stats > div:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .books-hero__stats dt {
+    font-size: 0.625rem;
+  }
+
+  .books-hero__stats dd {
+    font-size: 1.15rem;
+  }
+
+  .books-page__filters {
+    margin-top: 0;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 6px 20px rgba(26, 55, 81, 0.05);
   }
 
   .books-page__toolbar-status {
     display: none;
   }
 
-  .books-page__catalog {
-    border-radius: 0 0 0.625rem 0.625rem;
+  .books-page__toolbar-controls {
+    grid-template-columns: 1fr auto;
+    gap: 0.625rem;
+  }
+
+  .books-page__search {
+    grid-column: 1 / -1;
+  }
+
+  .books-page__search input {
+    height: 3.25rem;
+    font-size: 1rem;
+  }
+
+  .books-page__result-count {
+    font-size: 0.75rem;
+  }
+
+  .books-page__reset {
+    min-height: 2.75rem;
+  }
+
+  .books-page__shelves {
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .books-page__shelves-label {
+    padding-top: 0;
+  }
+
+  .books-page__shelf-list {
+    width: 100%;
+  }
+
+  .books-page__shelf-list button {
+    min-height: 2.75rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .books-hero__eyebrow {
+    font-size: 0.625rem;
+  }
+
+  .books-hero__stats > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .books-hero__action,
+  .books-page__search input,
+  .books-page__search-clear,
+  .books-page__reset,
+  .books-page__shelf-list button,
+  .books-page__active-filters button {
+    transition: none;
   }
 }
 </style>

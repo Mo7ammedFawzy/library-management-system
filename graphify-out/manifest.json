@@ -420,10 +420,10 @@
     "semantic_hash": ""
   },
   "frontend/src/components/grid/ActionsCell.vue": {
-    "mtime": 1787828039.8594742,
-    "seen": 1788450175.5696545,
-    "ast_hash": "89eae657d5b0eed84bb54725c38220b9",
-    "semantic_hash": "89eae657d5b0eed84bb54725c38220b9"
+    "mtime": 1790284874.542048,
+    "seen": 1790285016.7187943,
+    "ast_hash": "b4eadd297d55d4e798baf643bba0f89a",
+    "semantic_hash": ""
   },
   "frontend/src/components/grid/BookCell.vue": {
     "mtime": 1787828039.8594742,
@@ -492,9 +492,9 @@
     "semantic_hash": ""
   },
   "frontend/src/pages/books.vue": {
-    "mtime": 1790284425.4131262,
-    "seen": 1790284474.585126,
-    "ast_hash": "313eff63e5e5deebcf27b2975c38b961",
+    "mtime": 1790285116.4751241,
+    "seen": 1790285156.337329,
+    "ast_hash": "906bcacc399b38e62714f7da898c2582",
     "semantic_hash": ""
   },
   "frontend/src/pages/borrowings.vue": {
@@ -558,8 +558,8 @@
     "semantic_hash": ""
   },
   "frontend/src/route-map.d.ts": {
-    "mtime": 1790284432.5886488,
-    "seen": 1790284474.585126,
+    "mtime": 1790285125.7481947,
+    "seen": 1790285156.337329,
     "ast_hash": "57ba3574651dc68c5af3d2eec1839e59",
     "semantic_hash": ""
   },
@@ -990,21 +990,21 @@
     "semantic_hash": ""
   },
   "frontend/src/components/grid/BookTitleCell.vue": {
-    "mtime": 1790196691.8258588,
-    "seen": 1790198555.3207269,
-    "ast_hash": "12e1c7d8b4c41d02912fa08b9b0d26f0",
+    "mtime": 1790285066.3427176,
+    "seen": 1790285156.337329,
+    "ast_hash": "6c5ce036395489cbf8bb2de6c225f56a",
     "semantic_hash": ""
   },
   "frontend/src/components/grid/CategoryCell.vue": {
-    "mtime": 1790196691.82686,
-    "seen": 1790198555.3207269,
-    "ast_hash": "15dad0d6cf6bd6eae660a40f18df9388",
+    "mtime": 1790284946.5718176,
+    "seen": 1790285016.7187943,
+    "ast_hash": "a3c5e9fc33bf2d9e626dd7fb7a29f827",
     "semantic_hash": ""
   },
   "frontend/src/components/grid/CopiesCell.vue": {
-    "mtime": 1790196691.82686,
-    "seen": 1790198555.3207269,
-    "ast_hash": "b7c71cc5943cc78125eb34a6bd3d4061",
+    "mtime": 1790285066.3427176,
+    "seen": 1790285156.337329,
+    "ast_hash": "23e44d3562d936e03a377a5b4d7164e2",
     "semantic_hash": ""
   },
   "frontend/tests/api.test.ts": {
