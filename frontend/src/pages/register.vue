@@ -77,7 +77,7 @@ async function handleSubmit() {
 
     <!-- Center Content / Auth Card -->
     <main class="relative z-10 flex w-full max-w-full min-w-0 flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 py-2 my-auto">
-      <div class="w-full max-w-[calc(100vw-2rem)] min-w-0 sm:max-w-[400px] rounded-2xl bg-(--ui-bg-card) p-4 sm:p-5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
+      <div class="w-full max-w-[calc(100vw-2rem)] min-w-0 rounded-2xl border border-(--ui-border) bg-(--ui-bg-card) p-5 shadow-[0_18px_48px_-18px_rgba(24,47,73,0.24),0_4px_14px_-6px_rgba(24,47,73,0.12)] sm:max-w-[440px] sm:p-7">
         <!-- Title & Subtitle -->
         <div class="mb-2.5">
           <h2 class="text-xl sm:text-[21px] font-bold tracking-tight text-default leading-tight">
@@ -115,7 +115,7 @@ async function handleSubmit() {
               Full name
             </label>
             <div class="relative min-w-0">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-dimmed">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-dimmed">
                 <UIcon
                   name="i-lucide-user"
                   class="size-3.5"
@@ -127,7 +127,7 @@ async function handleSubmit() {
                 type="text"
                 required
                 placeholder="Enter your full name"
-                class="h-8 w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-2.5 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="h-10 w-full min-w-0 rounded-xl border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-3 text-sm text-default outline-none transition-all duration-150 placeholder:text-muted hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
             </div>
           </div>
@@ -141,7 +141,7 @@ async function handleSubmit() {
               Email address
             </label>
             <div class="relative min-w-0">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-dimmed">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-dimmed">
                 <UIcon
                   name="i-lucide-mail"
                   class="size-3.5"
@@ -153,7 +153,7 @@ async function handleSubmit() {
                 type="email"
                 required
                 placeholder="Enter your email"
-                class="h-8 w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-2.5 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="h-10 w-full min-w-0 rounded-xl border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-3 text-sm text-default outline-none transition-all duration-150 placeholder:text-muted hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
             </div>
           </div>
@@ -167,7 +167,7 @@ async function handleSubmit() {
               Password
             </label>
             <div class="relative min-w-0">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-dimmed">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-dimmed">
                 <UIcon
                   name="i-lucide-lock"
                   class="size-3.5"
@@ -179,7 +179,7 @@ async function handleSubmit() {
                 :type="showPassword ? 'text' : 'password'"
                 required
                 placeholder="Create a password"
-                class="h-8 w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-8 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="h-10 w-full min-w-0 rounded-xl border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-9 text-sm text-default outline-none transition-all duration-150 placeholder:text-muted hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
               <button
                 type="button"
@@ -204,7 +204,7 @@ async function handleSubmit() {
               Confirm password
             </label>
             <div class="relative min-w-0">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2.5 text-dimmed">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-dimmed">
                 <UIcon
                   name="i-lucide-lock"
                   class="size-3.5"
@@ -216,7 +216,7 @@ async function handleSubmit() {
                 :type="showConfirmPassword ? 'text' : 'password'"
                 required
                 placeholder="Confirm your password"
-                class="h-8 w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) pl-8 pr-8 text-xs text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="h-10 w-full min-w-0 rounded-xl border border-(--ui-border) bg-(--ui-bg-card) pl-9 pr-9 text-sm text-default outline-none transition-all duration-150 placeholder:text-muted hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
               <button
                 type="button"

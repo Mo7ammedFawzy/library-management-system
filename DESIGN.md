@@ -45,18 +45,18 @@ typography:
     fontFamily: Geist Variable
     note: "font-display for brand wordmark"
   headline:
-    fontFamily: Georgia, serif
+    fontFamily: Geist Variable
     fontSize: 32px
-    fontWeight: 700
+    fontWeight: 650
     letterSpacing: -0.035em
   headline-card:
-    fontFamily: Georgia, serif
+    fontFamily: Geist Variable
     fontSize: 18px
-    fontWeight: 700
+    fontWeight: 650
   stat-value:
-    fontFamily: Georgia, serif
+    fontFamily: Geist Variable
     fontSize: 28px
-    fontWeight: 700
+    fontWeight: 650
     letterSpacing: -0.04em
   body-md:
     fontFamily: Inter Variable
@@ -140,7 +140,7 @@ components:
     tooltip: "{colors.primary-deep}"
   chart-donut:
     colors: ["#2b65ad", "#4d9b8b", "#e49b12", "#7661b9", "#ef7565", "#97a4b7"]
-    titleFont: "Georgia, serif"
+    titleFont: "Geist Variable"
 ---
 
 # Athenaeum Navy Design System
@@ -149,7 +149,7 @@ components:
 
 Navy + gold workstation aesthetic for library management. Deep navy (`#132F57`) anchors the persistent sidebar, while blue (`#173B70`) carries headings and primary actions. Gold (`#E5A214`) is reserved for the active-nav indicator, greeting rule, and notification badge. Cool slate surfaces (`#F7F9FC`) keep dense dashboard content calm. Cards float with soft navy-tinted shadows rather than flat borders alone.
 
-Brand personality is **Classic Institutional with Modern Softness** — serif headlines and numbers (Georgia) over an Inter UI body, pill badges and rounded-2xl cards.
+Brand personality is **Classic Institutional with Modern Softness** — Geist headlines and numbers over a quiet, highly legible UI body, pill badges and rounded-2xl cards.
 
 ## Colors
 
@@ -166,8 +166,8 @@ Brand personality is **Classic Institutional with Modern Softness** — serif he
 ## Typography
 
 - **Brand:** Geist Variable (`font-display`), semibold, for the ATHENAEUM wordmark.
-- **Headlines & numbers:** Georgia serif — page greeting (30–32px, bold, `-0.035em`), card titles (18px bold), stat values (28px bold, `-0.04em`).
-- **UI & Data:** Inter Variable 14px default; 12px medium labels; 11px semibold eyebrows and badges.
+- **Headlines & numbers:** Geist Variable — page greeting (30–32px, semibold, `-0.035em`), card titles (18px semibold), stat values (28px semibold, `-0.04em`).
+- **UI & Data:** Geist Variable 14px default; 12px medium labels; 11px semibold eyebrows and badges.
 - **Section eyebrows:** 10px bold uppercase, wide tracking, dimmed slate.
 
 ## Layout & Spacing

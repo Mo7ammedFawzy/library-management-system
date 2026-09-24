@@ -44,7 +44,7 @@ function handleGoogleSignIn() {}
 </script>
 
 <template>
-  <div class="relative h-screen w-full max-w-[100vw] min-w-0 bg-(--ui-bg) flex flex-col justify-between p-4 sm:p-6 lg:px-12 lg:py-6 overflow-hidden selection:bg-primary-200 selection:text-primary-800">
+  <div class="relative flex min-h-svh w-full max-w-[100vw] min-w-0 flex-col justify-between overflow-hidden bg-(--ui-bg) p-4 selection:bg-primary-200 selection:text-primary-800 sm:p-6 lg:h-svh lg:px-12 lg:py-6">
     <!-- Softened library illustration with legibility scrims -->
     <div
       class="pointer-events-none absolute inset-0 select-none overflow-hidden"
@@ -73,7 +73,7 @@ function handleGoogleSignIn() {}
 
     <!-- Center Content / Auth Card -->
     <main class="relative z-10 flex w-full max-w-full min-w-0 flex-1 items-center justify-center lg:justify-end lg:pr-8 xl:pr-20 my-auto">
-      <div class="w-full max-w-[calc(100vw-2rem)] min-w-0 rounded-2xl bg-(--ui-bg-card) p-5 sm:max-w-[420px] sm:p-8 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.03)] border border-(--ui-border)">
+      <div class="w-full max-w-[calc(100vw-2rem)] min-w-0 rounded-2xl border border-(--ui-border) bg-(--ui-bg-card) p-5 shadow-[0_18px_48px_-18px_rgba(24,47,73,0.24),0_4px_14px_-6px_rgba(24,47,73,0.12)] sm:max-w-[440px] sm:p-8">
         <!-- Title & Subtitle -->
         <div class="mb-5">
           <h2 class="text-[22px] sm:text-2xl font-bold tracking-tight text-default leading-tight">
@@ -122,7 +122,7 @@ function handleGoogleSignIn() {}
                 type="email"
                 required
                 placeholder="Enter your email"
-                class="w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-3 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="w-full min-w-0 rounded-xl border border-(--ui-border) bg-(--ui-bg-card) py-2.5 pl-9 pr-3 text-sm text-default outline-none transition-all duration-150 placeholder:text-muted hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
             </div>
           </div>
@@ -148,7 +148,7 @@ function handleGoogleSignIn() {}
                 :type="showPassword ? 'text' : 'password'"
                 required
                 placeholder="Enter your password"
-                class="w-full min-w-0 rounded-lg border border-(--ui-border) bg-(--ui-bg-card) py-2 pl-9 pr-10 text-sm text-default placeholder:text-muted outline-none transition-all duration-150 hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
+                class="w-full min-w-0 rounded-xl border border-(--ui-border) bg-(--ui-bg-card) py-2.5 pl-9 pr-10 text-sm text-default outline-none transition-all duration-150 placeholder:text-muted hover:border-(--ui-border-accented) focus:border-primary focus:ring-2 focus:ring-primary/15"
               >
               <button
                 type="button"

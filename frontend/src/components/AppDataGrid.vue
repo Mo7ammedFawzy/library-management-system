@@ -31,39 +31,39 @@ const emit = defineEmits<{
 const gridApi = defineModel<GridApi | null>('api', { default: null })
 
 const lightTheme = themeQuartz.withParams({
-  fontFamily: "'Inter Variable', ui-sans-serif, system-ui, sans-serif",
+  fontFamily: "'Geist Variable', ui-sans-serif, system-ui, sans-serif",
   fontSize: 14,
-  headerFontFamily: "'Inter Variable', ui-sans-serif, system-ui, sans-serif",
+  headerFontFamily: "'Geist Variable', ui-sans-serif, system-ui, sans-serif",
   headerFontSize: 11,
-  headerFontWeight: 700,
-  headerTextColor: '#7a8ba3',
-  headerBackgroundColor: '#f4f7fc',
+  headerFontWeight: 650,
+  headerTextColor: '#64758a',
+  headerBackgroundColor: '#f7f9fb',
   backgroundColor: '#ffffff',
-  foregroundColor: '#263f5f',
-  textColor: '#263f5f',
-  subtleTextColor: '#8a99ae',
-  borderColor: '#e4ebf3',
+  foregroundColor: '#293d52',
+  textColor: '#293d52',
+  subtleTextColor: '#7c8da2',
+  borderColor: '#e2e8f0',
   borderWidth: 1,
   wrapperBorder: false,
   wrapperBorderRadius: 0,
-  headerRowBorder: { color: '#e4ebf3', width: 1, style: 'solid' },
-  rowBorder: { color: '#edf1f6', width: 1, style: 'solid' },
+  headerRowBorder: { color: '#e2e8f0', width: 1, style: 'solid' },
+  rowBorder: { color: '#edf1f5', width: 1, style: 'solid' },
   columnBorder: false,
-  oddRowBackgroundColor: '#fafcff',
-  rowHoverColor: '#eef4fb',
-  selectedRowBackgroundColor: '#e6effe',
-  rangeSelectionBackgroundColor: '#dbe7fd',
-  rangeSelectionBorderColor: '#2161bf',
-  accentColor: '#2161bf',
-  focusShadow: { color: '#8ca9ce', width: 2, style: 'solid', offset: 0, radius: 8 },
-  inputBackgroundColor: '#f9fbfe',
-  inputTextColor: '#263f5f',
-  inputBorder: { color: '#e4ebf3', width: 1, style: 'solid' },
-  inputFocusBorder: { color: '#8ca9ce', width: 1, style: 'solid' },
-  inputFocusShadow: { color: '#edf4ff', width: 4, style: 'solid', offset: 0, radius: 8 },
-  checkboxCheckedBackgroundColor: '#2161bf',
-  checkboxCheckedBorderColor: '#2161bf',
-  checkboxUncheckedBorderColor: '#c3cfdf',
+  oddRowBackgroundColor: '#fbfcfe',
+  rowHoverColor: '#f1f6fb',
+  selectedRowBackgroundColor: '#e9f1f9',
+  rangeSelectionBackgroundColor: '#dce9f5',
+  rangeSelectionBorderColor: '#3973a3',
+  accentColor: '#2b5b86',
+  focusShadow: { color: '#7398bd' },
+  inputBackgroundColor: '#f8fafc',
+  inputTextColor: '#293d52',
+  inputBorder: { color: '#d8e1eb', width: 1, style: 'solid' },
+  inputFocusBorder: { color: '#7398bd', width: 1, style: 'solid' },
+  inputFocusShadow: { color: '#dbe9f7' },
+  checkboxCheckedBackgroundColor: '#2b5b86',
+  checkboxCheckedBorderColor: '#2b5b86',
+  checkboxUncheckedBorderColor: '#c1cddb',
   rowHeight: props.rowHeight,
   headerHeight: props.headerHeight,
   paginationPanelHeight: 52,
@@ -110,10 +110,8 @@ watch(() => props.quickFilterText, (value) => {
 
 <style scoped>
 :deep(.ag-header) {
-  background:
-    linear-gradient(#f4f7fc, #f4f7fc) padding-box,
-    linear-gradient(90deg, #e5a214 0%, #e5a214 64px, transparent 64px) border-box;
-  border-bottom: 2px solid #e4ebf3;
+  background: #f7f9fb;
+  border-bottom: 1px solid #e2e8f0;
   border-radius: 0;
 }
 
@@ -127,7 +125,7 @@ watch(() => props.quickFilterText, (value) => {
 }
 
 :deep(.ag-header-cell:hover) {
-  background-color: #e9eff8;
+  background-color: #eef3f8;
 }
 
 :deep(.ag-header-row) {
@@ -147,13 +145,13 @@ watch(() => props.quickFilterText, (value) => {
 }
 
 :deep(.ag-row-hover) {
-  background-color: #eef4fb;
-  box-shadow: inset 3px 0 0 #2161bf;
+  background-color: #f1f6fb;
+  box-shadow: inset 3px 0 0 #3973a3;
 }
 
 :deep(.ag-row-selected) {
-  background-color: #e6effe;
-  box-shadow: inset 3px 0 0 #2161bf;
+  background-color: #e9f1f9;
+  box-shadow: inset 3px 0 0 #2b5b86;
 }
 
 :deep(.ag-cell) {
@@ -170,7 +168,7 @@ watch(() => props.quickFilterText, (value) => {
 }
 
 :deep(.ag-root-wrapper) {
-  border-radius: 0 0 0.75rem 0.75rem;
+  border-radius: 0 0 0.875rem 0.875rem;
   overflow: hidden;
 }
 
@@ -180,8 +178,8 @@ watch(() => props.quickFilterText, (value) => {
 }
 
 :deep(.ag-paging-panel) {
-  border-top: 1px solid #e4ebf3;
-  background: linear-gradient(#fbfcfe, #f4f7fc);
+  border-top: 1px solid #e2e8f0;
+  background: #fbfcfe;
   font-size: 13px;
   color: var(--ui-text-muted);
   padding-inline: 16px;
@@ -193,8 +191,8 @@ watch(() => props.quickFilterText, (value) => {
 }
 
 :deep(.ag-paging-button:hover:not(:disabled)) {
-  background-color: #edf4ff;
-  color: #173b70;
+  background-color: #edf2f7;
+  color: #244a6c;
 }
 
 :deep(.ag-paging-button:disabled) {

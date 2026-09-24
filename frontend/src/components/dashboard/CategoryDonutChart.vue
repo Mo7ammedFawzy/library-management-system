@@ -37,7 +37,7 @@ function buildOption(): EChartsCoreOption {
       subtext: 'Total books',
       left: 'center',
       top: 'center',
-      textStyle: { color: '#102743', fontSize: 30, fontWeight: 700, fontFamily: 'Georgia, serif' },
+      textStyle: { color: '#172f49', fontSize: 30, fontWeight: 650, fontFamily: 'Geist Variable, sans-serif' },
       subtextStyle: { color: '#7486a0', fontSize: 12 },
       itemGap: 2
     },

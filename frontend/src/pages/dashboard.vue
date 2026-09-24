@@ -262,7 +262,7 @@ function statusLabel(status: BorrowingStatus) {
 <template>
   <div class="mx-auto flex w-full max-w-[1400px] flex-col gap-6 pb-2">
     <PageBreadcrumb :items="breadcrumbItems" />
-    <section class="relative flex flex-col justify-between gap-5 overflow-hidden rounded-3xl border border-[#dce5ef] bg-white px-5 py-6 shadow-[0_10px_30px_rgba(27,59,102,0.06)] sm:px-7 sm:py-7 lg:flex-row lg:items-end" aria-labelledby="dashboard-greeting">
+    <section class="relative flex flex-col justify-between gap-5 overflow-hidden rounded-2xl border border-[#dce5ef] bg-white px-5 py-6 shadow-[0_8px_24px_rgba(24,47,73,0.06)] sm:px-7 sm:py-7 lg:flex-row lg:items-end" aria-labelledby="dashboard-greeting">
       <div>
         <p class="mb-2.5 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a99ae]">
           <span class="h-[3px] w-8 rounded-full bg-[#e5a214]" aria-hidden="true" />

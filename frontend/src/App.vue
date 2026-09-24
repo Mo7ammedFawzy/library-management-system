@@ -61,8 +61,8 @@ function getNotivueTheme(item: NotivueItem) {
 const sidebarOpen = useLocalStorage('sidebar-open', true)
 
 const sidebarUi = {
-  root: '[--sidebar-width:16rem] [--sidebar-width-icon:4.5rem] border-r border-[#102743]/60 bg-[#132f57] text-white shadow-[8px_0_32px_rgba(19,47,87,0.08)]',
-  header: 'flex min-h-20 items-center overflow-hidden border-b border-white/10 px-5 group-data-[state=collapsed]/sidebar:justify-center group-data-[state=collapsed]/sidebar:px-0',
+  root: '[--sidebar-width:16rem] [--sidebar-width-icon:4.5rem] border-r border-white/[0.07] bg-[#172f49] text-white shadow-[8px_0_28px_rgba(18,43,68,0.08)]',
+  header: 'flex min-h-[4.5rem] items-center overflow-hidden border-b border-white/[0.08] px-5 group-data-[state=collapsed]/sidebar:justify-center group-data-[state=collapsed]/sidebar:px-0',
   body: 'flex min-h-0 flex-1 flex-col overflow-y-auto px-3 pb-4 pt-5 group-data-[state=collapsed]/sidebar:px-2'
 }
 
@@ -96,8 +96,8 @@ const navSections = computed(() => [
   }
 ])
 
-const activeNavClass = "bg-white/12 font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:inset-y-[6px] before:left-0 before:w-1 before:rounded-r-full before:bg-[#e5a214] before:content-['']"
-const inactiveNavClass = 'font-medium text-[#aabbd0] hover:bg-white/8 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-1 focus-visible:ring-offset-[#132f57]'
+const activeNavClass = "bg-white/[0.11] font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.07)] before:absolute before:inset-y-[7px] before:left-0 before:w-1 before:rounded-r-full before:bg-[#e5a214] before:content-['']"
+const inactiveNavClass = 'font-medium text-[#a9bacd] hover:bg-white/[0.07] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-1 focus-visible:ring-offset-[#172f49]'
 
 function toggleSidebar() {
   sidebarOpen.value = !sidebarOpen.value
@@ -131,11 +131,11 @@ function handleLogout() {
 <template>
   <Suspense>
     <UApp>
-      <div v-if="isAuthPage" class="min-h-svh w-full bg-[#f7f9fc] text-default">
+      <div v-if="isAuthPage" class="min-h-svh w-full bg-(--ui-bg) text-default">
         <RouterView />
       </div>
 
-      <div v-else class="flex h-svh overflow-hidden bg-[#f7f9fc]">
+      <div v-else class="app-shell flex h-svh overflow-hidden">
         <USidebar
           v-model:open="sidebarOpen"
           collapsible="icon"
@@ -263,8 +263,8 @@ function handleLogout() {
           </template>
         </USidebar>
 
-        <div class="flex min-w-0 flex-1 flex-col bg-[#f7f9fc]">
-          <UHeader :ui="{ root: 'sticky top-0 z-30 !h-[4.5rem] border-b border-[#dce5ef] bg-white/95 px-4 shadow-[0_4px_18px_rgba(27,59,102,0.04)] backdrop-blur-md sm:px-6' }">
+        <div class="app-content flex min-w-0 flex-1 flex-col">
+          <UHeader :ui="{ root: 'sticky top-0 z-30 !h-[4.5rem] border-b border-[#e2e8f0] bg-white/90 px-4 shadow-[0_1px_0_rgba(24,47,73,0.02)] backdrop-blur-xl sm:px-6' }">
             <template #left>
               <div class="flex w-full items-center gap-2.5">
                 <UButton
@@ -335,7 +335,7 @@ function handleLogout() {
             </template>
           </UHeader>
 
-          <main class="app-scroll flex min-h-0 w-full flex-1 flex-col overflow-y-scroll overflow-x-hidden px-4 py-5 lg:px-8 lg:py-7">
+          <main class="app-scroll flex min-h-0 w-full flex-1 flex-col overflow-y-scroll overflow-x-hidden px-4 py-5 sm:px-6 lg:px-8 lg:py-7">
             <RouterView />
           </main>
         </div>
