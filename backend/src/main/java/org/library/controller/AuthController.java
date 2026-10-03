@@ -1,5 +1,6 @@
 package org.library.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import lombok.RequiredArgsConstructor;
 import org.library.dto.*;
 import org.library.payload.ApiResponse;
@@ -15,6 +16,7 @@ public class AuthController
 	private final AuthService authService;
 
 	@PostMapping("/register")
+	@SecurityRequirements
 	public ResponseEntity<ApiResponse<AuthResponse>> register(@RequestBody RegisterRequest request)
 	{
 		AuthResponse response = authService.register(request);
@@ -22,6 +24,7 @@ public class AuthController
 	}
 
 	@PostMapping("/login")
+	@SecurityRequirements
 	public ResponseEntity<ApiResponse<AuthResponse>> login(@RequestBody LoginRequest request)
 	{
 		AuthResponse response = authService.login(request);
