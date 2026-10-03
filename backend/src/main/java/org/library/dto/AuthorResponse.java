@@ -1,5 +1,8 @@
 package org.library.dto;
 
-public record AuthorResponse(Long id, String name)
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public record AuthorResponse(@Schema(requiredMode = Schema.RequiredMode.REQUIRED) Long id,
+                             @Schema(requiredMode = Schema.RequiredMode.REQUIRED) String name)
 {
 }

@@ -1,6 +1,11 @@
 package org.library.dto;
 
-public record UserResponse(Long id, String name, String email, String role)
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public record UserResponse(@Schema(requiredMode = Schema.RequiredMode.REQUIRED) Long id,
+                           @Schema(requiredMode = Schema.RequiredMode.REQUIRED) String name,
+                           @Schema(requiredMode = Schema.RequiredMode.REQUIRED) String email,
+                           @Schema(requiredMode = Schema.RequiredMode.REQUIRED) String role)
 {
 
 }

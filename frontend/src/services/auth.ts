@@ -1,46 +1,27 @@
-import { api, clearToken, isAuthenticated, withFallback, setToken, MOCK_TOKEN } from './api'
+import { clearToken, isAuthenticated, setToken, unwrap, withFallback, MOCK_TOKEN } from './api'
+import { sdk, type LoginRequest, type RegisterRequest } from './api-client'
 
-interface AuthResponse {
-  token: string
-}
-
-export interface LoginInput {
-  email: string
-  password: string
-}
-
-export interface RegisterInput {
-  name: string
-  email: string
-  password: string
-}
+export type LoginInput = Required<LoginRequest>
+export type RegisterInput = Required<RegisterRequest>
 
 export const login = withFallback(
   async (input: LoginInput) => {
-    const res = await api.post<AuthResponse>('/auth/login', input)
+    const res = await unwrap(await sdk.login({ body: input }))
     setToken(res.token)
   },
-  async (_input: LoginInput) => {
-    setToken(MOCK_TOKEN)
-  }
-)
-
-export const getCurrentUser = withFallback(
-  async () => {
-    const res = await api.get<AuthResponse>('/auth/me')
-    setToken(res.token)
-  },
-  async () => {
+  (input: LoginInput) => {
+    void input
     setToken(MOCK_TOKEN)
   }
 )
 
 export const register = withFallback(
   async (input: RegisterInput) => {
-    const res = await api.post<AuthResponse>('/auth/register', input)
+    const res = await unwrap(await sdk.register({ body: input }))
     setToken(res.token)
   },
-  async (_input: RegisterInput) => {
+  (input: RegisterInput) => {
+    void input
     setToken(MOCK_TOKEN)
   }
 )

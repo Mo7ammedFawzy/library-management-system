@@ -79,20 +79,20 @@ function dateStr(offsetDays: number): string {
 }
 
 const borrowings: Borrowing[] = [
-  { id: 1, user: users[1], book: book(2), borrowDate: dateStr(-20), dueDate: dateStr(-6), returnDate: null },
-  { id: 2, user: users[2], book: book(5), borrowDate: dateStr(-14), dueDate: dateStr(0), returnDate: null },
-  { id: 3, user: users[0], book: book(9), borrowDate: dateStr(-10), dueDate: dateStr(4), returnDate: null },
-  { id: 4, user: users[3], book: book(1), borrowDate: dateStr(-30), dueDate: dateStr(-2), returnDate: dateStr(-2) },
-  { id: 5, user: users[1], book: book(11), borrowDate: dateStr(-6), dueDate: dateStr(8), returnDate: null },
-  { id: 6, user: users[2], book: book(7), borrowDate: dateStr(-5), dueDate: dateStr(9), returnDate: null },
-  { id: 7, user: users[3], book: book(13), borrowDate: dateStr(-5), dueDate: dateStr(-4), returnDate: dateStr(-3) },
-  { id: 8, user: users[0], book: book(4), borrowDate: dateStr(-4), dueDate: dateStr(10), returnDate: null },
-  { id: 9, user: users[1], book: book(16), borrowDate: dateStr(-3), dueDate: dateStr(11), returnDate: null },
-  { id: 10, user: users[2], book: book(6), borrowDate: dateStr(-2), dueDate: dateStr(-1), returnDate: dateStr(-1) },
-  { id: 11, user: users[3], book: book(14), borrowDate: dateStr(-2), dueDate: dateStr(12), returnDate: null },
-  { id: 12, user: users[0], book: book(12), borrowDate: dateStr(-1), dueDate: dateStr(13), returnDate: null },
-  { id: 13, user: users[1], book: book(3), borrowDate: dateStr(0), dueDate: dateStr(14), returnDate: null },
-  { id: 14, user: users[2], book: book(17), borrowDate: dateStr(0), dueDate: dateStr(14), returnDate: null }
+  { id: 1, userResponse: users[1], bookResponse: book(2), borrowDate: dateStr(-20), dueDate: dateStr(-6) },
+  { id: 2, userResponse: users[2], bookResponse: book(5), borrowDate: dateStr(-14), dueDate: dateStr(0) },
+  { id: 3, userResponse: users[0], bookResponse: book(9), borrowDate: dateStr(-10), dueDate: dateStr(4) },
+  { id: 4, userResponse: users[3], bookResponse: book(1), borrowDate: dateStr(-30), dueDate: dateStr(-2), returnDate: dateStr(-2) },
+  { id: 5, userResponse: users[1], bookResponse: book(11), borrowDate: dateStr(-6), dueDate: dateStr(8) },
+  { id: 6, userResponse: users[2], bookResponse: book(7), borrowDate: dateStr(-5), dueDate: dateStr(9) },
+  { id: 7, userResponse: users[3], bookResponse: book(13), borrowDate: dateStr(-5), dueDate: dateStr(-4), returnDate: dateStr(-3) },
+  { id: 8, userResponse: users[0], bookResponse: book(4), borrowDate: dateStr(-4), dueDate: dateStr(10) },
+  { id: 9, userResponse: users[1], bookResponse: book(16), borrowDate: dateStr(-3), dueDate: dateStr(11) },
+  { id: 10, userResponse: users[2], bookResponse: book(6), borrowDate: dateStr(-2), dueDate: dateStr(-1), returnDate: dateStr(-1) },
+  { id: 11, userResponse: users[3], bookResponse: book(14), borrowDate: dateStr(-2), dueDate: dateStr(12) },
+  { id: 12, userResponse: users[0], bookResponse: book(12), borrowDate: dateStr(-1), dueDate: dateStr(13) },
+  { id: 13, userResponse: users[1], bookResponse: book(3), borrowDate: dateStr(0), dueDate: dateStr(14) },
+  { id: 14, userResponse: users[2], bookResponse: book(17), borrowDate: dateStr(0), dueDate: dateStr(14) }
 ]
 
 function nextId(items: { id: number }[]): number {
@@ -180,7 +180,11 @@ export function deleteAuthor(id: number): void {
 }
 
 export function fetchBorrowings(): Borrowing[] {
-  return borrowings.map((record) => ({ ...record, user: { ...record.user }, book: { ...record.book } }))
+  return borrowings.map((record) => ({
+    ...record,
+    userResponse: { ...record.userResponse },
+    bookResponse: { ...record.bookResponse }
+  }))
 }
 
 export function fetchUsers(): BorrowingUser[] {
@@ -194,11 +198,10 @@ export function borrowBook(bookId: number, userId?: number): Borrowing {
   target.availableCopies = Math.max(0, target.availableCopies - 1)
   const created: Borrowing = {
     id: nextId(borrowings),
-    user: { ...borrower },
-    book: { ...target },
+    userResponse: { ...borrower },
+    bookResponse: { ...target },
     borrowDate: dateStr(0),
-    dueDate: dateStr(14),
-    returnDate: null
+    dueDate: dateStr(14)
   }
   borrowings.push(created)
   return created
@@ -209,6 +212,6 @@ export function returnBook(borrowId: number): Borrowing {
   if (!record) throw new Error(`Borrowing with id ${borrowId} not found`)
   if (record.returnDate) throw new Error('Book already returned')
   record.returnDate = dateStr(0)
-  record.book.availableCopies = record.book.availableCopies + 1
-  return { ...record, user: { ...record.user }, book: { ...record.book } }
+  record.bookResponse.availableCopies = record.bookResponse.availableCopies + 1
+  return { ...record, userResponse: { ...record.userResponse }, bookResponse: { ...record.bookResponse } }
 }

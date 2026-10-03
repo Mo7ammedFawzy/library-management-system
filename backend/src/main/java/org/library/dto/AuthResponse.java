@@ -1,5 +1,7 @@
 package org.library.dto;
 
-public record AuthResponse(String token)
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public record AuthResponse(@Schema(requiredMode = Schema.RequiredMode.REQUIRED) String token)
 {
 }

@@ -1,31 +1,28 @@
-import { api, withFallback } from './api'
+import { unwrap, withFallback } from './api'
+import { sdk, type AuthorRequest, type AuthorResponse } from './api-client'
 import * as mock from './mock'
 
-export interface Author {
-  id: number
-  name: string
-}
-
-export interface AuthorInput {
-  name: string
-}
+export type Author = AuthorResponse
+export type AuthorInput = AuthorRequest
 
 export const fetchAuthors = withFallback(
-  () => api.get<Author[]>('/authors'),
+  async () => unwrap(await sdk.getAllAuthors()),
   () => mock.fetchAuthors()
 )
 
 export const createAuthor = withFallback(
-  (input: AuthorInput) => api.post<Author>('/authors', input),
+  async (input: AuthorInput) => unwrap(await sdk.createAuthor({ body: input })),
   (input: AuthorInput) => mock.createAuthor(input)
 )
 
 export const updateAuthor = withFallback(
-  (id: number, input: AuthorInput) => api.put<Author>(`/authors/${id}`, input),
+  async (id: number, input: AuthorInput) => unwrap(await sdk.updateAuthor({ path: { id }, body: input })),
   (id: number, input: AuthorInput) => mock.updateAuthor(id, input)
 )
 
 export const deleteAuthor = withFallback(
-  (id: number) => api.delete<void>(`/authors/${id}`),
+  async (id: number) => {
+    await unwrap(await sdk.deleteAuthor({ path: { id } }))
+  },
   (id: number) => { mock.deleteAuthor(id); return Promise.resolve() }
 )

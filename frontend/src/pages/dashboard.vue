@@ -137,11 +137,11 @@ const recentActivity = computed<ActivityItem[]>(() => {
     return {
       id: `borrowing-${borrowing.id}`,
       kind: returned ? 'returned' : 'borrowed',
-      title: borrowing.book.title,
-      subtitle: borrowing.book.authors?.map((author) => author.name).join(', ') || 'Unknown author',
-      actorInitials: personInitials(borrowing.user.name),
+      title: borrowing.bookResponse.title,
+      subtitle: borrowing.bookResponse.authors.map((author) => author.name).join(', ') || 'Unknown author',
+      actorInitials: personInitials(borrowing.userResponse.name),
       actorLine1: returned ? 'Returned by' : 'Borrowed by',
-      actorLine2: borrowing.user.name,
+      actorLine2: borrowing.userResponse.name,
       date: borrowing.returnDate ?? borrowing.borrowDate
     }
   })
@@ -426,8 +426,8 @@ function statusLabel(status: BorrowingStatus) {
               <UIcon name="i-lucide-calendar-clock" class="size-5" aria-hidden="true" />
             </div>
             <div class="min-w-0">
-              <p class="truncate text-sm font-semibold text-[#263f5f]">{{ borrowing.book.title }}</p>
-              <p class="mt-0.5 truncate text-xs text-[#7486a0]">{{ borrowing.user.name }} · Due {{ formatDate(borrowing.dueDate) }}</p>
+              <p class="truncate text-sm font-semibold text-[#263f5f]">{{ borrowing.bookResponse.title }}</p>
+              <p class="mt-0.5 truncate text-xs text-[#7486a0]">{{ borrowing.userResponse.name }} · Due {{ formatDate(borrowing.dueDate) }}</p>
             </div>
             <div class="text-right">
               <p class="text-xs font-semibold text-[#df4634]">{{ overdueLabel(borrowing) }}</p>

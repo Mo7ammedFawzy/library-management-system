@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import type { ColDef, ICellRendererParams, ValueGetterParams } from 'ag-grid-community'
+import type { ColDef, GetRowIdParams, ICellRendererParams, ValueGetterParams } from 'ag-grid-community'
 import ActionsCell from '../components/grid/ActionsCell.vue'
 import type { FormError } from '@nuxt/ui'
 import {
@@ -24,7 +24,7 @@ function validateName(state: { name: string }): FormError[] {
   return errors
 }
 
-function getRowId(params: ICellRendererParams<Author>) {
+function getRowId(params: GetRowIdParams) {
   return String((params.data as Author).id)
 }
 

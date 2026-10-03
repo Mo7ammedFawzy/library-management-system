@@ -238,7 +238,7 @@ watch(formOpen, (open: boolean) => {
       const book = editingItem.value as Book
       form.value = {
         title: book.title,
-        description: book.description,
+        description: book.description ?? '',
         categoryId: book.category.id,
         authorIds: book.authors.map((author: Author) => author.id),
         availableCopies: book.availableCopies

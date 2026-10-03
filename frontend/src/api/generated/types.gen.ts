@@ -15,8 +15,8 @@ export type ApiResponseCategoryResponse = {
 };
 
 export type CategoryResponse = {
-    id?: number;
-    name?: string;
+    id: number;
+    name: string;
 };
 
 export type BookRequest = {
@@ -34,17 +34,17 @@ export type ApiResponseBookResponse = {
 };
 
 export type AuthorResponse = {
-    id?: number;
-    name?: string;
+    id: number;
+    name: string;
 };
 
 export type BookResponse = {
-    id?: number;
-    title?: string;
+    id: number;
+    title: string;
     description?: string;
-    availableCopies?: number;
-    category?: CategoryResponse;
-    authors?: Array<AuthorResponse>;
+    availableCopies: number;
+    category: CategoryResponse;
+    authors: Array<AuthorResponse>;
 };
 
 export type AuthorRequest = {
@@ -64,19 +64,19 @@ export type ApiResponseBorrowResponse = {
 };
 
 export type BorrowResponse = {
-    id?: number;
-    userResponse?: UserResponse;
-    bookResponse?: BookResponse;
-    borrowDate?: string;
-    dueDate?: string;
+    id: number;
+    userResponse: UserResponse;
+    bookResponse: BookResponse;
+    borrowDate: string;
+    dueDate: string;
     returnDate?: string;
 };
 
 export type UserResponse = {
-    id?: number;
-    name?: string;
-    email?: string;
-    role?: string;
+    id: number;
+    name: string;
+    email: string;
+    role: string;
 };
 
 export type RegisterRequest = {
@@ -92,7 +92,7 @@ export type ApiResponseAuthResponse = {
 };
 
 export type AuthResponse = {
-    token?: string;
+    token: string;
 };
 
 export type LoginRequest = {

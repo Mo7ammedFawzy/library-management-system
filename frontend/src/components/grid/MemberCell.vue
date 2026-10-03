@@ -16,10 +16,10 @@ const avatarPalette = [
   'bg-primary-100 text-primary-700 dark:bg-primary-950/60 dark:text-primary-300'
 ]
 
-const avatarClass = computed(() => avatarPalette[(borrowing.value.user.id ?? 0) % avatarPalette.length])
+const avatarClass = computed(() => avatarPalette[borrowing.value.userResponse.id % avatarPalette.length])
 
 const initials = computed(() => {
-  const name = borrowing.value.user.name.trim()
+  const name = borrowing.value.userResponse.name.trim()
   return (
     name
       .split(/\s+/)
@@ -40,10 +40,10 @@ const initials = computed(() => {
     </div>
     <div class="min-w-0">
       <p class="truncate text-sm font-medium text-highlighted">
-        {{ borrowing.user.name }}
+        {{ borrowing.userResponse.name }}
       </p>
       <p class="truncate text-xs text-muted">
-        {{ borrowing.user.email }}
+        {{ borrowing.userResponse.email }}
       </p>
     </div>
   </div>

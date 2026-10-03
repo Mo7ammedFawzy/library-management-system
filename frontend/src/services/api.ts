@@ -1,4 +1,3 @@
-const API_BASE = '/api'
 const TOKEN_KEY = 'athenaeum_token'
 export const MOCK_TOKEN = 'mock-athenaeum-token'
 
@@ -29,16 +28,9 @@ export function isAuthenticated(): boolean {
   return true
 }
 
-interface ApiEnvelope<T> {
-  success: boolean
-  data: T
-  message: string | null
-}
-
 interface ErrorBody {
   message?: string
   error?: string
-  status?: number
 }
 
 export class ApiError extends Error {
@@ -62,9 +54,35 @@ export function isBackendUnavailable(error: unknown): boolean {
   return error instanceof NetworkError || (error instanceof ApiError && error.status >= 500)
 }
 
+/**
+ * Shape of a resolved generated-SDK call: the body is still wrapped in the
+ * backend's `ApiResponse<T>` envelope, and failures come back as `error`.
+ */
+export interface SdkResult<T> {
+  data?: { data?: T }
+  error?: unknown
+  response?: Response
+}
+
+/**
+ * Unwraps a generated SDK call: returns `ApiResponse.data` and re-throws
+ * failures as `ApiError` / `NetworkError` so the rest of the app can keep
+ * using the existing error types.
+ */
+export function unwrap<T>({ data, error, response }: SdkResult<T>): T {
+  if (error !== undefined || !response?.ok) {
+    const status = response?.status ?? 0
+    const body = error as ErrorBody | undefined
+    const message = body?.message || body?.error || `Request failed with status ${status}`
+    throw status === 0 ? new NetworkError() : new ApiError(status, message)
+  }
+
+  return data?.data as T
+}
+
 export async function checkBackendHealth(): Promise<boolean> {
   try {
-    const res = await fetch(`${API_BASE}/health`)
+    const res = await fetch('/api/health')
     return res.ok
   } catch {
     return false
@@ -77,47 +95,6 @@ async function shouldUseFallback(error: unknown): Promise<boolean> {
   }
 
   return error instanceof ApiError && error.status === 404 && !(await checkBackendHealth())
-}
-
-async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    ...(options.headers as Record<string, string>)
-  }
-  const token = getToken()
-  if (token) {
-    headers.Authorization = `Bearer ${token}`
-  }
-
-  let res: Response
-  try {
-    res = await fetch(`${API_BASE}${path}`, { ...options, headers })
-  } catch {
-    throw new NetworkError()
-  }
-
-  let body: unknown = null
-  const text = await res.text()
-  try {
-    body = text ? JSON.parse(text) : null
-  } catch {
-    body = null
-  }
-
-  if (!res.ok) {
-    const err = body as ErrorBody | null
-    const message = err?.message || err?.error || `Request failed with status ${res.status}`
-    throw new ApiError(res.status, message)
-  }
-
-  return (body as ApiEnvelope<T> | null)?.data as T
-}
-
-export const api = {
-  get: <T>(path: string) => request<T>(path),
-  post: <T>(path: string, body: unknown) => request<T>(path, { method: 'POST', body: JSON.stringify(body) }),
-  put: <T>(path: string, body: unknown) => request<T>(path, { method: 'PUT', body: JSON.stringify(body) }),
-  delete: <T>(path: string) => request<T>(path, { method: 'DELETE' })
 }
 
 export function withFallback<TArgs extends unknown[], T>(

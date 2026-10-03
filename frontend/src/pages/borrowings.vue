@@ -68,7 +68,7 @@ const columns: ColDef<Borrowing>[] = [
     flex: 2,
     minWidth: 200,
     valueGetter: (params) =>
-      `${(params.data as Borrowing).book.title} ${(params.data as Borrowing).book.authors.map((author) => author.name).join(', ')}`,
+      `${(params.data as Borrowing).bookResponse.title} ${(params.data as Borrowing).bookResponse.authors.map((author) => author.name).join(', ')}`,
     cellRenderer: BookCell
   },
   {
@@ -76,7 +76,7 @@ const columns: ColDef<Borrowing>[] = [
     flex: 2,
     minWidth: 200,
     valueGetter: (params) =>
-      `${(params.data as Borrowing).user.name} ${(params.data as Borrowing).user.email}`,
+      `${(params.data as Borrowing).userResponse.name} ${(params.data as Borrowing).userResponse.email}`,
     cellRenderer: MemberCell
   },
   {
@@ -569,10 +569,10 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
                   </div>
                   <div class="min-w-0">
                     <p class="truncate text-sm font-semibold text-highlighted">
-                      {{ detail.book.title }}
+                      {{ detail.bookResponse.title }}
                     </p>
                     <p class="truncate text-xs text-muted">
-                      {{ detail.book.authors.map((author) => author.name).join(', ') }}
+                      {{ detail.bookResponse.authors.map((author) => author.name).join(', ') }}
                     </p>
                   </div>
                 </div>
@@ -587,10 +587,10 @@ const detailStatus = computed<BorrowingStatus>(() => (detail.value ? getStatus(d
                 </p>
                 <div class="text-right">
                   <p class="text-sm font-medium text-highlighted">
-                    {{ detail.user.name }}
+                    {{ detail.userResponse.name }}
                   </p>
                   <p class="text-xs text-muted">
-                    {{ detail.user.email }}
+                    {{ detail.userResponse.email }}
                   </p>
                 </div>
               </div>

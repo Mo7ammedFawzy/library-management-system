@@ -1,31 +1,28 @@
-import { api, withFallback } from './api'
+import { unwrap, withFallback } from './api'
+import { sdk, type CategoryRequest, type CategoryResponse } from './api-client'
 import * as mock from './mock'
 
-export interface Category {
-  id: number
-  name: string
-}
-
-export interface CategoryInput {
-  name: string
-}
+export type Category = CategoryResponse
+export type CategoryInput = CategoryRequest
 
 export const fetchCategories = withFallback(
-  () => api.get<Category[]>('/categories'),
+  async () => unwrap(await sdk.getCategories()),
   () => mock.fetchCategories()
 )
 
 export const createCategory = withFallback(
-  (input: CategoryInput) => api.post<Category>('/categories', input),
+  async (input: CategoryInput) => unwrap(await sdk.createCategory({ body: input })),
   (input: CategoryInput) => mock.createCategory(input)
 )
 
 export const updateCategory = withFallback(
-  (id: number, input: CategoryInput) => api.put<Category>(`/categories/${id}`, input),
+  async (id: number, input: CategoryInput) => unwrap(await sdk.updateCategory({ path: { id }, body: input })),
   (id: number, input: CategoryInput) => mock.updateCategory(id, input)
 )
 
 export const deleteCategory = withFallback(
-  (id: number) => api.delete<void>(`/categories/${id}`),
+  async (id: number) => {
+    await unwrap(await sdk.deleteCategory({ path: { id } }))
+  },
   (id: number) => { mock.deleteCategory(id); return Promise.resolve() }
 )
