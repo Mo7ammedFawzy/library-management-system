@@ -552,21 +552,21 @@
     "semantic_hash": ""
   },
   "frontend/src/route-map.d.ts": {
-    "mtime": 1791017839.9277756,
-    "seen": 1791017903.5443506,
+    "mtime": 1791018720.9131742,
+    "seen": 1791018787.211154,
     "ast_hash": "8bfd70c12698577beb926c1648dd2cb0",
     "semantic_hash": ""
   },
   "frontend/src/services/api.ts": {
-    "mtime": 1791017843.751621,
-    "seen": 1791017903.5443506,
-    "ast_hash": "3aa16a042c006c395893fbd683531bcf",
+    "mtime": 1791018560.739204,
+    "seen": 1791018787.211154,
+    "ast_hash": "7fbb2a490acdbf735638bfc23c51280f",
     "semantic_hash": ""
   },
   "frontend/src/services/auth.ts": {
-    "mtime": 1791017148.1208384,
-    "seen": 1791017903.5443506,
-    "ast_hash": "277defc4e963464814a71e92d973f5de",
+    "mtime": 1791018580.46549,
+    "seen": 1791018787.211154,
+    "ast_hash": "8d1f75741170d7c1cc23da7844acf873",
     "semantic_hash": ""
   },
   "frontend/src/services/authors.ts": {
@@ -1002,9 +1002,9 @@
     "semantic_hash": ""
   },
   "frontend/tests/api.test.ts": {
-    "mtime": 1790198485.0790699,
-    "seen": 1790198555.3207269,
-    "ast_hash": "30cda2f813727607b18506d73ce3e4e5",
+    "mtime": 1791018654.7027047,
+    "seen": 1791018787.211154,
+    "ast_hash": "a2e0d1dbcf243e8c341029a299ecc058",
     "semantic_hash": ""
   },
   "frontend/src/components/PageBreadcrumb.vue": {
@@ -1134,9 +1134,9 @@
     "semantic_hash": ""
   },
   "frontend/src/services/api-client.ts": {
-    "mtime": 1791017086.328667,
-    "seen": 1791017903.5443506,
-    "ast_hash": "715a9d53668321dcd1fa31956f6da2e9",
+    "mtime": 1791018570.0009277,
+    "seen": 1791018787.211154,
+    "ast_hash": "e86fc47eec555b0d719d424c86d93418",
     "semantic_hash": ""
   },
   "dashboard-backend-requirements.html": {
