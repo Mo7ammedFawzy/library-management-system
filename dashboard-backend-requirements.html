@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Backend Requirements</title>
+<style>
+  :root {
+    --bg: #f5f7fb;
+    --panel: #ffffff;
+    --border: #dfe6ee;
+    --text: #1c3552;
+    --muted: #64778f;
+    --accent: #2161bf;
+    --accent-soft: #edf4ff;
+    --green: #20876e;
+    --green-soft: #eaf7f2;
+    --amber: #d98b00;
+    --amber-soft: #fff6e5;
+    --red: #d84332;
+    --red-soft: #fff0ee;
+    --code-bg: #0f2740;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    padding: 2rem 1rem 4rem;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  header {
+    background: linear-gradient(135deg, #172f49, #244a6c);
+    color: #fff;
+    border-radius: 1rem;
+    padding: 2rem 2.25rem;
+    margin-bottom: 1.5rem;
+  }
+  header h1 { font-size: 1.7rem; margin-bottom: .35rem; }
+  header p { color: #b9cce0; font-size: .95rem; }
+  h2 { font-size: 1.15rem; margin: 1.75rem 0 .75rem; display: flex; align-items: center; gap: .5rem; }
+  h2 .num {
+    background: var(--accent); color: #fff; border-radius: .4rem;
+    font-size: .8rem; width: 1.5rem; height: 1.5rem;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: .85rem; padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; margin: .5rem 0; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: #f6f8fc; color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; }
+  tr:last-child td { border-bottom: none; }
+  code { background: var(--accent-soft); color: var(--accent); padding: .1rem .35rem; border-radius: .3rem; font-size: .83rem; }
+  pre { background: var(--code-bg); color: #dbe7f5; padding: 1rem 1.2rem; border-radius: .6rem; overflow-x: auto; font-size: .82rem; margin: .6rem 0; }
+  .pill { display: inline-block; padding: .1rem .55rem; border-radius: 99px; font-size: .72rem; font-weight: 600; }
+  .pill.fake { background: var(--red-soft); color: var(--red); }
+  .pill.real { background: var(--green-soft); color: var(--green); }
+  .pill.warn { background: var(--amber-soft); color: var(--amber); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+  .card {
+    border: 1px solid var(--border); border-radius: .7rem; padding: 1rem 1.2rem; background: #fbfcfe;
+  }
+  .card h3 { font-size: .95rem; margin-bottom: .3rem; }
+  .card p { color: var(--muted); font-size: .85rem; }
+  .card.rec { border-color: var(--accent); background: var(--accent-soft); }
+  ol.checklist { margin-left: 1.2rem; }
+  ol.checklist li { margin-bottom: .45rem; font-size: .9rem; }
+  .alert { background: var(--amber-soft); border: 1px solid #f0dcb0; border-radius: .7rem; padding: .9rem 1.2rem; font-size: .88rem; color: #7a5a00; }
+  .endpoint { font-family: Consolas, monospace; font-size: .95rem; background: var(--code-bg); color: #7fd0ff; padding: .5rem .9rem; border-radius: .5rem; display: inline-block; margin-bottom: .5rem; }
+  .endpoint b { color: #8affc1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>📊 Dashboard — Backend Requirements</h1>
+  <p>Library Management System · Contract for the 3 endpoints the dashboard needs · No frontend changes yet</p>
+</header>
+
+<h2><span class="num">1</span> What's currently fake in the frontend</h2>
+<div class="panel">
+  <table>
+    <tr><th>Part of dashboard</th><th>Status</th><th>Problem</th></tr>
+    <tr><td>Greeting "Mohammad"</td><td><span class="pill fake">FAKE</span></td><td>Hardcoded name in the template</td></tr>
+    <tr><td>"Added" activity rows</td><td><span class="pill fake">FAKE</span></td><td>Last 2 books dated today, actor "Librarian" — invented</td></tr>
+    <tr><td>"Removed" activity row</td><td><span class="pill fake">FAKE</span></td><td>Literal fake title "Outdated Encyclopedia Vol. 4"</td></tr>
+    <tr><td>Stats, weekly chart, category donut, overdue list</td><td><span class="pill real">REAL</span></td><td>Already computed from live API data</td></tr>
+  </table>
+</div>
+
+<h2><span class="num">2</span> Decision: who computes the aggregations?</h2>
+<div class="grid2">
+  <div class="card">
+    <h3>Option A — frontend computes</h3>
+    <p>Backend only adds one activity endpoint. Frontend keeps its computed() math.</p>
+  </div>
+  <div class="card rec">
+    <h3>Option B — backend computes ✅ recommended</h3>
+    <p>Dedicated dashboard endpoints return the numbers. Less data over the wire, real persistence for activity.</p>
+  </div>
+</div>
+
+<h2><span class="num">3</span> Endpoint 1 — Dashboard summary</h2>
+<div class="panel">
+  <span class="endpoint"><b>GET</b> /api/dashboard/summary?days=7</span>
+  <p style="font-size:.85rem;color:var(--muted);margin:.4rem 0 .6rem">No request body. Query param <code>days</code> optional, default 7.</p>
+  <table>
+    <tr><th>Field</th><th>Type</th><th>Meaning</th></tr>
+    <tr><td><code>totalBooks</code></td><td>number</td><td>Count of Book titles</td></tr>
+    <tr><td><code>availableCopies</code></td><td>number</td><td>Sum of availableCopies across all books</td></tr>
+    <tr><td><code>activeBorrowings</code></td><td>number</td><td>BorrowRecords with returnDate = null</td></tr>
+    <tr><td><code>overdueBorrowings</code></td><td>number</td><td>returnDate = null AND dueDate &lt; today</td></tr>
+    <tr><td><code>availabilityRate</code></td><td>number</td><td>0–100, rounded (see warning below)</td></tr>
+    <tr><td><code>totalAuthors</code></td><td>number</td><td>Count of Authors</td></tr>
+    <tr><td><code>weeklyActivity[]</code></td><td>array</td><td><code>{ date, label?, borrowedCount }</code> — exactly <code>days</code> entries, zero-filled, oldest first</td></tr>
+    <tr><td><code>categoryBreakdown[]</code></td><td>array</td><td>Max 6, sorted desc: <code>{ name, count, percentage }</code> — percentage of totalBooks</td></tr>
+  </table>
+</div>
+
+<h2><span class="num">4</span> Endpoint 2 — Recent activity feed</h2>
+<div class="panel">
+  <span class="endpoint"><b>GET</b> /api/dashboard/activity?limit=6</span>
+  <p style="font-size:.85rem;color:var(--muted);margin:.4rem 0 .6rem">No request body. Sorted by occurredAt descending, limit applied after sorting.</p>
+  <table>
+    <tr><th>Field</th><th>Type</th><th>Meaning</th></tr>
+    <tr><td><code>id</code></td><td>number</td><td>Unique activity id</td></tr>
+    <tr><td><code>kind</code></td><td>enum</td><td><code>BORROWED</code>, <code>RETURNED</code>, <code>BOOK_ADDED</code>, <code>BOOK_DELETED</code></td></tr>
+    <tr><td><code>bookTitle</code></td><td>string</td><td>Affected book's title</td></tr>
+    <tr><td><code>subtitle</code></td><td>string</td><td>Borrower name (loan events) or Category name (catalog events)</td></tr>
+    <tr><td><code>actorName</code></td><td>string?</td><td>User who did it, nullable</td></tr>
+    <tr><td><code>actorRole</code></td><td>string?</td><td>e.g. ADMIN / USER</td></tr>
+    <tr><td><code>occurredAt</code></td><td>datetime</td><td>Real persisted event time</td></tr>
+  </table>
+  <div class="alert" style="margin-top:.75rem">⚠️ <b>BOOK_DELETED problem:</b> a hard delete leaves no record. Either soft-delete books, or drop BOOK_DELETED from the enum (frontend then shows 3 kinds). Decide deliberately.</div>
+</div>
+
+<h2><span class="num">5</span> Endpoint 3 — Current user</h2>
+<div class="panel">
+  <span class="endpoint"><b>GET</b> /api/auth/me</span>
+  <table>
+    <tr><th>Field</th><th>Type</th></tr>
+    <tr><td><code>id</code></td><td>number</td></tr>
+    <tr><td><code>name</code></td><td>string</td></tr>
+    <tr><td><code>email</code></td><td>string</td></tr>
+    <tr><td><code>role</code></td><td>ADMIN | USER</td></tr>
+  </table>
+  <p style="font-size:.85rem;color:var(--muted);margin-top:.5rem">Alternative: embed <code>name</code> and <code>role</code> as JWT claims and skip this endpoint.</p>
+</div>
+
+<h2><span class="num">6</span> Rules &amp; envelope</h2>
+<div class="panel">
+  <table>
+    <tr><td>Response envelope</td><td>Match existing <code>ApiResponse { success, data, message }</code></td></tr>
+    <tr><td>Errors</td><td><code>{ status, message, timestamp }</code> via GlobalExceptionHandler</td></tr>
+    <tr><td>Auth</td><td>All endpoints JWT-protected like the rest of <code>/api/**</code></td></tr>
+    <tr><td>Overdue rule</td><td><code>returnDate == null AND dueDate &lt; today</code> — not ≠, not &lt;=</td></tr>
+    <tr><td>weeklyActivity</td><td>Always exactly N days, zero-filled, oldest first</td></tr>
+  </table>
+</div>
+
+<h2><span class="num">7</span> ⚠️ The availabilityRate formula is broken</h2>
+<div class="panel">
+  <p style="margin-bottom:.6rem">Current frontend math: <code>availableCopies / (availableCopies + activeBorrowings)</code> — wrong, because activeBorrowings counts records, not copies. Pick one:</p>
+  <table>
+    <tr><th>Option</th><th>Meaning</th><th>Cost</th></tr>
+    <tr><td>Drop the rate</td><td>Show plain "Available copies" card</td><td>Free</td></tr>
+    <tr><td>Add <code>Book.totalCopies</code></td><td>rate = available / total</td><td>Schema change + migration</td></tr>
+    <tr><td>Count copies on loan</td><td>Sum of open BorrowRecords</td><td>Hides a modelling assumption — don't do silently</td></tr>
+  </table>
+</div>
+
+<h2><span class="num">8</span> Review checklist (how your code will be judged)</h2>
+<div class="panel">
+  <ol class="checklist">
+    <li>summary endpoint exists, all fields, wrapped in ApiResponse</li>
+    <li>weeklyActivity has exactly <code>days</code> zero-filled entries</li>
+    <li>categoryBreakdown: denominator is totalBooks, max 6, sorted desc</li>
+    <li>overdue = <code>returnDate == null AND dueDate &lt; today</code></li>
+    <li>activity feed: no hardcoded rows, no invented titles</li>
+    <li>occurredAt is a persisted timestamp, not "now" at read time</li>
+    <li>BOOK_DELETED resolved deliberately (soft delete or enum reduced)</li>
+    <li>availabilityRate follows your decision, not the broken formula</li>
+    <li>greeting/actor names come from the authenticated user</li>
+    <li>all endpoints JWT-protected, errors via GlobalExceptionHandler</li>
+  </ol>
+</div>
+
+</div>
+</body>
+</html>

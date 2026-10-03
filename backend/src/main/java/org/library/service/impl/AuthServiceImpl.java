@@ -11,6 +11,7 @@ import org.springframework.security.authentication.*;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ public class AuthServiceImpl implements AuthService
 	private final JwtUtil jwtUtil;
 	private final UserRepository userRepository;
 	private final AuthenticationManager authenticationManager;
+	private final SecurityContextUserContext securityContextUserContext;
 
 	@Override
 	public AuthResponse register(RegisterRequest request)
@@ -38,5 +40,14 @@ public class AuthServiceImpl implements AuthService
 		User user = userRepository.findByEmail(request.email()).orElseThrow(() -> new UsernameNotFoundException("Email is not found"));
 		String token = jwtUtil.generateToken(user);
 		return new AuthResponse(token);
+	}
+
+	@Override
+	public CurrentUserResponse getCurrentUser()
+	{
+		User user = securityContextUserContext.getCurrentUser();
+		if (ObjectUtils.isEmpty(user))
+			return null;
+		return new CurrentUserResponse(user.getId(), user.getName(), user.getEmail(), user.getRole());
 	}
 }

@@ -25,6 +25,16 @@ export const login = withFallback(
   }
 )
 
+export const getCurrentUser = withFallback(
+  async () => {
+    const res = await api.get<AuthResponse>('/auth/me')
+    setToken(res.token)
+  },
+  async () => {
+    setToken(MOCK_TOKEN)
+  }
+)
+
 export const register = withFallback(
   async (input: RegisterInput) => {
     const res = await api.post<AuthResponse>('/auth/register', input)

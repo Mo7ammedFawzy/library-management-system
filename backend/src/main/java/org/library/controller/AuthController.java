@@ -27,4 +27,11 @@ public class AuthController
 		AuthResponse response = authService.login(request);
 		return ApiResponse.okResponse(response);
 	}
+
+	@GetMapping("/me")
+	public ResponseEntity<ApiResponse<CurrentUserResponse>> getCurrentUser(){
+		CurrentUserResponse response =  authService.getCurrentUser();
+		return ApiResponse.okResponse(response);
+	}
 }
+

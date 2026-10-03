@@ -14,5 +14,8 @@ export default ts.config(
     rules: {
       'vue/multi-word-component-names': 'off'
     }
+  },
+  {
+    ignores: ['src/api/generated/**']
   }
 )
