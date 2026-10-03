@@ -68,6 +68,10 @@ export interface SdkResult<T> {
  * Unwraps a generated SDK call: returns `ApiResponse.data` and re-throws
  * failures as `ApiError` / `NetworkError` so the rest of the app can keep
  * using the existing error types.
+ *
+ * A `null` payload is legitimate — the delete endpoints answer with
+ * `ApiResponse.okResponse(null, "… deleted")`. A *missing* payload is not, so
+ * that throws instead of resolving to `undefined` behind a `T` return type.
  */
 export function unwrap<T>({ data, error, response }: SdkResult<T>): T {
   if (error !== undefined || !response?.ok) {
@@ -77,7 +81,11 @@ export function unwrap<T>({ data, error, response }: SdkResult<T>): T {
     throw status === 0 ? new NetworkError() : new ApiError(status, message)
   }
 
-  return data?.data as T
+  if (data?.data === undefined) {
+    throw new ApiError(response.status, 'The server response did not contain any data.')
+  }
+
+  return data.data
 }
 
 export async function checkBackendHealth(): Promise<boolean> {

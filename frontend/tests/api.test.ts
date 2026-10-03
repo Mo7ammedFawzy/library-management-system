@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { ApiError, withFallback } from '../src/services/api.ts'
+import { ApiError, unwrap, withFallback } from '../src/services/api.ts'
 
 test('uses mock data when both the API route and health endpoint return 404', async (t) => {
   const originalFetch = globalThis.fetch
@@ -53,4 +53,33 @@ test('does not hide a resource 404 when the backend health endpoint is available
   )
 
   assert.equal(fallbackCalls, 0)
+})
+
+test('unwrap returns the envelope payload', () => {
+  const result = unwrap<{ id: number }>({
+    data: { data: { id: 7 } },
+    response: new Response(null, { status: 200 })
+  })
+
+  assert.deepEqual(result, { id: 7 })
+})
+
+test('unwrap passes through a null payload, as the delete endpoints return', () => {
+  const result = unwrap<string | null>({
+    data: { data: null },
+    response: new Response(null, { status: 200 })
+  })
+
+  assert.equal(result, null)
+})
+
+test('unwrap throws instead of resolving to undefined when the payload is missing', () => {
+  assert.throws(
+    () => unwrap({ data: {}, response: new Response(null, { status: 200 }) }),
+    { name: 'ApiError', status: 200 }
+  )
+})
+
+test('unwrap maps a transport failure to NetworkError so withFallback can degrade', () => {
+  assert.throws(() => unwrap({ error: new TypeError('Failed to fetch') }), { name: 'NetworkError' })
 })
