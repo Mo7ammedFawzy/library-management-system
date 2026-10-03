@@ -145,7 +145,6 @@ export const createAuthor = <ThrowOnError extends boolean = false>(options: Opti
 });
 
 export const register = <ThrowOnError extends boolean = false>(options: Options<RegisterData, ThrowOnError>): RequestResult<RegisterResponses, unknown, ThrowOnError> => (options.client ?? client).post<RegisterResponses, unknown, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
     url: '/api/auth/register',
     ...options,
     headers: {
@@ -155,7 +154,6 @@ export const register = <ThrowOnError extends boolean = false>(options: Options<
 });
 
 export const login = <ThrowOnError extends boolean = false>(options: Options<LoginData, ThrowOnError>): RequestResult<LoginResponses, unknown, ThrowOnError> => (options.client ?? client).post<LoginResponses, unknown, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
     url: '/api/auth/login',
     ...options,
     headers: {
@@ -170,11 +168,7 @@ export const getAllUsers = <ThrowOnError extends boolean = false>(options?: Opti
     ...options
 });
 
-export const health = <ThrowOnError extends boolean = false>(options?: Options<HealthData, ThrowOnError>): RequestResult<HealthResponses, unknown, ThrowOnError> => (options?.client ?? client).get<HealthResponses, unknown, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/api/health',
-    ...options
-});
+export const health = <ThrowOnError extends boolean = false>(options?: Options<HealthData, ThrowOnError>): RequestResult<HealthResponses, unknown, ThrowOnError> => (options?.client ?? client).get<HealthResponses, unknown, ThrowOnError>({ url: '/api/health', ...options });
 
 export const getAllBorrows = <ThrowOnError extends boolean = false>(options?: Options<GetAllBorrowsData, ThrowOnError>): RequestResult<GetAllBorrowsResponses, unknown, ThrowOnError> => (options?.client ?? client).get<GetAllBorrowsResponses, unknown, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 import { useRouter } from 'vue-router'
 import AuthLogo from '../components/auth/AuthLogo.vue'
 import { login } from '../services/auth'
@@ -7,12 +7,12 @@ import { ApiError } from '../services/api'
 
 const router = useRouter()
 
-const email = ref('')
-const password = ref('')
-const rememberMe = ref(false)
-const showPassword = ref(false)
-const isLoading = ref(false)
-const error = ref('')
+const email = shallowRef('')
+const password = shallowRef('')
+const rememberMe = shallowRef(false)
+const showPassword = shallowRef(false)
+const isLoading = shallowRef(false)
+const error = shallowRef('')
 
 const TEST_EMAIL = 'test@example.com'
 const TEST_PASSWORD = 'test123456'

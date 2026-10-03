@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
 
 const displayName = useLocalStorage('settings-display-name', 'Mohammad Fawzy')
@@ -8,9 +8,9 @@ const loanDays = useLocalStorage('settings-loan-days', 14)
 const emailReminders = useLocalStorage('settings-email-reminders', true)
 const overdueDigest = useLocalStorage('settings-overdue-digest', false)
 
-const isSaving = ref(false)
-const savedAt = ref('')
-const saveError = ref('')
+const isSaving = shallowRef(false)
+const savedAt = shallowRef('')
+const saveError = shallowRef('')
 
 async function handleSave() {
   isSaving.value = true
@@ -249,4 +249,3 @@ function handleReset() {
     </form>
   </div>
 </template>
-

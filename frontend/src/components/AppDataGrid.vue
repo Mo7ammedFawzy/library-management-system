@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { computed, watch } from 'vue'
 import { AgGridVue } from 'ag-grid-vue3'
 import { themeQuartz, type ColDef, type GetRowIdParams, type GridApi, type GridReadyEvent } from 'ag-grid-community'
 import '../lib/agGrid'
@@ -30,48 +30,48 @@ const emit = defineEmits<{
 
 const gridApi = defineModel<GridApi | null>('api', { default: null })
 
-const lightTheme = themeQuartz.withParams({
-  fontFamily: "'Geist Variable', ui-sans-serif, system-ui, sans-serif",
-  fontSize: 14,
-  headerFontFamily: "'Geist Variable', ui-sans-serif, system-ui, sans-serif",
-  headerFontSize: 11,
-  headerFontWeight: 650,
-  headerTextColor: '#64758a',
-  headerBackgroundColor: '#f7f9fb',
-  backgroundColor: '#ffffff',
-  foregroundColor: '#293d52',
-  textColor: '#293d52',
-  subtleTextColor: '#7c8da2',
-  borderColor: '#e2e8f0',
-  borderWidth: 1,
-  wrapperBorder: false,
-  wrapperBorderRadius: 0,
-  headerRowBorder: { color: '#e2e8f0', width: 1, style: 'solid' },
-  rowBorder: { color: '#edf1f5', width: 1, style: 'solid' },
-  columnBorder: false,
-  oddRowBackgroundColor: '#fbfcfe',
-  rowHoverColor: '#f1f6fb',
-  selectedRowBackgroundColor: '#e9f1f9',
-  rangeSelectionBackgroundColor: '#dce9f5',
-  rangeSelectionBorderColor: '#3973a3',
-  accentColor: '#2b5b86',
-  focusShadow: { color: '#7398bd' },
-  inputBackgroundColor: '#f8fafc',
-  inputTextColor: '#293d52',
-  inputBorder: { color: '#d8e1eb', width: 1, style: 'solid' },
-  inputFocusBorder: { color: '#7398bd', width: 1, style: 'solid' },
-  inputFocusShadow: { color: '#dbe9f7' },
-  checkboxCheckedBackgroundColor: '#2b5b86',
-  checkboxCheckedBorderColor: '#2b5b86',
-  checkboxUncheckedBorderColor: '#c1cddb',
-  rowHeight: props.rowHeight,
-  headerHeight: props.headerHeight,
-  paginationPanelHeight: 46,
-  spacing: 8,
-  iconSize: 16
-})
-
-const theme = lightTheme
+const theme = computed(() =>
+  themeQuartz.withParams({
+    fontFamily: "'Geist Variable', ui-sans-serif, system-ui, sans-serif",
+    fontSize: 14,
+    headerFontFamily: "'Geist Variable', ui-sans-serif, system-ui, sans-serif",
+    headerFontSize: 11,
+    headerFontWeight: 650,
+    headerTextColor: '#64758a',
+    headerBackgroundColor: '#f7f9fb',
+    backgroundColor: '#ffffff',
+    foregroundColor: '#293d52',
+    textColor: '#293d52',
+    subtleTextColor: '#7c8da2',
+    borderColor: '#e2e8f0',
+    borderWidth: 1,
+    wrapperBorder: false,
+    wrapperBorderRadius: 0,
+    headerRowBorder: { color: '#e2e8f0', width: 1, style: 'solid' },
+    rowBorder: { color: '#edf1f5', width: 1, style: 'solid' },
+    columnBorder: false,
+    oddRowBackgroundColor: '#fbfcfe',
+    rowHoverColor: '#f1f6fb',
+    selectedRowBackgroundColor: '#e9f1f9',
+    rangeSelectionBackgroundColor: '#dce9f5',
+    rangeSelectionBorderColor: '#3973a3',
+    accentColor: '#2b5b86',
+    focusShadow: { color: '#7398bd' },
+    inputBackgroundColor: '#f8fafc',
+    inputTextColor: '#293d52',
+    inputBorder: { color: '#d8e1eb', width: 1, style: 'solid' },
+    inputFocusBorder: { color: '#7398bd', width: 1, style: 'solid' },
+    inputFocusShadow: { color: '#dbe9f7' },
+    checkboxCheckedBackgroundColor: '#2b5b86',
+    checkboxCheckedBorderColor: '#2b5b86',
+    checkboxUncheckedBorderColor: '#c1cddb',
+    rowHeight: props.rowHeight,
+    headerHeight: props.headerHeight,
+    paginationPanelHeight: 46,
+    spacing: 8,
+    iconSize: 16
+  })
+)
 
 const defaultColDef: ColDef = {
   sortable: true,

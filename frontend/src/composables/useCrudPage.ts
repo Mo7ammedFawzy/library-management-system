@@ -1,42 +1,55 @@
-import { computed, onMounted, ref, type Ref } from 'vue'
-import type { ColDef, GetRowIdParams, GridApi } from 'ag-grid-community'
-import type { FormError } from '@nuxt/ui'
+import { computed, onMounted, readonly, ref, shallowRef, type Ref } from 'vue'
+import type { GridApi } from 'ag-grid-community'
 import { push } from 'notivue'
 import { ApiError } from '../services/api'
 
-export interface CrudPageConfig<T, TInput> {
+export interface CrudPageConfig<T, TState, TInput> {
   fetchFn: () => Promise<T[]>
   createFn: (input: TInput) => Promise<T>
   updateFn: (id: number, input: TInput) => Promise<T>
   deleteFn: (id: number) => Promise<void>
-  getRowId: (params: GetRowIdParams) => string
-  columns: ColDef<T>[]
-  validate: (state: any) => FormError[]
-  toInput: (state: any, editingItem: T | null) => TInput
+  getId: (item: T) => number
+  /** Singular entity name used in notifications and error copy. */
   entityName: string
+  /** Form state used when adding a new row. */
+  emptyState: () => TState
+  /** Form state seeded from an existing row when editing. */
+  toState: (item: T) => TState
+  /** Request payload derived from the current form state. */
+  toInput: (state: TState) => TInput
 }
 
-export function useCrudPage<T, TInput>(config: CrudPageConfig<T, TInput>) {
-  const rows: Ref<T[]> = ref([])
-  const gridApi = ref<GridApi<T> | null>(null)
-  const search = ref('')
-  const loadError = ref('')
+/**
+ * Owns the CRUD lifecycle for a grid page, including the form state.
+ *
+ * The form state lives here as the single source of truth: `openAdd`/`openEdit`
+ * replace it through `emptyState`/`toState`, and the form components mutate it in
+ * place. That removes the mirrored copy plus `watch(formOpen)` sync that a
+ * caller-owned `ref` would require.
+ */
+export function useCrudPage<T, TState, TInput>(config: CrudPageConfig<T, TState, TInput>) {
+  const rows = shallowRef<T[]>([])
+  const gridApi = shallowRef<GridApi<T> | null>(null)
+  const search = shallowRef('')
+  const loadError = shallowRef('')
 
-  const formOpen = ref(false)
-  const editingItem: Ref<T | null> = ref(null)
-  const saving = ref(false)
-  const formError = ref('')
-  const formState = ref<any>({})
-  const entityForm = ref<{ submit: () => Promise<void> } | null>(null)
+  const formOpen = shallowRef(false)
+  const editingItem = shallowRef<T | null>(null)
+  const saving = shallowRef(false)
+  const formError = shallowRef('')
 
-  const deleteTarget: Ref<T | null> = ref(null)
-  const deleting = ref(false)
-  const deleteError = ref('')
+  const deleteTarget = shallowRef<T | null>(null)
+  const deleting = shallowRef(false)
+  const deleteError = shallowRef('')
+
+  // Deep `ref` (not shallowRef): form components mutate nested fields in place,
+  // e.g. `form.title = ...`, while openAdd/openEdit replace the whole object.
+  const state = ref(config.emptyState()) as Ref<TState>
 
   const deleteModalOpen = computed({
     get: () => deleteTarget.value !== null,
-    set: (val) => {
-      if (!val) deleteTarget.value = null
+    set: (value: boolean) => {
+      if (!value) deleteTarget.value = null
     }
   })
 
@@ -53,29 +66,25 @@ export function useCrudPage<T, TInput>(config: CrudPageConfig<T, TInput>) {
 
   function openAdd() {
     editingItem.value = null
-    formState.value = {}
+    state.value = config.emptyState()
     formError.value = ''
     formOpen.value = true
   }
 
   function openEdit(item: T) {
     editingItem.value = item
+    state.value = config.toState(item)
     formError.value = ''
     formOpen.value = true
-  }
-
-  function setFormState(state: any) {
-    formState.value = state
   }
 
   async function submitForm() {
     saving.value = true
     formError.value = ''
     try {
-      const input = config.toInput(formState.value, editingItem.value)
+      const input = config.toInput(state.value)
       if (editingItem.value) {
-        const id = (editingItem.value as any).id
-        await config.updateFn(id, input)
+        await config.updateFn(config.getId(editingItem.value), input)
         push.success(`${config.entityName} updated successfully`)
       } else {
         await config.createFn(input)
@@ -96,12 +105,12 @@ export function useCrudPage<T, TInput>(config: CrudPageConfig<T, TInput>) {
   }
 
   async function confirmDelete() {
-    if (!deleteTarget.value) return
+    const target = deleteTarget.value
+    if (!target) return
     deleting.value = true
     deleteError.value = ''
     try {
-      const id = (deleteTarget.value as any).id
-      await config.deleteFn(id)
+      await config.deleteFn(config.getId(target))
       push.success(`${config.entityName} deleted successfully`)
       await load()
       deleteTarget.value = null
@@ -113,27 +122,28 @@ export function useCrudPage<T, TInput>(config: CrudPageConfig<T, TInput>) {
   }
 
   return {
-    rows,
+    // Writable: bound to the grid (`v-model:api`), the search input, and the form.
     gridApi,
     search,
-    loadError,
+    state,
     formOpen,
-    editingItem,
-    saving,
-    formError,
-    formState,
-    entityForm,
-    deleteTarget,
-    deleting,
-    deleteError,
     deleteModalOpen,
+    // Read-only view state — updates only through the actions below.
+    // `rows` is a shallowRef replaced wholesale on load, so it is handed out
+    // directly instead of a deep readonly proxy over the whole collection.
+    rows,
+    loadError: readonly(loadError),
+    editingItem: readonly(editingItem),
+    saving: readonly(saving),
+    formError: readonly(formError),
+    deleteTarget: readonly(deleteTarget),
+    deleting: readonly(deleting),
+    deleteError: readonly(deleteError),
     load,
     openAdd,
     openEdit,
-    setFormState,
     submitForm,
     openDelete,
-    confirmDelete,
-    columns: config.columns
+    confirmDelete
   }
 }

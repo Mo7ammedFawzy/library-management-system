@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, shallowRef } from 'vue'
 import { push } from 'notivue'
 
-const currentPassword = ref('')
-const newPassword = ref('')
-const confirmPassword = ref('')
-const showCurrent = ref(false)
-const showNew = ref(false)
-const showConfirm = ref(false)
-const isLoading = ref(false)
-const error = ref('')
-const success = ref('')
-const currentFieldError = ref('')
-const newFieldError = ref('')
-const confirmFieldError = ref('')
+const currentPassword = shallowRef('')
+const newPassword = shallowRef('')
+const confirmPassword = shallowRef('')
+const showCurrent = shallowRef(false)
+const showNew = shallowRef(false)
+const showConfirm = shallowRef(false)
+const isLoading = shallowRef(false)
+const error = shallowRef('')
+const success = shallowRef('')
+const currentFieldError = shallowRef('')
+const newFieldError = shallowRef('')
+const confirmFieldError = shallowRef('')
 
 const hasMinLength = computed(() => newPassword.value.length >= 8)
 const hasUppercase = computed(() => /[A-Z]/.test(newPassword.value))

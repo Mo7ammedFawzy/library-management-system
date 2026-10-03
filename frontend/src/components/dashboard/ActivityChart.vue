@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 import * as echarts from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
@@ -13,7 +13,7 @@ const props = defineProps<{
   counts: number[]
 }>()
 
-const el = ref<HTMLDivElement | null>(null)
+const el = useTemplateRef<HTMLDivElement>('el')
 let chart: ECharts | null = null
 let observer: ResizeObserver | null = null
 
@@ -88,7 +88,7 @@ onMounted(() => {
   observer.observe(el.value)
 })
 
-watch(() => [props.labels, props.counts], render, { deep: true })
+watch([() => props.labels, () => props.counts], render)
 
 onBeforeUnmount(() => {
   observer?.disconnect()

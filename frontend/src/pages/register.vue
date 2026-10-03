@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, shallowRef } from 'vue'
 import { useRouter } from 'vue-router'
 import AuthLogo from '../components/auth/AuthLogo.vue'
 import { register } from '../services/auth'
@@ -7,15 +7,15 @@ import { ApiError } from '../services/api'
 
 const router = useRouter()
 
-const fullName = ref('')
-const email = ref('')
-const password = ref('')
-const confirmPassword = ref('')
-const agreeTerms = ref(false)
-const showPassword = ref(false)
-const showConfirmPassword = ref(false)
-const isLoading = ref(false)
-const error = ref('')
+const fullName = shallowRef('')
+const email = shallowRef('')
+const password = shallowRef('')
+const confirmPassword = shallowRef('')
+const agreeTerms = shallowRef(false)
+const showPassword = shallowRef(false)
+const showConfirmPassword = shallowRef(false)
+const isLoading = shallowRef(false)
+const error = shallowRef('')
 
 // Password requirement checks
 const hasMinLength = computed(() => password.value.length >= 8)
