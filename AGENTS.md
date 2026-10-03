@@ -30,6 +30,7 @@ Run commands from `backend/`:
 - Database schema is managed with Hibernate `ddl-auto=update`; there are no migrations.
 - All routes except `/api/auth/**` and `/error` require JWT authentication.
 - Role-based authorization is not currently implemented.
+- The OpenAPI spec is served by springdoc at `/v3/api-docs` (Swagger UI at `/swagger-ui.html`). `OpenApiConfig` declares a global `bearerAuth` requirement, so only genuinely public endpoints (`/api/auth/**`, `/api/health`) carry `@SecurityRequirements` to opt out — otherwise the generated frontend client attaches a bearer token to them.
 - Controllers inject service interfaces follow the existing pattern.
 - `CategoryServiceImp` is the existing category service implementation name; preserve it.
 - Responses use `payload.ApiResponse`.
@@ -37,12 +38,28 @@ Run commands from `backend/`:
 - Lombok is used throughout.
 - Follow existing entity, DTO, service, repository, and controller patterns.
 
+## API Contract (OpenAPI)
+
+This project is **OpenAPI-first**: the Spring backend is the single source of truth for every request/response shape, and the frontend DTO types are **generated**, never written by hand.
+
+- The backend (`backend/`) owns the contract. DTOs live in `backend/src/main/java/org/library/dto/` and are exposed through springdoc at `/v3/api-docs`.
+- The frontend generates its types and SDK from that spec with `@hey-api/openapi-ts`: `pnpm generate-api` from `frontend/` writes `frontend/src/api/generated/` (`types.gen.ts`, `sdk.gen.ts`, `client.gen.ts`, `index.ts`).
+- **Never hand-write, hand-edit, or "fix up" a generated DTO/response type** in `src/api/generated/`, and never re-declare a backend DTO by hand elsewhere in the frontend. If a type you need is missing or wrong, the fix is to correct the backend DTO and regenerate — not to patch the frontend.
+- When a task requires a new or changed backend response/request field: change the Java DTO/controller first, then regenerate with `pnpm generate-api`.
+- Regeneration requires the backend running and **restarted after the backend change** (the spec is read live from `http://localhost:5050/v3/api-docs`, override with `OPENAPI_URL`). Never start or restart the backend yourself — if the spec is stale or the backend was not restarted, stop and tell the user.
+- Consume generated types via `src/services/api-client.ts` (`sdk`, `export type * from '../api/generated/types.gen'`), then unwrap the `ApiResponse` envelope with `unwrap()` in `src/services/api.ts`. Application-specific shapes built on top of a generated type (e.g. a normalized `CurrentUser` with `isAdmin`) belong in a service file — that is fine; re-declaring the DTO itself is not.
+
 ## Frontend
 
 Run commands from `frontend/`.
 
 - Use `pnpm`; never npm.
 - Main commands: `pnpm dev`, `pnpm build`, `pnpm lint`, `pnpm typecheck`.
+- API client is generated from the backend's OpenAPI spec: `pnpm generate-api` (`frontend/openapi-ts.config.ts` → `src/api/generated/`).
+- `pnpm generate-api` reads the live spec from `http://localhost:5050/v3/api-docs`; override with `OPENAPI_URL`. It requires the backend to be running, and the backend must be restarted before regenerating after a backend change.
+- Generated files under `src/api/generated/` are committed and must not be hand-edited. Regenerate instead of editing them.
+- Services call the generated SDK through `src/services/api-client.ts` and unwrap the `ApiResponse` envelope with `unwrap()` in `src/services/api.ts`.
+- Do not add `@hey-api/client-fetch` as a dependency. The fetch client is bundled inside `@hey-api/openapi-ts` and the standalone package is deprecated; the plugin name in `openapi-ts.config.ts` is still correct.
 - File-based routes are generated from `src/pages/`.
 - Nuxt UI components are auto-imported; do not import them manually.
 - Prefer existing component usage already present in the codebase. Do not research or inspect Nuxt UI documentation unless the existing implementation cannot satisfy the requested change.

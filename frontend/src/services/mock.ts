@@ -2,6 +2,7 @@ import type { Author, AuthorInput } from './authors'
 import type { Category, CategoryInput } from './categories'
 import type { Book, BookInput } from './books'
 import type { Borrowing, BorrowingUser } from './borrowings'
+import type { CurrentUserResponse } from './api-client'
 
 let categories: Category[] = [
   { id: 1, name: 'Programming' },
@@ -189,6 +190,15 @@ export function fetchBorrowings(): Borrowing[] {
 
 export function fetchUsers(): BorrowingUser[] {
   return users.map((user) => ({ ...user }))
+}
+
+/**
+ * Returns the generated `CurrentUserResponse` shape rather than `UserResponse`:
+ * `/api/auth/me` returns `CurrentUserResponse`, so the mock has to match it.
+ */
+export function fetchCurrentUser(): CurrentUserResponse {
+  const { id, name, email, role } = users[0]
+  return { id, name, email, role: role === 'ADMIN' ? 'ADMIN' : 'USER' }
 }
 
 export function borrowBook(bookId: number, userId?: number): Borrowing {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useLocalStorage } from '@vueuse/core'
 import {
@@ -12,15 +12,27 @@ import {
 } from 'notivue'
 import type { BreadcrumbItem, DropdownMenuItem } from '@nuxt/ui'
 import { checkBackendHealth } from './services/api'
-import { logout } from './services/auth'
+import { fetchCurrentUser, isLoggedIn, logout } from './services/auth'
 import AppHeader from './components/layout/AppHeader.vue'
 import AppSidebar from './components/layout/AppSidebar.vue'
 import PageBreadcrumb from './components/PageBreadcrumb.vue'
 
-const DISPLAY_NAME = 'Mohammad Fawzy'
-const USER_ROLE = 'Administrator'
+const currentUser = ref<Awaited<ReturnType<typeof fetchCurrentUser>> | null>(null)
+
+const displayName = computed(() => currentUser.value?.name ?? '')
+const userRole = computed(() => (currentUser.value?.isAdmin ? 'Administrator' : 'Member'))
 
 onMounted(async () => {
+  if (isLoggedIn()) {
+    try {
+      currentUser.value = await fetchCurrentUser()
+    } catch {
+      // A stale or rejected token: drop it and send the user back to login.
+      logout()
+      router.push('/login')
+    }
+  }
+
   const notification = push.promise({
     title: 'Connecting',
     message: 'Checking the server connection...',
@@ -207,8 +219,8 @@ function handleLogout() {
 
         <div class="app-content flex min-w-0 flex-1 flex-col">
           <AppHeader
-            :display-name="DISPLAY_NAME"
-            :role="USER_ROLE"
+            :display-name="displayName"
+            :role="userRole"
             :menu-items="headerMenuItems"
             @open-sidebar="openSidebar"
           />
