@@ -372,9 +372,9 @@
     "semantic_hash": ""
   },
   "frontend/package.json": {
-    "mtime": 1791024058.3510735,
-    "seen": 1791025737.356711,
-    "ast_hash": "ccf4ce41d02d292b77b839ab1d40501a",
+    "mtime": 1791039569.018514,
+    "seen": 1792089048.9548311,
+    "ast_hash": "9062ec94d6dbdeae630da6c9b117a084",
     "semantic_hash": ""
   },
   "frontend/renovate.json": {
@@ -630,10 +630,10 @@
     "semantic_hash": ""
   },
   "skills-lock.json": {
-    "mtime": 1787936304.3728871,
-    "seen": 1788450175.5696545,
-    "ast_hash": "d9b0696672f0d5ceb56211f9ee22ab3c",
-    "semantic_hash": "d9b0696672f0d5ceb56211f9ee22ab3c"
+    "mtime": 1791039427.5382545,
+    "seen": 1792089048.9548311,
+    "ast_hash": "b63ae9d0aa5771f349dd8ddea3216d8c",
+    "semantic_hash": ""
   },
   ".opencode/plugins/graphify.js": {
     "mtime": 1788450998.1008189,
@@ -1287,6 +1287,114 @@
     "mtime": 1791024307.1221077,
     "seen": 1791025737.356711,
     "ast_hash": "97ee64797741005a1dc9a0403caaac66",
+    "semantic_hash": ""
+  },
+  "backend/src/main/java/org/library/controller/DashboardController.java": {
+    "mtime": 1791031297.209,
+    "seen": 1792089048.9548311,
+    "ast_hash": "46fa1c716abc12389e3fa5e0714dd4b9",
+    "semantic_hash": ""
+  },
+  "backend/src/main/java/org/library/dto/DashboardResponse.java": {
+    "mtime": 1791031440.415,
+    "seen": 1792089048.9548311,
+    "ast_hash": "586332cff4ddeeddaea90ea80c634f2c",
+    "semantic_hash": ""
+  },
+  "frontend/opencode.json": {
+    "mtime": 1791039561.9213443,
+    "seen": 1792089048.9548311,
+    "ast_hash": "242af3ea375b6bb0ff89997c1a3eb4bf",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn-vue/SKILL.md": {
+    "mtime": 1791039427.0385725,
+    "seen": 1792089048.9548311,
+    "ast_hash": "8577629a0409b7c04f7d6340d6f90a0c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn-vue/cli.md": {
+    "mtime": 1791039427.0385725,
+    "seen": 1792089048.9548311,
+    "ast_hash": "7065fd0a25f22369ee688ce2a41d8cb7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn-vue/customization.md": {
+    "mtime": 1791039427.039572,
+    "seen": 1792089048.9548311,
+    "ast_hash": "05d181612a30f2703e995b9b041109b4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn-vue/mcp.md": {
+    "mtime": 1791039427.039572,
+    "seen": 1792089048.9548311,
+    "ast_hash": "9575df8ea8e1f4e9f6e036fb8042bbd3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn-vue/rules/composition.md": {
+    "mtime": 1791039427.040571,
+    "seen": 1792089048.9548311,
+    "ast_hash": "fe823efb49fe64a464abab948682bdac",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn-vue/rules/forms.md": {
+    "mtime": 1791039427.040571,
+    "seen": 1792089048.9548311,
+    "ast_hash": "e3e34dba8f5084d2c7a37b0e33d94669",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn-vue/rules/icons.md": {
+    "mtime": 1791039427.040571,
+    "seen": 1792089048.9548311,
+    "ast_hash": "ab41fd538e93121fcd8b6fac8677e459",
+    "semantic_hash": ""
+  },
+  ".agents/skills/shadcn-vue/rules/styling.md": {
+    "mtime": 1791039427.0415707,
+    "seen": 1792089048.9548311,
+    "ast_hash": "d7762ef15e504e09cffdfae726cf4d37",
+    "semantic_hash": ""
+  },
+  "BUSINESS.md": {
+    "mtime": 1792057543.084078,
+    "seen": 1792089048.9548311,
+    "ast_hash": "05af8fa9a256f5feb188407d6b67b205",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1792003615.1693158,
+    "seen": 1792089048.9548311,
+    "ast_hash": "73cacaf27d1673013ba99fbcb186b7da",
+    "semantic_hash": ""
+  },
+  "designs/book-details.webp": {
+    "mtime": 1792056755.1590064,
+    "seen": 1792089048.9548311,
+    "ast_hash": "b883211b4a5e44637529a59e3e682363",
+    "semantic_hash": ""
+  },
+  "designs/reader.webp": {
+    "mtime": 1792056638.0085487,
+    "seen": 1792089048.9548311,
+    "ast_hash": "56bf6e731f53660c34e121dbff3ad710",
+    "semantic_hash": ""
+  },
+  "designs/ref-2.webp": {
+    "mtime": 1792056719.1815436,
+    "seen": 1792089048.9548311,
+    "ast_hash": "5655191e10d5ab3b8baa90e22e4bfdaa",
+    "semantic_hash": ""
+  },
+  "designs/ref-3.webp": {
+    "mtime": 1792056736.681725,
+    "seen": 1792089048.9548311,
+    "ast_hash": "0ca58375eb6a56992f66b8b7d755b081",
+    "semantic_hash": ""
+  },
+  "designs/ref.webp": {
+    "mtime": 1792056677.1236343,
+    "seen": 1792089048.9548311,
+    "ast_hash": "fa8a808f5467019f80c2412110c6795f",
     "semantic_hash": ""
   }
 }
